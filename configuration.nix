@@ -74,7 +74,7 @@
   users.users.ikostov2 = {
     isNormalUser = true;
     description = "ikostov2";
-    extraGroups = ["docker" "users" "networkmanager" "wheel" ];
+    extraGroups = [ "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
       dbeaver-bin
       microsoft-edge
@@ -120,11 +120,11 @@
       qFlipper
       texstudio
       inkscape
-      gitmoji-cli
       wineWowPackages.waylandFull
       lazydocker
       xsel
       gnomeExtensions.window-calls
+      vlc
     ];
   };
 
@@ -138,10 +138,10 @@
 
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.rootless ={
-  enable = true;
-  setSocketVariable = true;
-};
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
 
   # Install firefox.
   programs = {
@@ -191,8 +191,12 @@
     # broken: unable to install python
     #pyenv
     python3
+    python311Packages.pip
+    python311Packages.pipx
     nodejs_22
+    gitmoji-cli
     jdk19
+    postman
     maven
     gradle
     kubectl
@@ -204,7 +208,7 @@
     dotnetCorePackages.sdk_8_0_1xx
     rustup
     ripgrep
-    lua-language-server 
+    lua-language-server
   ];
 
 
@@ -255,12 +259,15 @@
 
 
 
+  # For Android
+  programs.adb.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions. programs.mtr.enable = true; programs.gnupg.agent = {
   #   enable = true; enableSSHSupport = true;
   # };
 
-  #services.openssh.enable = true;
+  services.openssh.enable = true;
+
 
   # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. networking.firewall.enable = false;
 
