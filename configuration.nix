@@ -74,7 +74,7 @@
   users.users.ikostov2 = {
     isNormalUser = true;
     description = "ikostov2";
-    extraGroups = [ "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
       dbeaver-bin
       microsoft-edge
@@ -117,6 +117,7 @@
       p7zip
       drawio
       qemu
+      virt-manager
       qFlipper
       texstudio
       inkscape
@@ -125,6 +126,9 @@
       xsel
       gnomeExtensions.window-calls
       vlc
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
     ];
   };
 
@@ -136,6 +140,10 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
+  # Quemu
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
