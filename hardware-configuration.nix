@@ -46,6 +46,15 @@
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Use the latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
+
   hardware.nvidia = {
     # Modesetting is required.
     modesetting.enable = true;
