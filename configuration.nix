@@ -7,6 +7,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -70,7 +71,93 @@
 
   services.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  #
+  # users.users.ikostov2.isNormalUser = true;
+  # # Define a user account. Don't forget to set a password with ‘passwd’.
+  #
+  #
+  # home-manager.users.ikostov2 = { pkgs, ... }: {
+  #   description = "ikostov2";
+  #   extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+  #   programs.bash.enable = true;
+  #   home.packages = with pkgs; [
+  #     dbeaver-bin
+  #     microsoft-edge
+  #     librewolf
+  #     openvpn3
+  #     rclone
+  #     rclone-browser
+  #     dialect
+  #     keepass
+  #     ungoogled-chromium
+  #     flameshot
+  #     microsoft-edge
+  #     gnome.gpaste
+  #     normcap
+  #     htop
+  #     gpick
+  #     neofetch
+  #     xclip
+  #     vscodium
+  #     sdkmanager
+  #     azure-cli
+  #     awscli2
+  #     gh
+  #     git-extras
+  #     android-studio
+  #     # Not sure about this one
+  #     indicator-application-gtk3
+  #     gnome.gnome-software
+  #     normcap
+  #     shotwell
+  #     #gnome.gnome-tweaks
+  #     gnomeExtensions.search-light
+  #     gnomeExtensions.dock-from-dash
+  #     gnomeExtensions.zen
+  #     gnomeExtensions.dash-to-dock-toggle
+  #     gnomeExtensions.dock-reloaded
+  #     gnomeExtensions.window-title-is-back
+  #     gnomeExtensions.user-themes
+  #     gnomeExtensions.paperwm
+  #     p7zip
+  #     drawio
+  #     qemu
+  #     virt-manager
+  #     qFlipper
+  #     texstudio
+  #     inkscape
+  #     wineWowPackages.waylandFull
+  #     lazydocker
+  #     xsel
+  #     gnomeExtensions.window-calls
+  #     vlc
+  #     libreoffice-qt
+  #     hunspell
+  #     hunspellDicts.en_US
+  #   ];
+  #
+  #   home.stateVersion = "24.05";
+  # };
+  #
+  # programs.git =
+  #   {
+  #     enable = true;
+  #     userName = "IliyanKostov";
+  #     userEmail = "iliyan.kostov@email.ikostov.org";
+  #   };
+
+  # home.file = {
+  #
+  #   ".tmux.conf" = {
+  #     text = ''
+  #       set-option -g default-shell /run/current-system/sw/bin/fish
+  #       set-window-option -g mode-keys vi
+  #       set -g default-terminal "screen-256color"
+  #       set -ga terminal-overrides ',screen-256color:Tc'
+  #     '';
+  #   };
+  # };
+
   users.users.ikostov2 = {
     isNormalUser = true;
     description = "ikostov2";
@@ -130,8 +217,8 @@
       hunspell
       hunspellDicts.en_US
     ];
-  };
 
+  };
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ikostov2";
@@ -264,8 +351,6 @@
     dates = "weekly";
     options = "-delete-older-than 7d";
   };
-
-
 
   # For Android
   programs.adb.enable = true;

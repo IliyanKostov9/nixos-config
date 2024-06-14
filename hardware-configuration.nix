@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
@@ -14,25 +15,26 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/71627bb4-1f3d-4b0c-9b74-aef3944e9eae";
+    {
+      device = "/dev/disk/by-uuid/71627bb4-1f3d-4b0c-9b74-aef3944e9eae";
       fsType = "ext4";
     };
 
   boot.initrd.luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/BB8A-DF92";
+    {
+      device = "/dev/disk/by-uuid/BB8A-DF92";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/85b811ca-f0aa-452e-a679-549dcf80e1ba"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/85b811ca-f0aa-452e-a679-549dcf80e1ba"; }];
 
 
-## NVIDIA drivers start from here
-# hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  ## NVIDIA drivers start from here
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # Enable OpenGL
   hardware.opengl = {
@@ -42,10 +44,9 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
-
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -69,7 +70,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	# accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
@@ -77,9 +78,26 @@
   };
 
 
+  # Enable bloothooth support
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+    settings.Policy.AutoEnable = "true";
+  };
 
-
-
+  services.blueman.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Experimental = true;
+    };
+  };
+  hardware.enableAllFirmware = true;
+  systemd.user.services.mpris-proxy = {
+    description = "Mpris proxy";
+    after = [ "network.target" "sound.target" ];
+    wantedBy = [ "default.target" ];
+    serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
