@@ -39,7 +39,6 @@
     LC_TELEPHONE = "bg_BG.UTF-8";
     LC_TIME = "bg_BG.UTF-8";
   };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # Enable the GNOME Desktop Environment.
@@ -187,20 +186,15 @@
       gh
       git-extras
       android-studio
-      # Not sure about this one
       indicator-application-gtk3
       gnome.gnome-software
       normcap
       shotwell
-      #gnome.gnome-tweaks
-      gnomeExtensions.search-light
       gnomeExtensions.dock-from-dash
       gnomeExtensions.zen
-      gnomeExtensions.dash-to-dock-toggle
-      gnomeExtensions.dock-reloaded
+      gnomeExtensions.search-light
       gnomeExtensions.window-title-is-back
       gnomeExtensions.user-themes
-      gnomeExtensions.paperwm
       p7zip
       drawio
       qemu
@@ -211,14 +205,13 @@
       wineWowPackages.waylandFull
       lazydocker
       xsel
-      gnomeExtensions.window-calls
       vlc
       libreoffice-qt
       hunspell
       hunspellDicts.en_US
     ];
-
   };
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ikostov2";
@@ -253,8 +246,6 @@
       enableWideVine = true;
     };
   };
-
-
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -312,15 +303,8 @@
   ];
 
 
-
   environment.sessionVariables = {
-    PYENV_ROOT = "$HOME/.pyenv";
-    CPPFLAGS = "-I${pkgs.zlib.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.openssl.dev}/include";
-    CXXFLAGS = "-I${pkgs.zlib.dev}/include -I${pkgs.libffi.dev}/include -I${pkgs.readline.dev}/include -I${pkgs.bzip2.dev}/include -I${pkgs.openssl.dev}/include";
-    CFLAGS = "-I${pkgs.openssl.dev}/include";
-    LDFLAGS = "-L${pkgs.zlib.out}/lib -L${pkgs.libffi.out}/lib -L${pkgs.readline.out}/lib -L${pkgs.bzip2.out}/lib -L${pkgs.openssl.out}/lib";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-    PYENV_VIRTUALENV_DISABLE_PROMPT = "1";
   };
 
   environment.variables = {
@@ -344,7 +328,6 @@
     };
   };
 
-
   # Garbage collection of old generations
   nix.gc = {
     automatic = true;
@@ -358,14 +341,11 @@
   # Some programs need SUID wrappers, can be configured further or are started in user sessions. programs.mtr.enable = true; programs.gnupg.agent = {
   #   enable = true; enableSSHSupport = true;
   # };
-
   services.openssh.enable = true;
-
 
   # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default settings for stateful data, like file locations and database versions on your system were taken. It‘s perfectly fine and recommended to leave this value at the 
   # release version of the first install of this system. Before changing this value read the documentation for this option (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
