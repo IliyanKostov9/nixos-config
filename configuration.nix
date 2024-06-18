@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
-  networking.hostName = "blackberry";
+  networking.hostName = "baks";
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary networking.proxy.default = "http://user:password@proxy:port/"; networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -40,10 +40,25 @@
     LC_TIME = "bg_BG.UTF-8";
   };
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    desktopManager.xterm.enable = true;
+    # displayManager.defaultSession = "none+i3";
+
+    # I3 support 
+    windowManager.i3 = {
+      enable = false;
+      extraPackages = with pkgs; [
+        dmenu
+        i3status
+        i3lock
+        i3blocks
+      ];
+    };
+  };
+
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -162,6 +177,8 @@
     description = "ikostov2";
     extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
+      obs-studio
+      terminator
       dbeaver-bin
       microsoft-edge
       librewolf
@@ -209,6 +226,7 @@
       libreoffice-qt
       hunspell
       hunspellDicts.en_US
+      i3
     ];
   };
 
@@ -231,11 +249,17 @@
     setSocketVariable = true;
   };
 
-  # Install firefox.
   programs = {
     firefox.enable = true;
     gpaste.enable = true;
     chromium.enable = true;
+    bash = {
+      shellAliases = {
+        clip = "xclip -selection clipboard";
+        timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
+        buzz = "cd $(find . -type d | fzf)";
+      };
+    };
   };
 
 
@@ -247,8 +271,13 @@
     };
   };
 
+
+  # I3 support
+  environment.pathsToLink = [ "/libexec" ];
+
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
+    tree
     git
     patchelf
     unzip

@@ -20,6 +20,15 @@
       fsType = "ext4";
     };
 
+  # Mount the hard tisk
+
+  fileSystems."/mnt/external_hd" = {
+    device = "/dev/sda1";
+    fsType = "ntfs";
+    options = [ "users" "nofail" "rw" ];
+  };
+
+
   boot.initrd.luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
 
   fileSystems."/boot" =
