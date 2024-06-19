@@ -160,6 +160,7 @@
         timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
         buzz = "cd $(find . -type d | fzf)";
         git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
+        py-setup-venv = "~/.local/bin/python/python-venv-setup";
       };
     };
   };
