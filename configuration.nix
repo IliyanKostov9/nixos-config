@@ -46,8 +46,6 @@
     desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = true;
     # displayManager.defaultSession = "none+i3";
-
-    # I3 support 
     windowManager.i3 = {
       enable = false;
       extraPackages = with pkgs; [
@@ -58,7 +56,8 @@
       ];
     };
   };
-
+  # I3 support
+  environment.pathsToLink = [ "/libexec" ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -84,99 +83,12 @@
   };
 
   services.libinput.enable = true;
-
-  #
-  # users.users.ikostov2.isNormalUser = true;
-  # # Define a user account. Don't forget to set a password with ‘passwd’.
-  #
-  #
-  # home-manager.users.ikostov2 = { pkgs, ... }: {
-  #   description = "ikostov2";
-  #   extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-  #   programs.bash.enable = true;
-  #   home.packages = with pkgs; [
-  #     dbeaver-bin
-  #     microsoft-edge
-  #     librewolf
-  #     openvpn3
-  #     rclone
-  #     rclone-browser
-  #     dialect
-  #     keepass
-  #     ungoogled-chromium
-  #     flameshot
-  #     microsoft-edge
-  #     gnome.gpaste
-  #     normcap
-  #     htop
-  #     gpick
-  #     neofetch
-  #     xclip
-  #     vscodium
-  #     sdkmanager
-  #     azure-cli
-  #     awscli2
-  #     gh
-  #     git-extras
-  #     android-studio
-  #     # Not sure about this one
-  #     indicator-application-gtk3
-  #     gnome.gnome-software
-  #     normcap
-  #     shotwell
-  #     #gnome.gnome-tweaks
-  #     gnomeExtensions.search-light
-  #     gnomeExtensions.dock-from-dash
-  #     gnomeExtensions.zen
-  #     gnomeExtensions.dash-to-dock-toggle
-  #     gnomeExtensions.dock-reloaded
-  #     gnomeExtensions.window-title-is-back
-  #     gnomeExtensions.user-themes
-  #     gnomeExtensions.paperwm
-  #     p7zip
-  #     drawio
-  #     qemu
-  #     virt-manager
-  #     qFlipper
-  #     texstudio
-  #     inkscape
-  #     wineWowPackages.waylandFull
-  #     lazydocker
-  #     xsel
-  #     gnomeExtensions.window-calls
-  #     vlc
-  #     libreoffice-qt
-  #     hunspell
-  #     hunspellDicts.en_US
-  #   ];
-  #
-  #   home.stateVersion = "24.05";
-  # };
-  #
-  # programs.git =
-  #   {
-  #     enable = true;
-  #     userName = "IliyanKostov";
-  #     userEmail = "iliyan.kostov@email.ikostov.org";
-  #   };
-
-  # home.file = {
-  #
-  #   ".tmux.conf" = {
-  #     text = ''
-  #       set-option -g default-shell /run/current-system/sw/bin/fish
-  #       set-window-option -g mode-keys vi
-  #       set -g default-terminal "screen-256color"
-  #       set -ga terminal-overrides ',screen-256color:Tc'
-  #     '';
-  #   };
-  # };
-
   users.users.ikostov2 = {
     isNormalUser = true;
     description = "ikostov2";
     extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
+      postman
       obs-studio
       terminator
       dbeaver-bin
@@ -196,7 +108,7 @@
       gpick
       neofetch
       xclip
-      vscodium
+      # vscodium
       sdkmanager
       azure-cli
       awscli2
@@ -233,49 +145,25 @@
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ikostov2";
-
   # Workaround for GNOME auto:wlogin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
-
-  # Quemu
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-
-  virtualisation.docker.enable = true;
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
 
   programs = {
     firefox.enable = true;
     gpaste.enable = true;
     chromium.enable = true;
+    # .bashrc
     bash = {
       shellAliases = {
         clip = "xclip -selection clipboard";
         timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
         buzz = "cd $(find . -type d | fzf)";
+        git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
       };
     };
   };
-
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-    chromium = {
-      enableWideVine = true;
-    };
-  };
-
-
-  # I3 support
-  environment.pathsToLink = [ "/libexec" ];
-
-  # List packages installed in system profile. To search, run: $ nix search wget
+  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     tree
     git
@@ -303,15 +191,13 @@
     binutils
     gcc
     ncurses
-    # broken: unable to install python
-    #pyenv
+    #pyenv  # broken: unable to install python
     python3
     python311Packages.pip
     python311Packages.pipx
     nodejs_22
     gitmoji-cli
     jdk19
-    postman
     maven
     gradle
     kubectl
@@ -326,29 +212,22 @@
     lua-language-server
   ];
 
-
+  # Enable nerd fonts
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "0xProto" ]; })
   ];
 
-
+  # Needed for compatibility purposes
   environment.sessionVariables = {
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 
+  # Env vars
   environment.variables = {
     EDITOR = "nvim";
     JAVA_HOME = "${pkgs.jdk}/lib/openjdk";
     PATH = "${pkgs.jdk}/bin:" + builtins.getEnv "PATH";
   };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
   services.openvpn.servers = {
     personalVPN = {
       config = "config /etc/nixos/config/openvpn/personalVPN.ovpn";
@@ -364,17 +243,37 @@
     options = "-delete-older-than 7d";
   };
 
+  # Enable programs
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+    chromium = {
+      enableWideVine = true;
+    };
+  };
+  # Quemu
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
   # For Android
   programs.adb.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are started in user sessions. programs.mtr.enable = true; programs.gnupg.agent = {
-  #   enable = true; enableSSHSupport = true;
-  # };
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
   services.openssh.enable = true;
 
-  # Open ports in the firewall. networking.firewall.allowedTCPPorts = [ ... ]; networking.firewall.allowedUDPPorts = [ ... ]; Or disable the firewall altogether. networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default settings for stateful data, like file locations and database versions on your system were taken. It‘s perfectly fine and recommended to leave this value at the 
-  # release version of the first install of this system. Before changing this value read the documentation for this option (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  # NixOS version
+  system.stateVersion = "24.05";
 }
