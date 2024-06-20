@@ -146,15 +146,6 @@
     options = "-delete-older-than 7d";
   };
 
-  # Enable programs
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowBroken = true;
-    chromium = {
-      enableWideVine = true;
-    };
-  };
   # NixOS version
   system.stateVersion = "24.05";
 }

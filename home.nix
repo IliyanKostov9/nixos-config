@@ -19,7 +19,7 @@
       rclone-browser
       dialect
       keepass
-      ungoogled-chromium
+      # ungoogled-chromium
       flameshot
       microsoft-edge
       gnome.gpaste
@@ -77,25 +77,25 @@
   # Programs
   programs = {
     firefox.enable = true;
-    gpaste.enable = true;
+    # gpaste.enable = true;
     chromium.enable = true;
-    virt-manager.enable = true;
+    # virt-manager.enable = true;
     # For Android
-    adb.enable = true;
+    # adb.enable = true;
     neovim = {
       enable = true;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
-      # .bashrc
-      bash = {
-        shellAliases = {
-          clip = "xclip -selection clipboard";
-          timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
-          buzz = "cd $(find . -type d | fzf)";
-          git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
-          py-setup-venv = "~/.local/bin/python/python-venv-setup";
-        };
+    };
+    # .bashrc
+    bash = {
+      shellAliases = {
+        clip = "xclip -selection clipboard";
+        timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
+        buzz = "cd $(find . -type d | fzf)";
+        git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
+        py-setup-venv = "~/.local/bin/python/python-venv-setup";
       };
     };
   };
@@ -132,6 +132,15 @@
   #    (nerdfonts.override { fonts = [ "0xProto" ]; })
   #  ];
 
+
+  # Enable programs
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+    chromium = {
+      enableWideVine = true;
+    };
+  };
 
   home.stateVersion = "24.05";
   # Let home Manager install and manage itself.
