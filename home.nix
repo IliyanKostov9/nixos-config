@@ -89,7 +89,7 @@
   };
 
   # Environment
-  envionment = {
+  environment = {
     # Needed for compatibility purposes
     sessionVariables = {
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
