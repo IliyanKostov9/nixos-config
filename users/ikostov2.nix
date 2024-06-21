@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
+let
 
+  username = "ikostov2";
+in
 {
   home = {
     # isNormalUser = true;
-    homeDirectory = "/home/ikostov2";
-    username = "ikostov2";
+    homeDirectory = "/home/${username}";
+    inherit username;
     # description = "ikostov2";
     # users.users.ikostov2.extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
@@ -96,6 +99,8 @@
         buzz = "cd $(find . -type d | fzf)";
         git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
         py-setup-venv = "~/.local/bin/python/python-venv-setup";
+        mvn-spring = "mvn spring-boot:run";
+        mvn-deps = "mvn dependency:resolve";
       };
     };
   };
