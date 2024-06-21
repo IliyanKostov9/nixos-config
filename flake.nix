@@ -20,7 +20,10 @@
       homeConfigurations = {
         ikostov2 = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./users/ikostov2 ./hosts/personal/desktop ];
+          modules = [
+            ./users/ikostov2
+            ./hosts/personal/desktop
+          ];
         };
       };
     };
