@@ -7,7 +7,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -81,6 +81,67 @@
     # use the example session manager (no others are packaged yet so this is enabled by default, no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  services.libinput.enable = true;
+  users.users.ikostov2 = {
+    isNormalUser = true;
+    description = "ikostov2";
+    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      postman
+      obs-studio
+      terminator
+      dbeaver-bin
+      microsoft-edge
+      librewolf
+      openvpn3
+      rclone
+      rclone-browser
+      dialect
+      keepass
+      ungoogled-chromium
+      flameshot
+      microsoft-edge
+      gnome.gpaste
+      normcap
+      htop
+      gpick
+      neofetch
+      xclip
+      # vscodium
+      sdkmanager
+      azure-cli
+      awscli2
+      gh
+      git-extras
+      android-studio
+      indicator-application-gtk3
+      gnome.gnome-software
+      normcap
+      shotwell
+      gnomeExtensions.dock-from-dash
+      gnomeExtensions.zen
+      gnomeExtensions.search-light
+      gnomeExtensions.window-title-is-back
+      gnomeExtensions.user-themes
+      p7zip
+      drawio
+      qemu
+      virt-manager
+      qFlipper
+      texstudio
+      inkscape
+      wineWowPackages.waylandFull
+      lazydocker
+      xsel
+      vlc
+      libreoffice-qt
+      hunspell
+      hunspellDicts.en_US
+      i3
+    ];
+  };
+
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "ikostov2";
@@ -88,10 +149,23 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-
+  programs = {
+    firefox.enable = true;
+    gpaste.enable = true;
+    chromium.enable = true;
+    # .bashrc
+    bash = {
+      shellAliases = {
+        clip = "xclip -selection clipboard";
+        timmy = "tmux new-session '~/.local/bin/tmux-ls-sessionizer'";
+        buzz = "cd $(find . -type d | fzf)";
+        git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
+        py-setup-venv = "~/.local/bin/python/python-venv-setup";
+      };
+    };
+  };
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    home-manager
     tree
     git
     patchelf
@@ -139,12 +213,67 @@
     lua-language-server
   ];
 
+  # Enable nerd fonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "0xProto" ]; })
+  ];
+
+  # Needed for compatibility purposes
+  environment.sessionVariables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
+
+  # Env vars
+  environment.variables = {
+    EDITOR = "nvim";
+    JAVA_HOME = "${pkgs.jdk}/lib/openjdk";
+    PATH = "${pkgs.jdk}/bin:" + builtins.getEnv "PATH";
+  };
+  services.openvpn.servers = {
+    personalVPN = {
+      config = "config /etc/nixos/config/openvpn/personalVPN.ovpn";
+      updateResolvConf = true;
+      autoStart = true;
+    };
+  };
+
   # Garbage collection of old generations
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "-delete-older-than 7d";
   };
+
+  # Enable programs
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = true;
+    chromium = {
+      enableWideVine = true;
+    };
+  };
+  # Quemu
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # Docker
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
+    enable = true;
+    setSocketVariable = true;
+  };
+  # For Android
+  programs.adb.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+  services.openssh.enable = true;
 
   # NixOS version
   system.stateVersion = "24.05";

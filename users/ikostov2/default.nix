@@ -1,15 +1,17 @@
 { config, pkgs, ... }:
 let
-
   username = "ikostov2";
 in
 {
+  users.users.ikostov2 = {
+    isNormalUser = true;
+    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+    description = username;
+  };
+
   home = {
-    # isNormalUser = true;
     homeDirectory = "/home/${username}";
     inherit username;
-    # description = "ikostov2";
-    # users.users.ikostov2.extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
     packages = with pkgs; [
       postman
       obs-studio
@@ -22,7 +24,6 @@ in
       rclone-browser
       dialect
       keepass
-      # ungoogled-chromium
       flameshot
       microsoft-edge
       gnome.gpaste
