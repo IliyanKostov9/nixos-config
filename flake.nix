@@ -7,42 +7,33 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
+    nixos-hardware.url = "flake:nixos-hardware";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
-    flake-utils.lib.eachSystem ["x86_64-linux"] (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-        lib = pkgs.lib;
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+    let
+      pkgs = import nixpkgs { inherit system; };
+      lib = pkgs.lib;
+      system = "x86_64-linux";
 
-        # Define the NixOS configuration
-        nixosConfiguration = hostname: {
-          nixosModulesPath = "${pkgs.path}/nixos/modules"; 
-          modules = [
-            ./hosts/personal/desktop/${hostname}
-            ({
-              modulesPath, ... }: {
-                imports = [
-                  (modulesPath + "/profiles/minimal.nix")
-                ];
-              })
-          ];
-        };
-
-      in {
-        homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
+    in
+    {
+      homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
           ./users/ikostov2
-          ];
-        };
+        ];
+      };
 
-        nixosConfigurations.mySystem = lib.nixosSystem {
-          inherit system pkgs;
-          modules = [
-            nixosConfiguration "desktop"
-          ];
-        };
-      });
+      nixosConfigurations.ikostov2 = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/personal/desktop
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-cpu-amd
+          # nixos-hardware.nixosModules.common-gpu-nvidia
+        ];
+
+        inherit system;
+      };
+    };
 }

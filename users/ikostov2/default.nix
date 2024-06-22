@@ -3,6 +3,10 @@ let
   username = "ikostov2";
 in
 {
+
+  imports = [
+    ../../pkgs/discord
+  ];
   # users.users.ikostov2 = {
   #   isNormalUser = true;
   #   extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];

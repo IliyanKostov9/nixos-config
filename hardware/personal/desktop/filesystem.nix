@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/71627bb4-1f3d-4b0c-9b74-aef3944e9eae";
@@ -21,6 +20,4 @@
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
-
-
 }
