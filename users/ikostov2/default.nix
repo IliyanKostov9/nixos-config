@@ -84,18 +84,18 @@ in
   #
   # Programs
   programs = {
-    firefox.enable = true;
+    # firefox.enable = true;
     # gpaste.enable = true;
-    chromium.enable = true;
+    # chromium.enable = true;
     # virt-manager.enable = true;
     # For Android
     # adb.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
+    # neovim = {
+    #   enable = true;
+    #   defaultEditor = true;
+    #   viAlias = true;
+    #   vimAlias = true;
+    # };
     # .bashrc
     bash = {
       shellAliases = {
@@ -147,9 +147,9 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
-    chromium = {
-      enableWideVine = true;
-    };
+    # chromium = {
+    #   enableWideVine = true;
+    # };
   };
 
   home.stateVersion = "24.05";

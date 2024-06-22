@@ -4,6 +4,8 @@
 }:
 {
   imports = [
-
+    ./htop
+    ./xclip
+    ./neofetch
   ];
 }
