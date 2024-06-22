@@ -3,11 +3,11 @@ let
   username = "ikostov2";
 in
 {
-  users.users.ikostov2 = {
-    isNormalUser = true;
-    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-    description = username;
-  };
+  # users.users.ikostov2 = {
+  #   isNormalUser = true;
+  #   extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+  #   description = username;
+  # };
 
   home = {
     homeDirectory = "/home/${username}";
