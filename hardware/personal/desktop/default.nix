@@ -7,6 +7,7 @@
   imports =
     [
       # (modulesPath + "/installer/scan/not-detected.nix")
+      ./blueman.nix
       ./boot.nix
       ./bluetooth.nix
       ./filesystem.nix
@@ -14,13 +15,12 @@
       ./nvidia.nix
       ./opengl.nix
       ./systemd.nix
+      ./hardware.nix
+      ./networking.nix
+      ./security.nix
+      ./services.nix
+      ./systemPackages.nix
+      ./xserver.nix
     ];
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/85b811ca-f0aa-452e-a679-549dcf80e1ba"; }];
-
-  services.blueman.enable = true;
-  hardware.enableAllFirmware = true;
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
 }

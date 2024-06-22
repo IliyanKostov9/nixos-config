@@ -5,7 +5,7 @@ in
 {
 
   imports = [
-    ../../pkgs/discord
+    ../../pkgs
   ];
   # users.users.ikostov2 = {
   #   isNormalUser = true;
@@ -16,58 +16,58 @@ in
   home = {
     homeDirectory = "/home/${username}";
     inherit username;
-    packages = with pkgs; [
-      postman
-      obs-studio
-      terminator
-      dbeaver-bin
-      microsoft-edge
-      librewolf
-      openvpn3
-      rclone
-      rclone-browser
-      dialect
-      keepass
-      flameshot
-      microsoft-edge
-      gnome.gpaste
-      normcap
-      htop
-      gpick
-      neofetch
-      xclip
-      # vscodium
-      sdkmanager
-      azure-cli
-      awscli2
-      gh
-      git-extras
-      android-studio
-      indicator-application-gtk3
-      gnome.gnome-software
-      normcap
-      shotwell
-      gnomeExtensions.dock-from-dash
-      gnomeExtensions.zen
-      gnomeExtensions.search-light
-      gnomeExtensions.window-title-is-back
-      gnomeExtensions.user-themes
-      p7zip
-      drawio
-      qemu
-      virt-manager
-      qFlipper
-      texstudio
-      inkscape
-      wineWowPackages.waylandFull
-      lazydocker
-      xsel
-      vlc
-      libreoffice-qt
-      hunspell
-      hunspellDicts.en_US
-      i3
-    ];
+    # packages = with pkgs; [
+    #   postman
+    #   obs-studio
+    #   terminator
+    #   dbeaver-bin
+    #   microsoft-edge
+    #   librewolf
+    #   openvpn3
+    #   rclone
+    #   rclone-browser
+    #   dialect
+    #   keepass
+    #   flameshot
+    #   microsoft-edge
+    #   gnome.gpaste
+    #   normcap
+    #   htop
+    #   gpick
+    #   neofetch
+    #   xclip
+    #   # vscodium
+    #   sdkmanager
+    #   azure-cli
+    #   awscli2
+    #   gh
+    #   git-extras
+    #   android-studio
+    #   indicator-application-gtk3
+    #   gnome.gnome-software
+    #   normcap
+    #   shotwell
+    #   gnomeExtensions.dock-from-dash
+    #   gnomeExtensions.zen
+    #   gnomeExtensions.search-light
+    #   gnomeExtensions.window-title-is-back
+    #   gnomeExtensions.user-themes
+    #   p7zip
+    #   drawio
+    #   qemu
+    #   virt-manager
+    #   qFlipper
+    #   texstudio
+    #   inkscape
+    #   wineWowPackages.waylandFull
+    #   lazydocker
+    #   xsel
+    #   vlc
+    #   libreoffice-qt
+    #   hunspell
+    #   hunspellDicts.en_US
+    #   i3
+    # ];
   };
   # Services
   # services = {

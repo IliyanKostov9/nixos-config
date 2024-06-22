@@ -1,9 +1,9 @@
-.PHONY: update
-update:
+.PHONY: home-update
+home-update:
 	home-manager switch --flake .#ikostov2 --show-trace
 	
-.PHONY: update-sys
-update-sys:
+.PHONY: sys-update
+sys-update:
 	sudo nixos-rebuild switch --flake .#ikostov2 --show-trace
 	
 .PHONY: flake-check
