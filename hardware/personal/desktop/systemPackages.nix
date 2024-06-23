@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
 
-{
-  langs = import ../../../programs/system/langs/python { inherit pkgs; };
+let
+  langs = import ../../../programs/system/langs { inherit pkgs; };
 
+in
+{
   environment.systemPackages = with pkgs; [
     git
     tree
@@ -28,20 +30,13 @@
     binutils
     gcc
     ncurses
-    nodejs_22
-    jdk19
     maven
     gradle
     kubectl
     docker
-    terraform
-    kotlin
-    go
     fzf
-    dotnetCorePackages.sdk_8_0_1xx
     rustup
     ripgrep
-    lua-language-server
   ] ++ langs;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
