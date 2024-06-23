@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./fzf ./tree./toolkit ./zip ];
+  imports = [ ./fzf ./tree ./toolkit ./zip ];
 }
