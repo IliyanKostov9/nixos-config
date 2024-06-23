@@ -5,7 +5,6 @@
 {
   imports = [
     ./htop
-    ./xclip
     ./neofetch
   ];
 }

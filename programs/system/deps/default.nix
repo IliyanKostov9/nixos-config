@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./cli ./db-engine ./gnu ./security ./utils ];
+  imports = [ ./command-line ./db-engine ./gnu ./security ./utils ];
 }

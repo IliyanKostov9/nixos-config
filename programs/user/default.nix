@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ./admin
     ./api
     ./archive
     ./browsers
