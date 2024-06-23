@@ -4,5 +4,5 @@
 }:
 
 {
-  imports = [ ./bashrc ./sessionVariables ];
+  imports = [ ./bashrc ];
 }
