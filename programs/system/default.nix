@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  imports = [ ./langs ];
+  imports = [ ./build-tools ./container ./deps ./editor ./langs ./scm ];
 }
