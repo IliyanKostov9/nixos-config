@@ -1,6 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
+  langs = import ../../../programs/system/langs/python { inherit pkgs; };
+
   environment.systemPackages = with pkgs; [
     git
     tree
@@ -26,10 +28,6 @@
     binutils
     gcc
     ncurses
-    #pyenv  # broken: unable to install python
-    python3
-    python311Packages.pip
-    python311Packages.pipx
     nodejs_22
     jdk19
     maven
@@ -44,7 +42,7 @@
     rustup
     ripgrep
     lua-language-server
-  ];
+  ] ++ langs;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
