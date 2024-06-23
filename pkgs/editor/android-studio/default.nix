@@ -3,6 +3,6 @@
 , ...
 }:
 {
-  home.packages = with pkgs; [ android-stuio ];
-  programs.adb.enable = true;
+  home.packages = with pkgs; [ android-studio ];
+  # programs.adb.enable = true;
 }

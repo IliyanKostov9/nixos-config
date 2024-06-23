@@ -19,7 +19,6 @@
     ./password-manager
     ./translate
     ./virtualisation
-    ./vpn
     ./window
     ./x11-utils
   ];

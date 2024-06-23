@@ -4,7 +4,7 @@
 }:
 {
   home.packages = with pkgs; [
-    indicator-gtk3
+    indicator-application-gtk3
     gnome.gnome-software
     gnomeExtensions.dock-from-dash
     gnomeExtensions.zen

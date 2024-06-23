@@ -11,7 +11,6 @@
       ./boot.nix
       ./bluetooth.nix
       ./filesystem.nix
-      ./networking.nix
       ./nvidia.nix
       ./opengl.nix
       ./systemd.nix
@@ -21,6 +20,9 @@
       ./services.nix
       ./systemPackages.nix
       ./xserver.nix
+      ./users.nix
     ];
 
+  # NixOS version
+  system.stateVersion = "24.05";
 }
