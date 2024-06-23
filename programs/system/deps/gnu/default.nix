@@ -5,6 +5,10 @@
 
 {
   environment.systemPackages = with pkgs; [
-    kotlin
+    libstdcxx5
+    gcc
+    gnumake
+    glibc
+    libgccjit
   ];
-} 
+}

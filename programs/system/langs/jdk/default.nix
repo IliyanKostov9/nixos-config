@@ -1,7 +1,10 @@
-{ pkgs }:
+{ pkgs
+, config
+, ...
+}:
 
-
-with pkgs; [
-  jdk19
-]
-  
+{
+  environment.systemPackages = with pkgs; [
+    jdk19
+  ];
+} 

@@ -1,7 +1,11 @@
-{ pkgs }:
+{ pkgs
+, config
+, ...
+}:
 
+{
+  environment.systemPackages = with pkgs; [
+    terraform
 
-with pkgs; [
-  terraform
-]
-  
+  ];
+} 

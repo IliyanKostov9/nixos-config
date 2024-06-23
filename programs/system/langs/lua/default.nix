@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, config, ...}:
 
-
-with pkgs; [
-  lua-language-server
-]
-  
+{
+  environment.systemPackages = with pkgs; [
+    lua-language-server
+  ];
+} 

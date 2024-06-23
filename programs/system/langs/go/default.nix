@@ -1,7 +1,7 @@
-{ pkgs }:
+{ pkgs, config, ...}:
 
-
-with pkgs; [
-  go
-]
-  
+{
+  environment.systemPackages = with pkgs; [
+    go
+  ];
+} 

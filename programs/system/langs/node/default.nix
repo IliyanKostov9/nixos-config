@@ -1,7 +1,10 @@
-{ pkgs }:
+{ pkgs
+, config
+, ...
+}:
 
-
-with pkgs; [
-  nodejs_22
-]
-  
+{
+  environment.systemPackages = with pkgs; [
+    nodejs_22
+  ];
+} 

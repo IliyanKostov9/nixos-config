@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, config, ... }:
 
 {
   imports = [
@@ -9,5 +9,6 @@
     ./dotnet
     ./python
     ./terraform
+    ./rust
   ];
 }

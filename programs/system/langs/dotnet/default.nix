@@ -1,7 +1,10 @@
-{ pkgs }:
+{ pkgs
+, config
+, ...
+}:
 
-
-with pkgs; [
-  dotnetCorePackages.sdk_8_0_1xx
-]
-  
+{
+  environment.systemPackages = with pkgs; [
+    dotnetCorePackages.sdk_8_0_1xx
+  ];
+}

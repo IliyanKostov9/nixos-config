@@ -1,44 +1,9 @@
 { config, lib, pkgs, ... }:
 
-let
-  langs = import ../../../programs/system/langs { inherit pkgs; };
-
-in
 {
-  environment.systemPackages = with pkgs; [
-    git
-    tree
-    patchelf
-    unzip
-    zlib
-    libstdcxx5
-    bzip2
-    xz
-    openssl
-    readline
-    sqlite
-    tcl
-    tk
-    curl
-    libffi
-    gnumake
-    patch
-    libuuid
-    vim
-    libgccjit
-    glibc
-    binutils
-    gcc
-    ncurses
-    maven
-    gradle
-    kubectl
-    docker
-    fzf
-    rustup
-    ripgrep
-  ] ++ langs;
-
+  imports = [
+    ../../../programs/system
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   services = {
@@ -68,9 +33,6 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
-    # chromium = {
-    #   enableWideVine = true;
-    # };
   };
   # For Android
   programs.adb.enable = true;
@@ -87,7 +49,6 @@ in
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-
   # Docker
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
