@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     git
     tree
@@ -22,8 +21,6 @@
     patch
     libuuid
     vim
-    neovim
-    tmux
     libgccjit
     glibc
     binutils

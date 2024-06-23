@@ -15,14 +15,12 @@
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
       system = "x86_64-linux";
-      # nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-      # nix.settings.experimental-features = [ "nix-command" "flakes" ];
     in
     {
       homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          ./users/ikostov2
+          ./home/ikostov2
         ];
       };
 
