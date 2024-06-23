@@ -22,7 +22,6 @@
       layout = "us";
       variant = "";
     };
-
   };
   # I3 support
   environment.pathsToLink = [ "/libexec" ];

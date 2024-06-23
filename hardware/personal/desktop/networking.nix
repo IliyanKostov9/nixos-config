@@ -16,7 +16,6 @@
     LC_TELEPHONE = "bg_BG.UTF-8";
     LC_TIME = "bg_BG.UTF-8";
   };
-
   networking.hostName = "baks";
   networking.networkmanager.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

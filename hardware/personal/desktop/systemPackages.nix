@@ -3,9 +3,8 @@
 {
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    openvpn3
-    tree
     git
+    tree
     patchelf
     unzip
     zlib
@@ -35,7 +34,6 @@
     python311Packages.pip
     python311Packages.pipx
     nodejs_22
-    gitmoji-cli
     jdk19
     maven
     gradle
@@ -80,9 +78,9 @@
   nixpkgs.config = {
     allowUnfree = true;
     allowBroken = true;
-    chromium = {
-      enableWideVine = true;
-    };
+    # chromium = {
+    #   enableWideVine = true;
+    # };
   };
   # For Android
   programs.adb.enable = true;

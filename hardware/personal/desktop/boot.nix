@@ -21,8 +21,6 @@
 
   boot.initrd.luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
 
-  # boot.loader.grub.device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
-
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_6_9;
 }

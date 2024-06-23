@@ -3,5 +3,9 @@
 , ...
 }:
 {
-  home.packages = with pkgs; [ gh git-extras ];
+  home.packages = with pkgs; [
+    gh
+    git-extras
+    gitmoji-cli
+  ];
 }
