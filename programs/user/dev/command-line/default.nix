@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  imports = [ ./sdkmanager ./sops ];
+  imports = [ ./sdkmanager ./sops ./gnupg ];
 }
