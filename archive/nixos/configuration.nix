@@ -7,7 +7,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
