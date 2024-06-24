@@ -7,6 +7,6 @@
     ./editor
     ./emulator
     ./git-extras
-    ./build-tools/sdkmanager
+    ./command-line
   ];
 }
