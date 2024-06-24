@@ -13,3 +13,11 @@ flake-check:
 .PHONY: clean
 clean:
 	nix-collect-garbage -d
+
+.PHONY: show-gens
+show-gen:
+	nix-env --list-generations
+
+.PHONY: deduplicate
+deduplicate: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
+	nix store optimise
