@@ -6,6 +6,7 @@
       ./blueman
       ./env-vars
       ./firefox
+      ./gnupg
       ./gpaste
       ./i3
       ./neovim
