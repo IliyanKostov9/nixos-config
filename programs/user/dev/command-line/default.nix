@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  imports = [ ./sdkmanager ./sops ./gnupg ./pinetry-qt ];
+  imports = [ ./sdkmanager ./sops ./gnupg ./pinentry-qt ];
 }
