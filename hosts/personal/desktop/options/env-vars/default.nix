@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  # Env vars
   environment.variables = {
     EDITOR = "nvim";
     JAVA_HOME = "${pkgs.jdk}/lib/openjdk";

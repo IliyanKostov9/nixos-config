@@ -23,7 +23,5 @@
       variant = "";
     };
   };
-  # I3 support
-  environment.pathsToLink = [ "/libexec" ];
-
+  services.libinput.enable = true;
 }

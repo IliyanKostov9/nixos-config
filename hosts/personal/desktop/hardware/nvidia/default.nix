@@ -5,7 +5,6 @@
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
-  nixpkgs.config.allowUnfree = true;
 
   hardware.nvidia = {
     modesetting.enable = true;
