@@ -19,5 +19,6 @@
     ./vpn
     ./window
     ./x11-utils
+    ./win-api
   ];
 }
