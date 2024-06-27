@@ -18,7 +18,7 @@ flake-check:
 clean:
 	nix-collect-garbage -d
 
-.PHONY: show-gens
+.PHONY: show-gen
 show-gen:
 	nix-env --list-generations
 
