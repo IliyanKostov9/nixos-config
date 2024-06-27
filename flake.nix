@@ -24,7 +24,7 @@
         ];
       };
 
-      nixosConfigurations.ikostov2 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.ikostov2-personal-desktop = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/personal/desktop
           nixos-hardware.nixosModules.common-pc
@@ -33,7 +33,7 @@
         ];
         inherit system;
       };
-      nixosConfigurations.ikostov2-work = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.ikostov2-work-laptop = nixpkgs.lib.nixosSystem {
         modules = [
           ./hosts/work/laptop
           # nixos-hardware.nixosModules.lenovo-thinkpad-p53

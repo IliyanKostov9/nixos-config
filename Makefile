@@ -2,13 +2,13 @@
 home-update:
 	home-manager switch --flake .#ikostov2 --show-trace
 	
-.PHONY: sys-update
-sys-update:
-	sudo nixos-rebuild switch --flake .#ikostov2 --show-trace
+.PHONY: sys-update-pd
+sys-update-pd:
+	sudo nixos-rebuild switch --flake .#ikostov2-personal-desktop --show-trace
 		
-.PHONY: sys-update-work
-sys-update-work:
-	sudo nixos-rebuild switch --flake .#ikostov2-work --show-trace
+.PHONY: sys-update-wl
+sys-update-wl:
+	sudo nixos-rebuild switch --flake .#ikostov2-work-laptop --show-trace
 	
 .PHONY: flake-check
 flake-check:

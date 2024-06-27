@@ -13,7 +13,7 @@
   imports = with nixos-hardware.nixosModules;
     [
       ./hardware
-      ./options
+      ../../shared/options
       ../../../programs/system
     ];
 }

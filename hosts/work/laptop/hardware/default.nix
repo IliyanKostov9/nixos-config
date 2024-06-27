@@ -3,18 +3,10 @@
 {
   imports =
     [
-      ./bluetooth
       ./boot
-      ./cups
       ./displayManager
       ./filesystem
-      ./firmware
-      ./networking
-       ./nvidia
-       ./opengl
-      ./pipewire
-      ./security
-      ./systemd
-      ./xserver
+      ./nvidia
+      ../../../shared/hardware
     ];
 }

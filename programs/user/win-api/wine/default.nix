@@ -3,6 +3,6 @@
 , ...
 }:
 {
-  home.packages = with pkgs; [ wineWowPackages.waylandFull ];
+  home.packages = with pkgs; [ wineWowPackages.waylandFull winetricks ];
 }
 
