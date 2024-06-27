@@ -5,6 +5,10 @@ home-update:
 .PHONY: sys-update
 sys-update:
 	sudo nixos-rebuild switch --flake .#ikostov2 --show-trace
+		
+.PHONY: sys-update-work
+sys-update:
+	sudo nixos-rebuild switch --flake .#ikostov2-work --show-trace
 	
 .PHONY: flake-check
 flake-check:
