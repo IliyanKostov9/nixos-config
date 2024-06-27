@@ -7,7 +7,7 @@ sys-update:
 	sudo nixos-rebuild switch --flake .#ikostov2 --show-trace
 		
 .PHONY: sys-update-work
-sys-update:
+sys-update-work:
 	sudo nixos-rebuild switch --flake .#ikostov2-work --show-trace
 	
 .PHONY: flake-check

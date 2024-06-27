@@ -10,8 +10,8 @@
       ./filesystem
       ./firmware
       ./networking
-      ./nvidia
-      ./opengl
+       ./nvidia
+       ./opengl
       ./pipewire
       ./security
       ./systemd
