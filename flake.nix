@@ -33,5 +33,14 @@
         ];
         inherit system;
       };
+      nixosConfigurations.ikostov2-work = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/work/laptop
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-cpu-amd
+          # nixos-hardware.nixosModules.common-gpu-nvidia
+        ];
+        inherit system;
+      };
     };
 }
