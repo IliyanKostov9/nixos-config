@@ -29,6 +29,8 @@
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
 
+          "${mod}+space" = "exec setxkbmap -layout us";
+          "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
           # PC
           "${mod}+Shift+Page_Down" = "exec shutdown -h now";
           "${mod}+Shift+End" = "exec reboot";
@@ -80,7 +82,7 @@
           # toggle tiling / floating
           "${mod}+Shift+space" = "floating toggle";
           # change focus between tiling / floating windows
-          "${mod}+space" = "focus mode_toggle";
+          # "${mod}+space" = "focus mode_toggle";
           # focus the parent container
           "${mod}+a" = "focus parent";
 
@@ -179,18 +181,37 @@
             separator = " – ";
           }
           {
+            block = "net";
+            format = "$icon {$signal_strength SSID @$frequency|Wired connection} via $device ";
+            interval = 5;
+          }
+          {
             block = "battery";
             interval = 30;
             format = "{percentage}% {time}";
           }
           { block = "backlight"; }
           {
+            block = "bluetooth";
+            mac = "CC:98:8B:D1:40:88";
+            format = {
+              full = "$icon $percentage";
+              short = "";
+            };
+            click = [
+              {
+                button = "left";
+                cmd = "blueman-adapters";
+              }
+            ];
+          }
+          {
             block = "sound";
             headphones_indicator = true;
             click = [
               {
                 button = "left";
-                cmd = "pavucontrol";
+                cmd = "pavucontrol --tab=3";
               }
             ];
           }
@@ -202,16 +223,16 @@
           {
             block = "keyboard_layout";
             driver = "sway";
+            format = " ^icon_keyboard $layout ";
             mappings = {
               "English (US)" = "US";
               "Bulgarian (N/A)" = "BG";
             };
           }
-          {
-            block = "tea_timer";
-            done_cmd = "notify-send 'Timer Finished'";
-          }
-
+          # {
+          #   block = "tea_timer";
+          #   done_cmd = "notify-send 'Timer Finished'";
+          # }
         ];
         settings = {
           theme = {
