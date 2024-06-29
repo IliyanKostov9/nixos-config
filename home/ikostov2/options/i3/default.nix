@@ -21,18 +21,19 @@
           alt = "Mod1";
         in
         lib.mkOptionDefault {
-
           # Programs
           "${mod}+${alt}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
           "${mod}+${alt}+c" = "exec ${pkgs.chromium}/bin/chromium";
           "${mod}+${alt}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
+          "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
 
           # PC
           "${mod}+Shift+Page_Down" = "exec shutdown -h now";
           "${mod}+Shift+End" = "exec reboot";
           "${mod}+Shift+Delete" = "exec i3-msg exit";
+          "${mod}+Shift+b" = "exec blueman-manager";
 
           # Default i3 options
           "${mod}+Return" = "exec i3-sensible-terminal";
@@ -155,6 +156,8 @@
       for_window [class=".*chromium.*"] move to workspace 2
       for_window [class=".*librewolf.*"] move to workspace 3
       for_window [class=".*microsoft-edge.*"] move to workspace 4
+      for_window [class="copyq"] floating enable
+      for_window [class="blueman-manager"] floating enable
     
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -169,50 +172,40 @@
     bars = {
       top = {
         blocks = [
+          { block = "focused_window"; format = "$title.str(max_w:180)|Missing"; }
           {
             block = "music";
             format = "{$icon $combo $play |}";
             separator = " – ";
-          }
-          # {
-          #   block = "vpn";
-          #   driver = "openvpn3";
-          #   format_connected = "";
-          #   format_disconnected = "";
-          #   state_connected = "good";
-          #   state_disconnected = "critical";
-          # }
-          {
-            block = "net";
-            format = "{ssid} {signal_strength} {ip} {speed_down;K*b}/{speed_up;K*b}";
-            interval = 5;
           }
           {
             block = "battery";
             interval = 30;
             format = "{percentage}% {time}";
           }
-          # {
-          #   block = "notify";
-          #   format = " $icon {($notification_count.eng(w:1)) |}";
-          #   driver = "swaync";
-          #   click = [
-          #     {
-          #       button = "left";
-          #       action = "show";
-          #     }
-          #     {
-          #       button = "right";
-          #       action = "toggle_paused";
-          #     }
-          #   ];
-          # }
-          { block = "sound"; }
           { block = "backlight"; }
+          {
+            block = "sound";
+            headphones_indicator = true;
+            click = [
+              {
+                button = "left";
+                cmd = "pavucontrol";
+              }
+            ];
+          }
           {
             block = "time";
             interval = 60;
             format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+          }
+          {
+            block = "keyboard_layout";
+            driver = "sway";
+            mappings = {
+              "English (US)" = "US";
+              "Bulgarian (N/A)" = "BG";
+            };
           }
           {
             block = "tea_timer";
@@ -230,7 +223,7 @@
           };
         };
         icons = "awesome6";
-        theme = "whitesur-gtk-theme";
+        theme = "space-villain";
       };
     };
   };
