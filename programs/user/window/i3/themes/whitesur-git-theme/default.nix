@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  home.packages = with pkgs; [ whitesur-gtk-theme ];
+  home.packages = with pkgs; [ whitesur-gtk-theme whitesur-icon-theme ];
 }

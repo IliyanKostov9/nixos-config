@@ -10,11 +10,28 @@
     config = {
       modifier = "Mod4";
       floating.modifier = "Mod4";
+      fonts = {
+        names = [ "0xProtoNerdFontMono-Regular" ];
+        style = "Bold Semi-Condensed";
+        size = 9.0;
+      };
       keybindings =
         let
           mod = config.xsession.windowManager.i3.config.modifier;
         in
         lib.mkOptionDefault {
+
+          # Programs
+          "${mod}+Mod1+l" = "exec ${pkgs.librewolf}/bin/librewolf";
+          "${mod}+Mod1+c" = "exec ${pkgs.chromium}/bin/chromium";
+          "${mod}+Mod1+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+
+          # PC
+          "${mod}+Shift+Page_Down" = "exec shutdown -h now";
+          "${mod}+Shift+End" = "exec reboot";
+          "${mod}+Shift+Delete" = "exec i3-msg exit";
+
+          # Default i3 options
           "${mod}+Return" = "exec i3-sensible-terminal";
           "${mod}+Shift+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
@@ -130,6 +147,12 @@
       ];
     };
     extraConfig = ''
+      default_border pixel 1
+      for_window [class=".*terminator.*"] move to workspace 1
+      for_window [class=".*chromium.*"] move to workspace 2
+      for_window [class=".*librewolf.*"] move to workspace 3
+      for_window [class=".*microsoft-edge.*"] move to workspace 4
+    
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
       exec --no-startup-id nm-applet
@@ -144,33 +167,55 @@
       top = {
         blocks = [
           {
-            block = "disk_space";
-            path = "/";
-            info_type = "available";
-            interval = 60;
-            warning = 20.0;
-            alert = 10.0;
+            block = "music";
+            format = "{$icon $combo $play |}";
+            separator = " – ";
+          }
+          # {
+          #   block = "vpn";
+          #   driver = "openvpn3";
+          #   format_connected = "";
+          #   format_disconnected = "";
+          #   state_connected = "good";
+          #   state_disconnected = "critical";
+          # }
+          {
+            block = "net";
+            format = "{ssid} {signal_strength} {ip} {speed_down;K*b}/{speed_up;K*b}";
+            interval = 5;
           }
           {
-            block = "memory";
-            format_mem = " $icon $mem_used_percents ";
-            format_swap = " $icon $swap_used_percents ";
+            block = "battery";
+            interval = 30;
+            format = "{percentage}% {time}";
           }
-          {
-            block = "cpu";
-            interval = 1;
-          }
-          {
-            block = "load";
-            interval = 1;
-            format = " $icon $1m ";
-          }
+          # {
+          #   block = "notify";
+          #   format = " $icon {($notification_count.eng(w:1)) |}";
+          #   driver = "swaync";
+          #   click = [
+          #     {
+          #       button = "left";
+          #       action = "show";
+          #     }
+          #     {
+          #       button = "right";
+          #       action = "toggle_paused";
+          #     }
+          #   ];
+          # }
           { block = "sound"; }
+          { block = "backlight"; }
           {
             block = "time";
             interval = 60;
             format = " $timestamp.datetime(f:'%a %d/%m %R') ";
           }
+          {
+            block = "tea_timer";
+            done_cmd = "notify-send 'Timer Finished'";
+          }
+
         ];
         settings = {
           theme = {
@@ -181,8 +226,8 @@
             };
           };
         };
-        icons = "awesome5";
-        theme = "gruvbox-dark";
+        icons = "awesome6";
+        theme = "whitesur-gtk-theme";
       };
     };
   };
