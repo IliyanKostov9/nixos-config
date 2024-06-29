@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  imports = [ ./clipit ];
+  imports = [ ./copyq ];
 }
