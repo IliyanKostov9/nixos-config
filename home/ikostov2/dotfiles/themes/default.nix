@@ -1,0 +1,8 @@
+{ pkgs
+, config
+, ...
+}:
+
+{
+  imports = [ ./gtk ];
+}

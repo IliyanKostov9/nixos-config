@@ -22,7 +22,6 @@
     sessionVariables = {
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
-      # GTK_THEME = "whitesur-gtk-theme";
     };
   };
 }
