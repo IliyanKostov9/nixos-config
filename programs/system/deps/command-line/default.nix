@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./curl ./xclip ];
+  imports = [ ./curl ./xclip ./home-manager ];
 }

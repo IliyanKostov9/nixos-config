@@ -6,10 +6,10 @@
     enable = true;
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
-    desktopManager.xterm.enable = true;
-    # displayManager.defaultSession = "none+i3";
+    desktopManager.xterm.enable = false;
+    displayManager.defaultSession = "none+i3";
     windowManager.i3 = {
-      enable = false;
+      enable = true;
       extraPackages = with pkgs; [
         dmenu
         i3status
