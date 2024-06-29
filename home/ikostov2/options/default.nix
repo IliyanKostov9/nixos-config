@@ -4,5 +4,5 @@
 }:
 
 {
-  imports = [ ./bashrc ];
+  imports = [ ./i3 ];
 }

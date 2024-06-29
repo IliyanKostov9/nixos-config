@@ -5,9 +5,12 @@ in
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    ../../programs/user
+    ../../programs/user/ikostov2.nix
     ./dotfiles
+    ./themes
+    ./options
   ];
+
   home = {
     homeDirectory = "/home/${username}";
     inherit username;
