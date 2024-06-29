@@ -3,5 +3,11 @@
 , ...
 }:
 {
-  imports = [ ./flameshot ./gpick ./gpaste ./normcap ./gnomeExtensions ];
+  imports = [
+    ./flameshot
+    ./gpick
+    ./gpaste
+    ./normcap
+    #./gnomeExtensions
+  ];
 }

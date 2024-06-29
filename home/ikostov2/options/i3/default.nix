@@ -18,13 +18,16 @@
       keybindings =
         let
           mod = config.xsession.windowManager.i3.config.modifier;
+          alt = "Mod1";
         in
         lib.mkOptionDefault {
 
           # Programs
-          "${mod}+Mod1+l" = "exec ${pkgs.librewolf}/bin/librewolf";
-          "${mod}+Mod1+c" = "exec ${pkgs.chromium}/bin/chromium";
-          "${mod}+Mod1+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+          "${mod}+${alt}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
+          "${mod}+${alt}+c" = "exec ${pkgs.chromium}/bin/chromium";
+          "${mod}+${alt}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+          "${alt}+f" = "exec flameshot gui";
+          "${alt}+n" = "exec normcap";
 
           # PC
           "${mod}+Shift+Page_Down" = "exec shutdown -h now";
