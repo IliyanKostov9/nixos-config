@@ -31,7 +31,7 @@
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
           # Keyboard layout
-          "${mod}+u" = "exec setxkbmap -layout us";
+          "${mod}+space" = "exec setxkbmap -layout us";
           "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
           # PC
           "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
@@ -81,7 +81,7 @@
           # toggle tiling / floating
           "${mod}+${shift}+space" = "floating toggle";
           # change focus between tiling / floating windows
-          "${mod}+space" = "focus mode_toggle";
+          "${mod}+${alt}+space" = "focus mode_toggle";
           # focus the parent container
           "${mod}+a" = "focus parent";
 
