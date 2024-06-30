@@ -4,7 +4,7 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ connman cmst ];
+  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 }
 
 

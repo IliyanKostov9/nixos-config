@@ -6,6 +6,7 @@
       ./bluetooth
       ./cups
       ./firmware
+      ./locale
       ./networking
       ./opengl
       ./pipewire

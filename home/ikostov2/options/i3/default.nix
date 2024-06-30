@@ -50,6 +50,7 @@
           "${mod}+${shift}+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
           "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
+          # "${mod}+${alt}+n" = "exec --no-startup-id nm-applet";
           # change focus
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";

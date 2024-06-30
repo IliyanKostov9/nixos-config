@@ -1,21 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  time.timeZone = "Europe/Sofia";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "bg_BG.UTF-8";
-    LC_IDENTIFICATION = "bg_BG.UTF-8";
-    LC_MEASUREMENT = "bg_BG.UTF-8";
-    LC_MONETARY = "bg_BG.UTF-8";
-    LC_NAME = "bg_BG.UTF-8";
-    LC_NUMERIC = "bg_BG.UTF-8";
-    LC_PAPER =
-      "bg_BG.UTF-8";
-    LC_TELEPHONE = "bg_BG.UTF-8";
-    LC_TIME = "bg_BG.UTF-8";
-  };
   networking.hostName = "baks";
   networking.networkmanager.enable = true;
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -24,4 +9,17 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp37s0.useDHCP = lib.mkDefault true;
+  # Decrease time spent making connections
+  networking.networkmanager.wifi.backend = "iwd";
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      IPv6 = {
+        Enabled = true;
+      };
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
 }

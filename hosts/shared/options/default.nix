@@ -11,7 +11,6 @@
       ./i3
       ./neovim
       ./nerdfonts
-      ./network
       ./openvpn
       ./users
       ./virtualisation
