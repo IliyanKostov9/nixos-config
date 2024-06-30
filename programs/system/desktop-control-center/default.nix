@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./pavucontrol ];
+  imports = [ ./pavucontrol ./pamixer ];
 }

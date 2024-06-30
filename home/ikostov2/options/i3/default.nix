@@ -27,6 +27,7 @@
           "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
           "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
           "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
@@ -142,6 +143,7 @@
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
       exec --no-startup-id nm-applet
+      exec --no-startup-id i3-msg "workspace 1"
 
       tiling_drag modifier titlebar
     '';
@@ -152,7 +154,7 @@
     bars = {
       top = {
         blocks = [
-          { block = "focused_window"; format = "$title.str(max_w:180)|Missing"; }
+          { block = "focused_window"; format = "$title.str(max_w:180)| "; }
           {
             block = "music";
             format = "{$icon $combo $play |}";
@@ -168,7 +170,10 @@
             interval = 30;
             format = "{percentage}% {time}";
           }
-          { block = "backlight"; }
+          {
+            block = "backlight";
+            format = "{$icon |}";
+          }
           {
             block = "bluetooth";
             mac = "CC:98:8B:D1:40:88";
@@ -179,7 +184,7 @@
             click = [
               {
                 button = "left";
-                cmd = "blueman-adapters";
+                cmd = "blueman-manager";
               }
             ];
           }
