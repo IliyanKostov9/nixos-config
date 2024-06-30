@@ -19,29 +19,28 @@
         let
           mod = config.xsession.windowManager.i3.config.modifier;
           alt = "Mod1";
+          ctrl = "Control";
+          shift = "Shift";
         in
         lib.mkOptionDefault {
           # Programs
-          "${mod}+${alt}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
-          "${mod}+${alt}+c" = "exec ${pkgs.chromium}/bin/chromium";
-          "${mod}+${alt}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+          "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
+          "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
+          "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
-
-          "${mod}+space" = "exec setxkbmap -layout us";
+          # Keyboard layout
+          "${mod}+u" = "exec setxkbmap -layout us";
           "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
           # PC
-          "${mod}+Shift+Page_Down" = "exec shutdown -h now";
-          "${mod}+Shift+End" = "exec reboot";
-          "${mod}+Shift+Delete" = "exec i3-msg exit";
-          "${mod}+Shift+b" = "exec blueman-manager";
-
+          "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
+          "${mod}+${alt}+End" = "exec reboot";
+          "${mod}+${alt}+Delete" = "exec i3-msg exit";
           # Default i3 options
           "${mod}+Return" = "exec i3-sensible-terminal";
-          "${mod}+Shift+q" = "kill";
+          "${mod}+${shift}+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
-
           # change focus
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -55,16 +54,16 @@
           "${mod}+Right" = "focus right";
 
           # move focused window
-          "${mod}+Shift+h" = "move left";
-          "${mod}+Shift+j" = "move down";
-          "${mod}+Shift+k" = "move up";
-          "${mod}+Shift+l" = "move right";
+          "${mod}+${shift}+h" = "move left";
+          "${mod}+${shift}+j" = "move down";
+          "${mod}+${shift}+k" = "move up";
+          "${mod}+${shift}+l" = "move right";
 
           # alternatively, you can use the cursor keys:
-          "${mod}+Shift+Left" = "move left";
-          "${mod}+Shift+Down" = "move down";
-          "${mod}+Shift+Up" = "move up";
-          "${mod}+Shift+Right" = "move right";
+          "${mod}+${shift}+Left" = "move left";
+          "${mod}+${shift}+Down" = "move down";
+          "${mod}+${shift}+Up" = "move up";
+          "${mod}+${shift}+Right" = "move right";
 
           # split in horizontal orientation
           "${mod}+z" = "split h";
@@ -80,9 +79,9 @@
           "${mod}+e" = "layout toggle split";
 
           # toggle tiling / floating
-          "${mod}+Shift+space" = "floating toggle";
+          "${mod}+${shift}+space" = "floating toggle";
           # change focus between tiling / floating windows
-          # "${mod}+space" = "focus mode_toggle";
+          "${mod}+space" = "focus mode_toggle";
           # focus the parent container
           "${mod}+a" = "focus parent";
 
@@ -97,53 +96,32 @@
           "${mod}+8" = "workspace number 8";
           "${mod}+9" = "workspace number 9";
           "${mod}+0" = "workspace number 10";
-
           # move focused container to workspace
-          "${mod}+Shift+1" = "move container to workspace number 1";
-          "${mod}+Shift+2" = "move container to workspace number 2";
-          "${mod}+Shift+3" = "move container to workspace number 3";
-          "${mod}+Shift+4" = "move container to workspace number 4";
-          "${mod}+Shift+5" = "move container to workspace number 5";
-          "${mod}+Shift+6" = "move container to workspace number 6";
-          "${mod}+Shift+7" = "move container to workspace number 7";
-          "${mod}+Shift+8" = "move container to workspace number 8";
-          "${mod}+Shift+9" = "move container to workspace number 9";
-          "${mod}+Shift+0" = "move container to workspace number 10";
+          "${mod}+${shift}+1" = "move container to workspace number 1";
+          "${mod}+${shift}+2" = "move container to workspace number 2";
+          "${mod}+${shift}+3" = "move container to workspace number 3";
+          "${mod}+${shift}+4" = "move container to workspace number 4";
+          "${mod}+${shift}+5" = "move container to workspace number 5";
+          "${mod}+${shift}+6" = "move container to workspace number 6";
+          "${mod}+${shift}+7" = "move container to workspace number 7";
+          "${mod}+${shift}+8" = "move container to workspace number 8";
+          "${mod}+${shift}+9" = "move container to workspace number 9";
+          "${mod}+${shift}+0" = "move container to workspace number 10";
 
           # reload the configuration file
-          "${mod}+Shift+c" = "reload";
+          "${mod}+${shift}+c" = "reload";
           # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-          "${mod}+Shift+r" = "restart";
+          "${mod}+${shift}+r" = "restart";
           # exit i3 (logs you out of your X session)
-          "${mod}+Shift+e" = "exec 'i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
+          "${mod}+${shift}+e" = "exec 'i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
 
-          #
-          # # resize window (you can also use the mouse for that)
-          # mode "resize" {
-          # # These bindings trigger as soon as you enter the resize mode
-          #
-          # # Pressing left will shrink the window’s width.
-          # # Pressing right will grow the window’s width.
-          # # Pressing up will shrink the window’s height.
-          # # Pressing down will grow the window’s height.
-          # bindsym h resize shrink width 10 px or 10 ppt
-          # bindsym j resize grow height 10 px or 10 ppt
-          # bindsym k resize shrink height 10 px or 10 ppt
-          # bindsym l resize grow width 10 px or 10 ppt
-          #
-          # # same bindings, but for the arrow keys
-          # bindsym Left resize shrink width 10 px or 10 ppt
-          # bindsym Down resize grow height 10 px or 10 ppt
-          # bindsym Up resize shrink height 10 px or 10 ppt
-          # bindsym Right resize grow width 10 px or 10 ppt
-          #
-          # # back to normal: Enter or Escape or $mod+r
-          # bindsym Return mode "default"
-          # bindsym Escape mode "default"
-          # bindsym $mod+r mode "default"
-          # }
-          #
-          "${mod}+r" = "resize";
+          # Resize
+          "${mod}+${alt}+h" = "resize shrink width 10 px or 10 ppt";
+          "${mod}+${alt}+j" = "resize grow height 10 px or 10 ppt";
+          "${mod}+${alt}+k" = "resize shrink height 10 px or 10 ppt";
+          "${mod}+${alt}+l" = "resize grow width 10 px or 10 ppt";
+          # "Return" = "mode 'default'";
+          # "${mod}+r" = "resize";
         };
       bars = [
         {
