@@ -101,7 +101,6 @@
       keepass
       ungoogled-chromium
       flameshot
-      microsoft-edge
       gnome.gpaste
       normcap
       htop

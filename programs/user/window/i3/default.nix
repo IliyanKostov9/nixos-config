@@ -11,6 +11,5 @@
   imports = [
     ./config
     ./themes
-    ./utils
   ];
 }

@@ -6,6 +6,8 @@
   imports = [
     ./chromium
     ./librewolf
-    ./microsoft-edge
+    # Problem 
+    # Edge is automatically lowering volume on MS Teams meeting
+    # ./microsoft-edge
   ];
 }

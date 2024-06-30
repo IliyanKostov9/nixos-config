@@ -26,11 +26,11 @@
           # Programs
           "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
           "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
-          "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
+          # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
-          "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
+          "${alt}+v" = "exec --no-startup-id gpaste-client ui";
 
           # Keyboard layout
           "${mod}+space" = "exec setxkbmap -layout us";
@@ -145,8 +145,6 @@
       for_window [class=".*terminator.*"] move to workspace 1
       for_window [class=".*chromium.*"] move to workspace 2
       for_window [class=".*librewolf.*"] move to workspace 3
-      for_window [class=".*microsoft-edge.*"] move to workspace 4
-      for_window [class="copyq"] floating enable
       for_window [class="blueman-manager"] floating enable
     
       exec --no-startup-id dex --autostart --environment i3
