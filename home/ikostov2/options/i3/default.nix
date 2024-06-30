@@ -31,13 +31,20 @@
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id copyq show resize set width 300 px height 300 px";
+
           # Keyboard layout
           "${mod}+space" = "exec setxkbmap -layout us";
           "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
+
           # PC
           "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
           "${mod}+${alt}+End" = "exec reboot";
           "${mod}+${alt}+Delete" = "exec i3-msg exit";
+          ## Audio
+          "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
+          "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
+          "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
+
           # Default i3 options
           "${mod}+Return" = "exec i3-sensible-terminal";
           "${mod}+${shift}+q" = "kill";
