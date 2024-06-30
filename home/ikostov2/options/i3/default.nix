@@ -49,6 +49,7 @@
           "${mod}+Return" = "exec i3-sensible-terminal";
           "${mod}+${shift}+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+          "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
           # change focus
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -209,6 +210,13 @@
             block = "time";
             interval = 60;
             format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+            click = [
+              {
+                button = "left";
+                cmd = "gnome-calendar";
+              }
+            ];
+
           }
           {
             block = "keyboard_layout";
