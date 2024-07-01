@@ -28,6 +28,7 @@
           "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
           # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
+          "${mod}+${alt}+n" = "exec --no-startup-id nautilus ~/";
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
           "${alt}+v" = "exec --no-startup-id gpaste-client ui";
