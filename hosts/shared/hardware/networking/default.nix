@@ -10,16 +10,16 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp37s0.useDHCP = lib.mkDefault true;
   # Decrease time spent making connections
-  networking.networkmanager.wifi.backend = "iwd";
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      IPv6 = {
-        Enabled = true;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-    };
-  };
+  # networking.networkmanager.wifi.backend = "iwd";
+  # networking.wireless.iwd = {
+  #   enable = true;
+  #   settings = {
+  #     IPv6 = {
+  #       Enabled = true;
+  #     };
+  #     Settings = {
+  #       AutoConnect = true;
+  #     };
+  #   };
+  # };
 }
