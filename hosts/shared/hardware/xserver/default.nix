@@ -4,7 +4,10 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    # Enable for using GNOME
     # displayManager.gdm.enable = true;
+    # Enable for using I3
+    # Fix: lightdm is required to work on work laptop
     displayManager.lightdm.enable = true;
     desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = false;
