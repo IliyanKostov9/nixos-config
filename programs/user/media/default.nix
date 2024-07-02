@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  imports = [ ./vlc ./inkscape ./shotwell ./obs-studio ];
+  imports = [ ./vlc ./gimp ./shotwell ./obs-studio ];
 }

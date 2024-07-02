@@ -51,7 +51,11 @@
           "${mod}+${shift}+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
           "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
-          # "${mod}+${alt}+n" = "exec --no-startup-id nm-applet";
+
+          # Mark
+          "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
+          # Jump
+          "${mod}+g" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
 
           # change focus
           "${mod}+h" = "focus left";
@@ -155,6 +159,9 @@
       for_window [class=".*chromium.*"] move to workspace 2
       for_window [class=".*librewolf.*"] move to workspace 3
       for_window [class="blueman-manager"] floating enable
+
+      # Enable icon
+      # for_window [all] title_window_icon on
     
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
