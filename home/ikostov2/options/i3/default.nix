@@ -143,6 +143,11 @@
     };
     extraConfig = ''
       default_border pixel 1
+      # Disable titlebar
+      for_window [class=".*"] border pixel 0
+      # Enable border color
+      # for_window [class="^.*"] border pixel 2
+      for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
       for_window [class=".*terminator.*"] move to workspace 1
       for_window [class=".*chromium.*"] move to workspace 2
       for_window [class=".*librewolf.*"] move to workspace 3
