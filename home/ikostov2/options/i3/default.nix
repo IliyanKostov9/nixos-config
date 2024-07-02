@@ -52,6 +52,7 @@
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
           "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
           # "${mod}+${alt}+n" = "exec --no-startup-id nm-applet";
+
           # change focus
           "${mod}+h" = "focus left";
           "${mod}+j" = "focus down";
@@ -145,9 +146,11 @@
       default_border pixel 1
       # Disable titlebar
       for_window [class=".*"] border pixel 0
+      for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
       # Enable border color
       # for_window [class="^.*"] border pixel 2
-      for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+      
+      # Set programs to workspace 
       for_window [class=".*terminator.*"] move to workspace 1
       for_window [class=".*chromium.*"] move to workspace 2
       for_window [class=".*librewolf.*"] move to workspace 3
