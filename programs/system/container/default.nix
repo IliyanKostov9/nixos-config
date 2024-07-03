@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./docker ./kubectl ];
+  imports = [ ./docker ./k8s ];
 }
