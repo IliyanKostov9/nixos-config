@@ -13,6 +13,10 @@ sys-update-wl:
 .PHONY: flake-check
 flake-check:
 	nix flake check
+	
+.PHONY: flake-upgrade
+flake-upgrade:
+	nix flake update
 
 .PHONY: clean
 clean:
