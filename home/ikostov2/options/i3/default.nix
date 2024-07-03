@@ -147,28 +147,25 @@
       ];
     };
     extraConfig = ''
-            default_border pixel 1
-            # Disable titlebar
-            for_window [class=".*"] border pixel 0
-            for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
-            # Enable border color
-            # for_window [class="^.*"] border pixel 2
+      default_border pixel 1
+      # Disable titlebar
+      for_window [class=".*"] border pixel 0
+      for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+      # Enable border color
+      # for_window [class="^.*"] border pixel 2
       
-            # Set programs to workspace 
-            for_window [class=".*terminator.*"] move to workspace 1
-            for_window [class=".*chromium.*"] move to workspace 2
-            for_window [class=".*librewolf.*"] move to workspace 3
-            for_window [class="blueman-manager"] floating enable
-      
-            # Enable icon
-      -     # for_window [all] title_window_icon on
+      # Set programs to workspace 
+      for_window [class=".*terminator.*"] move to workspace 1
+      for_window [class=".*chromium.*"] move to workspace 2
+      for_window [class=".*librewolf.*"] move to workspace 3
+      for_window [class="blueman-manager"] floating enable
 
-            exec --no-startup-id dex --autostart --environment i3
-            exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-            exec --no-startup-id nm-applet
-            exec --no-startup-id i3-msg "workspace 1"
+      exec --no-startup-id dex --autostart --environment i3
+      exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+      exec --no-startup-id nm-applet
+      exec --no-startup-id i3-msg "workspace 1"
 
-            tiling_drag modifier titlebar
+      tiling_drag modifier titlebar
     '';
   };
 
