@@ -9,6 +9,7 @@
       ./gnupg
       ./gpaste
       ./i3
+      ./lib
       ./neovim
       ./nerdfonts
       ./openvpn
