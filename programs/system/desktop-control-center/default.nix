@@ -1,5 +1,11 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./pavucontrol ./pamixer ./xfce4-appfinder ./network ];
+  imports = [
+    ./display
+    ./pavucontrol
+    ./pamixer
+    ./xfce4-appfinder
+    ./network
+  ];
 }
