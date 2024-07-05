@@ -188,11 +188,14 @@
           {
             block = "battery";
             interval = 30;
-            format = "{percentage}% {time}";
+            format = " $icon $percentage $time";
+            missing_format = "";
           }
           {
             block = "backlight";
-            format = "{$icon |}";
+            format = " $icon $brightness |";
+            invert_icons = true;
+            device = "intel_backlight";
           }
           {
             block = "bluetooth";
