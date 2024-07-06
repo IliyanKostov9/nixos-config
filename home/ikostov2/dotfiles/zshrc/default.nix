@@ -9,15 +9,15 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-   autocd= true;
+    syntaxHighlighting.enable = false;
+    autocd = true;
     history = {
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
     oh-my-zsh = {
       enable = true;
-      theme = "robbyrussell";
+      theme = "kardan"; # simple
       plugins = [
         "git"
         "gradle"
@@ -62,6 +62,6 @@
       bindkey -M menuselect 'j' vi-down-line-or-history
       bindkey "^A" vi-beginning-of-line
       bindkey "^E" vi-end-of-line
-      '';
+    '';
   };
 }
