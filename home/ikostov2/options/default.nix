@@ -4,5 +4,5 @@
 }:
 
 {
-  imports = [ ./i3 ];
+  imports = [ ./i3  ];
 }

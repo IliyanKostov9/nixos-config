@@ -8,5 +8,6 @@
     ./emulator
     ./git-extras
     ./command-line
+    ./shell
   ];
 }
