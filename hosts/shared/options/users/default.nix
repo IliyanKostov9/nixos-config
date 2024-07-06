@@ -5,6 +5,6 @@
     isNormalUser = true;
     description = "ikostov2";
     extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-    defaultUserShell = pkgs.zsh;
+    shell = pkgs.zsh;
   };
 }

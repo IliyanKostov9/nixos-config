@@ -13,6 +13,7 @@
       ./neovim
       ./nerdfonts
       ./openvpn
+      ./shell
       ./users
       ./virtualisation
     ];
