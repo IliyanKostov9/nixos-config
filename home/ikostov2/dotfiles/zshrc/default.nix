@@ -8,7 +8,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
    autocd= true;
     history = {
@@ -21,13 +21,12 @@
       plugins = [
         "git"
         "gradle"
-        "maven"
         #"fzf"
         #"ansible"
         "npm"
         "python"
         "pip"
-        "nvim"
+        #"mvn"
         "history"
         "node"
         "rust"
@@ -54,10 +53,15 @@
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
       GTK_THEME = "Adwaita:dark";
     };
-    interactiveShellInit = ''
-      export KEYTIMEOUT=1
-      ${plugins}
+    initExtra = ''
+      bindkey "''${key[Up]}" up-line-or-search
       bindkey -v
+      bindkey -M menuselect 'h' vi-backward-char
+      bindkey -M menuselect 'k' vi-up-line-or-history
+      bindkey -M menuselect 'l' vi-forward-char
+      bindkey -M menuselect 'j' vi-down-line-or-history
+      bindkey "^A" vi-beginning-of-line
+      bindkey "^E" vi-end-of-line
       '';
   };
 }
