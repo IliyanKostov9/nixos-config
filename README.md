@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/github/license/IliyanKostov9/nixos-conifg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![License](https://img.shields.io/github/license/IliyanKostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions?query=branch%3Amaster)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 
