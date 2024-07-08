@@ -155,9 +155,9 @@
       # for_window [class="^.*"] border pixel 2
       
       # Set programs to workspace 
-      for_window [class=".*terminator.*"] move to workspace 1
-      for_window [class=".*chromium.*"] move to workspace 2
-      for_window [class=".*librewolf.*"] move to workspace 3
+      # for_window [class=".*terminator.*"] move to workspace 1
+      # for_window [class=".*chromium.*"] move to workspace 2
+      # for_window [class=".*librewolf.*"] move to workspace 3
       for_window [class="blueman-manager"] floating enable
 
       exec --no-startup-id dex --autostart --environment i3
