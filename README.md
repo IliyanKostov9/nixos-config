@@ -2,7 +2,6 @@
 [![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions?query=branch%3Amaster)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 
-
 # ❄️  NixOS configuration ❄️
 
 My personal NixOS configuraiton file.
@@ -22,7 +21,6 @@ Since I have just started using NixOS for about a month, the config structure is
 
 1. home-manager
 2. flakes
-
 
 ## Structure
 
@@ -69,7 +67,21 @@ This configuration structure was inspired by contributions from the Nix communit
 This section helped me better understand Nix package manager and Nix language.
 Please have a read on them!
 
-#### Search for pacakges
+#### Jumpstart for using flakes && home-manager
+
+I highly recommend that you read and follow this guide for migrating your initial `configuration.nix` to flakes/home-manager. It's easy to understand without any technical jargon and get's straight to the point.
+
+- [simple-homemanager](https://github.com/evertras/simple-homemanager)
+
+#### Docs
+- [ Nixpills ]( https://nixos.org/guides/nix-pills )
+- [ Nix and flakes ]( https://nixos-and-flakes.thiscute.world )
+- [ Home manager manual ]( https://nix-community.github.io/home-manager/index.xhtml )
+- [ Intro to Nix and NixOS ]( https://nixos-and-flakes.thiscute.world/introduction )
+
+
+### Packages and  templates
+#### Search for Nix pacakges
 - [ Nixpkgs ](https://search.nixos.org/packages) 
 - [ MyNixOS ](https://mynixos.com/nixpkgs )
 
@@ -79,8 +91,3 @@ Please have a read on them!
 #### Template for flakes
 
 - [ Flake parts ]( https://community.flake.parts )
-### Docs
-- [ Nixpills ]( https://nixos.org/guides/nix-pills )
-- [ Nix and flakes ]( https://nixos-and-flakes.thiscute.world )
-- [ Home manager manual ]( https://nix-community.github.io/home-manager/index.xhtml )
-- [ Intro to Nix and NixOS ]( https://nixos-and-flakes.thiscute.world/introduction )
