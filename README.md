@@ -70,7 +70,7 @@ Please have a read on them!
 
 #### Jumpstart for using flakes && home-manager
 
-I highly recommend that you read and follow this guide for migrating your initial `configuration.nix` to flakes/home-manager. It's easy to understand without any technical jargon and get's straight to the point.
+I highly recommend that you read and follow this guide for migrating your initial `configuration.nix` to flakes/home-manager. It's easy to understand without any technical jargon and gets straight to the point.
 
 - [simple-homemanager](https://github.com/evertras/simple-homemanager)
 
