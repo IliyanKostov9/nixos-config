@@ -5,7 +5,6 @@
 
 {
   imports = [
-    ./bluetooth
     ./i3
   ];
 }
