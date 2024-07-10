@@ -45,10 +45,12 @@
       git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
       git-root = "cd $( git rev-parse --show-toplevel )";
       py-setup-venv = "~/.local/bin/python/python-venv-setup";
+      py-nix-sh = "nix-shell '/etc/nixos/home/ikostov2/shell/python/shell.nix'";
       mvn-spring = "mvn spring-boot:run";
       mvn-deps = "mvn dependency:resolve";
     };
     sessionVariables = {
+      LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib:/run/opengl-driver/lib"; # This part can be removed, shell.nix for python3 is handling this part
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
       GTK_THEME = "Adwaita:dark";
