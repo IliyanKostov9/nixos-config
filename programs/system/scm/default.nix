@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./git ./subversion ];
+  imports = [
+    ./git
+    # ./subversion
+  ];
 }

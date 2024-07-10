@@ -13,7 +13,6 @@ in
   home = {
     homeDirectory = "/home/${username}";
     inherit username;
-    # Wayland for virt-manager
   };
 
   # Disable annoying home news

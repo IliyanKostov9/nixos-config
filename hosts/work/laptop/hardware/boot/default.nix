@@ -5,9 +5,8 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-   swapDevices =
-    [ { device = "/dev/disk/by-uuid/2ae616fa-be73-4075-be15-72f4fb245205"; }
-    ];
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/2ae616fa-be73-4075-be15-72f4fb245205"; }];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,8 +19,8 @@
   boot.extraModulePackages = [ ];
 
   # Intel Graphics
-  boot.kernelParams = ["i915.force_probe=3e9b"];
-	
+  boot.kernelParams = [ "i915.force_probe=3e9b" ];
+
   # Use the latest kernel
   boot.kernelPackages = pkgs.linuxPackages_6_9;
 }

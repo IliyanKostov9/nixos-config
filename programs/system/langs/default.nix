@@ -2,13 +2,14 @@
 
 {
   imports = [
+    # ./dotnet
     ./go
     ./jdk
+    # ./kotlin
     ./lua
     ./node
-    ./dotnet
     ./python
-    ./terraform
     ./rust
+    ./terraform
   ];
 }
