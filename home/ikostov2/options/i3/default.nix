@@ -160,6 +160,9 @@
       exec --no-startup-id nm-applet
       exec --no-startup-id i3-msg "workspace 1"
 
+      # Disable touchpad
+      exec --no-startup-id xinput disable "Elan Touchpad"
+
       tiling_drag modifier titlebar
     '';
   };

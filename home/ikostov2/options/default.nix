@@ -5,7 +5,6 @@
 
 {
   imports = [
-    ./startup-scripts
     ./i3
   ];
 }
