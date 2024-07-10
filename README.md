@@ -36,7 +36,6 @@ Since I have just started using NixOS for about a month, the config structure is
 ├── Makefile
 ├── programs
 ├── README.md
-├── shell.nix
 └── wallpaper.jpg
 ```
 
@@ -47,7 +46,6 @@ Since I have just started using NixOS for about a month, the config structure is
 - hosts: used for storing the hardware specifications of the machines (and also the specific options of the system wide installed programs, that part actually needs to be moved elsewhere)
 - Makefile: automation script for aliasing the Nix CLI commands in a more user friendly way
 - programs: contains the user/system type of packages
-- shell.nix: a lazy and temporary way to fix a specific LSP issue in Neovim (please ignore this part)
 - wallpaper.jpg: background photo for i3wm
 
 ## Build instructions
