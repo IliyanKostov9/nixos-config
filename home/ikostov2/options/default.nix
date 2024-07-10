@@ -4,5 +4,8 @@
 }:
 
 {
-  imports = [ ./i3  ];
+  imports = [
+    ./bluetooth
+    ./i3
+  ];
 }
