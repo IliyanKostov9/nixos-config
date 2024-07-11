@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "flake:nixos-hardware";
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
@@ -19,7 +20,13 @@
     {
       homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = { inherit self system; };
         modules = [
+          ({ self, system, ... }: {
+            home.packages = with self.inputs.nix-alien.packages.${system}; [
+              nix-alien
+            ];
+          })
           ./home/ikostov2
         ];
       };

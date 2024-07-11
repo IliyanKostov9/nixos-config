@@ -8,7 +8,8 @@
     # displayManager.gdm.enable = true;
     # Enable for using I3
     # Fix: lightdm is required to work on work laptop
-    displayManager.lightdm.enable = true;
+    displayManager.lightdm.enable = false;
+    displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = false;
     windowManager.i3 = {

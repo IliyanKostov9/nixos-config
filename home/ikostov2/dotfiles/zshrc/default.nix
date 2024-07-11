@@ -50,6 +50,7 @@
       mvn-deps = "mvn dependency:resolve";
     };
     sessionVariables = {
+      QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt5.qtbase}/lib/qt-${pkgs.qt5.qtbase.version}/plugins/platforms";
       LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib:/run/opengl-driver/lib"; # This part can be removed, shell.nix for python3 is handling this part
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
