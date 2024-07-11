@@ -5,6 +5,7 @@
   targetPkgs = pkgs: (with pkgs; [
     python311
     poetry
+    python311Packages.virtualenv
     zsh
     opencv4
     mesa
@@ -21,6 +22,6 @@
 
 
   shellHook = ''
-    export QT_QPA_PLATFORM_PLUGIN_PATH="${pkgs.qt5.qtbase.bin}/lib/qt-${pkgs.qt5.qtbase.version}/plugins/platforms";
+    export LD_LIBRARY_PATH="${pkgs.zlib}/lib"
   '';
 }).env
