@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./fzf ./tree ./toolkit ./zip ./monitor ];
+  imports = [
+    ./fzf
+    ./tree
+    ./zip
+    ./monitor
+  ];
 }

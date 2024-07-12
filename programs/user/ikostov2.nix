@@ -17,7 +17,7 @@
     ./translate
     ./virtualisation
     ./vpn
-    ./window
+    ./window-manager
     ./x11-utils
     ./win-api
   ];

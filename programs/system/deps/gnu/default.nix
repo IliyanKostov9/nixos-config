@@ -11,5 +11,14 @@
     gnumake
     glibc
     libgccjit
+    patchelf
+    readline
+    tcl
+    tk
+    libffi
+    patch
+    libuuid
+    binutils
+    ncurses
   ];
 }
