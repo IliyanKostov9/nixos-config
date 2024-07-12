@@ -22,6 +22,10 @@ flake-upgrade:
 clean:
 	nix-collect-garbage -d
 
+.PHONY: clean-su
+clean-su:
+	sudo nix-collect-garbage -d
+
 .PHONY: show-gen
 show-gen:
 	nix-env --list-generations

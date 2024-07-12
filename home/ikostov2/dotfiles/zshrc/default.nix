@@ -4,9 +4,10 @@
 , ...
 }:
 
-{
+let
   shell_path = "/etc/nixos/home/ikostov2/shell";
-
+in
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
