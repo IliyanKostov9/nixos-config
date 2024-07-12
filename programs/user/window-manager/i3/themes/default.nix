@@ -3,5 +3,8 @@
 , ...
 }:
 {
-  imports = [ ./whitesur-git-theme ];
+  home.packages = with pkgs; [
+    whitesur-gtk-theme
+    phinger-cursors
+  ];
 }

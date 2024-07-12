@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ./nnn
     ./sdkmanager
     ./sops
     ./gnupg

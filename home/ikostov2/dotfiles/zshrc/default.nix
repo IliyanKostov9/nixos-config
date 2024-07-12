@@ -57,7 +57,7 @@ in
       LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib:/run/opengl-driver/lib"; # This part can be removed, shell.nix for python3 is handling this part
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
-      GTK_THEME = "Adwaita:dark";
+      # GTK_THEME = "Adwaita:dark";
     };
     initExtra = ''
       bindkey "''${key[Up]}" up-line-or-search
