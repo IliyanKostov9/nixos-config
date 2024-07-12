@@ -5,6 +5,8 @@
 }:
 
 {
+  shell_path = "/etc/nixos/home/ikostov2/shell";
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -29,7 +31,7 @@
         #"mvn"
         "history"
         "node"
-        "rust"
+        # "rust"
         "aws"
         "azure"
         "docker"
@@ -44,8 +46,8 @@
       buzz = "cd $(find . -type d | fzf)";
       git-all = "git add . && git commit && ( git push || git push --set-upstream origin master )";
       git-root = "cd $( git rev-parse --show-toplevel )";
-      py-setup-venv = "~/.local/bin/python/python-venv-setup";
-      py-nix-sh = "nix-shell '/etc/nixos/home/ikostov2/shell/python/shell.nix'";
+      py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
+      py-nix-sh = "nix-shell '${shell_path}/nix/python/shell.nix'";
       mvn-spring = "mvn spring-boot:run";
       mvn-deps = "mvn dependency:resolve";
     };
