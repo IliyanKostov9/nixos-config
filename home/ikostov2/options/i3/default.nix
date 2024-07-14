@@ -24,7 +24,7 @@
         in
         lib.mkOptionDefault {
           # Programs
-          "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf";
+          "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf -P";
           "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
           # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
