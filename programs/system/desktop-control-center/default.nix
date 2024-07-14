@@ -3,8 +3,9 @@
 {
   imports = [
     ./pavucontrol
-    ./pamixer
-    ./xfce4-appfinder
+    ./audio
+    ./red-light
+    ./app-search
     ./network
   ];
 }
