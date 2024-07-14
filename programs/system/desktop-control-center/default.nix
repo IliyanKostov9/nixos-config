@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./pavucontrol
     ./audio
     ./red-light
     ./app-search

@@ -4,7 +4,7 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ redshit ];
+  environment.systemPackages = with pkgs; [ redshift ];
 }
 
 
