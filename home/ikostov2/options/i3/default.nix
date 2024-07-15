@@ -162,6 +162,8 @@
 
       # Disable touchpad
       exec --no-startup-id xinput disable "Elan Touchpad"
+      # Red-light
+      exec --no-startup-id redshift-gtk
 
       tiling_drag modifier titlebar
     '';
