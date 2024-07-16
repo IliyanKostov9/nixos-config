@@ -1,5 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./curl ./xclip ./home-manager ];
+  imports = [
+    ./curl
+    ./xclip
+    ./home-manager
+    ./wget
+  ];
 }
