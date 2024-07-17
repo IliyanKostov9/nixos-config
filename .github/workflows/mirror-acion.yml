@@ -1,0 +1,28 @@
+name: Mirror to Codeberg
+
+on: [push]
+
+jobs:
+  push:
+    name: push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Extract repository name
+        id: repo_name
+        run: |
+          REPO_FULL_NAME="${{ github.repository }}"
+          REPO_NAME="${REPO_FULL_NAME#*/}.git"
+          echo "Repo name extracted: $REPO_NAME"
+          echo "::set-output name=repo_name::$REPO_NAME"
+
+      - name: Mirror to Codeberg
+        uses: yesolutions/mirror-action@master
+        with:
+          REMOTE: "https://codeberg.org/${{ secrets.GIT_USERNAME }}/${{ steps.repo_name.outputs.repo_name }}"
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
+          PUSH_ALL_REFS: "true" # Push all branches
+          DEBUG: "true"
