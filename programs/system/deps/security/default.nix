@@ -4,5 +4,5 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ openssl ];
+  environment.systemPackages = with pkgs; [ openssl pass ];
 }

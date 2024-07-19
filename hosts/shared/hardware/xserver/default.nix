@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
+  # Enable for using I3
+  services.displayManager.sddm.enable = true;
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
     # Enable for using GNOME
     # displayManager.gdm.enable = true;
-    # Enable for using I3
-    # Fix: lightdm is required to work on work laptop
+    # Another display manager for i3
     displayManager.lightdm.enable = false;
-    displayManager.sddm.enable = true;
     desktopManager.gnome.enable = true;
     desktopManager.xterm.enable = false;
     windowManager.i3 = {
