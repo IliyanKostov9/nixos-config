@@ -3,5 +3,9 @@
 , ...
 }:
 {
-  imports = [ ./lazydocker ./qemu ./virt-manager ];
+  imports = [
+    ./terminal-ui
+    ./qemu
+    ./virt-manager
+  ];
 }

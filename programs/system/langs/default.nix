@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./ansible
     # ./dotnet
     ./go
     ./jdk

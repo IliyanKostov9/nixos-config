@@ -5,7 +5,7 @@
 {
   imports = [
     ./api
-    ./archive
+    ./file-compression
     ./browsers
     ./cloud
     ./dbms

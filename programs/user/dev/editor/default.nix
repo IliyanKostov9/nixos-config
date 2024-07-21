@@ -7,6 +7,6 @@
     ./neovim
     # ./vscodium
     ./android-studio
-    ./texstudio
+    # ./texstudio
   ];
 }

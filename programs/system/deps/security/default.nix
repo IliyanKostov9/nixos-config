@@ -4,5 +4,5 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ openssl pass docker-credential-helpers ];
+  environment.systemPackages = with pkgs; [ openssl pass ];
 }

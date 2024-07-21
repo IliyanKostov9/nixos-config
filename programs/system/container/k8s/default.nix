@@ -4,5 +4,10 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ kubectl kubernetes-helm kind ];
+  environment.systemPackages = with pkgs; [
+    kubectl
+    kubernetes-helm
+    kind
+
+  ];
 }
