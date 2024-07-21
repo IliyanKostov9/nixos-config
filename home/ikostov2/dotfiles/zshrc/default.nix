@@ -49,6 +49,7 @@ in
       git-root = "cd $( git rev-parse --show-toplevel )";
       py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
       py-nix-sh = "nix-shell '${shell_path}/nix/python/shell.nix'";
+      mvn-jar = "mvn -f pom.xml clean package";
       mvn-spring = "mvn spring-boot:run";
       mvn-deps = "mvn dependency:resolve";
     };
