@@ -6,7 +6,7 @@
   imports = [
     ./neovim
     # ./vscodium
-    ./android-studio
+    # ./android-studio
     # ./texstudio
   ];
 }

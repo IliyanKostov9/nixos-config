@@ -8,5 +8,6 @@
     docker
     docker-buildx
     docker-credential-helpers
+    # nerdctl
   ];
 }

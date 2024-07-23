@@ -3,5 +3,5 @@
 , ...
 }:
 {
-  home.packages = with pkgs; [ ranger ];
+  home.packages = with pkgs; [ ];
 }
