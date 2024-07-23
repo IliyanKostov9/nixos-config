@@ -59,6 +59,7 @@ in
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
       # GTK_THEME = "Adwaita:dark";
+      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
     };
     initExtra = ''
       bindkey "''${key[Up]}" up-line-or-search
