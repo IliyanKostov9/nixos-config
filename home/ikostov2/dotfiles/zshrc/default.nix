@@ -21,28 +21,6 @@ in
     oh-my-zsh = {
       enable = true;
       theme = "kardan"; # simple
-      # plugins = [
-      #   "git"
-      #   "git-extras"
-      #   #"gradle"
-      #   #"fzf"
-      #   "ansible"
-      #   "npm"
-      #   "python"
-      #   "pip"
-      #   #"mvn"
-      #   "history"
-      #   "node"
-      #   # "rust"
-      #   "aws"
-      #   "azure"
-      #   "docker"
-      #   "kubectl"
-      #   "kubectx"
-      #   "helm"
-      #   "tmux"
-      #   "terraform"
-      # ];
     };
     shellAliases = {
       nvim-su = "sudo -E nvim .";
@@ -51,6 +29,8 @@ in
       git-all = "git add . && git commit && ( git push || git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) )";
       git-root = "cd $( git rev-parse --show-toplevel )";
       py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
+      venv = "eval $(pdm venv activate)";
+      pdd = "pdm install && pdm sync --clean";
       py-nix-sh = "nix-shell '${shell_path}/nix/python/shell.nix'";
       mvn-jar = "mvn -f pom.xml clean package";
       mvn-spring = "mvn spring-boot:run";
