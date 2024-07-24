@@ -21,25 +21,28 @@ in
     oh-my-zsh = {
       enable = true;
       theme = "kardan"; # simple
-      plugins = [
-        "git"
-        #"gradle"
-        #"fzf"
-        "ansible"
-        "npm"
-        "python"
-        "pip"
-        #"mvn"
-        "history"
-        "node"
-        # "rust"
-        "aws"
-        "azure"
-        "docker"
-        "kubectl"
-        "tmux"
-        "terraform"
-      ];
+      # plugins = [
+      #   "git"
+      #   "git-extras"
+      #   #"gradle"
+      #   #"fzf"
+      #   "ansible"
+      #   "npm"
+      #   "python"
+      #   "pip"
+      #   #"mvn"
+      #   "history"
+      #   "node"
+      #   # "rust"
+      #   "aws"
+      #   "azure"
+      #   "docker"
+      #   "kubectl"
+      #   "kubectx"
+      #   "helm"
+      #   "tmux"
+      #   "terraform"
+      # ];
     };
     shellAliases = {
       nvim-su = "sudo -E nvim .";
@@ -57,7 +60,7 @@ in
       XDG_BIN_HOME = "$HOME/.local/bin";
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
       # GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
-      KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+      # KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
     };
     initExtra = ''
       bindkey "''${key[Up]}" up-line-or-search
