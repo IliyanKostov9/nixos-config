@@ -23,9 +23,9 @@ in
       theme = "kardan"; # simple
       plugins = [
         "git"
-        "gradle"
+        #"gradle"
         #"fzf"
-        #"ansible"
+        "ansible"
         "npm"
         "python"
         "pip"
@@ -54,11 +54,9 @@ in
       mvn-deps = "mvn dependency:resolve";
     };
     sessionVariables = {
-      QT_QPA_PLATFORM_PLUGIN_PATH = "${pkgs.qt5.qtbase}/lib/qt-${pkgs.qt5.qtbase.version}/plugins/platforms";
-      LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.stdenv.cc.cc.lib}/lib:/run/opengl-driver/lib"; # This part can be removed, shell.nix for python3 is handling this part
+      XDG_BIN_HOME = "$HOME/.local/bin";
       PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-      GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
-      # GTK_THEME = "Adwaita:dark";
+      # GH_TOKEN = "cat ~/.config/secrets/GH_TOKEN";
       KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
     };
     initExtra = ''

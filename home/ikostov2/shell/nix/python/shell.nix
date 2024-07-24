@@ -4,8 +4,7 @@
   name = "pipzone";
   targetPkgs = pkgs: (with pkgs; [
     python311
-    poetry
-    python311Packages.virtualenv
+    pdm
     zsh
     opencv4
     mesa
