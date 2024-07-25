@@ -3,5 +3,11 @@
 , ...
 }:
 {
-  imports = [ ./vlc ./gimp ./shotwell ./obs-studio ];
+  imports = [
+    ./chat
+    ./vlc
+    ./gimp
+    ./shotwell
+    ./obs-studio
+  ];
 }
