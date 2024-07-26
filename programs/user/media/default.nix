@@ -4,7 +4,6 @@
 }:
 {
   imports = [
-    ./chat
     ./vlc
     ./gimp
     ./shotwell
