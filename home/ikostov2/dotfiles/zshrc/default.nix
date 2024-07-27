@@ -31,6 +31,7 @@ in
       buzz = "cd $(find . -type d | fzf)";
       git-all = "git add . && git commit && ( git push || git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) )";
       git-root = "cd $( git rev-parse --show-toplevel )";
+      git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
       py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
       venv = "eval $(pdm venv activate)";
       pdmm = "pdm install && pdm sync --clean";
