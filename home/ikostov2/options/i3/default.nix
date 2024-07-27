@@ -143,6 +143,14 @@
         {
           position = "top";
           statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+          colors = {
+            background = "#444444";
+            focusedWorkspace = {
+              background = "#A4936E";
+              border = "#333333";
+              text = "#ffffff";
+            };
+          };
         }
       ];
     };
@@ -188,7 +196,7 @@
           {
             block = "battery";
             interval = 30;
-            format = " $icon $percentage $time";
+            format = " $icon $percentage $time"; # $power
             missing_format = "";
           }
           {
@@ -212,6 +220,12 @@
             ];
           }
           {
+            block = "keyboard_layout";
+            driver = "setxkbmap";
+            interval = 1;
+            format = " ^icon_keyboard $layout ";
+          }
+          {
             block = "sound";
             headphones_indicator = true;
             click = [
@@ -224,30 +238,19 @@
           {
             block = "time";
             interval = 60;
-            format = " $timestamp.datetime(f:'%a %d/%m %R') ";
+            format = " $icon $timestamp.datetime(f:'%a %d/%m %R') ";
             click = [
               {
                 button = "left";
                 cmd = "gnome-calendar";
               }
             ];
-
-          }
-          {
-            block = "keyboard_layout";
-            driver = "sway";
-            format = " ^icon_keyboard $layout ";
-            mappings = {
-              "English (US)" = "US";
-              "Bulgarian (N/A)" = "BG";
-            };
           }
         ];
         settings = {
           theme = {
             theme = "bad-wolf";
-            # overrides = {
-            # };
+            overrides = { separator = ""; };
           };
         };
         icons = "material-nf";

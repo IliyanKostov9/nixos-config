@@ -8,6 +8,5 @@
     ./emulator
     ./git-extras
     ./command-line
-    # ./terminal-ui
   ];
 }

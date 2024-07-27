@@ -3,7 +3,7 @@
 [![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/gitguardian.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 
-# ❄️  NixOS configuration ❄️
+# ❄️ NixOS configuration ❄️
 
 My personal NixOS configuration file.
 

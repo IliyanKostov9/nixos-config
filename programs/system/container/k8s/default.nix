@@ -5,8 +5,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # kubernetes
-    # minikube
     # kompose
     kubectl
     kubectx
