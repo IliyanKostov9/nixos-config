@@ -5,6 +5,7 @@
 
 {
   imports = [
+    ./git
     ./i3
   ];
 }

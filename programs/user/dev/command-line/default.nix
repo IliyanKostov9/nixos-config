@@ -8,5 +8,6 @@
     ./sops
     ./gnupg
     ./pinentry-qt
+    ./nix-alien
   ];
 }
