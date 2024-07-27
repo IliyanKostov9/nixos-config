@@ -242,22 +242,15 @@
               "Bulgarian (N/A)" = "BG";
             };
           }
-          # {
-          #   block = "tea_timer";
-          #   done_cmd = "notify-send 'Timer Finished'";
-          # }
         ];
         settings = {
           theme = {
-            theme = "solarized-dark";
-            overrides = {
-              idle_bg = "#123456";
-              idle_fg = "#abcdef";
-            };
+            theme = "bad-wolf";
+            # overrides = {
+            # };
           };
         };
-        icons = "awesome6";
-        theme = "space-villain";
+        icons = "material-nf";
       };
     };
   };

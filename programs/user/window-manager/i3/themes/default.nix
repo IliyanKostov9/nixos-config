@@ -4,6 +4,6 @@
 }:
 {
   home.packages = with pkgs; [
-    whitesur-gtk-theme
+    gruvbox-dark-gtk
   ];
 }
