@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    sops-nix.url = "github:Mic92/sops-nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +12,7 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, sops-nix, ... }:
     let
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
@@ -22,11 +23,6 @@
         inherit pkgs;
         extraSpecialArgs = { inherit self system; };
         modules = [
-          ({ self, system, ... }: {
-            home.packages = with self.inputs.nix-alien.packages.${system}; [
-              nix-alien
-            ];
-          })
           ./home/ikostov2
         ];
       };
