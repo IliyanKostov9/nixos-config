@@ -40,6 +40,9 @@ in
       mvn-jar = "mvn -f pom.xml clean package";
       mvn-spring = "mvn spring-boot:run";
       mvn-deps = "mvn dependency:resolve";
+      tf = "terraform";
+      dc = "docker";
+      ku = "kubectl";
     };
     sessionVariables = {
       XDG_BIN_HOME = "$HOME/.local/bin";
