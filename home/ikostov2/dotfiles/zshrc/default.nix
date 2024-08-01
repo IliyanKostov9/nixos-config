@@ -43,6 +43,7 @@ in
       tf = "terraform";
       dc = "docker";
       ku = "kubectl";
+      git-rob = "${shell_path}/bash/git/git-rob.sh";
     };
     sessionVariables = {
       XDG_BIN_HOME = "$HOME/.local/bin";
