@@ -6,6 +6,5 @@
   imports = [
     ./terminator
     ./tmux
-    ./terminator
   ];
 }

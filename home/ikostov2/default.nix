@@ -3,7 +3,6 @@ let
   username = "ikostov2";
 in
 {
-
   nixpkgs.config.allowUnfree = true;
   imports = [
     ../../programs/user/ikostov2.nix
