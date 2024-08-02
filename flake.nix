@@ -12,13 +12,15 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
       system = "x86_64-linux";
+
+
     in
-    {
+    with inputs; {
       homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit self system; };

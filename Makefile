@@ -8,7 +8,7 @@ sys-update-pd:
 		
 .PHONY: sys-update-wl
 sys-update-wl:
-	sudo nixos-rebuild switch --flake .#ikostov2-work-laptop --show-trace
+	sudo nixos-rebuild switch --flake .#ikostov2-work-laptop --show-trace --option eval-cache false
 	
 .PHONY: flake-check
 flake-check:
