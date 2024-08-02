@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, stateVersion, ... }:
 let
   username = "ikostov2";
 in
@@ -12,13 +12,11 @@ in
   ];
   home = {
     homeDirectory = "/home/${username}";
-    inherit username;
+    inherit username stateVersion;
   };
 
   # Disable annoying home news
   news.display = "silent";
-
-  home.stateVersion = "24.05";
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -1,8 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ lib, stateVersion, ... }:
 {
-
   # NixOS version
-  system.stateVersion = lib.mkDefault "24.05";
+  system = lib.mkDefault {
+    inherit stateVersion;
+  };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" ];
   nixpkgs.config = {

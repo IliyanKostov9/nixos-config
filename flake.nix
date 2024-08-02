@@ -12,38 +12,43 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
       system = "x86_64-linux";
-
+      stateVersion = "24.05";
+      default-user = "ikostov2";
 
     in
     with inputs; {
-      homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.${default-user} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit self system; };
+        extraSpecialArgs = { inherit self system stateVersion; };
         modules = [
-          ./home/ikostov2
+          ./home/${default-user}
         ];
       };
 
-      nixosConfigurations.ikostov2-personal-desktop = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/personal/desktop
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-cpu-amd
-          # nixos-hardware.nixosModules.common-gpu-nvidia
-        ];
-        inherit system;
-      };
-      nixosConfigurations.ikostov2-work-laptop = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/work/laptop
-          # nixos-hardware.nixosModules.lenovo-thinkpad-p53
-        ];
-        inherit system;
+      nixosConfigurations = {
+        "${default-user}-personal-desktop" = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/personal/desktop
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-cpu-amd
+            # nixos-hardware.nixosModules.common-gpu-nvidia
+          ];
+          specialArgs = { inherit system stateVersion; };
+        };
+
+        "${default-user}-work-laptop" = nixpkgs.lib.nixosSystem {
+          modules = [
+            ./hosts/work/laptop
+            # nixos-hardware.nixosModules.lenovo-thinkpad-p53
+          ];
+          specialArgs = { inherit system stateVersion; };
+        };
+
       };
     };
 }

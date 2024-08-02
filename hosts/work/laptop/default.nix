@@ -1,11 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
-  imports = with nixos-hardware.nixosModules;
-    [
-      ./hardware
-      ../../shared/options
-      ../../../programs/system
-    ];
+  imports = [
+    ./hardware
+    ../../shared/options
+    ../../../programs/system
+  ];
 }
 
