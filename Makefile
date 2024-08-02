@@ -1,6 +1,6 @@
 .PHONY: home-update
 home-update:
-	home-manager switch --flake .#ikostov2 --show-trace
+	home-manager switch --flake .#ikostov2 --show-trace --option eval-cache false
 	
 .PHONY: sys-update-pd
 sys-update-pd:

@@ -4,7 +4,7 @@
 }:
 
 let
-  shared = import ../shared;
+  shared = import ../shared { inherit pkgs; };
 in
 {
   programs.bash = {
@@ -12,7 +12,7 @@ in
     enableCompletion = true;
   };
   home = {
-    shellAliases = shared.shellAliases;
-    sessionVariables = shared.sessionVariables;
+    inherit (shared) shellAliases;
+    inherit (shared) sessionVariables;
   };
 }

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-git_message=$1
+git_message="$*"
 
 git add .
 
-git commit -m ${git_message}
+git commit -m "${git_message}"
 
 ( git push \
 	|| git push --set-upstream origin \
