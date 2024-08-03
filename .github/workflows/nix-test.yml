@@ -19,9 +19,16 @@ jobs:
         uses: cachix/install-nix-action@v27
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - run: nix build
-      - run: nix run git+https://git.peppe.rs/languages/statix -- --help
-      - run: nix flake check
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Nix build
+        run: nix build
+
+      - name: Nix install statix
+        run: nix run git+https://git.peppe.rs/languages/statix -- --help
+
+      - name: Nix flake check
+        run: nix flake check
 
       - name: Print nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
