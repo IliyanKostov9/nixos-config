@@ -1,8 +1,9 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ ... }:
 
 {
   imports =
     [
+      ./system
       ./bluetooth
       ./cups
       ./firmware

@@ -1,24 +1,22 @@
-{ config, pkgs, ... }:
+{ config, pkgs, stateVersion, user, ... }:
 let
-  username = "ikostov2";
+  username = user;
 in
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    ../../programs/user/ikostov2.nix
-    ./dotfiles
-    ./themes
-    ./options
+    ../programs/user/${username}.nix
+    ./${username}/dotfiles
+    ./${username}/themes
+    ./${username}/options
   ];
   home = {
     homeDirectory = "/home/${username}";
-    inherit username;
+    inherit username stateVersion;
   };
 
   # Disable annoying home news
   news.display = "silent";
-
-  home.stateVersion = "24.05";
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

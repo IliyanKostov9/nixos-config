@@ -3,5 +3,8 @@
 , ...
 }:
 {
-  imports = [ ./terminator ./tmux ];
+  imports = [
+    ./terminator
+    ./tmux
+  ];
 }

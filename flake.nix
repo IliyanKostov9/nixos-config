@@ -12,36 +12,41 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       lib = pkgs.lib;
-      system = "x86_64-linux";
-    in
-    {
-      homeConfigurations.ikostov2 = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit self system; };
-        modules = [
-          ./home/ikostov2
-        ];
-      };
 
-      nixosConfigurations.ikostov2-personal-desktop = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/personal/desktop
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-cpu-amd
-          # nixos-hardware.nixosModules.common-gpu-nvidia
-        ];
-        inherit system;
+      config = import ./config.nix {
+        inherit nixos-hardware;
       };
-      nixosConfigurations.ikostov2-work-laptop = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/work/laptop
-          # nixos-hardware.nixosModules.lenovo-thinkpad-p53
-        ];
-        inherit system;
-      };
+      users = config.users;
+
+      system = "x86_64-linux";
+      stateVersion = "24.05";
+
+    in
+    with inputs; {
+
+      homeConfigurations = builtins.mapAttrs
+        (user: _user-attr: home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit self system stateVersion user; };
+          modules = [
+            ./home
+          ];
+        })
+        config.users;
+
+      nixosConfigurations = builtins.mapAttrs
+        (host: host_attr:
+          nixpkgs.lib.nixosSystem {
+            modules = host_attr.modules;
+            specialArgs = { inherit system stateVersion host_attr users; };
+          }
+        )
+        config.hosts;
     };
 }

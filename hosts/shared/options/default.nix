@@ -1,20 +1,15 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 {
   imports =
     [
-      ./android
+      ./nixpkgs
       ./blueman
       ./env-vars
-      ./firefox
-      ./gnupg
-      ./gpaste
       ./i3
-      ./lib
-      ./neovim
-      ./nerdfonts
+      ./fonts
       ./openvpn
-      ./shell
       ./users
       ./virtualisation
+      ./programs
     ];
 }
