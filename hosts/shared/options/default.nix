@@ -8,7 +8,6 @@
       ./i3
       ./fonts
       ./openvpn
-      ./shell
       ./users
       ./virtualisation
       ./programs

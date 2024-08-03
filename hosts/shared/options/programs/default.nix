@@ -1,6 +1,8 @@
 { ... }:
 {
   programs = {
+    zsh.enable = true;
+
     nix-ld.enable = true;
     gnupg.agent.enable = true;
     virt-manager.enable = true;

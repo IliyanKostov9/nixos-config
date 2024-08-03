@@ -7,12 +7,12 @@
       isNormalUser = true;
       description = "ikostov2 profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-      shell = "zsh";
     };
   };
 
   hosts = {
     hosts-personal-desktop = {
+      host-name = "baks";
       auto-login-user = "ikostov2";
       modules = [
         ./hosts/personal/desktop
@@ -62,6 +62,7 @@
     };
 
     hosts-work-laptop = {
+      host-name = "baks";
       auto-login-user = "ikostov2";
       modules = [
         ./hosts/work/laptop

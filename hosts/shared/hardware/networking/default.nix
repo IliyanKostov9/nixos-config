@@ -1,7 +1,7 @@
-{ lib, ... }:
+{ lib, host_attr, ... }:
 
 {
-  networking.hostName = "baks";
+  networking.hostName = host_attr.host-name;
   networking.networkmanager.enable = true;
   networking.useDHCP = lib.mkDefault true;
   networking.firewall.allowedTCPPorts = [
