@@ -19,7 +19,7 @@
       };
       lib = pkgs.lib;
 
-      config = import ./config-flake.nix {
+      config = import ./config.nix {
         inherit nixos-hardware pkgs nixpkgs;
       };
 
