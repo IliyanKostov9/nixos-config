@@ -8,12 +8,12 @@
       description = "ikostov2 profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
       shell = "zsh";
-      locale = "bg_BG.UTF-8";
     };
   };
 
   hosts = {
     hosts-personal-desktop = {
+      auto-login-user = "ikostov2";
       modules = [
         ./hosts/personal/desktop
         nixos-hardware.nixosModules.common-pc
@@ -34,6 +34,7 @@
         initrd = {
           luks.devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
           luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
+
           availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
           kernelModules = [ ];
         };
@@ -61,6 +62,7 @@
     };
 
     hosts-work-laptop = {
+      auto-login-user = "ikostov2";
       modules = [
         ./hosts/work/laptop
         # nixos-hardware.nixosModules.lenovo-thinkpad-p53

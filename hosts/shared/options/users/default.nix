@@ -1,10 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, users, ... }:
 
 {
-  users.users.ikostov2 = {
-    isNormalUser = true;
-    description = "ikostov2";
-    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-  };
+  users.users = builtins.mapAttrs
+    (user: user-attr: {
+      inherit (user-attr) isNormalUser description extraGroups;
+      shell = pkgs.zsh;
+    }
+    )
+    users;
 }

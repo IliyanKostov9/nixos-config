@@ -1,9 +1,9 @@
-{ lib, ... }:
+{ ... }:
 
 {
   imports = [
-    ../../shared/options
     ./hardware
+    ../../shared/options
     ../../../programs/system
   ];
 }

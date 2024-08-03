@@ -22,10 +22,10 @@
       config = import ./config.nix {
         inherit nixos-hardware;
       };
+      users = config.users;
 
       system = "x86_64-linux";
       stateVersion = "24.05";
-      default-user = "ikostov2";
 
     in
     with inputs; {
@@ -44,30 +44,9 @@
         (host: host_attr:
           nixpkgs.lib.nixosSystem {
             modules = host_attr.modules;
-            specialArgs = { inherit system stateVersion host_attr; };
+            specialArgs = { inherit system stateVersion host_attr users; };
           }
         )
         config.hosts;
-
-      # nixosConfigurations = {
-      #   "hosts-personal-desktop" = nixpkgs.lib.nixosSystem {
-      #     modules = [
-      #       ./hosts/personal/desktop
-      #       nixos-hardware.nixosModules.common-pc
-      #       nixos-hardware.nixosModules.common-cpu-amd
-      #       # nixos-hardware.nixosModules.common-gpu-nvidia
-      #     ];
-      #     specialArgs = { inherit system stateVersion; };
-      #   };
-      #
-      #   "hosts-work-laptop" = nixpkgs.lib.nixosSystem {
-      #     modules = [
-      #       ./hosts/work/laptop
-      #       # nixos-hardware.nixosModules.lenovo-thinkpad-p53
-      #     ];
-      #     specialArgs = { inherit system stateVersion; };
-      #   };
-      #
-      # };
     };
 }
