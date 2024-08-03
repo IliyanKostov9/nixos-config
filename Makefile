@@ -25,7 +25,7 @@ sys-update-pd: ## Build system configuration for host: personal desktop
 		
 .PHONY: sys-update-wl
 sys-update-wl: ## Build system configuration for host: work laptop 
-	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --option eval-cache false --impure
+	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --option eval-cache false 
 	
 .PHONY: flake-check
 flake-check: ## Evaluate flake and build its checks
