@@ -49,10 +49,9 @@
         "browser.urlbar.suggest.topsites" = true;
 
         "webgl.disabled" = false;
-        # "browser.policies.runOncePerModification.setDefaultSearchEngine" = Qwant;
-
         "privacy.resistRingerprinting" = false;
-        "privacy.resistFingerprinting.letterboxing" = true;
+        # Box browser window
+        "privacy.resistFingerprinting.letterboxing" = false;
 
         "privacy.clearOnShutdown.history" = false;
         "privacy.clearOnShutdown.downloads" = false;

@@ -14,6 +14,8 @@
 
   outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
+      config = import ./config.nix;
+
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
       system = "x86_64-linux";
@@ -22,16 +24,22 @@
 
     in
     with inputs; {
-      homeConfigurations.${default-user} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit self system stateVersion; };
-        modules = [
-          ./home/${default-user}
-        ];
-      };
+
+      homeConfigurations = lib.mapAttrs
+        (user:_: {
+          ${user} = home-manager.lib.homeManagerConfiguration
+            {
+              inherit pkgs;
+              extraSpecialArgs = { inherit self system stateVersion; };
+              modules = [
+                ./home/${user}
+              ];
+            };
+        })
+        config.users;
 
       nixosConfigurations = {
-        "${default-user}-personal-desktop" = nixpkgs.lib.nixosSystem {
+        "hosts-personal-desktop" = nixpkgs.lib.nixosSystem {
           modules = [
             ./hosts/personal/desktop
             nixos-hardware.nixosModules.common-pc
@@ -41,7 +49,7 @@
           specialArgs = { inherit system stateVersion; };
         };
 
-        "${default-user}-work-laptop" = nixpkgs.lib.nixosSystem {
+        "hosts-work-laptop" = nixpkgs.lib.nixosSystem {
           modules = [
             ./hosts/work/laptop
             # nixos-hardware.nixosModules.lenovo-thinkpad-p53
