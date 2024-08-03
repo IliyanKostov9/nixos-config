@@ -1,14 +1,14 @@
-{ config, pkgs, stateVersion, ... }:
+{ config, pkgs, stateVersion, user, ... }:
 let
-  username = "ikostov2";
+  username = user;
 in
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    ../../programs/user/ikostov2.nix
-    ./dotfiles
-    ./themes
-    ./options
+    ../../programs/user/${username}.nix
+    ./${username}/dotfiles
+    ./${username}/themes
+    ./${username}/options
   ];
   home = {
     homeDirectory = "/home/${username}";

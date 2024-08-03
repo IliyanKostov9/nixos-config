@@ -26,11 +26,11 @@
     with inputs; {
 
       homeConfigurations = builtins.mapAttrs
-        (user: _attr: home-manager.lib.homeManagerConfiguration {
+        (user: _user-attr: home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit self system stateVersion attr; };
+          extraSpecialArgs = { inherit self system stateVersion user; };
           modules = [
-            ./home/${user}
+            ./home
           ];
         })
         config.users;
