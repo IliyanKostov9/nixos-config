@@ -27,7 +27,7 @@ jobs:
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
 
       - name: Run tests
-        uses: cachix/install-nix-action@vXX
+        uses: cachix/install-nix-action@v27
         with:
           extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
 
