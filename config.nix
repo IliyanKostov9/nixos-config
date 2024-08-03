@@ -1,14 +1,12 @@
 {
-  users = [
-    {
-      ikostov2 = {
-        isNormalUser = true;
-        description = "ikostov2 profile";
-        extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
-        shell = zsh;
-      };
-    }
-  ];
+  users = {
+    ikostov2 = {
+      isNormalUser = true;
+      description = "ikostov2 profile";
+      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+      shell = "zsh";
+    };
+  };
 
   hosts = [
     {
