@@ -5,7 +5,7 @@ in
 {
   nixpkgs.config.allowUnfree = true;
   imports = [
-    ../../programs/user/${username}.nix
+    ../programs/user/${username}.nix
     ./${username}/dotfiles
     ./${username}/themes
     ./${username}/options
