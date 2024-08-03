@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./system
       ./bluetooth
       ./cups
       ./firmware

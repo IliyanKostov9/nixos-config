@@ -20,7 +20,7 @@
       lib = pkgs.lib;
 
       config = import ./config.nix {
-        inherit nixos-hardware pkgs nixpkgs;
+        inherit nixos-hardware;
       };
 
       system = "x86_64-linux";

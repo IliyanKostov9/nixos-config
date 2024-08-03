@@ -1,4 +1,4 @@
-{ nixpkgs, pkgs, nixos-hardware }:
+{ nixos-hardware }:
 
 {
 
@@ -8,6 +8,7 @@
       description = "ikostov2 profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
       shell = "zsh";
+      locale = "bg_BG.UTF-8";
     };
   };
 
@@ -24,8 +25,6 @@
         [{ device = "/dev/disk/by-uuid/85b811ca-f0aa-452e-a679-549dcf80e1ba"; }];
 
       boot = {
-        # Use the latest kernel
-        kernelPackages = pkgs.linuxPackages_6_9;
         kernelModules = [ "kvm-amd" ];
         extraModulePackages = [ ];
         loader = {
@@ -39,10 +38,29 @@
           kernelModules = [ ];
         };
       };
+
+      fileSystems = {
+        "/" =
+          {
+            device = "/dev/disk/by-uuid/71627bb4-1f3d-4b0c-9b74-aef3944e9eae";
+            fsType = "ext4";
+          };
+        # Mount the hard disk
+        "/mnt/external_hd" = {
+          device = "/dev/sda1";
+          fsType = "ntfs";
+          options = [ "users" "nofail" "rw" ];
+        };
+        "/boot" =
+          {
+            device = "/dev/disk/by-uuid/BB8A-DF92";
+            fsType = "vfat";
+            options = [ "fmask=0022" "dmask=0022" ];
+          };
+      };
     };
 
     hosts-work-laptop = {
-      nixpkgs.config.allowUnfree = true;
       modules = [
         ./hosts/work/laptop
         # nixos-hardware.nixosModules.lenovo-thinkpad-p53
@@ -52,8 +70,6 @@
         [{ device = "/dev/disk/by-uuid/2ae616fa-be73-4075-be15-72f4fb245205"; }];
 
       boot = {
-        # Use the latest kernel
-        kernelPackages = pkgs.linuxPackages_6_9;
         kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
         # Intel Graphics
@@ -70,6 +86,20 @@
           kernelModules = [ ];
 
         };
+      };
+
+      fileSystems = {
+        "/" =
+          {
+            device = "/dev/disk/by-uuid/1389313b-f022-47fa-b319-86f679186c5c";
+            fsType = "ext4";
+          };
+        "/boot" =
+          {
+            device = "/dev/disk/by-uuid/E602-D2C4";
+            fsType = "vfat";
+            options = [ "fmask=0022" "dmask=0022" ];
+          };
       };
     };
   };

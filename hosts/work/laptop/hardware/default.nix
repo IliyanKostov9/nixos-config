@@ -3,9 +3,7 @@
 {
   imports =
     [
-      ./boot
       ./displayManager
-      ./filesystem
       ./nvidia
       ../../../shared/hardware
     ];

@@ -6,7 +6,7 @@
       ./blueman
       ./env-vars
       ./i3
-      ./nerdfonts
+      ./fonts
       ./openvpn
       ./shell
       ./users
