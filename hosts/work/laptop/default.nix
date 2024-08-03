@@ -1,9 +1,10 @@
 { ... }:
 
 {
+
   imports = [
-    ./hardware
     ../../shared/options
+    ./hardware
     ../../../programs/system
   ];
 }

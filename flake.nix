@@ -14,10 +14,15 @@
 
   outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
-      config = import ./config.nix;
-
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+      };
       lib = pkgs.lib;
+
+      config = import ./config-flake.nix {
+        inherit nixos-hardware pkgs nixpkgs;
+      };
+
       system = "x86_64-linux";
       stateVersion = "24.05";
       default-user = "ikostov2";
@@ -35,25 +40,34 @@
         })
         config.users;
 
-      nixosConfigurations = {
-        "hosts-personal-desktop" = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./hosts/personal/desktop
-            nixos-hardware.nixosModules.common-pc
-            nixos-hardware.nixosModules.common-cpu-amd
-            # nixos-hardware.nixosModules.common-gpu-nvidia
-          ];
-          specialArgs = { inherit system stateVersion; };
-        };
+      nixosConfigurations = builtins.mapAttrs
+        (host: host_attr:
+          nixpkgs.lib.nixosSystem {
+            modules = host_attr.modules;
+            specialArgs = { inherit system stateVersion host_attr; };
+          }
+        )
+        config.hosts;
 
-        "hosts-work-laptop" = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./hosts/work/laptop
-            # nixos-hardware.nixosModules.lenovo-thinkpad-p53
-          ];
-          specialArgs = { inherit system stateVersion; };
-        };
-
-      };
+      # nixosConfigurations = {
+      #   "hosts-personal-desktop" = nixpkgs.lib.nixosSystem {
+      #     modules = [
+      #       ./hosts/personal/desktop
+      #       nixos-hardware.nixosModules.common-pc
+      #       nixos-hardware.nixosModules.common-cpu-amd
+      #       # nixos-hardware.nixosModules.common-gpu-nvidia
+      #     ];
+      #     specialArgs = { inherit system stateVersion; };
+      #   };
+      #
+      #   "hosts-work-laptop" = nixpkgs.lib.nixosSystem {
+      #     modules = [
+      #       ./hosts/work/laptop
+      #       # nixos-hardware.nixosModules.lenovo-thinkpad-p53
+      #     ];
+      #     specialArgs = { inherit system stateVersion; };
+      #   };
+      #
+      # };
     };
 }

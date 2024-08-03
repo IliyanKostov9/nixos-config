@@ -2,12 +2,12 @@
 {
   imports =
     [
+      ./nixpkgs
       ./blueman
       ./env-vars
       ./i3
       ./nerdfonts
       ./openvpn
-      ./nixpkgs
       ./shell
       ./users
       ./virtualisation
