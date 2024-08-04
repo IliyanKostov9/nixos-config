@@ -1,5 +1,5 @@
 {
-  description = "Home manager and NixOS system config";
+  description = "Iliyan K's Home manager and NixOS config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -14,6 +14,9 @@
 
   outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
     let
+      system = "x86_64-linux";
+      stateVersion = "24.05";
+
       pkgs = import nixpkgs {
         inherit system;
       };
@@ -23,9 +26,6 @@
         inherit nixos-hardware;
       };
       users = config.users;
-
-      system = "x86_64-linux";
-      stateVersion = "24.05";
 
     in
     with inputs; {

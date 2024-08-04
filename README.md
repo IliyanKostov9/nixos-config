@@ -1,36 +1,65 @@
-[![License](https://img.shields.io/github/license/IliyanKostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions?query=branch%3Amaster)
-[![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/gitguardian.yaml)
-[![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
-
 # ❄️ NixOS configuration ❄️
 
-My personal NixOS configuration file.
+[![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/iliyan-kostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
+[![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml)
+[![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
+<!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
+[![NixOS Unstable](https://img.shields.io/badge/NixOS-24.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+[![GitHub release](https://img.shields.io/github/v/release/iliyan-kostov9/nixos-config)](#)
+[![GitHub release date](https://img.shields.io/github/release-date/iliyan-kostov9/nixos-config)](#)
+[![GitHub last commit](https://img.shields.io/github/last-commit/iliyan-kostov9/nixos-config)](#)
+[![Free](https://img.shields.io/badge/free_for_non_commercial_use-brightgreen)](#-license)
+
+:star: Star us on GitHub — it motivates us a lot!
+
+## 🚀 About
+
+> My personal NixOS configuration file.
+> <img src="./assets/nixos_image.png" align="right"/>
 
 It contains hardware/software configurations for setting up my personal/work machines.
-As of this moment, I haven't yet reached the point of deploying VMs using Nix, meaning that this configuration **IS INTENDED TO BE USED FOR PERSONAL USE ONLY**.
+
+> [!IMPORTANT]
+> As of this moment, I haven't yet reached the point of deploying VMs using Nix, meaning that this configuration **IS INTENDED TO BE USED FOR PERSONAL USE ONLY**.
 
 Please don't try to copy-paste the configuration on your own machine and try to understand it first for the following reasons:
+  1. It simply won't work, due to the difference in hardware configuration between my machines and yours (for example gpu drivers, device IDs)
+  2. You won't learn much doing that, and later when you want to change something in your config it'll be harder for you to achieve that
+  3. This config structure is made by my personal taste, not yours ... and if some certain functionalities are either missing or badly implemented - then you would need to fork my repo and make your desired change in your version. Nevertheless, I'm more than open to suggestions for improvements, so please feel free to open an issue!
 
-1. It simply won't work, due to the difference in hardware configuration between my machines and yours (for example gpu drivers, device IDs)
-2. You won't learn much doing that, and later when you want to change something in your config it'll be harder for you to achieve that
-3. This config structure is made by my personal taste, not yours ... and if some certain functionalities are either missing or badly implemented - then you would need to fork my repo and make your desired change in your version. Nevertheless, I'm more than open to suggestions for improvements, so please feel free to open an issue!
+## 🏝️ Environment
 
-Since it will be quite annoying for people to use my configuration and requiring them to find-and-replace all of the hardware specific configuration, spanning different modules, I have centralized all of those dependencies into `config.nix` file. This file contains all user and hardware-specific configurations. It is imported and used in `flake.nix` and downstream modules, it ensures that all of the flake configuration names are 1:1 as in the names, listed at `config.nix`. Also, `flake.nix` will recursively create or remove any flake configuration, depending on which attribute sets you add or remove. In short, you (mostly) only need to interact with `config.nix` when you decide to add or remove any user or host machine. 
+<p align="center">
+<img src="./assets/scrn_setup1.png" alt="Environment screenshot 1" width="800"/>
 
-One thing to be careful is to comply with the module structure. For example say you create a new user, and you add it in `config.nix`, you would then have to create a new directory under: `/home` and place a file `default.nix`. You would also need to create under that `/home/user` directory another several subdirectories, relating to dotfiles, themes and options (see example `/home/ikostov2/`. Lastly, since every user wants to use different programs you would then need to create `user.nix` file under `/programs/user/`.
+<img src="./assets/scrn_setup2.png" alt="Environment screenshot 2" width="800"/>
+</p>
 
-As for the hosts configuration, it is more flexible, and you would have less chance to screw things up (except if you don't change the bootloader and file System values, of course).
-One of my personal annoyances is manually *synchronizing* the presence of the user home-configuration and the system based user configuration. In both cases I need the same username in my home and user for the system to grant me access. So I used that user configuration in both home/hosts configuration by passing them via nix parameters.
+<details>
+<summary>Structure details</summary>
 
-In both of these configurations (user/hosts for config.nix) make sure to copy-paste a new attribute set, in case you want to add a new user/hosts, because all the downstream modules rely on that particular structure.
+| Type           | Program      |
+| :------------- | :----------: |
+| Editor         | [NeoVim](https://neovim.io/) |
+| Launcher       | [Dmenu](https://wiki.archlinux.org/title/Dmenu) |
+| Shell          | [Zsh](https://ohmyz.sh/) |
+| Status Bar     | [i3status-rust](https://github.com/greshake/i3status-rust) |
+| Terminal       | [Terminator](https://gnome-terminator.org/) |
+| Window Manager | [I3WM](https://i3wm.org/) |
+| File Manager   | [Nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
+| GTK Theme      | [Rose pine](https://github.com/rose-pine/gtk) |
+| GTK Icon Theme | [Adwaita](https://github.com/GNOME/adwaita-icon-theme) |
+| Terminal Font  | [OxProto Nerd Font](https://www.nerdfonts.com/font-downloads) |
 
-## Used Nix features 
+</details>
+
+## 🧪 Used Nix features 
 
 1. home-manager
 2. flakes
 
-## Structure
+## 🏗️ Structure
 
 ```markdown
 .
@@ -50,70 +79,85 @@ In both of these configurations (user/hosts for config.nix) make sure to copy-pa
 5 directories, 8 files
 ```
 
-- archive: not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
-- config.nix: An attribute set, containing all of the user and host tightly specific configuration, that is consumed by the home and hosts module
-- flake.lock: autogenerated file when building the system along with an argument of `--flake`. Used for pinning down the specific versions of the Nix dependencies, that are listed under *flake.nix*
-- flake.nix: file, used for declaring all of the Nix specific dependencies/features (home-manager, nixpkgs). It is also the starting point for defining all of the the user/system environments
-- home: used for storing all of the user environments (Joe's PC, Jane's PC, etc.)
-- hosts: used for storing the hardware specifications of the machines
-- Makefile: automation script for aliasing the Nix CLI commands in a more user-friendly way
-- programs: contains the user/system type of packages
-- wallpaper.jpg: background photo for i3wm
+- **archive**: not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
+- **config.nix**: An attribute set, containing all of the user and host tightly specific configuration, that is consumed by the home and hosts module
+- **flake.lock**: autogenerated file when building the system along with an argument of `--flake`. Used for pinning down the specific versions of the Nix dependencies, that are listed under *flake.nix*
+- **flake.nix**: file, used for declaring all of the Nix specific dependencies/features (home-manager, nixpkgs). It is also the starting point for defining all of the the user/system environments
+- **home**: used for storing all of the user environments (Joe's PC, Jane's PC, etc.)
+- **hosts**: used for storing the hardware specifications of the machines
+- **Makefile**: automation script for aliasing the Nix CLI commands in a more user-friendly way
+- **programs**: contains the user/system type of packages
+- **wallpaper.jpg**: background photo for i3wm
 
-## Build instructions
+##  🧑‍💻  Commands
 
-First you can check all of the available build scrpts by using `make help`
-After that please make sure to replcae the `DEFAULT_USER` value from Makefile into your liking.
+> [!WARNING]
+> Before starting to execute `make` commands, make sure to change the value of `DEFAULT_USER` to your preffered username, located in `Makefile`.
 
-### Build 
+|Command|Description|
+|:-|:-|
+|make help|Show available commands with their description|
+|make home-update|Build your home configuration|
+|make sys-update-wl|Build your system configuration for work laptop (Thinkpad p53)|
+|make sys-update-pd|Build your system configuration for personal desktop (AMD)|
+|make flake-upgrade|Upgrade flake dependencies
+|make flake-check|Validate flake.nix|
+|make clean|Remove user generations|
+|make clean-su|Remove system generations|
+|make show-gen|Show all user generations|
+|make deduplicate|Optimize system libraries|
 
-- build your home configuration: `make home-update`
-- build your system configuration for work laptop (Thinkpad p53): `make sys-update-wl`
-- build your system configuration for personal desktop (AMD): `make sys-update-pd`
+### 🌱 Setup 
 
-- upgrade flake dependencies: `make flake-upgrade`
+> [!CAUTION]
+> The hardware specific configuration is most likely not going to properly work on your system, so please make sure after you install my configuration and immediately change the bootloader and file system values (located at `config.nix`) with your appropriate values!
 
-### Remove generations 
+<details><summary><b>Show instructions</b></summary>
+   Install for work laptop (Thinkpad p53) or desktop PC (AMD).
 
-- user generations: `make clean`
-- system generations: `make clean-su`
-- optimise packages: `make deduplicate`
+  1. Work laptop
 
-### Show all generations
-- `make show-gen`
+    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-work-laptop
 
-## Acknowledgments
+  2. Desktop PC
+
+    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-personal-desktop
+
+  Afterward enter `config.nix` and change the values of the file system and bootloader to the ones you currently have.
+  You can also change the default username to your preferred one.
+
+</details>
+
+## 🤝 Acknowledgments
 
 This configuration structure was inspired by contributions from the Nix community:
 
 - [wimpysworld](https://github.com/wimpysworld/nix-config)
 - [ryan4yin](https://github.com/ryan4yin/nix-config)
+- [simple-homemanager](https://github.com/evertras/simple-homemanager)
 
-### References 
+### 🔍️ References 
 
 This section helped me better understand Nix package manager and Nix language.
 Please have a read on them!
 
-#### Jumpstart for using flakes && home-manager
-
-I highly recommend that you read and follow this guide for migrating your initial `configuration.nix` to flakes/home-manager. It's easy to understand without any technical jargon and gets straight to the point.
-
-- [simple-homemanager](https://github.com/evertras/simple-homemanager)
-
-#### Docs
+#### 📚 Docs
 - [ Nixpills ]( https://nixos.org/guides/nix-pills )
 - [ Nix and flakes ]( https://nixos-and-flakes.thiscute.world )
 - [ Home manager manual ]( https://nix-community.github.io/home-manager/index.xhtml )
 - [ Intro to Nix and NixOS ]( https://nixos-and-flakes.thiscute.world/introduction )
 
-### Packages and  templates
-#### Search for Nix packages
+#### 📄 Package and template links
 - [ Nixpkgs ](https://search.nixos.org/packages) 
 - [ MyNixOS ](https://mynixos.com/nixpkgs )
-
-#### Nix cache for storing pre-compiled packaged
 - [ NixOS cache ]( https://cache.nixos.org )
-
-#### Template for flakes
-
 - [ Flake parts ]( https://community.flake.parts )
+
+### 📃 License
+This product is licensed under [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html)
+
+## 👥 Contributors
+[//]: contributor-faces
+<a href="https://github.com/iliyan-kostov9"><img src="https://preview.redd.it/cacbrj758oc51.jpg?width=2800&format=pjpg&auto=webp&s=19528768df2097bc9dbb0693bb719c7b65646bb5" title="iliyan-kostov9" width="50" height="50"></a>
+
+[Back to top](#top)

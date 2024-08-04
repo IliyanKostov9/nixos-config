@@ -4,6 +4,7 @@
 }:
 {
   home.packages = with pkgs; [
-    gruvbox-dark-gtk
+    rose-pine-gtk-theme
+    rose-pine-icon-theme
   ];
 }
