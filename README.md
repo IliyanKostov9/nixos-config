@@ -110,7 +110,7 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 ### 🌱 Setup 
 
 > [!CAUTION]
-> The hardware specific configuration is most likely not going to properly work on your system, so please make sure after you install my configuration to immediately change the bootloader and file system values (located at `config.nix`) with your appropriate values!
+> The hardware specific configuration is most likely not going to properly work on your system, so please make sure after you install my configuration and immediately change the bootloader and file system values (located at `config.nix`) with your appropriate values!
 
 <details><summary><b>Show instructions</b></summary>
    Install for work laptop (Thinkpad p53) or desktop PC (AMD).
@@ -123,7 +123,7 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 
     nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-personal-desktop
 
-  Afterward enter `config.nix` and change the values of file system and bootloader to the ones you currently have.
+  Afterward enter `config.nix` and change the values of the file system and bootloader to the ones you currently have.
   You can also change the default username to your preferred one.
 
 </details>
