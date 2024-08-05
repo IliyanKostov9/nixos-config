@@ -9,6 +9,6 @@
     ./i3
     ./mimeApps
     ./terminator
-    ./kitty
+    ./alacritty
   ];
 }
