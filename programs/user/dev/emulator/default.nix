@@ -5,6 +5,7 @@
 {
   imports = [
     ./terminator
+    ./kitty
     ./tmux
   ];
 }

@@ -4,6 +4,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+
   imports = [
     ../programs/user/${username}.nix
     ./${username}/dotfiles

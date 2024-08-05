@@ -1,8 +1,8 @@
-{ pkgs
-, config
+{ nix-colors
 , ...
 }:
 
 {
-  imports = [ ./gtk ];
+  imports = [ ./gtk nix-colors.homeManagerModules.default ];
+  colorScheme = nix-colors.colorSchemes.dracula;
 }
