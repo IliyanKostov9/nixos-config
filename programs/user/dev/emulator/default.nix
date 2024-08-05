@@ -5,7 +5,6 @@
 {
   imports = [
     ./terminator
-    ./alacritty
     ./tmux
   ];
 }

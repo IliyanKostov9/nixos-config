@@ -12,7 +12,6 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
@@ -38,7 +37,7 @@
       homeConfigurations = builtins.mapAttrs
         (user: _user-attr: home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit self system stateVersion user nix-colors; };
+          extraSpecialArgs = { inherit self system stateVersion user; };
           modules = [
             ./home
           ] ++ [ nix-index-database.hmModules.nix-index ];
