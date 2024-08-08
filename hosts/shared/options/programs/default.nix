@@ -8,7 +8,7 @@
     virt-manager.enable = true;
     dconf.enable = true;
     adb.enable = true;
-    firefox.enable = true;
+    firefox.enable = false;
     gpaste.enable = true;
     neovim = {
       enable = true;

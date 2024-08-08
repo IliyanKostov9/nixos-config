@@ -17,36 +17,37 @@ help:  ## help target to show available commands with information
 
 .PHONY: home-update
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#${DEFAULT_USER} --show-trace --option eval-cache false
+	home-manager switch --flake .#${DEFAULT_USER} --show-trace --option eval-cache false |& nom
 	
 .PHONY: sys-update-pd
 sys-update-pd: ## Build system configuration for host: personal desktop
-	sudo nixos-rebuild switch --flake .#hosts-personal-desktop --show-trace
+	sudo nixos-rebuild switch --flake .#hosts-personal-desktop --show-trace |& nom
 		
 .PHONY: sys-update-wl
 sys-update-wl: ## Build system configuration for host: work laptop 
-	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --option eval-cache false 
-	
+	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --option eval-cache false 	
+
 .PHONY: flake-check
 flake-check: ## Evaluate flake and build its checks
-	nix flake check
+	nix flake check |& nom
 	
 .PHONY: flake-upgrade
 flake-upgrade:  ## Upgrade flake related dependencies
-	nix flake update
+	nix flake update |& nom
 
 .PHONY: clean
 clean: ## Remove old user generations
-	nix-collect-garbage -d
+	nix-collect-garbage -d |& nom
 
 .PHONY: clean-su
 clean-su: ## Remove old system generations
-	sudo nix-collect-garbage -d
+	sudo nix-collect-garbage -d |& nom
 
 .PHONY: show-gen
 show-gen: ## Show NixOS generations
-	nix-env --list-generations
+	nix-env --list-generations |& nom
 
 .PHONY: deduplicate
 deduplicate: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
-	nix store optimise
+	nix store optimise |& nom
+

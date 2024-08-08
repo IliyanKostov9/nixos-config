@@ -20,6 +20,8 @@ in
     mvn-jar = "mvn -f pom.xml clean package";
     mvn-spring = "mvn spring-boot:run";
     mvn-deps = "mvn dependency:resolve";
+    # Nix
+    nix-shelll = ", $*";
     # Infra
     tf = "terraform";
     dc = "docker";

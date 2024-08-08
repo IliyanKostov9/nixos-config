@@ -90,6 +90,7 @@
 
         };
       };
+      # fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
 
       fileSystems = {
         "/" =

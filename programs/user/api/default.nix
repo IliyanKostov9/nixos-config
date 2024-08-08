@@ -1,7 +1,6 @@
 { pkgs
-, config
 , ...
 }:
 {
-  imports = [ ./postman ];
+  home.packages = with pkgs; [ postman ];
 }

@@ -3,34 +3,9 @@
 , ...
 }:
 {
-  # config = lib.mkIf config.aspects.graphical.firefox.enable {
-  #   aspects.base.persistence.homePaths = [
-  #     ".mozilla/firefox"
-  #     ".cache/mozilla"
-  #   ];
   home.packages = with pkgs; [ librewolf ];
   programs.librewolf = {
     enable = true;
-    # profiles = {
-    #   jocelyn = {
-    #     bookmarks = { };
-    #     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    #       betterttv
-    #       bitwarden
-    #       consent-o-matic
-    #       don-t-fuck-with-paste
-    #       multi-account-containers
-    #       greasemonkey
-    #       kagi-search
-    #       simple-tab-groups
-    #       simplelogin
-    #       sponsorblock
-    #       stylus
-    #       tree-style-tab
-    #       ublock-origin
-    #       videospeed
-    #     ];
-    #   };
     settings =
       {
         "browser.contentblocking.category" = "strict";

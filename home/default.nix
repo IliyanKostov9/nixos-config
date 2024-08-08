@@ -1,9 +1,10 @@
-{ config, pkgs, stateVersion, user, ... }:
+{ lib, config, pkgs, stateVersion, user, ... }:
 let
   username = user;
 in
 {
   nixpkgs.config.allowUnfree = true;
+
   imports = [
     ../programs/user/${username}.nix
     ./${username}/dotfiles

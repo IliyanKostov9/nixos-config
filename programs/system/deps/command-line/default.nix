@@ -5,6 +5,7 @@
     ./curl
     ./fd
     ./xclip
+    ./nix
     ./home-manager
     ./wget
   ];

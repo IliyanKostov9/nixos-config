@@ -1,6 +1,4 @@
-{ pkgs
-, config
-, ...
+{ ...
 }:
 {
   imports = [
@@ -21,4 +19,5 @@
     ./x11-utils
     ./win-api
   ];
+
 }
