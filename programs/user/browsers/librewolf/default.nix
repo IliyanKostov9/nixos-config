@@ -3,11 +3,6 @@
 , ...
 }:
 {
-  # config = lib.mkIf config.aspects.graphical.firefox.enable {
-  #   aspects.base.persistence.homePaths = [
-  #     ".mozilla/firefox"
-  #     ".cache/mozilla"
-  #   ];
   home.packages = with pkgs; [ librewolf ];
   programs.librewolf = {
     enable = true;
