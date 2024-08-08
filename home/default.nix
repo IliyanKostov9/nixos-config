@@ -1,13 +1,13 @@
 { config, pkgs, stateVersion, user, ... }:
 let
   username = user;
-  user-programs = import  ../programs/user/${username}.nix;
+  user-programs = import ../programs/user/utils.nix;
 in
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ../programs/user/${username}.nix
+    # ../programs/user/${username}.nix
     ./${username}/dotfiles
     ./${username}/themes
     ./${username}/options

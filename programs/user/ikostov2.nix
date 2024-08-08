@@ -1,10 +1,5 @@
-{ lib
-, config
-, ...
+{ ...
 }:
-let
-  user-programs = import ./main.nix;
-in
 {
   imports = [
     # ./api
@@ -25,13 +20,4 @@ in
     ./win-api
   ];
 
-  user-programs.api.enabled = lib.mkForce true;
-
-  all-programs = builtins.attrValues
-    (builtins.mapAttrs
-      (
-        program-name: program-attr:
-          if program-attr.enabled == true then program-name else null
-      )
-      user-programs);
 }
