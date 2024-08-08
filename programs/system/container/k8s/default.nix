@@ -11,5 +11,6 @@
     kubernetes-helm
     kind
     k3s
+    k9s
   ];
 }
