@@ -1,13 +1,13 @@
-{ config, pkgs, stateVersion, user, ... }:
+{ lib, config, pkgs, stateVersion, user, ... }:
 let
   username = user;
-  user-programs = import ../programs/user/utils.nix;
+  user-programs = import ../programs/user/utils.nix { inherit pkgs lib; };
 in
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    # ../programs/user/${username}.nix
+    ../programs/user/${username}.nix
     ./${username}/dotfiles
     ./${username}/themes
     ./${username}/options
@@ -17,7 +17,7 @@ in
     inherit username stateVersion;
   };
 
-  home.packages = with pkgs; [ user-programs.all-programs ];
+  home.packages = user-programs.all-programs;
 
   # Disable annoying home news
   news.display = "silent";
