@@ -1,7 +1,11 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./postman ];
+  # imports = [ ./postman ];
+  api = {
+    postman = {
+      enabled = lib.mkDefault false;
+    };
+  };
 }
