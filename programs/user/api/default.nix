@@ -1,9 +1,6 @@
-{ lib
+{ pkgs
 , ...
 }:
 {
-  # imports = [ ./postman ];
-  postman = {
-    enabled = true;
-  };
+  home.packages = with pkgs; [ postman ];
 }

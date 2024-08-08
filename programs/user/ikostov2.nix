@@ -2,7 +2,7 @@
 }:
 {
   imports = [
-    # ./api
+    ./api
     ./file-compression
     ./browsers
     ./cloud
