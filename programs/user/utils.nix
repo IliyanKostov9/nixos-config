@@ -6,10 +6,15 @@ in
 rec {
   main.user-programs.api.postman.enabled = true;
 
-  all-programs = builtins.filter (x: x != null) (builtins.attrValues
+  all-programs = builtins.filter (x: x != null) (builtins.concatLists (builtins.attrValues
     (builtins.mapAttrs
-      (program-name: program-attr:
-        if program-attr.enabled == true then pkgs."${program-name}" else null
+      (package-name: package-attr:
+        builtins.attrValues
+          (builtins.mapAttrs
+            (program-name: program-attr:
+              if program-attr.enabled == true then pkgs."${program-name}" else null
+            )
+            package-attr)
       )
-      main.user-programs.api));
+      main.user-programs)));
 }
