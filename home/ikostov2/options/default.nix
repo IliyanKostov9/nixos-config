@@ -8,6 +8,8 @@
     ./git
     ./i3
     # ./mimeApps
-    ./alacritty
+    # ./alacritty
+    # ./terminator
+    ./kitty
   ];
 }
