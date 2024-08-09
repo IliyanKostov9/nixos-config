@@ -4,7 +4,10 @@
 
   programs.kitty = {
     enable = true;
-    theme = "Gruvbox Dark Hard";
+    theme = "Kanagawa";
+    # Themes used
+    # Kanagawa
+    # Kanagawa_light
 
     font = {
       size = 10;
@@ -54,7 +57,6 @@
       strip_trailing_spaces = "always";
       hide_window_decorations = true;
       enable_audio_bell = false;
-      cursor = "#cccccc";
       cursor_shape = "block";
       cursor_blink_interval = "1";
       enabled_layouts = "all";
