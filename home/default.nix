@@ -1,7 +1,7 @@
 { lib, config, pkgs, stateVersion, user, ... }:
 let
   username = user;
-  user-programs = import ../programs/user/utils.nix { inherit pkgs lib; };
+  all-programs = (import ../programs/user/utils.nix { inherit pkgs lib; }).all-programs;
 in
 {
   nixpkgs.config.allowUnfree = true;
@@ -16,7 +16,7 @@ in
     homeDirectory = "/home/${username}";
     inherit username stateVersion;
   };
-  home.packages = user-programs.all-programs;
+  home.packages = all-programs;
 
   # Disable annoying home news
   news.display = "silent";

@@ -3,8 +3,8 @@
 let
   main = import ./main.nix { inherit lib; };
 in
-{
-  main.user-programs.api.postman.enabled = lib.mkForce true;
+rec {
+  main.user-programs.api.postman.enabled = true;
 
   all-programs = builtins.filter (x: x != null) (builtins.attrValues
     (builtins.mapAttrs
@@ -12,5 +12,4 @@ in
         if program-attr.enabled == true then pkgs."${program-name}" else null
       )
       main.user-programs.api));
-
 }
