@@ -6,7 +6,6 @@
   imports = [
     ./vlc
     ./gimp
-    ./shotwell
     ./obs-studio
   ];
 }

@@ -7,7 +7,7 @@
   imports = [
     ./git
     ./i3
-    ./mimeApps
+    # ./mimeApps
     ./terminator
   ];
 }
