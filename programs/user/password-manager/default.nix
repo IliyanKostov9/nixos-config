@@ -1,7 +1,10 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./keepass ];
+  keepass = {
+    enabled = lib.mkDefault false;
+  };
+
 }
+

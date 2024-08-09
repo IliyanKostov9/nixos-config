@@ -1,7 +1,9 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./dbeaver ];
+  dbeaver-bin = {
+    enabled = lib.mkDefault false;
+  };
+
 }

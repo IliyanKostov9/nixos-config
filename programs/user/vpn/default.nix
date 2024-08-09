@@ -1,7 +1,10 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./openvpn ];
+  openvpn3 = {
+    enabled = lib.mkDefault false;
+  };
+
 }
+

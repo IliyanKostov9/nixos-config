@@ -1,13 +1,24 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [
-    ./chromium
-    ./librewolf
-    # Problem 
-    # Edge is automatically lowering volume on MS Teams meeting
-    # ./microsoft-edge
-  ];
+
+  librewolf = {
+    enabled = lib.mkDefault false;
+  };
+
+  chromium = {
+    enabled = lib.mkDefault false;
+    options = {
+      programs.chromium.enable = false;
+      nixpkgs.config.chromium = {
+        enableWideVine = true;
+      };
+    };
+  };
+
+  microsoft-edge = {
+    enabled = lib.mkDefault false;
+  };
+
 }

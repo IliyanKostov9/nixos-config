@@ -1,7 +1,10 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./qflipper ];
+  qFlipper = {
+    enabled = lib.mkDefault false;
+  };
+
 }
+

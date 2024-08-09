@@ -1,7 +1,10 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./dialect ];
+  dialect = {
+    enabled = lib.mkDefault false;
+  };
+
 }
+
