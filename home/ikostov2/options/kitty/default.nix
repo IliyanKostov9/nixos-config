@@ -7,7 +7,7 @@
     theme = "Kanagawa";
     # Themes used
     # Kanagawa
-    # Kanagawa_light
+    # Atom One Light
 
     font = {
       size = 10;
@@ -18,7 +18,7 @@
     };
     keybindings = {
       "ctrl+x" = "copy_to_clipboard";
-      "ctrl+p" = "paste_from_clipboard";
+      "ctrl+alt+v" = "paste_from_clipboard";
       "ctrl+alt+t" = "new_tab";
       "ctrl+alt+w" = "close_tab";
       # "ctrl+l" = "next_tab";
@@ -27,6 +27,7 @@
       "ctrl+alt+." = "move_tab_forward";
       "ctrl+alt+," = "move_tab_backward";
 
+
       # Layouts
       "ctrl+space" = "next_layout";
       "ctrl+shift+v" = "goto_layout tall"; # vertical
@@ -34,8 +35,8 @@
       "ctrl+shift+z" = "toggle_layout stack";
 
       # Windows
-      "ctrl+l" = "next_window";
-      "ctrl+h" = "previous_window";
+      "ctrl+alt+l" = "next_window";
+      "ctrl+alt+h" = "previous_window";
       "ctrl+shift+r" = "start_resizing_window";
       "ctrl+shift+space" = "swap_with_window";
 

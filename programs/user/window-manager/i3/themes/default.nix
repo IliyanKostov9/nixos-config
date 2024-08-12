@@ -4,8 +4,8 @@
 }:
 {
   home.packages = with pkgs; [
-    rose-pine-gtk-theme
     rose-pine-icon-theme
+    kanagawa-gtk-theme
     xorg.libXcursor
   ];
 }

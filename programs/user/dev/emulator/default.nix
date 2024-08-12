@@ -4,8 +4,8 @@
 }:
 {
   imports = [
-    ./kitty
-    # ./alacritty
+    # ./kitty
+    ./alacritty
     # ./terminator
     ./tmux
   ];

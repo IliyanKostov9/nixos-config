@@ -10,6 +10,7 @@
     gcc
     gnumake
     glibc
+    gdb
     libgccjit
     patchelf
     readline

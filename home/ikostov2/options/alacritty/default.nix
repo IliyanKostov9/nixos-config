@@ -6,28 +6,40 @@
       selection.save_to_clipboard = true;
       colors.draw_bold_text_with_bright_colors = true;
       working_directory = config.home.homeDirectory;
+      env.TERM = "alacritty";
+      shell.program = "zsh";
+
+      mouse = {
+        hide_when_typing = true;
+        bindings = [
+          {
+            mouse = "Middle";
+            action = "ExpandSelection";
+          }
+          {
+            mouse = "Right";
+            action = "PasteSelection";
+          }
+        ];
+      };
+
+      cursor = {
+        style = "Block";
+        unfocused_hollow = true;
+      };
 
       window = {
-        env = { TERM = "xterm-256color"; };
         dynamic_title = true;
+        decorations_theme_variant = "Dark";
         dynamic_padding = false;
-        decorations = "buttonless";
-        opacity = 0.3;
+        decorations = "full";
+        opacity = 0.5;
         startup_mode = "Maximized";
         option_as_alt = "OnlyLeft";
 
-        mouse.bindings = [{
-          mouse = "Middle";
-          action = "PasteSelection";
-        }];
-        cursor = {
-          style = "block";
-          unfocused_hollow = true;
-        };
-
         dimensions = {
-          columns = 0;
-          lines = 0;
+          columns = 120;
+          lines = 40;
         };
         padding = {
           x = 2;
@@ -79,6 +91,11 @@
           key = "N";
           mods = "Control";
           action = "SpawnNewInstance";
+        }
+        {
+          key = "Space";
+          mode = "Vi";
+          action = "ToggleNormalSelection";
         }
       ];
     };

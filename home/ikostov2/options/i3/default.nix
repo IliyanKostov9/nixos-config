@@ -47,7 +47,7 @@
           "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
           # Default i3 options
-          "${mod}+Return" = "exec kitty";
+          "${mod}+Return" = "exec alacritty";
           "${mod}+${shift}+q" = "kill";
           "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
           "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
