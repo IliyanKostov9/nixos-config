@@ -4,7 +4,7 @@
   imports = [
     ./audio
     ./red-light
-    ./app-search
+    # ./app-search
     ./network
   ];
 }

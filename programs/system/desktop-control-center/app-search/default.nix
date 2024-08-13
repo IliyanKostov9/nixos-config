@@ -4,7 +4,9 @@
 }:
 
 {
-  environment.systemPackages = with pkgs; [ xfce.xfce4-appfinder ];
+  environment.systemPackages = with pkgs; [
+    xfce.xfce4-appfinder
+  ];
 }
 
 
