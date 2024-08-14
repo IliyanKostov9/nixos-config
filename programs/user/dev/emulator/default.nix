@@ -4,7 +4,9 @@
 }:
 {
   imports = [
-    ./terminator
+    # ./kitty
+    ./alacritty
+    # ./terminator
     ./tmux
   ];
 }

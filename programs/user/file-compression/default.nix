@@ -1,7 +1,10 @@
-{ pkgs
-, config
+{ lib
 , ...
 }:
 {
-  imports = [ ./p7zip ];
+  p7zip = {
+    enabled = lib.mkDefault false;
+  };
+
 }
+

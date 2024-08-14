@@ -1,6 +1,8 @@
-{ pkgs
+{ lib
 , ...
 }:
 {
-  home.packages = with pkgs; [ postman ];
+  postman = {
+    enabled = lib.mkDefault false;
+  };
 }

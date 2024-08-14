@@ -45,7 +45,7 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 | Launcher       | [Dmenu](https://wiki.archlinux.org/title/Dmenu) |
 | Shell          | [Zsh](https://ohmyz.sh/) |
 | Status Bar     | [i3status-rust](https://github.com/greshake/i3status-rust) |
-| Terminal       | [Terminator](https://gnome-terminator.org/) |
+| Terminal       | [Kitty](https://sw.kovidgoyal.net/kitty/) |
 | Window Manager | [I3WM](https://i3wm.org/) |
 | File Manager   | [Nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
 | GTK Theme      | [Rose pine](https://github.com/rose-pine/gtk) |

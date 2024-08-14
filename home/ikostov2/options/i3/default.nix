@@ -47,10 +47,11 @@
           "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
           # Default i3 options
-          "${mod}+Return" = "exec i3-sensible-terminal";
+          "${mod}+Return" = "exec alacritty";
           "${mod}+${shift}+q" = "kill";
-          "${mod}+d" = "exec ${pkgs.dmenu}/bin/dmenu_run";
-          "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
+          "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal alacritty";
+          "${mod}+alt+0" = "rofi-theme-selector";
+          # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
           # Mark
           "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
