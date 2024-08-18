@@ -16,26 +16,34 @@
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nixgl.url = "github:guibou/nixGL";
+    nixgl.inputs.nixpkgs.follows = "nixpkgs";
     # nur.url = "github:wiedzmin/NUR";
     # flake-parts.url = "github:hercules-ci/flake-parts";
     # sops-nix.url = "github:Mic92/sops-nix";
-    # nixgl.url = "github:guibou/nixGL";
     # qnr.url = "github:divnix/quick-nix-registry";
     # devshell.url = "github:numtide/devshell";
     # devshell.inputs.nixpkgs.follows = "nixpkgs";
+    # nil.url = "github:oxalica/nil";
+    # nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
+  # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { self, nixpkgs, nixpkgs_unstable, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, ... }@inputs:
     let
       system = "x86_64-linux";
       stateVersion = "24.05";
 
       pkgs = import nixpkgs {
         inherit system;
+        overlays = [ (nixgl.overlay) ];
+        config = { allowUnfree = true; };
       };
-      pkgs_unstable = import nixpkgs_unstable { system = system; };
-      lib = pkgs.lib;
+      pkgs_unstable = import nixpkgs_unstable {
+        inherit system;
+      };
 
+      lib = pkgs.lib;
       config = import ./config.nix {
         inherit nixos-hardware;
       };
