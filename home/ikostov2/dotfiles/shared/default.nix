@@ -10,6 +10,7 @@ in
     git-root = "cd $( git rev-parse --show-toplevel )";
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";
+    git-cache = "git rm -r --cached";
     # Python
     py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
     venv = "eval $(pdm venv activate)";

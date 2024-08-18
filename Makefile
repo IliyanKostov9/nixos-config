@@ -17,7 +17,7 @@ help:  ## help target to show available commands with information
 
 .PHONY: home-update
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#${DEFAULT_USER} --show-trace --option eval-cache false |& nom
+	home-manager switch --flake .#${DEFAULT_USER} --show-trace --impure --option eval-cache false |& nom
 	
 .PHONY: sys-update-pd
 sys-update-pd: ## Build system configuration for host: personal desktop

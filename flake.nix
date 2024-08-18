@@ -2,19 +2,30 @@
   description = "Iliyan K's Home manager and NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    # sops-nix.url = "github:Mic92/sops-nix";
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-artwork = {
+      url = "github:NixOS/nixos-artwork";
+      flake = false;
+    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "flake:nixos-hardware";
     nix-alien.url = "github:thiagokokada/nix-alien";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    # nur.url = "github:wiedzmin/NUR";
+    # flake-parts.url = "github:hercules-ci/flake-parts";
+    # sops-nix.url = "github:Mic92/sops-nix";
+    # nixgl.url = "github:guibou/nixGL";
+    # qnr.url = "github:divnix/quick-nix-registry";
+    # devshell.url = "github:numtide/devshell";
+    # devshell.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixos-hardware, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs_unstable, nixos-hardware, ... }@inputs:
     let
       system = "x86_64-linux";
       stateVersion = "24.05";
@@ -22,13 +33,13 @@
       pkgs = import nixpkgs {
         inherit system;
       };
+      pkgs_unstable = import nixpkgs_unstable { system = system; };
       lib = pkgs.lib;
 
       config = import ./config.nix {
         inherit nixos-hardware;
       };
       users = config.users;
-
     in
     with inputs; {
       # Enter that shell with nix develop --command zsh
@@ -37,10 +48,12 @@
       homeConfigurations = builtins.mapAttrs
         (user: _user-attr: home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit self system stateVersion user; };
+          extraSpecialArgs = { inherit self system stateVersion user pkgs_unstable; };
           modules = [
             ./home
-          ] ++ [ nix-index-database.hmModules.nix-index ];
+          ] ++ [
+            nix-index-database.hmModules.nix-index
+          ];
         })
         config.users;
 

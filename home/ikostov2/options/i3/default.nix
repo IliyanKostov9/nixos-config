@@ -183,11 +183,14 @@
     bars = {
       top = {
         blocks = [
-          { block = "focused_window"; format = "$title.str(max_w:180)| "; }
           {
             block = "music";
             format = "{$icon $combo $play |}";
             separator = " – ";
+          }
+          {
+            block = "focused_window";
+            format = "$title.str(max_w:180)| ";
           }
           {
             block = "net";

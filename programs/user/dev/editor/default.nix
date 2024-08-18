@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    ./neovim
+    ./neovim 
     # ./vscodium
     # ./android-studio
     # ./texstudio

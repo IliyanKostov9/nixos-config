@@ -1,7 +1,7 @@
-{ pkgs
-, config
+{ pkgs_unstable
+, lib
 , ...
 }:
 {
-  home.packages = with pkgs; [ neovim ];
+ home.packages = with pkgs_unstable; [ neovim ];
 }
