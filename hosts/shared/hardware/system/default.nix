@@ -7,7 +7,7 @@ with host_attr; {
 
   inherit swapDevices fileSystems;
   boot = boot // {
-    # # Use the latest kernel
-    kernelPackages = pkgs.linuxPackages_6_9; # 6.10 breaks
+    # Use the latest kernel
+    kernelPackages = pkgs.linuxPackages_6_10;
   };
 }

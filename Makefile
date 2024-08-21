@@ -5,7 +5,6 @@
 # Default user, change it to your particular username
 DEFAULT_USER := ikostov2
 
-
 ##########################
 # TARGET
 # #######################
