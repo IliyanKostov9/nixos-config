@@ -35,16 +35,7 @@
     # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  #
-  # outputs = inputs@{ self, flake-parts, nixpkgs, ...  }:
-  #   flake-parts.lib.mkFlake {inherit inputs;} {
-  #     # TODO: This probably works on more linux architectures but I haven't tested them
-  #     systems = ["x86_64-linux"];
-  #     imports = [];
-  #
-  #   perSystem = { config, inputs', pkgs, system, ... }:
-
-  outputs = { self, nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware,flake-parts , ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, flake-parts, ... }@inputs:
     let
       system = "x86_64-linux";
       stateVersion = "24.05";
