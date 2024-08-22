@@ -5,10 +5,10 @@
 {
   home.packages = with pkgs; [
     i3
+    picom
   ];
 
   imports = [
-    ./config
     ./themes
   ];
 }

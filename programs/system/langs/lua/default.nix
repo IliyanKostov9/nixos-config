@@ -3,6 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     lua
-    lua-language-server
+    luajitPackages.luarocks # Needed for neovim
   ];
 } 

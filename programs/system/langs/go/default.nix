@@ -1,7 +1,8 @@
-{ pkgs, config, ...}:
+{ pkgs, config, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     go
+    # delve
   ];
 } 

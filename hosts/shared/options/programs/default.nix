@@ -13,8 +13,8 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
+      # Set to false, because it downloads a nvim pkg copy, and doesn't use the user 'unstable' version
+      vimAlias = false;
     };
   };
 }

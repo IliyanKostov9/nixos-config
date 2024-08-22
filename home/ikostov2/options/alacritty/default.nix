@@ -6,7 +6,7 @@
       selection.save_to_clipboard = true;
       colors.draw_bold_text_with_bright_colors = true;
       working_directory = config.home.homeDirectory;
-      env.TERM = "alacritty";
+      env.TERM = "screen-256color";
       shell.program = "zsh";
 
       mouse = {
@@ -33,7 +33,7 @@
         decorations_theme_variant = "Dark";
         dynamic_padding = false;
         decorations = "full";
-        opacity = 0.5;
+        opacity = 0.1;
         startup_mode = "Maximized";
         option_as_alt = "OnlyLeft";
 
