@@ -11,5 +11,6 @@
     ./alacritty
     # ./terminator
     ./kitty
+    ./picom
   ];
 }
