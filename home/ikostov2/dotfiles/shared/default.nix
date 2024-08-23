@@ -26,9 +26,6 @@ in
     mvn-spring = "mvn spring-boot:run";
     mvn-deps = "mvn dependency:resolve";
 
-    # Nix
-    nix-shelll = ", $*";
-
     # Infra
     tf = "terraform";
     dc = "docker";
