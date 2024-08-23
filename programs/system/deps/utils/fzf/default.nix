@@ -1,8 +1,11 @@
 { pkgs
-, config
 , ...
 }:
 
 {
-  environment.systemPackages = with pkgs; [ fzf ripgrep ];
+  environment.systemPackages = with pkgs; [
+    fzf
+    ripgrep
+    fd
+  ];
 }

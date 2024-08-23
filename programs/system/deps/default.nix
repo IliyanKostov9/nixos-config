@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./command-line
+    ./downloader
     ./db-engine
     ./gnu
     ./lib

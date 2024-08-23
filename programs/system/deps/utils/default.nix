@@ -1,9 +1,10 @@
-{ pkgs, config, ... }:
+{ ... }:
 
 {
   imports = [
+    ./copy
     ./fzf
-    ./tree
+    ./ux
     ./zip
     ./monitor
   ];

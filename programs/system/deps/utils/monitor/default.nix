@@ -1,10 +1,9 @@
 { pkgs
-, config
 , ...
 }:
 {
-  imports = [
-    ./htop
-    ./neofetch
+  environment.systemPackages = with pkgs; [
+    htop
+    neofetch
   ];
-}
+} 

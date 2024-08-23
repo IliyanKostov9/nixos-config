@@ -37,6 +37,7 @@ in
     # Utils
     clip = "xclip -selection clipboard";
     bz = "cd $(find . -type d | fzf)";
+    ls = "eza";
   };
 
   sessionVariables = {

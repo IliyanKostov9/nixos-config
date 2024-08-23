@@ -1,5 +1,5 @@
 { pkgs, config, ... }:
 
 {
-  imports = [ ./sqlite ];
+  environment.systemPackages = with pkgs; [ sqlite ];
 }
