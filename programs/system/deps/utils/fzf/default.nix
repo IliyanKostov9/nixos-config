@@ -7,5 +7,6 @@
     fzf
     ripgrep
     fd
+    tldr
   ];
 }
