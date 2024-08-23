@@ -16,8 +16,9 @@
     glx-no-stencil = false;
     glx-swap-method = 1;
 
-    inactive-dim = 0.5;
-    inactive-opacity = 0.0;
+    # Remove blur on unfocused windows
+    inactive-dim = 0;
+    inactive-opacity = 1.0;
 
     transparent-clipping = false;
     unredir-if-possible = true;

@@ -43,6 +43,7 @@ in
     XDG_BIN_HOME = "$HOME/.local/bin";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     GTK_THEME = "Adwaita:dark";
+    MANPAGER = "nvim +Man!";
     GOROOT = "${pkgs.go}";
     GOPATH = "$HOME/go";
     GOPROXY = "https://proxy.golang.org,direct";
