@@ -38,6 +38,7 @@ in
     clip = "xclip -selection clipboard";
     bz = "cd $(find . -type d | fzf)";
     ls = "eza";
+    ls-tree = "${shell_path}/bash/eza/tree-icons.sh";
   };
 
   sessionVariables = {
