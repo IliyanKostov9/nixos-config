@@ -2,8 +2,11 @@
 , config
 , ...
 }:
+
 {
   environment.systemPackages = with pkgs; [
-    htop
+    # nix-update
+    nix-output-monitor
+    # comma
   ];
-} 
+}
