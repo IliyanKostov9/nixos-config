@@ -35,49 +35,42 @@
     # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { self, nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, flake-parts, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      stateVersion = "24.05";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ (nixgl.overlay) ];
-        config = { allowUnfree = true; };
-      };
-      pkgs_unstable = import nixpkgs_unstable {
-        inherit system;
-      };
+  outputs = inputs@ { flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      #  nixpkgs.lib.systems.flakeExposed
+      imports = [
+        # inputs.devshell.flakeModule
+        ./flakes/system.nix
+        ./flakes/user.nix
 
-      lib = pkgs.lib;
-      config = import ./config.nix {
-        inherit nixos-hardware;
-      };
-      users = config.users;
-    in
-    with inputs; {
-      # Enter that shell with nix develop --command zsh
-      # devShells.x86_64-linux.default = (import ./shell.nix {inherit pkgs;});
+      ];
+      perSystem = { config, pkgs, system, lib, nixpkgs, nixpkgs_unstable, nixgl, ... }@inputs:
+        {
+          # system = "x86_64-linux";
+          system = config.nixpkgs.hostPlatform.system;
+          stateVersion = "24.05";
 
-      homeConfigurations = builtins.mapAttrs
-        (user: _user-attr: home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit self system stateVersion user pkgs_unstable; };
-          modules = [
-            ./home
-          ] ++ [
-            nix-index-database.hmModules.nix-index
-          ];
-        })
-        config.users;
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [ (nixgl.overlay) ];
+            config = { allowUnfree = true; };
+          };
+          pkgs_unstable = import nixpkgs_unstable {
+            inherit system;
+          };
 
-      nixosConfigurations = builtins.mapAttrs
-        (host: host_attr:
-          nixpkgs.lib.nixosSystem {
-            modules = host_attr.modules ++ [ nix-index-database.nixosModules.nix-index ];
-            specialArgs = { inherit system stateVersion host_attr users; };
-          }
-        )
-        config.hosts;
+          lib = pkgs.lib;
+
+          devShells.default = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [ terraform wget bat nixpkgs-fmt ];
+          };
+
+          devShells.another_env = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [ curl ];
+          };
+        };
+      # flake = { };
     };
 }
