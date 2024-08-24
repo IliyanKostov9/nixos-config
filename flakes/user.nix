@@ -10,7 +10,7 @@ in
       inherit (shared) pkgs;
       extraSpecialArgs = { inherit self user; inherit (shared) system stateVersion pkgs_unstable; };
       modules = [
-        ./home
+        ../home
       ] ++ [
         inputs.nix-index-database.hmModules.nix-index
       ];
