@@ -1,8 +1,8 @@
 { nixos-hardware }:
 
 {
-
   users = {
+
     ikostov2 = {
       isNormalUser = true;
       description = "ikostov2 profile";
@@ -11,6 +11,7 @@
   };
 
   hosts = {
+
     hosts-personal-desktop = {
       host-name = "baks";
       auto-login-user = "ikostov2";
