@@ -36,32 +36,46 @@
   };
 
 
-  outputs = inputs@ { flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+  outputs = { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } ({ self, lib, ... }: {
       systems = [ "x86_64-linux" "aarch64-linux" ];
       #  nixpkgs.lib.systems.flakeExposed
       imports = [
+        # self.flakeModules.default
         # inputs.devshell.flakeModule
         ./flakes/system.nix
-        ./flakes/user.nix
+        # ./flakes/user.nix
 
       ];
-      perSystem = { config, pkgs, system, lib, nixpkgs, nixpkgs_unstable, nixgl, ... }@inputs:
+      perSystem = { config, self', inputs', pkgs, lib, system, nixpkgs, nixpkgs_unstable, nixgl, ... }:
         {
+          # _module.args.pkgs = import inputs.nixpkgs {
+          #   inherit system;
+          #   overlays = [ (import inputs.rust-overlay) ];
+          # };
+          #
+          # packages = {
+          #   rust-toolchain-stable = pkgs.rust-bin.stable.latest.minimal.override {
+          #     extensions = [
+          #       "rust-src"
+          #       "clippy"
+          #       "rust-analyzer"
+          #     ];
+          #   };
           # system = "x86_64-linux";
-          system = config.nixpkgs.hostPlatform.system;
-          stateVersion = "24.05";
-
-          pkgs = import nixpkgs {
-            inherit system;
-            overlays = [ (nixgl.overlay) ];
-            config = { allowUnfree = true; };
-          };
-          pkgs_unstable = import nixpkgs_unstable {
-            inherit system;
-          };
-
-          lib = pkgs.lib;
+          # system = config.nixpkgs.hostPlatform.system;
+          # stateVersion = "24.05";
+          #
+          # pkgs = import nixpkgs {
+          #   inherit system;
+          #   overlays = [ (nixgl.overlay) ];
+          #   config = { allowUnfree = true; };
+          # };
+          # pkgs_unstable = import nixpkgs_unstable {
+          #   inherit system;
+          # };
+          #
+          # lib = pkgs.lib;
 
           devShells.default = pkgs.mkShell {
             nativeBuildInputs = with pkgs; [ terraform wget bat nixpkgs-fmt ];
@@ -71,6 +85,5 @@
             nativeBuildInputs = with pkgs; [ curl ];
           };
         };
-      # flake = { };
-    };
+    });
 }

@@ -4,6 +4,7 @@
     , pkgs
     , system
     , lib
+    , inputs
     , ...
     }:
     let
@@ -13,13 +14,13 @@
     in
     {
       flake.homeConfigurations = builtins.mapAttrs
-        (user: _user-attr: home-manager.lib.homeManagerConfiguration {
+        (user: _user-attr: inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit (config) self system stateVersion user pkgs_unstable; };
           modules = [
             ./home
           ] ++ [
-            nix-index-database.hmModules.nix-index
+            inputs.nix-index-database.hmModules.nix-index
           ];
         })
         config.users;
