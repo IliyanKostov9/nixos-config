@@ -11,10 +11,10 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-artwork = {
-      url = "github:NixOS/nixos-artwork";
-      flake = false;
-    };
+    # nixos-artwork = {
+    #   url = "github:NixOS/nixos-artwork";
+    #   flake = false;
+    # };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -39,20 +39,17 @@
   };
 
 
-  outputs = { flake-parts, nixpkgs, nixpkgs_unstable, nixgl, ... }@inputs:
-    flake-parts.lib.mkFlake { inherit inputs; } ({ self, lib, ... }: {
+  outputs = { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-linux" ];
 
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
-        # ./flakes/per-system.nix
+        ./flakes/per-system.nix
         ./flakes/system.nix
-
-        # { inherit perSystem; }
-        # inputs.mission-control.flakeModule
-        # ./flakes/user.nix
-        # self.flakeModules.default
+        ./flakes/user.nix
         # inputs.devshell.flakeModule
+        # inputs.mission-control.flakeModule
       ];
-    });
+    };
 }

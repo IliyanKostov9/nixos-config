@@ -1,6 +1,6 @@
-{ nixpkgs, nixgl, ... }:
+{ nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, ... }:
 
-{
+rec {
   system = "x86_64-linux";
   stateVersion = "24.05";
 
@@ -12,11 +12,10 @@
   pkgs_unstable = import nixpkgs_unstable {
     inherit system;
   };
-
-  lib = pkgs.lib;
+  # lib = pkgs.lib;
 
   config_system = import ../config.nix {
-    inherit (inputs) nixos-hardware;
+    inherit nixos-hardware;
   };
   users = config_system.users;
 }

@@ -1,20 +1,16 @@
-{ config, inputs, pkgs, system, stateVersion, ... }:
+{ inputs, ... }:
 
 let
-
-  imports = [
-    ./shared.nix
-  ];
+  shared = import ./shared.nix
+    { inherit (inputs) nixpkgs nixpkgs_unstable nixgl nixos-hardware; };
 in
 {
   flake.nixosConfigurations = builtins.mapAttrs
     (host: host_attr:
       inputs.nixpkgs.lib.nixosSystem {
         modules = host_attr.modules ++ [ inputs.nix-index-database.nixosModules.nix-index ];
-        specialArgs = { inherit pkgs system stateVersion host_attr users; };
-        # };
+        specialArgs = { inherit host_attr; inherit (shared) pkgs system stateVersion users; };
       }
     )
-    config_system.hosts;
-  # };
+    shared.config_system.hosts;
 }
