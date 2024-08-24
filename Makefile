@@ -34,6 +34,10 @@ flake-check: ## Evaluate flake and build its checks
 flake-upgrade:  ## Upgrade flake related dependencies
 	nix flake update |& nom
 
+.PHONY: flake-meta
+flake-meta: ## Check flake deps
+	nix flake metadata |& nom
+
 .PHONY: clean
 clean: ## Remove old user generations
 	nix-collect-garbage -d |& nom

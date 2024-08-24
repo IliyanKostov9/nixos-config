@@ -24,7 +24,10 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
+    # mission-control.url = "github:Platonic-Systems/mission-control";
+
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # qnr.url = "github:divnix/quick-nix-registry";
@@ -36,13 +39,17 @@
   };
 
 
-  outputs = { flake-parts, ... }@inputs:
+  outputs = { flake-parts, nixpkgs, nixpkgs_unstable, nixgl, ... }@inputs:
     flake-parts.lib.mkFlake { inherit inputs; } ({ self, lib, ... }: {
       systems = [ "x86_64-linux" "aarch64-linux" ];
-      #  nixpkgs.lib.systems.flakeExposed
+
       imports = [
-        ./flakes/per-system.nix
+        inputs.flake-parts.flakeModules.easyOverlay
+        # ./flakes/per-system.nix
         ./flakes/system.nix
+
+        # { inherit perSystem; }
+        # inputs.mission-control.flakeModule
         # ./flakes/user.nix
         # self.flakeModules.default
         # inputs.devshell.flakeModule
