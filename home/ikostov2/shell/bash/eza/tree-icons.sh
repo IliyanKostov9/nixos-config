@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-eza --header --icons --all --tree --level="${1:-1}"
+eza --header --icons --tree --level="${1:-1}"
 
