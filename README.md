@@ -31,9 +31,9 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 ## 🏝️ Environment
 
 <p align="center">
-<img src="./assets/scrn_setup1.png" alt="Environment screenshot 1" width="800"/>
+<img src="./assets/env_screenshot1.png" alt="Environment screenshot 1" width="800"/>
 
-<img src="./assets/scrn_setup2.png" alt="Environment screenshot 2" width="800"/>
+<img src="./assets/env_screenshot2.png" alt="Environment screenshot 2" width="800"/>
 </p>
 
 <details>
