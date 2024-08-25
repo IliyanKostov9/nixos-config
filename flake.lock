@@ -186,22 +186,6 @@
         "type": "github"
       }
     },
-    "nixos-artwork": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719676066,
-        "narHash": "sha256-78FyNyGtDZogJUWcCT6A/T2MK87nGN/muC7ANH1b1V8=",
-        "owner": "NixOS",
-        "repo": "nixos-artwork",
-        "rev": "de03e887f03037e7e781a678b57fdae603c9ca20",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixos-artwork",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1723310128,
@@ -283,7 +267,6 @@
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database_2",
         "nixgl": "nixgl",
-        "nixos-artwork": "nixos-artwork",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs_unstable": "nixpkgs_unstable"

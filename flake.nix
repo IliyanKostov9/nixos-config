@@ -11,10 +11,10 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-artwork = {
-      url = "github:NixOS/nixos-artwork";
-      flake = false;
-    };
+    # nixos-artwork = {
+    #   url = "github:NixOS/nixos-artwork";
+    #   flake = false;
+    # };
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -24,7 +24,10 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     flake-parts.url = "github:hercules-ci/flake-parts";
+    # mission-control.url = "github:Platonic-Systems/mission-control";
+
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # qnr.url = "github:divnix/quick-nix-registry";
@@ -35,49 +38,18 @@
     # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
-  outputs = { self, nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, flake-parts, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      stateVersion = "24.05";
 
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ (nixgl.overlay) ];
-        config = { allowUnfree = true; };
-      };
-      pkgs_unstable = import nixpkgs_unstable {
-        inherit system;
-      };
+  outputs = { flake-parts, ... }@inputs:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" ];
 
-      lib = pkgs.lib;
-      config = import ./config.nix {
-        inherit nixos-hardware;
-      };
-      users = config.users;
-    in
-    with inputs; {
-      # Enter that shell with nix develop --command zsh
-      # devShells.x86_64-linux.default = (import ./shell.nix {inherit pkgs;});
-
-      homeConfigurations = builtins.mapAttrs
-        (user: _user-attr: home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit self system stateVersion user pkgs_unstable; };
-          modules = [
-            ./home
-          ] ++ [
-            nix-index-database.hmModules.nix-index
-          ];
-        })
-        config.users;
-
-      nixosConfigurations = builtins.mapAttrs
-        (host: host_attr:
-          nixpkgs.lib.nixosSystem {
-            modules = host_attr.modules ++ [ nix-index-database.nixosModules.nix-index ];
-            specialArgs = { inherit system stateVersion host_attr users; };
-          }
-        )
-        config.hosts;
+      imports = [
+        inputs.flake-parts.flakeModules.easyOverlay
+        ./flakes/per-system.nix
+        ./flakes/system.nix
+        ./flakes/user.nix
+        # inputs.devshell.flakeModule
+        # inputs.mission-control.flakeModule
+      ];
     };
 }

@@ -33,7 +33,7 @@
         decorations_theme_variant = "Dark";
         dynamic_padding = false;
         decorations = "full";
-        opacity = 0.1;
+        opacity = 0.5;
         startup_mode = "Maximized";
         option_as_alt = "OnlyLeft";
 
