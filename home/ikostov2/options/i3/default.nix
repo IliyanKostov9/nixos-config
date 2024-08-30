@@ -39,8 +39,8 @@
 
           # PC
           "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
-          "${mod}+${alt}+End" = "exec reboot";
-          "${mod}+${alt}+Delete" = "exec i3-msg exit";
+          "${mod}+${alt}+Page_Up" = "exec reboot";
+          "${mod}+${alt}+End" = "exec i3-msg exit";
           ## Audio
           "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
           "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
