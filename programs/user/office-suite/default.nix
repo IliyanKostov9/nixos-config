@@ -1,7 +1,9 @@
-{ pkgs
-, config
-, ...
+{ ...
 }:
 {
-  imports = [ ./drawio ./libreoffice ];
+  imports = [
+    ./drawio
+    ./libreoffice
+    ./mail
+  ];
 }

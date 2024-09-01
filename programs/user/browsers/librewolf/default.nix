@@ -1,5 +1,4 @@
 { pkgs
-, config
 , ...
 }:
 {
@@ -8,6 +7,9 @@
     enable = true;
     settings =
       {
+        # about:config
+        "identity.fxaccounts.enabled " = true;
+
         "browser.contentblocking.category" = "strict";
         "browser.download.panel.shown" = true;
         "middlemouse.paste" = false;
