@@ -5,6 +5,7 @@
     [
       ./system
       ./bluetooth
+      ./nvidia
       ./cups
       ./firmware
       ./locale

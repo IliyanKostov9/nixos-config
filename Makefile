@@ -16,7 +16,7 @@ help:  ## help target to show available commands with information
 
 .PHONY: home-update
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#${DEFAULT_USER} --show-trace --impure --option eval-cache false |& nom
+	home-manager switch --flake .#${DEFAULT_USER} --show-trace --impure --option eval-cache false #|& nom
 	
 .PHONY: sys-update-pd
 sys-update-pd: ## Build system configuration for host: personal desktop
@@ -24,11 +24,11 @@ sys-update-pd: ## Build system configuration for host: personal desktop
 		
 .PHONY: sys-update-wl
 sys-update-wl: ## Build system configuration for host: work laptop 
-	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --option eval-cache false 	
+	sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --impure --option eval-cache false #|& nom
 
 .PHONY: flake-check
 flake-check: ## Evaluate flake and build its checks
-	nix flake check |& nom
+	nix flake check --all-systems |& nom
 	
 .PHONY: flake-upgrade
 flake-upgrade:  ## Upgrade flake related dependencies
