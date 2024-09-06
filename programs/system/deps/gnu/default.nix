@@ -21,5 +21,6 @@
     libuuid
     binutils
     ncurses
+    vulkan-tools
   ];
 }
