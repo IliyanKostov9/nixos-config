@@ -40,17 +40,17 @@ flake-meta: ## Check flake deps
 
 .PHONY: clean
 clean: ## Remove old user generations
-	nix-collect-garbage -d |& nom
+	nix-collect-garbage -d #|& nom
 
 .PHONY: clean-su
 clean-su: ## Remove old system generations
-	sudo nix-collect-garbage -d |& nom
+	sudo nix-collect-garbage -d #|& nom
 
 .PHONY: show-gen
 show-gen: ## Show NixOS generations
 	nix-env --list-generations |& nom
 
-.PHONY: deduplicate
-deduplicate: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
-	nix store optimise |& nom
+.PHONY: unique
+unique: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
+	nix store optimise #|& nom
 
