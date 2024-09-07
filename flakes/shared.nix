@@ -1,6 +1,7 @@
 { nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, ... }:
 
 rec {
+
   system = "x86_64-linux";
   stateVersion = "24.05";
 
