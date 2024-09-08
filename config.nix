@@ -27,6 +27,7 @@
 
       boot = {
         kernelModules = [ "kvm-amd" ];
+        kernelParams = [ "nvidia-drm.fbdev=1" ];
         extraModulePackages = [ ];
         loader = {
           systemd-boot.enable = true;
@@ -37,7 +38,6 @@
           luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
 
           availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
-          kernelModules = [ ];
         };
       };
 
@@ -77,7 +77,7 @@
         kernelModules = [ "kvm-intel" ];
         extraModulePackages = [ ];
         # Intel Graphics
-        kernelParams = [ "i915.force_probe=3e9b" ];
+        kernelParams = [ "i915.force_probe=3e9b" "nvidia-drm.fbdev=1" ];
         loader = {
           systemd-boot.enable = true;
           efi.canTouchEfiVariables = true;
