@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 
 {
   hardware.nvidia.prime = {
