@@ -31,7 +31,7 @@
           "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
-          "${alt}+v" = "exec --no-startup-id gpaste-client ui";
+          "${alt}+v" = "exec --no-startup-id copyq menu";
 
           # Keyboard layout
           "${mod}+space" = "exec setxkbmap -layout us";
@@ -163,6 +163,7 @@
       # Enable border color
       # for_window [class="^.*"] border pixel 2
       for_window [class="blueman-manager"] floating enable
+      for_window [class="copyq"] focus
 
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -177,6 +178,9 @@
 
       # Enable transparency
       exec --no-startup-id picom -b
+
+      # Autostart clipboard
+      exec --no-startup-id copyq
 
       tiling_drag modifier titlebar
     '';

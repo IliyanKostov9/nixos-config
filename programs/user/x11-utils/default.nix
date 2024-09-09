@@ -1,13 +1,10 @@
-{ pkgs
-, config
-, ...
-}:
+{ ... }:
 {
   imports = [
     ./flameshot
     ./gpick
-    ./gpaste
     ./normcap
+    ./clipboard
     #./gnomeExtensions
   ];
 }
