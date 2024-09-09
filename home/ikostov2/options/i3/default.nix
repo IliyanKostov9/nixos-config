@@ -31,7 +31,7 @@
           "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
           "${alt}+f" = "exec flameshot gui";
           "${alt}+n" = "exec normcap";
-          "${alt}+v" = "exec --no-startup-id gpaste-client ui";
+          "${alt}+v" = "exec --no-startup-id copyq menu";
 
           # Keyboard layout
           "${mod}+space" = "exec setxkbmap -layout us";
@@ -177,6 +177,9 @@
 
       # Enable transparency
       exec --no-startup-id picom -b
+
+      # Autostart clipboard
+      exec --no-startup-id copyq
 
       tiling_drag modifier titlebar
     '';
