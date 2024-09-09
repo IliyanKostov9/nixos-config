@@ -163,6 +163,7 @@
       # Enable border color
       # for_window [class="^.*"] border pixel 2
       for_window [class="blueman-manager"] floating enable
+      for_window [class="copyq"] focus
 
       exec --no-startup-id dex --autostart --environment i3
       exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
