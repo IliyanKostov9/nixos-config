@@ -19,7 +19,15 @@ in
     };
     oh-my-zsh = {
       enable = true;
-      theme = "kardan"; # simple
+      theme = "af-magic";
+      # af-magic
+      # wezm
+      # norm
+      # muse
+      # macovsky
+      # lambda
+      # kolo ?
+      # jnrowe
       plugins = [
         "gh"
       ];
