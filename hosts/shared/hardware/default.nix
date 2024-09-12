@@ -4,6 +4,7 @@
   imports =
     [
       ./system
+      ./mount
       ./bluetooth
       ./nvidia
       ./cups

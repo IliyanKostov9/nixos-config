@@ -12,7 +12,6 @@ rec {
   pkgs_unstable = import nixpkgs_unstable {
     inherit system;
   };
-  # lib = pkgs.lib;
 
   config_system = import ../config.nix {
     inherit nixos-hardware;
