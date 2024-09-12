@@ -1,9 +1,9 @@
 { pkgs
-, config
 , ...
 }:
 {
   imports = [
+    ./macos
     # ./kitty
     ./alacritty
     # ./terminator
