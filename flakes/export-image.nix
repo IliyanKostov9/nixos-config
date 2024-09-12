@@ -6,7 +6,7 @@ let
 in
 {
   flake.packages.x86_64-linux = builtins.mapAttrs
-    (host: host_attr:
+    (_: host_attr:
       inputs.nixos-generators.nixosGenerate
         {
           system = "x86_64-linux";

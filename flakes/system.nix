@@ -6,7 +6,7 @@ let
 in
 {
   flake.nixosConfigurations = builtins.mapAttrs
-    (host: host_attr:
+    (_: host_attr:
       inputs.nixpkgs.lib.nixosSystem {
         modules = host_attr.modules ++ [ inputs.nix-index-database.nixosModules.nix-index ];
         specialArgs = { inherit host_attr; inherit (shared) pkgs system stateVersion users; };
