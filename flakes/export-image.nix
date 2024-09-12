@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  shared = import ../../flakes/shared.nix
+  shared = import ./shared.nix
     { inherit (inputs) nixpkgs nixpkgs_unstable nixgl nixos-hardware; };
 in
 {
