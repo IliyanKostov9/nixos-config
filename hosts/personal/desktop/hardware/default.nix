@@ -3,7 +3,7 @@
 {
   imports =
     [
-      ./boot
+      ./mount
       ./displayManager
       ./systemd
       ../../../shared/hardware

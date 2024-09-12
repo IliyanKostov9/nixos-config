@@ -19,10 +19,7 @@
         ./hosts/personal/desktop
         nixos-hardware.nixosModules.common-pc
         nixos-hardware.nixosModules.common-cpu-amd
-        # nixos-hardware.nixosModules.common-gpu-nvidia
       ];
-      swapDevices =
-        [{ device = "/dev/disk/by-uuid/85b811ca-f0aa-452e-a679-549dcf80e1ba"; }];
 
       boot = {
         kernelModules = [ "kvm-amd" ];
@@ -46,8 +43,6 @@
         ./hosts/work/laptop
         # nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
-      swapDevices =
-        [{ device = "/dev/disk/by-uuid/2ae616fa-be73-4075-be15-72f4fb245205"; }];
 
       boot = {
         kernelModules = [ "kvm-intel" ];
