@@ -37,26 +37,6 @@
           availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
         };
       };
-
-      fileSystems = {
-        "/" =
-          {
-            device = "/dev/disk/by-uuid/71627bb4-1f3d-4b0c-9b74-aef3944e9eae";
-            fsType = "ext4";
-          };
-        # Mount the hard disk
-        "/mnt/external_hd" = {
-          device = "/dev/sda1";
-          fsType = "ntfs";
-          options = [ "users" "nofail" "rw" ];
-        };
-        "/boot" =
-          {
-            device = "/dev/disk/by-uuid/BB8A-DF92";
-            fsType = "vfat";
-            options = [ "fmask=0022" "dmask=0022" ];
-          };
-      };
     };
 
     hosts-work-laptop = {
@@ -82,20 +62,6 @@
           luks.devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
           availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
         };
-      };
-      # fileSystems."/".device = mkDefault "/dev/disk/by-label/nixos";
-      fileSystems = {
-        "/" =
-          {
-            device = "/dev/disk/by-uuid/1389313b-f022-47fa-b319-86f679186c5c";
-            fsType = "ext4";
-          };
-        "/boot" =
-          {
-            device = "/dev/disk/by-uuid/E602-D2C4";
-            fsType = "vfat";
-            options = [ "fmask=0022" "dmask=0022" ];
-          };
       };
     };
   };
