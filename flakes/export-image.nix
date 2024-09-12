@@ -5,7 +5,7 @@ let
     { inherit (inputs) nixpkgs nixpkgs_unstable nixgl nixos-hardware; };
 in
 {
-  packages.x86_64-linux = builtins.mapAttrs
+  flake.packages.x86_64-linux = builtins.mapAttrs
     (host: host_attr:
       inputs.nixos-generators.nixosGenerate
         {

@@ -37,6 +37,7 @@
   };
 
   outputs = { flake-parts, ... }@inputs:
+
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-linux" ];
 
@@ -45,9 +46,10 @@
         ./flakes/per-system.nix
         ./flakes/system.nix
         ./flakes/user.nix
-        ./hosts/server/export-image.nix
+        ./flakes/export-image.nix
         # inputs.devshell.flakeModule
         # inputs.mission-control.flakeModule
       ];
     };
+
 }
