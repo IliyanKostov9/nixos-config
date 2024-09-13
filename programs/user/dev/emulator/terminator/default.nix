@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.terminator;
+in
 {
-  home.packages = with pkgs; [ terminator ];
+  options.modules.terminator = { enable = mkEnableOption "terminator"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.terminator
+    ];
+  };
+
 }
+

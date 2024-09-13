@@ -1,12 +1,9 @@
-{ pkgs
-, config
-, ...
-}:
+{ ... }:
 {
   imports = [
-    ./neovim 
-    # ./vscodium
-    # ./android-studio
-    # ./texstudio
+    ./neovim
+    ./vscodium
+    ./android-studio
+    ./texstudio
   ];
 }

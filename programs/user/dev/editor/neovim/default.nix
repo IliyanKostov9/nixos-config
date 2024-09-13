@@ -1,7 +1,14 @@
-{ pkgs_unstable
-, lib
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.neovim;
+in
 {
- home.packages = with pkgs_unstable; [ neovim ];
+  options.modules.neovim = { enable = mkEnableOption "neovim"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.neovim
+    ];
+  };
+
 }

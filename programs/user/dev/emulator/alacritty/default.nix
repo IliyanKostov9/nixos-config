@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.alacritty;
+in
 {
-  home.packages = with pkgs; [ alacritty ];
+  options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.alacritty
+    ];
+  };
+
 }
+

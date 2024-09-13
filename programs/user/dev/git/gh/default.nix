@@ -1,15 +1,14 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.tmux;
+let cfg = config.modules.gh;
 in
 {
-  options.modules.tmux = { enable = mkEnableOption "tmux"; };
+  options.modules.gh = { enable = mkEnableOption "gh"; };
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.tmux
+      pkgs.gh
     ];
   };
 
 }
-

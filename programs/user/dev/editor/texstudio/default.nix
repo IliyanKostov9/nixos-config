@@ -1,7 +1,14 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.texstudio;
+in
 {
-  home.packages = with pkgs; [ texstudio ];
+  options.modules.texstudio = { enable = mkEnableOption "texstudio"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.texstudio
+    ];
+  };
+
 }
