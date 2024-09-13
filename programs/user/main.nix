@@ -1,6 +1,7 @@
 { lib, ... }:
 
 {
+
   user-programs = {
     api = import ./api { inherit lib; };
     browsers = import ./browsers { inherit lib; };
@@ -12,4 +13,6 @@
     translate = import ./translate { inherit lib; };
     vpn = import ./vpn { inherit lib; };
   };
+
+
 }

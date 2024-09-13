@@ -5,7 +5,6 @@ let
 in
 rec {
   main.user-programs = {
-    api.postman.enabled = true;
     browsers.librewolf.enabled = true;
     dbms.dbeaver-bin.enabled = true;
     file-compression.p7zip.enabled = true;
