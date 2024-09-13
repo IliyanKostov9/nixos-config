@@ -1,4 +1,4 @@
-{ config, lib, pkgs, users, ... }:
+{ pkgs, users, ... }:
 
 {
   users.users = builtins.mapAttrs

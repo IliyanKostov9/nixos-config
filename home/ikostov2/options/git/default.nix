@@ -5,7 +5,6 @@
     enable = true;
     userName = "iliyan-kostov";
     userEmail = "iliyan.kostov@email.ikostov.org";
-
     lfs.enable = false;
 
     extraConfig = {

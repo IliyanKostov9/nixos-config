@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ config, ... }:
 {
   programs.alacritty = {
     enable = true;
@@ -20,7 +20,6 @@
             mouse = "Right";
             action = "PasteSelection";
           }
-
         ];
       };
 

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, stateVersion, user, ... }:
+{ lib, pkgs, stateVersion, user, ... }:
 let
   username = user;
   all-programs = (import ../programs/user/utils.nix { inherit pkgs lib; }).all-programs;
