@@ -1,5 +1,6 @@
 # ❄️ NixOS configuration ❄️
 
+[![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
 [![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/iliyan-kostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
 [![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml)

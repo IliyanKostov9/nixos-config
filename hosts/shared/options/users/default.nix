@@ -2,7 +2,7 @@
 
 {
   users.users = builtins.mapAttrs
-    (user: user-attr: {
+    (_: user-attr: {
       inherit (user-attr) isNormalUser description extraGroups;
       shell = pkgs.zsh;
     }
