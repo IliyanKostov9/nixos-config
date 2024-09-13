@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      podman-tui
+      pkgs.podman-tui
     ];
   };
 

@@ -14,6 +14,7 @@
     ./gpu
     ./office-suite
     ./translate
+    ./password-manager
     ./virtualisation
     ./window-manager
     ./x11-utils

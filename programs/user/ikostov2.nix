@@ -65,7 +65,6 @@
     qemu.enable = true;
     virt-manager.enable = true;
     lazydocker.enable = true;
-    podman-tui.enable = true;
 
     # VPN
     openvpn3.enable = true;
