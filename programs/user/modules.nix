@@ -6,6 +6,9 @@
     ./cloud
     ./dbms
     ./dev
+    ./file-compression
+    ./gpu
+    ./iot
     ./vpn
     ./gpu
     ./office-suite

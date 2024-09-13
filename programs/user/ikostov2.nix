@@ -39,6 +39,22 @@
     git-extras.enable=true;
     gitmoji-cli.enable=true;
 
+    # File compression
+    p7zip.enable=true;
+
+    # IoT
+    qFlipper.enable=true;
+
+    # Media
+    gimp.enable=true;
+    obs-studio.enable=true;
+    vlc.enable=true;
+
+    # Office suuite
+    drawio.enable=true;
+    libreoffice.enable=true;
+    mail.enable=true;
+
     # VPN
     openvpn3.enable=true;
   };
