@@ -1,9 +1,11 @@
-name: ❄️ Nix test❄️
+name: ❄️ Nix test ❄️
 
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
+
+  # pull_request:
+  #   branches:
+  #     - none
 
 jobs:
   tests:
