@@ -3,7 +3,7 @@
   imports = [
     ./editor
     ./emulator
-    ./git-extras
+    ./git
     ./command-line
   ];
 }

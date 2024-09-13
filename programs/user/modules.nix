@@ -6,6 +6,7 @@
     ./cloud
     ./dbms
     ./dev
+    ./vpn
     ./gpu
     ./office-suite
     ./virtualisation

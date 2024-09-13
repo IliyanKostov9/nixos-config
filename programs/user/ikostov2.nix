@@ -38,5 +38,8 @@
     gh.enable=true;
     git-extras.enable=true;
     gitmoji-cli.enable=true;
+
+    # VPN
+    openvpn3.enable=true;
   };
 }
