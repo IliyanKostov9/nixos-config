@@ -1,10 +1,6 @@
-{ lib
-, ...
-}:
+{ ... }:
 {
-  dialect = {
-    enabled = lib.mkDefault false;
-  };
-
+  imports = [
+    ./dialect
+  ];
 }
-

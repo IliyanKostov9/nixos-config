@@ -4,7 +4,7 @@
     ./flameshot
     ./gpick
     ./normcap
-    ./clipboard
-    #./gnomeExtensions
+    ./copyq
+    ./gnome-software
   ];
 }

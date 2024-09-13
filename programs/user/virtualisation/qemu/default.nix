@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.qemu;
+in
 {
-  home.packages = with pkgs; [ qemu ];
+  options.modules.qemu = { enable = mkEnableOption "qemu"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.qemu
+    ];
+  };
+
 }
+

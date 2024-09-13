@@ -1,10 +1,6 @@
-{ lib
-, ...
-}:
+{ ... }:
 {
-  keepass = {
-    enabled = lib.mkDefault false;
-  };
-
+  imports = [
+    ./keepass
+  ];
 }
-
