@@ -4,6 +4,7 @@
 {
   imports = [
     ./api
+    ./browsers
     ./cloud
     ./dev
     ./gpu
@@ -18,6 +19,9 @@
     postman.enable = true;
     librewolf.enable=true;
     chromium.enable=true;
-    microsoft-edge.enable=true;
+
+    awscli2.enable = true;
+    azure-cli.enable=true;
+    rclone.enable=true;
   };
 }
