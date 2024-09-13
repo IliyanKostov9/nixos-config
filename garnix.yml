@@ -1,6 +1,6 @@
 servers:
   - configuration: personalMachine
     deployment:
-      # type: on-pull-request
       type: on-branch
+      # type: on-pull-request
       branch: master
