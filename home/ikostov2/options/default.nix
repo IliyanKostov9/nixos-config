@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./chromium
+    ./librewolf
     ./git
     ./i3
     ./alacritty
