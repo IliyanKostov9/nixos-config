@@ -1,4 +1,9 @@
 { ... }:
 {
-  imports = [./gh ./git-extras ./gitmoji-cli ];
+  imports = [
+    ./git
+    ./gh
+    ./git-extras
+    ./gitmoji-cli
+  ];
 }

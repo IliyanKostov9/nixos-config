@@ -139,6 +139,8 @@ This configuration structure was inspired by contributions from the Nix communit
 - [wimpysworld](https://github.com/wimpysworld/nix-config)
 - [ryan4yin](https://github.com/ryan4yin/nix-config)
 - [simple-homemanager](https://github.com/evertras/simple-homemanager)
+- [chayward1] (https://github.com/chayward1/dotfiles)
+- [notusknot] (https://github.com/notusknot/dotfiles-nix/tree/main)
 
 ### 🔍️ References 
 

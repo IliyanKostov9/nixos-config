@@ -1,27 +1,27 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
+
 let cfg = config.modules.git;
 in
 {
-  options.modules.git = { enable = mkEnableOption "git"; };
-
-  config = mkIf cfg.enable {
+  options.modules.git = {
+    enable = mkEnableOption "git";
 
     userName = mkOption {
-      type = string;
+      type = str;
       default = "john-doe";
     };
     userEmail = mkOption {
-      type = string;
+      type = str;
       default = "john.doe@mail.com";
     };
+  };
 
-
+  config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      # userName = "iliyan-kostov";
-      # userEmail = "iliyan.kostov@email.ikostov.org";
-      inherit userName UserEmail;
+      inherit (cfg) userName userEmail;
       lfs.enable = false;
 
       extraConfig = {

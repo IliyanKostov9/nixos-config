@@ -27,17 +27,25 @@
     gnupg.enable = true;
     sops.enable = true;
 
-    # Dev -> Command-line
+    # Dev -> Editor
     neovim.enable = true;
 
     # Dev -> Emulator
     alacritty.enable = true;
     tmux.enable = true;
 
-    # Dev -> Emulator
+    # Dev -> Git
+    git.enable = true;
+    git.userName = "iliyan-kostov";
+    git.userEmail = "iliyan.kostov@email.ikostov.org";
+
     gh.enable = true;
     git-extras.enable = true;
     gitmoji-cli.enable = true;
+
+    # Dev - > Shells
+    bash.enable = true;
+    zsh.enable = true;
 
     # File compression
     p7zip.enable = true;
@@ -79,8 +87,5 @@
     normcap.enable = true;
     gtk.enable = true;
 
-    # Shells
-    bash.enable = true;
-    zsh.enable = true;
   };
 }
