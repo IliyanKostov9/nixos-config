@@ -1,6 +1,15 @@
-{ pkgs
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.flameshot;
+in
 {
-  home.packages = with pkgs; [ flameshot ];
+  options.modules.flameshot = { enable = mkEnableOption "flameshot"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.flameshot
+    ];
+  };
+
 }
+

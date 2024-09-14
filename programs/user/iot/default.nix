@@ -1,10 +1,6 @@
-{ lib
-, ...
-}:
+{ ... }:
 {
-  qFlipper = {
-    enabled = lib.mkDefault false;
-  };
-
+  imports = [
+    ./qFlipper
+  ];
 }
-

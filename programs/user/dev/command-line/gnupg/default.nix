@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.gnupg;
+in
 {
-  home.packages = with pkgs; [ gnupg ];
+  options.modules.gnupg = { enable = mkEnableOption "gnupg"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.gnupg
+      pkgs.pinentry-qt
+    ];
+  };
+
 }

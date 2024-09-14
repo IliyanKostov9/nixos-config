@@ -1,22 +1,21 @@
 { ... }:
 
 let
-  locale-bg = "bg_BG.UTF-8";
+  locale = "bg_BG.UTF-8";
 in
 {
   time.timeZone = "Europe/Sofia";
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = locale-bg;
-    LC_IDENTIFICATION = locale-bg;
-    LC_MEASUREMENT = locale-bg;
-    LC_MONETARY = locale-bg;
-    LC_NAME = locale-bg;
-    LC_NUMERIC = locale-bg;
-    LC_PAPER =
-      locale-bg;
-    LC_TELEPHONE = locale-bg;
-    LC_TIME = locale-bg;
+    LC_ADDRESS = locale;
+    LC_IDENTIFICATION = locale;
+    LC_MEASUREMENT = locale;
+    LC_MONETARY = locale;
+    LC_NAME = locale;
+    LC_NUMERIC = locale;
+    LC_PAPER = locale;
+    LC_TELEPHONE = locale;
+    LC_TIME = locale;
   };
 }

@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.vscodium;
+in
 {
-  home.packages = with pkgs; [ vscodium ];
+  options.modules.vscodium = { enable = mkEnableOption "vscodium"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.vscodium
+    ];
+  };
+
 }
+

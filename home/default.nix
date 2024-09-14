@@ -1,23 +1,17 @@
-{ lib, config, pkgs, stateVersion, user, ... }:
+{ lib, pkgs, stateVersion, user, ... }:
 let
   username = user;
-  all-programs = (import ../programs/user/utils.nix { inherit pkgs lib; }).all-programs;
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   imports = [
-    ../programs/user/${username}.nix
-    ./${username}/dotfiles
-    ./${username}/themes
-    ./${username}/options
+    ./${username}
   ];
   home = {
     homeDirectory = "/home/${username}";
     inherit username stateVersion;
   };
-  home.packages = all-programs;
 
+  nixpkgs.config.allowUnfree = true;
   # Disable annoying home news
   news.display = "silent";
   # Let home Manager install and manage itself.

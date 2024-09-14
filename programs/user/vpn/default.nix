@@ -1,10 +1,6 @@
-{ lib
-, ...
-}:
+{ ... }:
 {
-  openvpn3 = {
-    enabled = lib.mkDefault false;
-  };
-
+  imports = [
+    ./openvpn3
+  ];
 }
-

@@ -1,44 +1,54 @@
-{ pkgs
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.librewolf;
+in
 {
-  home.packages = with pkgs; [ librewolf ];
-  programs.librewolf = {
-    enable = true;
-    settings =
-      {
-        # about:config
-        "identity.fxaccounts.enabled " = true;
+  options.modules.librewolf = { enable = mkEnableOption "librewolf"; };
 
-        "browser.contentblocking.category" = "strict";
-        "browser.download.panel.shown" = true;
-        "middlemouse.paste" = false;
-        "general.autoScroll" = true;
-        # "gnomeTheme.hideSingleTab" = true;
-        "browser.tabs.warnOnClose" = true;
-        # "browser.toolbars.bookmarks.visibility" = "never";
-        "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.librewolf
+    ];
 
-        "browser.urlbar.suggest.bookmark" = true;
-        "browser.urlbar.suggest.engines" = true;
-        "browser.urlbar.suggest.history" = true;
-        "browser.urlbar.suggest.openpage" = true;
-        "browser.urlbar.suggest.topsites" = true;
+    programs.librewolf = {
+      enable = true;
+      settings =
+        {
+          # about:config
+          "identity.fxaccounts.enabled " = true;
 
-        "webgl.disabled" = false;
-        "privacy.resistRingerprinting" = false;
-        # Box browser window
-        "privacy.resistFingerprinting.letterboxing" = false;
+          "browser.contentblocking.category" = "strict";
+          "browser.download.panel.shown" = true;
+          "middlemouse.paste" = false;
+          "general.autoScroll" = true;
+          # "gnomeTheme.hideSingleTab" = true;
+          "browser.tabs.warnOnClose" = true;
+          # "browser.toolbars.bookmarks.visibility" = "never";
+          "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
 
-        "privacy.clearOnShutdown.history" = false;
-        "privacy.clearOnShutdown.downloads" = false;
-        "privacy.clearOnShutdown.cookies" = false;
-        "network.cookie.lifetimePolicy" = 0;
+          "browser.urlbar.suggest.bookmark" = true;
+          "browser.urlbar.suggest.engines" = true;
+          "browser.urlbar.suggest.history" = true;
+          "browser.urlbar.suggest.openpage" = true;
+          "browser.urlbar.suggest.topsites" = true;
 
-        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "geo.enabled" = false;
+          "webgl.disabled" = false;
+          "privacy.resistRingerprinting" = false;
+          # Box browser window
+          "privacy.resistFingerprinting.letterboxing" = false;
 
-        # "browser.policies.runOncePerModification.extensionsInstall" 
-      };
+          "privacy.clearOnShutdown.history" = false;
+          "privacy.clearOnShutdown.downloads" = false;
+          "privacy.clearOnShutdown.cookies" = false;
+          "network.cookie.lifetimePolicy" = 0;
+
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          "geo.enabled" = false;
+
+          # "browser.policies.runOncePerModification.extensionsInstall" 
+        };
+    };
+
   };
+
 }

@@ -1,8 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.wine;
+in
 {
-  home.packages = with pkgs; [ wineWowPackages.waylandFull winetricks ];
-}
+  options.modules.wine = { enable = mkEnableOption "wine"; };
 
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      wineWowPackages.waylandFull
+      winetricks
+    ];
+  };
+
+}

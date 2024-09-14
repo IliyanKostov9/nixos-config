@@ -1,7 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.gpick;
+in
 {
-  home.packages = with pkgs; [ gpick ];
+  options.modules.gpick = { enable = mkEnableOption "gpick"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.gpick
+    ];
+  };
+
 }
+

@@ -1,10 +1,8 @@
-{ pkgs
-, config
-, ...
-}:
+{ ... }:
 {
   imports = [
-    ./terminal-ui
+    ./lazydocker
+    ./podman-tui
     ./qemu
     ./virt-manager
   ];

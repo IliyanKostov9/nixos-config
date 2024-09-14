@@ -1,7 +1,14 @@
-{ pkgs
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.sops;
+in
 {
-  home.packages = with pkgs; [ sops ];
+  options.modules.sops = { enable = mkEnableOption "sops"; };
+
+  config = mkIf cfg.enable {
+    home.packages = [
+      pkgs.sops
+    ];
+  };
+
 }

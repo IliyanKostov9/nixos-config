@@ -1,8 +1,7 @@
-{ lib
-, ...
-}:
+{ ... }:
+
 {
-  postman = {
-    enabled = lib.mkDefault false;
-  };
+  imports = [
+    ./postman
+  ];
 }

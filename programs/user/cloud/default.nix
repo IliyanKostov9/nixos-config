@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ ...}:
 {
-  imports = [ ./awscli ./rclone ./azure-cli ];
+  imports = [ ./awscli2 ./rclone ./azure-cli ];
 }

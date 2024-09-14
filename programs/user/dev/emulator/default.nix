@@ -1,10 +1,10 @@
 { ... }:
 {
   imports = [
-    # ./macos
-    # ./kitty
+    ./macos
+    ./kitty
     ./alacritty
-    # ./terminator
+    ./terminator
     ./tmux
   ];
 }
