@@ -13,12 +13,13 @@ in
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";
     git-cache = "git rm -r --cached";
+    git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
 
     # Python
     py = "python3";
     py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
     venv = "eval $(pdm venv activate)";
-    pdmm = "pdm install && pdm sync --clean";
+    pdm-sync = "pdm install && pdm sync --clean";
     pdm-export = "pdm export -o requirements.txt";
     py-nix-sh = "nix-shell '${shell_path}/nix/python/shell.nix'";
 
