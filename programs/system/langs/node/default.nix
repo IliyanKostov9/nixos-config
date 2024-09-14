@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.node_22
+      pkgs.nodejs_22
     ];
   };
 

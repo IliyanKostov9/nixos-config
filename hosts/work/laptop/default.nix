@@ -48,7 +48,6 @@
     vim.enable=true;
 
     # Languages
-    dotnet.enable=true;
     go.enable=true;
     jdk.enable=true;
     lua.enable=true;
