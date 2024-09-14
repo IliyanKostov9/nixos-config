@@ -1,8 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.gradle;
+in
 {
-  environment.systemPackages = with pkgs; [ gradle ];
+  options.modules.gradle = { enable = mkEnableOption "gradle"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.gradle
+    ];
+  };
+
 }
+

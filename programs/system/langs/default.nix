@@ -3,10 +3,10 @@
 {
   imports = [
     ./ansible
-    # ./dotnet
+    ./dotnet
     ./go
     ./jdk
-    # ./kotlin
+    ./kotlin
     ./lua
     ./node
     ./python

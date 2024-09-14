@@ -1,8 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.curl;
+in
 {
-  environment.systemPackages = with pkgs; [ curl ];
+  options.modules.curl = { enable = mkEnableOption "curl"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.curl
+    ];
+  };
+
 }
+

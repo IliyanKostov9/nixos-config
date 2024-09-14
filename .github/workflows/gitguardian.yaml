@@ -1,6 +1,9 @@
 name: GitGuardian scan
 
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - master
 
 jobs:
   scanning:
@@ -10,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+          fetch-depth: 0
       - name: GitGuardian scan
         uses: GitGuardian/ggshield-action@v1.29.0
         env:

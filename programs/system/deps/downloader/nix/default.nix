@@ -1,12 +1,9 @@
-{ pkgs
-, config
-, ...
-}:
+{ ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    # nix-update
-    nix-output-monitor
-    # comma
+  imports = [
+    ./comma
+    ./nix-update
+    ./nix-output-monitor
   ];
 }

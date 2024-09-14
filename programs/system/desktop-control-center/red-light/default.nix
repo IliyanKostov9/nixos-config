@@ -1,10 +1,13 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.red-light;
+in
 {
-  environment.systemPackages = with pkgs; [ redshift ];
-}
+  options.modules.red-light = { enable = mkEnableOption "red-light"; };
 
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ redshift ];
+  };
+
+}
 

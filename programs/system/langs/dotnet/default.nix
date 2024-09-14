@@ -1,10 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.dotnet;
+in
 {
-  environment.systemPackages = with pkgs; [
-    dotnetCorePackages.sdk_8_0_1xx
-  ];
+  options.modules.dotnet = { enable = mkEnableOption "dotnet"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.dotnetCorePackages.sdk_8_0_1xx
+    ];
+  };
+
 }
+

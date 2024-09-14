@@ -7,7 +7,6 @@
     ./gnu
     ./lib
     ./security
-    ./shell
     ./utils
   ];
 }

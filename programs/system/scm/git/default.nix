@@ -1,8 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.git;
+in
 {
-  environment.systemPackages = with pkgs; [ git ];
-} 
+  options.modules.git = { enable = mkEnableOption "git"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.git
+    ];
+  };
+
+}
+

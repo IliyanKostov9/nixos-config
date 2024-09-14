@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.maven;
+let cfg = config.modules.comma;
 in
 {
-  options.modules.maven = { enable = mkEnableOption "maven"; };
+  options.modules.comma = { enable = mkEnableOption "comma"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.maven
+      pkgs.comma
     ];
   };
 

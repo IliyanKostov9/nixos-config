@@ -1,10 +1,16 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.jdk;
+in
 {
-  environment.systemPackages = with pkgs; [
-    jdk19
-  ];
-} 
+  options.modules.jdk = { enable = mkEnableOption "jdk"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.jdk19
+    ];
+  };
+
+}
+
+

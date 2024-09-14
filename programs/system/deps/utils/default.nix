@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./copy
+    ./xclip
     ./fzf
-    ./ux
+    ./file-listing
     ./zip
     ./monitor
   ];

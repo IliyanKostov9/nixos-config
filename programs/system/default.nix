@@ -1,7 +1,4 @@
-{ pkgs
-, config
-, ...
-}:
+{ ... }:
 {
   imports = [
     ./build-tools
