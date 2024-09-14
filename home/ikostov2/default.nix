@@ -3,7 +3,7 @@
 }:
 {
   imports = [
-    ./modules.nix
+    ../../programs/user
   ];
 
   config.modules = {
@@ -77,5 +77,10 @@
     flameshot.enable = true;
     gpick.enable = true;
     normcap.enable = true;
+    gtk.enable = true;
+
+    # Shells
+    bash.enable = true;
+    zsh.enable = true;
   };
 }

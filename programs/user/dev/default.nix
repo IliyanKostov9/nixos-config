@@ -5,5 +5,6 @@
     ./emulator
     ./git
     ./command-line
+    ./shell
   ];
 }

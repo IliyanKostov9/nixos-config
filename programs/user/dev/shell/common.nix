@@ -1,7 +1,8 @@
 { pkgs, ... }:
 
 let
-  shell_path = "/etc/nixos/home/ikostov2/shell";
+
+  shell_path = "/etc/nixos/programs/user/dev/shell/bin";
 in
 {
   shellAliases = {
