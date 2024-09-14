@@ -1,11 +1,14 @@
 { lib, pkgs, stateVersion, user, ... }:
+let
+  username = user;
+in
 {
   imports = [
-    ./${user}
+    ./${username}
   ];
   home = {
-    homeDirectory = "/home/${user}";
-    inherit user stateVersion;
+    homeDirectory = "/home/${username}";
+    inherit username stateVersion;
   };
 
   nixpkgs.config.allowUnfree = true;
