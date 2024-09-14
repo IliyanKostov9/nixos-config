@@ -1,7 +1,13 @@
-{ pkgs
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.zip;
+in
 {
-  environment.systemPackages = with pkgs; [ unzip bzip2 xz zlib ];
+  options.modules.zip = { enable = mkEnableOption "zip"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ unzip bzip2 xz zlib ];
+  };
+
 }
+

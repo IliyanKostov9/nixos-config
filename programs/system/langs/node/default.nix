@@ -1,10 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.node;
+in
 {
-  environment.systemPackages = with pkgs; [
-    nodejs_22
-  ];
-} 
+  options.modules.node = { enable = mkEnableOption "node"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.node_22
+    ];
+  };
+
+}
+

@@ -1,16 +1,21 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.k8s;
+in
 {
-  environment.systemPackages = with pkgs; [
-    # kompose
-    kubectl
-    kubectx
-    kubernetes-helm
-    kind
-    k3s
-    k9s
-  ];
+  options.modules.k8s = { enable = mkEnableOption "k8s"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      # kompose
+      kubectl
+      kubectx
+      kubernetes-helm
+      kind
+      k3s
+      # k9s
+    ];
+  };
+
 }
+

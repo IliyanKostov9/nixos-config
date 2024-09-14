@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.maven;
+let cfg = config.modules.xclip;
 in
 {
-  options.modules.maven = { enable = mkEnableOption "maven"; };
+  options.modules.xclip = { enable = mkEnableOption "xclip"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.maven
+      pkgs.xclip
     ];
   };
 

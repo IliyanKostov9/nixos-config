@@ -3,6 +3,6 @@
 {
   imports = [
     ./git
-    # ./subversion
+    ./subversion
   ];
 }

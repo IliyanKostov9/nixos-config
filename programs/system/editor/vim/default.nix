@@ -1,8 +1,15 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.vim;
+in
 {
-  environment.systemPackages = with pkgs; [ vim ];
+  options.modules.vim = { enable = mkEnableOption "vim"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.vim
+    ];
+  };
+
 }
+

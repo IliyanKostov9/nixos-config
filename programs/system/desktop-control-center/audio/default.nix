@@ -1,13 +1,16 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.audio;
+in
 {
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-    pamixer
-  ];
-}
+  options.modules.audio = { enable = mkEnableOption "audio"; };
 
+  config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      pavucontrol
+      pamixer
+    ];
+  };
+
+}
 

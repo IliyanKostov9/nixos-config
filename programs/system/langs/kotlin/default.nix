@@ -1,10 +1,16 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.kotlin;
+in
 {
-  environment.systemPackages = with pkgs; [
-    kotlin
-  ];
-} 
+  options.modules.kotlin = { enable = mkEnableOption "kotlin"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.kotlin
+    ];
+  };
+
+}
+
+

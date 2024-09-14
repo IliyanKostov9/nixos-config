@@ -1,7 +1,15 @@
-{ pkgs, ... }:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.terraform;
+in
 {
-  environment.systemPackages = with pkgs; [
-    terraform
-  ];
-} 
+  options.modules.terraform = { enable = mkEnableOption "terraform"; };
+
+  config = mkIf cfg.enable {
+    environment.systemPackages = [
+      pkgs.terraform
+    ];
+  };
+
+}
+

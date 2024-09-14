@@ -1,25 +1,30 @@
-{ pkgs
-, config
-, ...
-}:
-
+{ pkgs, lib, config, ... }:
+with lib;
+let cfg = config.modules.gnu;
+in
 {
-  # Should probabbly remove this part and move it to lib package
-  environment.systemPackages = with pkgs; [
-    gnutar
-    gcc
-    gnumake
-    glibc
-    gdb
-    libgccjit
-    patchelf
-    readline
-    tcl
-    tk
-    libffi
-    patch
-    libuuid
-    binutils
-    ncurses
-  ];
+  options.modules.gnu = { enable = mkEnableOption "gnu"; };
+
+  config = mkIf cfg.enable {
+    # Should probabbly remove this part and move it to lib package
+    environment.systemPackages = with pkgs; [
+      gnutar
+      gcc
+      gnumake
+      glibc
+      gdb
+      libgccjit
+      patchelf
+      readline
+      tcl
+      tk
+      libffi
+      patch
+      libuuid
+      binutils
+      ncurses
+    ];
+  };
+
 }
+

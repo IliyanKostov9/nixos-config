@@ -1,13 +1,13 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.maven;
+let cfg = config.modules.sqlite;
 in
 {
-  options.modules.maven = { enable = mkEnableOption "maven"; };
+  options.modules.sqlite = { enable = mkEnableOption "sqlite"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.maven
+      pkgs.sqlite
     ];
   };
 
