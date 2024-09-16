@@ -1,15 +1,16 @@
 { inputs, ... }:
 {
-  perSystem = { pkgs, lib, system, ... }:
+  perSystem = { pkgs, ... }:
     {
-      devShells.${system}.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [ python3 ];
+      devShells = {
+        default = pkgs.mkShell {
+          nativeBuildInputs = with pkgs; [ python3 ];
+        };
+        terraform = pkgs.mkShell {
+          buildInputs = [
+            pkgs.terragrunt
+          ];
+        };
       };
-
-      # devShells.terraform = pkgs.mkShell {
-      #   buildInputs = [
-      #     pkgs.terragrunt
-      #   ];
-      # };
     };
 }
