@@ -37,6 +37,7 @@ in
           # jnrowe
           plugins = [
             "gh"
+            "direnv"
           ];
         };
         inherit (common) shellAliases;
@@ -51,6 +52,14 @@ in
           bindkey "^A" vi-beginning-of-line
           bindkey "^E" vi-end-of-line
         '';
+      };
+
+      programs = {
+        direnv = {
+          enable = true;
+          enableZshIntegration = true;
+          nix-direnv.enable = true;
+        };
       };
     }
   );

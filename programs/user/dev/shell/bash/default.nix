@@ -22,6 +22,14 @@ in
         inherit (common) shellAliases;
         inherit (common) sessionVariables;
       };
+
+      programs = {
+        direnv = {
+          enable = true;
+          enableBashIntegration = true;
+          nix-direnv.enable = true;
+        };
+      };
     }
   );
 }
