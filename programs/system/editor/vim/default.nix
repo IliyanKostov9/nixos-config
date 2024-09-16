@@ -8,7 +8,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.vim
-      pkgs.sqlite
     ];
   };
 

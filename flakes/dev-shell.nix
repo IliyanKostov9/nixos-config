@@ -6,10 +6,10 @@
         nativeBuildInputs = with pkgs; [ python3 ];
       };
 
-      devShells.terraform = pkgs.mkShell {
-        buildInputs = [
-          pkgs.terragrunt
-        ];
-      };
+      # devShells.terraform = pkgs.mkShell {
+      #   buildInputs = [
+      #     pkgs.terragrunt
+      #   ];
+      # };
     };
 }

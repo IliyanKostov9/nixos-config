@@ -19,5 +19,4 @@
     "$path"opt/viber/Viber
   '';
 
-
 })
