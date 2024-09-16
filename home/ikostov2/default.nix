@@ -23,17 +23,17 @@
     # DBMS
     dbeaver.enable = true;
 
-    # Dev -> Command-line
+    # Dev > Command-line
     sops.enable = true;
 
-    # Dev -> Editor
+    # Dev > Editor
     neovim.enable = true;
 
-    # Dev -> Emulator
+    # Dev > Emulator
     alacritty.enable = true;
     tmux.enable = true;
 
-    # Dev -> Git
+    # Dev > Git
     git.enable = true;
     git.userName = "iliyan-kostov";
     git.userEmail = "iliyan.kostov@email.ikostov.org";

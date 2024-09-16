@@ -3,7 +3,6 @@
 
   config.modules = {
 
-    # Downloader
     curl.enable = true;
     home-manager.enable = true;
     nix-output-monitor.enable = true;

@@ -8,7 +8,6 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # kompose
-      kubectl
       kubectx
       kubernetes-helm
       kind
