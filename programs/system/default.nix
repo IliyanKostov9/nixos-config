@@ -6,7 +6,6 @@
     ./deps
     ./desktop-control-center
     ./editor
-    ./langs
     ./scm
   ];
 }

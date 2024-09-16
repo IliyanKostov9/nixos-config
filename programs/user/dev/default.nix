@@ -6,5 +6,6 @@
     ./git
     ./command-line
     ./shell
+    ./langs
   ];
 }

@@ -47,6 +47,15 @@
     bash.enable = true;
     zsh.enable = true;
 
+    # Dev > Langs
+    go.enable = true;
+    jdk.enable = true;
+    lua.enable = true;
+    node.enable = true;
+    python.enable = true;
+    rust.enable = true;
+    terraform.enable = true;
+
     # File compression
     p7zip.enable = true;
 
