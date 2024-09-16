@@ -6,7 +6,7 @@ in
   options.modules.gradle = { enable = mkEnableOption "gradle"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.gradle
     ];
   };

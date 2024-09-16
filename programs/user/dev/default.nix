@@ -7,5 +7,8 @@
     ./command-line
     ./shell
     ./langs
+    ./container
+    ./build-tools
+    ./dbms
   ];
 }

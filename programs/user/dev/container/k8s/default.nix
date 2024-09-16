@@ -6,7 +6,7 @@ in
   options.modules.k8s = { enable = mkEnableOption "k8s"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       # kompose
       kubectl
       kubectx

@@ -15,9 +15,6 @@ in
     git-cache = "git rm -r --cached";
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
 
-    # Other programs
-    viber = "${shell_path}/bash/find/viber.sh";
-
     # Python
     py = "python3";
     py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";

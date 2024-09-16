@@ -6,7 +6,7 @@ in
   options.modules.docker = { enable = mkEnableOption "docker"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       docker
       docker-buildx
       docker-credential-helpers

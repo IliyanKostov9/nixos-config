@@ -6,8 +6,11 @@ in
   options.modules.gnu = { enable = mkEnableOption "gnu"; };
 
   config = mkIf cfg.enable {
-    # Should probabbly remove this part and move it to lib package
+    # NOTE: Should probabbly remove this part and move it to lib package
     environment.systemPackages = with pkgs; [
+      gnupg
+      pinentry-qt
+
       gnutar
       gcc
       gnumake

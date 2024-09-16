@@ -4,7 +4,6 @@
     ./api
     ./browsers
     ./cloud
-    ./dbms
     ./dev
     ./file-compression
     ./gpu

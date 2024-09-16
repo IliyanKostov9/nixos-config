@@ -6,7 +6,7 @@ in
   options.modules.maven = { enable = mkEnableOption "maven"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.maven
     ];
   };

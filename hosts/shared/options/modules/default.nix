@@ -1,17 +1,9 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 {
 
   config.modules = {
 
-    # Build tools
-    maven.enable = true;
-    gradle.enable = true;
-
-    # Container
-    docker.enable = true;
-    k8s.enable = true;
-
-    # Deps -> Downloader
+    # Downloader
     curl.enable = true;
     home-manager.enable = true;
     nix-output-monitor.enable = true;

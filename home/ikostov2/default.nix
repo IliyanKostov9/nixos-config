@@ -24,7 +24,6 @@
     dbeaver.enable = true;
 
     # Dev -> Command-line
-    gnupg.enable = true;
     sops.enable = true;
 
     # Dev -> Editor
@@ -55,6 +54,14 @@
     python.enable = true;
     rust.enable = true;
     terraform.enable = true;
+
+    # Dev > Build tools
+    maven.enable = true;
+    gradle.enable = true;
+
+    # Dev >  Container
+    docker.enable = true;
+    k8s.enable = true;
 
     # File compression
     p7zip.enable = true;

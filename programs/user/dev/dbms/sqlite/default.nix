@@ -6,7 +6,7 @@ in
   options.modules.sqlite = { enable = mkEnableOption "sqlite"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.sqlite
     ];
   };
