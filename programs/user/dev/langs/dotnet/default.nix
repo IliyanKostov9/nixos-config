@@ -6,7 +6,7 @@ in
   options.modules.dotnet = { enable = mkEnableOption "dotnet"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.dotnetCorePackages.sdk_8_0_1xx
     ];
   };

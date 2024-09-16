@@ -6,7 +6,7 @@ in
   options.modules.terraform = { enable = mkEnableOption "terraform"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.terraform
     ];
   };

@@ -1,5 +1,6 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 {
+
   config.modules = {
 
     # Build tools

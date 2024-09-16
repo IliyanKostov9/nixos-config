@@ -6,7 +6,7 @@ in
   options.modules.jdk = { enable = mkEnableOption "jdk"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.jdk19
     ];
   };

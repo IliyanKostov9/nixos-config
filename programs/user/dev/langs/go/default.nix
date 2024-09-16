@@ -6,7 +6,7 @@ in
   options.modules.go = { enable = mkEnableOption "go"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       go
       delve
     ];

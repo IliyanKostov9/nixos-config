@@ -7,9 +7,7 @@ in
 
   config = mkIf cfg.enable {
 
-    # TODO: Move zsh elesewhere
-    environment.shells = with pkgs; [ zsh ];
-    environment.systemPackages = with pkgs; [
+    home.packages = with pkgs; [
       #pyenv  # broken: unable to install python
       python3
       python311Packages.pip

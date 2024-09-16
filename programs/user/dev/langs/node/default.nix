@@ -6,7 +6,7 @@ in
   options.modules.node = { enable = mkEnableOption "node"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
+    home.packages = [
       pkgs.nodejs_22
     ];
   };
