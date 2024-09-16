@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "flake:nixos-hardware";
-    nix-alien.url = "github:thiagokokada/nix-alien";
+    # nix-alien.url = "github:thiagokokada/nix-alien";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -43,7 +43,7 @@
 
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
-        ./flakes/per-system.nix
+        ./flakes/dev-shell.nix
         ./flakes/system.nix
         ./flakes/user.nix
         ./flakes/export-image.nix

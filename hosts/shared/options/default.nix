@@ -2,6 +2,7 @@
 {
   imports =
     [
+      ./modules
       ./nixpkgs
       ./blueman
       ./env-vars

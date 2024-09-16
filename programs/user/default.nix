@@ -4,20 +4,18 @@
     ./api
     ./browsers
     ./cloud
-    ./dbms
     ./dev
     ./file-compression
     ./gpu
     ./iot
-    ./vpn
     ./media
-    ./gpu
     ./office-suite
-    ./translate
     ./password-manager
+    ./translate
     ./virtualisation
+    ./vpn
+    ./win-api
     ./window-manager
     ./x11-utils
-    ./win-api
   ];
 }

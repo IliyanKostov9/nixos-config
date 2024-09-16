@@ -1,12 +1,13 @@
 { ... }:
 {
   imports = [
-    ./build-tools
-    ./container
-    ./deps
     ./desktop-control-center
+    ./downloader
     ./editor
-    ./langs
+    ./gnu
+    ./lib
     ./scm
+    ./security
+    ./utils
   ];
 }

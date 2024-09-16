@@ -23,18 +23,17 @@
     # DBMS
     dbeaver.enable = true;
 
-    # Dev -> Command-line
-    gnupg.enable = true;
+    # Dev > Command-line
     sops.enable = true;
 
-    # Dev -> Editor
+    # Dev > Editor
     neovim.enable = true;
 
-    # Dev -> Emulator
+    # Dev > Emulator
     alacritty.enable = true;
     tmux.enable = true;
 
-    # Dev -> Git
+    # Dev > Git
     git.enable = true;
     git.userName = "iliyan-kostov";
     git.userEmail = "iliyan.kostov@email.ikostov.org";
@@ -46,6 +45,23 @@
     # Dev - > Shells
     bash.enable = true;
     zsh.enable = true;
+
+    # Dev > Langs
+    go.enable = true;
+    jdk.enable = true;
+    lua.enable = true;
+    node.enable = true;
+    python.enable = true;
+    rust.enable = true;
+    terraform.enable = true;
+
+    # Dev > Build tools
+    maven.enable = true;
+    gradle.enable = true;
+
+    # Dev >  Container
+    docker.enable = true;
+    k8s.enable = true;
 
     # File compression
     p7zip.enable = true;
