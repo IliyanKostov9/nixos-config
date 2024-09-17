@@ -11,6 +11,7 @@ rec {
   };
   pkgs_unstable = import nixpkgs_unstable {
     inherit system;
+    config = { allowUnfree = true; };
   };
 
   config_system = import ../config.nix {

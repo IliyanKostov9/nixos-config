@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs_unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.terraform;
 in
@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.terraform
+      pkgs_unstable.terraform
     ];
   };
 

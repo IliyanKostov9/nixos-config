@@ -12,7 +12,6 @@ in
     git-root = "cd $( git rev-parse --show-toplevel )";
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";
-    git-cache = "git rm -r --cached";
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
 
     # Other
