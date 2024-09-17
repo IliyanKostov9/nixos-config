@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs_unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.gh;
 in
@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.gh
+      pkgs_unstable.gh
     ];
   };
 
