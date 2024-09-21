@@ -9,8 +9,6 @@ in
     home.packages = with pkgs; [
       i3
       picom
-      # TODO: Move it to themes module
-      rose-pine-icon-theme
     ];
 
     xsession.windowManager.i3 = {
@@ -201,22 +199,87 @@ in
           blocks = [
             {
               block = "music";
-              format = "{$icon $combo $play |}";
+              format = "{$icon $combo |}";
+              seek_step_secs = 10;
               separator = " – ";
+              click = [
+                {
+                  button = "left";
+                  action = "play_pause";
+                  widget = ".";
+                }
+                {
+                  button = "middle";
+                  widget = ".";
+                  action = "toggle_format";
+                }
+                {
+                  button = "back";
+                  action = "seek_backward";
+                }
+                {
+                  button = "up";
+                  action = "volume_up";
+                  widget = ".";
+                }
+                {
+                  button = "down";
+                  action = "seek_backward";
+                }
+                {
+                  button = "forward";
+                  action = "seek_foward";
+                }
+              ];
             }
             {
               block = "focused_window";
               format = "$title.str(max_w:180)| ";
             }
+            # {
+            #   block = "nvidia_gpu";
+            #   interval = 1;
+            #   format = " $icon $name $power";
+            # }
             {
               block = "net";
-              format = "$icon {$signal_strength SSID @$frequency|Wired connection} via $device ";
+              format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
               interval = 5;
+              missing_format = " x ";
+              inactive_format = " $icon ";
+            }
+            {
+              block = "external_ip";
+              format = "$country_flag ";
+              with_network_manager = true;
+              interval = 300;
+              use_ipv4 = true;
+            }
+            {
+              block = "uptime";
+              interval = 3600;
+            }
+            {
+              block = "docker";
+              format = " $icon $running/$total ";
+            }
+            {
+              block = "privacy";
+              driver = [{
+                name = "pipewire";
+                display = "nickname";
+              }];
             }
             {
               block = "battery";
               interval = 30;
               format = " $icon $percentage $time"; # $power
+              full_format = " $icon";
+              info = 60;
+              good = 60;
+              warning = 30;
+              critical = 15;
+              full_threshold = 95;
               missing_format = "";
             }
             {
@@ -224,14 +287,14 @@ in
               format = " $icon $brightness |";
               invert_icons = true;
               device = "intel_backlight";
+              missing_format = "";
             }
             {
               block = "bluetooth";
-              mac = "CC:98:8B:D1:40:88";
-              format = {
-                full = "$icon $percentage";
-                short = "";
-              };
+              # mac = "CC:98:8B:D1:40:88";
+              mac = "08:BF:B8:4C:CD:5F"; # For personal desktop
+              format = " $icon $name{$percentage $battery_icon $available|} ";
+              disconnected_format = " $icon{ $name|} ";
               click = [
                 {
                   button = "left";
@@ -247,6 +310,7 @@ in
             }
             {
               block = "sound";
+              show_volume_when_muted = true;
               headphones_indicator = true;
               click = [
                 {
