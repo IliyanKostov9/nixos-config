@@ -62,7 +62,9 @@ in
         };
 
         font = {
-          size = 8;
+          # 8 for laptop
+          # 12 for desktop
+          size = 12;
           offset = {
             x = 0;
             y = 0;
