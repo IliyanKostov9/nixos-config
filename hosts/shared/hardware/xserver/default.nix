@@ -1,9 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   services = {
     # Enable for using I3
-    displayManager.sddm.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      theme = lib.mkDefault "catppuccin-macchiato";
+      package = pkgs.kdePackages.sddm;
+    };
     libinput.enable = true;
     # Enable the X11 windowing system.
     xserver = {
