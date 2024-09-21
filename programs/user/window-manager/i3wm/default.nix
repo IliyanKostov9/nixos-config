@@ -9,8 +9,6 @@ in
     home.packages = with pkgs; [
       i3
       picom
-      # TODO: Move it to themes module
-      rose-pine-icon-theme
     ];
 
     xsession.windowManager.i3 = {

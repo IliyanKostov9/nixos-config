@@ -1,6 +1,5 @@
 { config, ... }:
 {
-
   config.modules = {
 
     curl.enable = true;

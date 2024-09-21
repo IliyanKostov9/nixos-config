@@ -59,5 +59,5 @@ show-gen: ## Show NixOS generations
 
 .PHONY: unique
 unique: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
-	sudo -v && sudo nix store optimise |& nom
+	nix store optimise
 
