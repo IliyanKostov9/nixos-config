@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.pcmanfm;
+let cfg = config.modules.catppuccin-sddm;
 in
 {
-  options.modules.pcmanfm = { enable = mkEnableOption "catppuccin-sddm"; };
+  options.modules.catppuccin-sddm = { enable = mkEnableOption "catppuccin-sddm"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
