@@ -8,6 +8,7 @@ in
   config = mkIf cfg.enable {
     home.packages = [
       pkgs_unstable.awscli2
+      pkgs.aws-sam-cli
     ];
   };
 
