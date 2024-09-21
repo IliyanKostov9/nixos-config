@@ -61,7 +61,7 @@
 
     # Dev >  Container
     docker.enable = true;
-    k8s.enable = true;
+    k8s.enable = false;
 
     # File compression
     p7zip.enable = true;

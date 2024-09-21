@@ -13,6 +13,7 @@ in
 
       gnutar
       gcc
+      cmake
       gnumake
       glibc
       gdb
