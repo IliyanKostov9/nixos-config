@@ -6,10 +6,14 @@ in
   options.modules.gtk = { enable = mkEnableOption "gtk"; };
 
   config = mkIf cfg.enable {
+    # If the cursor theme doesn't work, then change it manually at: ~/.icons/default/index.theme
     gtk = {
       enable = true;
       theme = {
         name = "Adwaita";
+      };
+      cursorTheme = {
+        name = "DMZ-White";
       };
       iconTheme = {
         name = "rose-pine";
@@ -19,7 +23,7 @@ in
         gtk-application-prefer-dark-theme = true;
         gtk-icon-theme-name = "rose-pine";
         gtk-theme-name = "Adwaita";
-        gtk-cursor-theme-name = "Adwaita";
+        gtk-cursor-theme-name = "DMZ-White";
 
         gtk-font-name = "Sans 10";
         gtk-cursor-theme-size = 0;
