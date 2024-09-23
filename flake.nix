@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "flake:nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nix-alien.url = "github:thiagokokada/nix-alien";
 
     home-manager = {
