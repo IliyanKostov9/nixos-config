@@ -259,17 +259,10 @@ in
               block = "uptime";
               interval = 3600;
             }
-            {
-              block = "docker";
-              format = " $icon $running/$total ";
-            }
-            {
-              block = "privacy";
-              driver = [{
-                name = "pipewire";
-                display = "nickname";
-              }];
-            }
+            # {
+            #   block = "docker";
+            #   format = " $icon $running/$total ";
+            # }
             {
               block = "battery";
               interval = 30;
