@@ -14,9 +14,10 @@
   runScript = "bash";
 
   shellHook = ''
-    echo "Entering hook..."
-    path=$(fd "Viber-fhs" /nix/store/ -t d -1)
-    "$path"opt/viber/Viber
+     echo "Entering hook..."
+     # path=$(fd "Viber-fhs" /nix/store/ -t d -1)
+     # "$path"opt/viber/Viber
+    "$(find /nix/store -type f -path "*/opt/viber/Viber" -print -quit)"
   '';
 
 })
