@@ -56,8 +56,8 @@
     terraform.enable = true;
 
     # Dev > Build tools
-    maven.enable = true;
-    gradle.enable = true;
+    maven.enable = false;
+    gradle.enable = false;
 
     # Dev >  Container
     docker.enable = true;
@@ -102,6 +102,5 @@
     gpick.enable = true;
     normcap.enable = true;
     gtk.enable = true;
-
   };
 }

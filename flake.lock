@@ -54,21 +54,6 @@
         "type": "github"
       }
     },
-    "mission-control": {
-      "locked": {
-        "lastModified": 1718815759,
-        "narHash": "sha256-hzLbxU580EaxKmkbQkiaMF3NoIzrcmVryGul5WSQatA=",
-        "owner": "Platonic-Systems",
-        "repo": "mission-control",
-        "rev": "db5e2cc39c6799b301412d69182b9221c65146a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Platonic-Systems",
-        "repo": "mission-control",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -210,7 +195,6 @@
       "inputs": {
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
-        "mission-control": "mission-control",
         "nix-index-database": "nix-index-database",
         "nixgl": "nixgl",
         "nixos-generators": "nixos-generators",
