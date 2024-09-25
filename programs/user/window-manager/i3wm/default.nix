@@ -237,11 +237,21 @@ in
               block = "focused_window";
               format = "$title.str(max_w:180)| ";
             }
-            # {
-            #   block = "nvidia_gpu";
-            #   interval = 1;
-            #   format = " $icon $name $power";
-            # }
+            {
+              block = "toggle";
+              format = " $icon ";
+              interval = 5;
+              command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
+              command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
+              command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
+              click = [
+                {
+                  button = "left";
+                  action = "toggle";
+                  widget = ".";
+                }
+              ];
+            }
             {
               block = "net";
               format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
