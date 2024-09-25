@@ -23,9 +23,7 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     flake-parts.url = "github:hercules-ci/flake-parts";
-    mission-control.url = "github:Platonic-Systems/mission-control";
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # qnr.url = "github:divnix/quick-nix-registry";
@@ -47,8 +45,6 @@
         ./flakes/system.nix
         ./flakes/user.nix
         ./flakes/export-image.nix
-        inputs.mission-control.flakeModule
-        ./flakes/mission-control.nix
         # inputs.devshell.flakeModule
       ];
     };
