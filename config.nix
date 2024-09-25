@@ -39,7 +39,7 @@
       auto-login-user = "ikostov2";
       modules = [
         ./hosts/work/laptop
-        # nixos-hardware.nixosModules.lenovo-thinkpad-p53
+        nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 
       boot = {

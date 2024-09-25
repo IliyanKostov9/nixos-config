@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs_unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "flake:nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # nix-alien.url = "github:thiagokokada/nix-alien";
 
     home-manager = {
@@ -23,9 +23,7 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     flake-parts.url = "github:hercules-ci/flake-parts";
-    # mission-control.url = "github:Platonic-Systems/mission-control";
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # qnr.url = "github:divnix/quick-nix-registry";
@@ -48,7 +46,6 @@
         ./flakes/user.nix
         ./flakes/export-image.nix
         # inputs.devshell.flakeModule
-        # inputs.mission-control.flakeModule
       ];
     };
 

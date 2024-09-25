@@ -47,6 +47,7 @@ in
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
             "${mod}+${alt}+Page_Up" = "exec reboot";
             "${mod}+${alt}+End" = "exec i3-msg exit";
+            "${mod}+${alt}+Home" = "exec systemctl suspend";
             ## Audio
             "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
             "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
@@ -236,11 +237,25 @@ in
               block = "focused_window";
               format = "$title.str(max_w:180)| ";
             }
-            # {
-            #   block = "nvidia_gpu";
-            #   interval = 1;
-            #   format = " $icon $name $power";
-            # }
+            {
+              block = "uptime";
+              interval = 3600;
+            }
+            {
+              block = "toggle";
+              format = " $icon ";
+              interval = 5;
+              command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
+              command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
+              command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
+              click = [
+                {
+                  button = "left";
+                  action = "toggle";
+                  widget = ".";
+                }
+              ];
+            }
             {
               block = "net";
               format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
@@ -255,21 +270,10 @@ in
               interval = 300;
               use_ipv4 = true;
             }
-            {
-              block = "uptime";
-              interval = 3600;
-            }
-            {
-              block = "docker";
-              format = " $icon $running/$total ";
-            }
-            {
-              block = "privacy";
-              driver = [{
-                name = "pipewire";
-                display = "nickname";
-              }];
-            }
+            # {
+            #   block = "docker";
+            #   format = " $icon $running/$total ";
+            # }
             {
               block = "battery";
               interval = 30;
