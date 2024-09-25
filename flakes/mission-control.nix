@@ -1,7 +1,8 @@
 { ... }:
 
 {
-  mission-control.scripts = {
+  flake.mission-control.scripts = {
+    # wrapperName = "-";
     viber = {
       description = "Start viber";
       exec = ''
