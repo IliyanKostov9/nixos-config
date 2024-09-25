@@ -238,6 +238,10 @@ in
               format = "$title.str(max_w:180)| ";
             }
             {
+              block = "uptime";
+              interval = 3600;
+            }
+            {
               block = "toggle";
               format = " $icon ";
               interval = 5;
@@ -265,10 +269,6 @@ in
               with_network_manager = true;
               interval = 300;
               use_ipv4 = true;
-            }
-            {
-              block = "uptime";
-              interval = 3600;
             }
             # {
             #   block = "docker";
