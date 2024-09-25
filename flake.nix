@@ -25,12 +25,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
-    # qnr.url = "github:divnix/quick-nix-registry";
     # devshell.url = "github:numtide/devshell";
     # devshell.inputs.nixpkgs.follows = "nixpkgs";
-    # nil.url = "github:oxalica/nil";
-    # nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay";
-    # nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs = { flake-parts, ... }@inputs:
