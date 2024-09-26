@@ -56,8 +56,8 @@
     terraform.enable = true;
 
     # Dev > Build tools
-    maven.enable = true;
-    gradle.enable = true;
+    maven.enable = false;
+    gradle.enable = false;
 
     # Dev >  Container
     docker.enable = true;
@@ -73,6 +73,7 @@
     gimp.enable = true;
     obs-studio.enable = true;
     vlc.enable = true;
+    calibre.enable = true;
 
     # Office suuite
     drawio.enable = true;
@@ -102,6 +103,5 @@
     gpick.enable = true;
     normcap.enable = true;
     gtk.enable = true;
-
   };
 }
