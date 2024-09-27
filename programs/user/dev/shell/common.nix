@@ -15,7 +15,7 @@ in
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
 
     # Other
-    viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
+    # viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
 
     # Python
     py = "python3";

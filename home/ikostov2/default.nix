@@ -107,5 +107,6 @@
     gpick.enable = true;
     normcap.enable = true;
     gtk.enable = true;
+    gnome-disable-default-apps.enable = true;
   };
 }
