@@ -8,6 +8,7 @@ in
   config = mkIf cfg.enable {
     programs.nix-ld = {
       dev.enable = true;
+      # dev.enable = true;
       libraries = with pkgs; [
         steam-run # Needed for MarkdownPreview Neovim to run
         fuse
