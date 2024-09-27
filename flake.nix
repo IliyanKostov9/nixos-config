@@ -23,10 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # devshell.url = "github:numtide/devshell";
