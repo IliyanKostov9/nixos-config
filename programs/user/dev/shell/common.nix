@@ -37,7 +37,7 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "cd $(find . -type d | fzf)";
+    bz = "cd '$(find . -type d | fzf)'";
     ls = "eza";
     lstr = "${shell_path}/bash/eza/tree-icons.sh";
   };
