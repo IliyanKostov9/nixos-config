@@ -9,6 +9,8 @@
 
     # Deps -> GNU
     gnu.enable = true;
+    # Disable default gnome apps
+    gnome-disable-default-apps.enable = true;
 
     # Deps -> Lib
     lib.enable = true;
