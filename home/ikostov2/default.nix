@@ -8,6 +8,8 @@
 
   config.modules = {
 
+    nix-alien.enable = false;
+
     # API
     postman.enable = true;
 
@@ -25,6 +27,7 @@
 
     # Dev > Command-line
     sops.enable = true;
+    bat.enable = true;
 
     # Dev > Editor
     neovim.enable = true;
@@ -74,6 +77,7 @@
     obs-studio.enable = true;
     vlc.enable = true;
     calibre.enable = true;
+    viber.enable = true;
 
     # Office suuite
     drawio.enable = true;
@@ -93,6 +97,7 @@
 
     # VPN
     openvpn3.enable = true;
+    cisco-anyconnect.enable = true;
 
     # Window manager
     i3wm.enable = true;

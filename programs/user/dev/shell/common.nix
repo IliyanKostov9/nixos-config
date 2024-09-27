@@ -15,7 +15,7 @@ in
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
 
     # Other
-    viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
+    # viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
 
     # Python
     py = "python3";
@@ -37,9 +37,10 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "cd $(find . -type d | fzf)";
+    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview '[[ -f {} ]] && cat {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
-    lstr = "${shell_path}/bash/eza/tree-icons.sh";
+    cat = "bat --theme='Visual Studio Dark+'";
+    lst = "${shell_path}/bash/eza/tree-icons.sh";
   };
 
   sessionVariables = {
@@ -51,3 +52,4 @@ in
     # KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 }
+

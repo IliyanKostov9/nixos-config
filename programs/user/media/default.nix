@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./viber
     ./calibre
     ./vlc
     ./gimp
