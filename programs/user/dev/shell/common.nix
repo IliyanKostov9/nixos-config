@@ -37,7 +37,7 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "cd '$(find . -type d | fzf)'";
+    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview '[[ -f {} ]] && cat {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
     lstr = "${shell_path}/bash/eza/tree-icons.sh";
   };
@@ -51,3 +51,4 @@ in
     # KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 }
+
