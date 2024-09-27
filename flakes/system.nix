@@ -8,7 +8,7 @@ in
   flake.nixosConfigurations = builtins.mapAttrs
     (_: host_attr:
       inputs.nixpkgs.lib.nixosSystem {
-        modules = host_attr.modules ++ [ inputs.nix-index-database.nixosModules.nix-index ];
+        modules = host_attr.modules ++ [ inputs.nix-index-database.nixosModules.nix-index inputs.nix-ld.nixosModules.nix-ld ];
         specialArgs = { inherit host_attr; inherit (shared) pkgs system stateVersion users; };
       }
     )

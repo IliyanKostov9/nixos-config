@@ -8,6 +8,8 @@
 
   config.modules = {
 
+    nix-alien.enable = true;
+
     # API
     postman.enable = true;
 
@@ -93,6 +95,7 @@
 
     # VPN
     openvpn3.enable = true;
+    cisco-anyconnect.enable = true;
 
     # Window manager
     i3wm.enable = true;
