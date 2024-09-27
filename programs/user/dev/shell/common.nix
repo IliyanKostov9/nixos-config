@@ -39,6 +39,7 @@ in
     clip = "xclip -selection clipboard";
     bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview '[[ -f {} ]] && cat {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
+    cat = "bat";
     lstr = "${shell_path}/bash/eza/tree-icons.sh";
   };
 

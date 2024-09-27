@@ -27,6 +27,7 @@
 
     # Dev > Command-line
     sops.enable = true;
+    bat.enable = true;
 
     # Dev > Editor
     neovim.enable = true;
