@@ -78,6 +78,7 @@
     vlc.enable = true;
     calibre.enable = true;
     viber.enable = true;
+    nomacs.enable = true;
 
     # Office suuite
     drawio.enable = true;
