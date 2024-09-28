@@ -1,7 +1,5 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.etcher;
-in
 {
   options.modules.etcher = { enable = mkEnableOption "etcher"; };
 

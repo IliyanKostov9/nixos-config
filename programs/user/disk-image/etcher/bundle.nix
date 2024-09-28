@@ -1,6 +1,5 @@
 let
   version = "1.19.21";
-  buildNumber = "303";
 in
 { pkgs ? import <nixpkgs> { } }:
 pkgs.appimageTools.wrapType2 {
