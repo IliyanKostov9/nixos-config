@@ -26,7 +26,7 @@
     dbeaver.enable = true;
 
     # RDP
-    vnc.enable = true;
+    vnc.enable = false;
 
     # Dev > Command-line
     sops.enable = true;

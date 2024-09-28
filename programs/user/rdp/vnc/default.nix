@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs_unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.vnc;
 in
@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.realvnc-vnc-viewer
+      pkgs_unstable.realvnc-vnc-viewer
     ];
   };
 
