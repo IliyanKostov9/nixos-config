@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs }:
 
 let
 
@@ -41,6 +41,10 @@ in
     ls = "eza";
     cat = "bat --theme='Visual Studio Dark+'";
     lst = "${shell_path}/bash/eza/tree-icons.sh";
+
+    # etcher = (if config.modules.etcher then "/etc/nixos/programs/user/disk-image/etcher/result/bin/etcher" else { });
+    # TODO: Fix this by assigning depending if the user has enabled etcher
+    etcher = "/etc/nixos/programs/user/disk-image/etcher/result/bin/etcher";
   };
 
   sessionVariables = {
