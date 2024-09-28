@@ -72,6 +72,8 @@
     # IoT
     qFlipper.enable = true;
 
+    etcher.enable=true;
+
     # Media
     gimp.enable = true;
     obs-studio.enable = true;

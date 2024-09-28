@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./disk-image
     ./api
     ./browsers
     ./cloud
