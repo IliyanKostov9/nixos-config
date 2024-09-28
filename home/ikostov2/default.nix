@@ -25,6 +25,9 @@
     # DBMS
     dbeaver.enable = true;
 
+    # RDP
+    vnc.enable = true;
+
     # Dev > Command-line
     sops.enable = true;
     bat.enable = true;
@@ -72,7 +75,7 @@
     # IoT
     qFlipper.enable = true;
 
-    etcher.enable=true;
+    etcher.enable = true;
 
     # Media
     gimp.enable = true;

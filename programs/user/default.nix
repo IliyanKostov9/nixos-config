@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./rdp
     ./disk-image
     ./api
     ./browsers
