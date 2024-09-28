@@ -7,7 +7,7 @@
     dconf.enable = true;
     adb.enable = true;
     firefox.enable = false;
-    gpaste.enable = true;
+    # gpaste.enable = true;
 
     neovim = {
       enable = true;

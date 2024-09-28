@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./nomacs
     ./viber
     ./calibre
     ./vlc

@@ -7,6 +7,7 @@ in
 
   config = mkIf cfg.enable {
     environment.gnome.excludePackages = with pkgs; [
+      gnome.eog # Image viewer
       epiphany # web browser
       gedit # text editor
       simple-scan # document scanner

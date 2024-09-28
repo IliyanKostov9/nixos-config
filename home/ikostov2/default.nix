@@ -25,6 +25,9 @@
     # DBMS
     dbeaver.enable = true;
 
+    # RDP
+    vnc.enable = false;
+
     # Dev > Command-line
     sops.enable = true;
     bat.enable = true;
@@ -72,12 +75,15 @@
     # IoT
     qFlipper.enable = true;
 
+    etcher.enable = true;
+
     # Media
     gimp.enable = true;
     obs-studio.enable = true;
     vlc.enable = true;
     calibre.enable = true;
     viber.enable = true;
+    nomacs.enable = true;
 
     # Office suuite
     drawio.enable = true;
