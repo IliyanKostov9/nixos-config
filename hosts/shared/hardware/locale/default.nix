@@ -1,7 +1,7 @@
 { ... }:
 
 let
-  locale = "bg_BG.UTF-8";
+  locale = "en_US.UTF-8";#"bg_BG.UTF-8";
 in
 {
   time.timeZone = "Europe/Sofia";

@@ -23,6 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     # nur.url = "github:wiedzmin/NUR";
     # sops-nix.url = "github:Mic92/sops-nix";
     # devshell.url = "github:numtide/devshell";

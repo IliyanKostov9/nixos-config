@@ -1,4 +1,4 @@
-{ nixpkgs, nixpkgs_unstable, nixgl, nixos-hardware, ... }:
+{ nixpkgs, alacritty-theme, nixpkgs_unstable, nixgl, nixos-hardware }:
 
 rec {
   system = "x86_64-linux";
@@ -6,7 +6,7 @@ rec {
 
   pkgs = import nixpkgs {
     inherit system;
-    overlays = [ (nixgl.overlay) ];
+    overlays = [ (nixgl.overlay) (alacritty-theme.overlays.default) ];
     config = { allowUnfree = true; };
   };
   pkgs_unstable = import nixpkgs_unstable {
