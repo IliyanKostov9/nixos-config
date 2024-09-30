@@ -15,7 +15,25 @@ in
       settings = {
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
-        import = [ pkgs.alacritty-theme.breeze or (throw "Alacritty theme missing!") ];
+        import = [ pkgs.alacritty-theme.gruvbox_material_hard_dark or (throw "Alacritty theme missing!") ];
+        # Favorite themes
+        ##################
+        # Dark blue
+        # > deep_space
+        # Pink
+        # > dracula
+        # > hardhacker
+        # Purple
+        # > iris
+        # Dark green
+        # > alacritty_0_12
+        # > everforest_dark
+        # > gruvbox_material_hard_dark
+        # > gruvbox_dark
+        # > kanagawa_wave
+        # > kanagawa_dragon
+        # Dark
+        # > github_dark_colorblind
         working_directory = config.home.homeDirectory;
         env.TERM = "xterm-256color";
         shell.program = "zsh";
@@ -44,7 +62,8 @@ in
           decorations_theme_variant = "Dark";
           dynamic_padding = false;
           decorations = "full";
-          opacity = 0.5;
+          # Make Alacritty opaque or transparent
+          opacity = 1.0; # 0.5;
           startup_mode = "Maximized";
           option_as_alt = "OnlyLeft";
 
@@ -115,7 +134,6 @@ in
             mods = "Control|Alt";
             action = "Paste";
           }
-
         ];
       };
     };
