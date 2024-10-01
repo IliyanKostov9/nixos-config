@@ -1,2 +1,2 @@
 exclude:
-  - programs/user/disk-image/etcher/result
+  - programs/user/disk-image/etcher
