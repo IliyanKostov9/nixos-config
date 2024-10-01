@@ -57,7 +57,7 @@ in
             "${mod}+Return" = "exec alacritty";
             "${mod}+${shift}+q" = "kill";
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal alacritty";
-            "${mod}+alt+0" = "rofi-theme-selector";
+            # Select theme:  "rofi-theme-selector";
             # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
             # Mark
