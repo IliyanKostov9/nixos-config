@@ -1,2 +1,2 @@
 exclude:
-  - programs/user/disk-image/etcher
+  - programs/user/disk-image/etcher # Disabled, due to /etcher/result being a symlink and breaking jekyll pages
