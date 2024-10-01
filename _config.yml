@@ -1,3 +1,0 @@
-safe: true
-exclude:
-  - programs/user/disk-image/etcher/result
