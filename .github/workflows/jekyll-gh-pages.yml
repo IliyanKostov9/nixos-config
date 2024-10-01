@@ -1,7 +1,8 @@
 name: Build Jekyll site
 on:
   push:
-    branches: ["master"]
+    # branches: ["master"]
+    branches: ["fix/jekyll-pages"]
 permissions:
   contents: read
   pages: write
