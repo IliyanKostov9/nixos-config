@@ -6,6 +6,6 @@ with host_attr; {
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = boot // {
-    kernelPackages = pkgs.linuxPackages_6_10;
+    kernelPackages = pkgs.linuxPackages_6_11;
   };
 }
