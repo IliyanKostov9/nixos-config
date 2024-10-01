@@ -1,0 +1,2 @@
+exclude:
+  - programs/user/disk-image/etcher/result
