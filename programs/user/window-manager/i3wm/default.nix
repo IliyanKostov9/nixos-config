@@ -60,6 +60,9 @@ in
             # Select theme:  "rofi-theme-selector";
             # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
+            # Fallback to primary monitor
+            "${mod}+${alt}+q" = "exec xrandr --output HDMI-0 --auto";
+
             # Mark
             "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
             # Jump

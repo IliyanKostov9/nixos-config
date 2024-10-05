@@ -37,9 +37,9 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview '[[ -f {} ]] && cat {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
+    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
-    cat = "bat --theme='Visual Studio Dark+'";
+    cat = "bat --theme='base16-256'";
     lst = "${shell_path}/bash/eza/tree-icons.sh";
 
     # etcher = (if config.modules.etcher then "/etc/nixos/programs/user/disk-image/etcher/result/bin/etcher" else { });
