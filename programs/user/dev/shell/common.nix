@@ -8,14 +8,12 @@ in
   shellAliases = {
 
     # Git
+    git-all = "${shell_path}/bash/git/git-all.sh";
     git-root = "cd $( git rev-parse --show-toplevel )";
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
     git-history-rebase = "${shell_path}/bash/git/git-rebase.sh";
-
-    # Other
-    # viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
 
     # Python
     py = "python3";
@@ -40,11 +38,6 @@ in
     bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
     cat = "bat --theme='base16-256'";
-    lst = "${shell_path}/bash/eza/tree-icons.sh";
-
-    # etcher = (if config.modules.etcher then "/etc/nixos/programs/user/disk-image/etcher/result/bin/etcher" else { });
-    # TODO: Fix this by assigning depending if the user has enabled etcher
-    etcher = "/etc/nixos/programs/user/disk-image/etcher/result/bin/etcher";
   };
 
   sessionVariables = {

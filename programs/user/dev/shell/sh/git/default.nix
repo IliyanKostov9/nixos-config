@@ -6,18 +6,9 @@ let
   git-all = pkgs.writeShellApplication
     {
       name = "git-all";
-      runtimeInputs = [ git ];
+      runtimeInputs = [ pkgs.git ];
 
-      text = ''
-        #!${pkgs.bash}/bin/bash
-        IFS=' '
-        git_message="$*"
-
-        git add .
-        git commit -m "${git_message}"
-
-        ( git push || git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) )
-      '';
+      text = builtins.readFile ../../bin/bash/git/git-all.sh;
     };
 
 in
