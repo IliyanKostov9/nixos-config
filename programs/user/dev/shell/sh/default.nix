@@ -3,5 +3,6 @@
   imports = [
     ./git
     ./alias
+    ./python
   ];
 }

@@ -17,11 +17,9 @@ in
 
     # Python
     py = "python3";
-    py-setup-venv = "${shell_path}/bash/python/python-venv-setup.sh";
     venv = "eval $(pdm venv activate)";
     pdm-sync = "pdm install && pdm sync --clean";
     pdm-export = "pdm export -o requirements.txt";
-    py-nix-sh = "nix-shell '${shell_path}/nix/python/shell.nix'";
 
     # Maven
     mvn-jar = "mvn -f pom.xml clean package";
