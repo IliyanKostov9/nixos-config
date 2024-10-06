@@ -13,6 +13,7 @@ in
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";
     git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
+    git-history-rebase = "${shell_path}/bash/git/git-rebase.sh";
 
     # Other
     # viber = "nix-shell '${shell_path}/nix/viber/shell.nix'";
