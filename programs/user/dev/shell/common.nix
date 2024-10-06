@@ -8,7 +8,6 @@ in
   shellAliases = {
 
     # Git
-    git-all = "${shell_path}/bash/git/git-all.sh";
     git-root = "cd $( git rev-parse --show-toplevel )";
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
     git-rob = "${shell_path}/bash/git/git-rob.sh";

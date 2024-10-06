@@ -44,6 +44,8 @@
     git.userName = "iliyan-kostov";
     git.userEmail = "iliyan.kostov@email.ikostov.org";
 
+    sh.git.enable = true;
+
     gh.enable = true;
     git-extras.enable = true;
     gitmoji-cli.enable = true;
