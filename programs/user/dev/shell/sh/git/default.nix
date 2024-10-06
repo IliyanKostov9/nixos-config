@@ -22,7 +22,7 @@ let
       name = "git-history-rebase ";
       runtimeInputs = [ pkgs.git ];
 
-      text = builtins.readFile ../bin/bash/git/git-rebase.sh;
+      text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
     };
 
 in

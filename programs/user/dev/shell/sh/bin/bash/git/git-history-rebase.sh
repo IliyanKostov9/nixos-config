@@ -8,7 +8,7 @@ FEAT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 ## FUNCS
 create_branch_backup() {
     echo "Would you like to create a backup branch, before rebasing? [y/n]"
-    read -n 1 choice
+    read -r -n 1 choice
     if [[ $choice == "y" ]]; then
         git branch "$FEAT_BRANCH_NAME-bak"
         echo -e "\nBackup branch: $FEAT_BRANCH_NAME-bak created!"
@@ -63,7 +63,7 @@ rebase_continue() {
 
         echo -e "\n\n"
         echo "Press [f] if rebasing is finished successfully"
-        read -n 1 -p "Continue [y/n]: " stop
+        read -r -n 1 -p "Continue [y/n]: " stop
 
         if [[ $stop == "n" ]]; then
             exit 1
