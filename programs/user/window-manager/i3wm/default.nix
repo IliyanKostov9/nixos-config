@@ -60,6 +60,9 @@ in
             # Select theme:  "rofi-theme-selector";
             # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
+            # Fallback to primary monitor
+            "${mod}+${alt}+q" = "exec xrandr --output HDMI-0 --auto";
+
             # Mark
             "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
             # Jump
@@ -149,7 +152,7 @@ in
           };
         bars = [
           {
-            position = "top";
+            position = "bottom";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             colors = {
               background = "#444444";
