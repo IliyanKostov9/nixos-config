@@ -3,13 +3,14 @@
 # Received via command line
 git_project_name=$1
 
-git_source_owner="$(echo ${GIT_SOURCE_OWNER})"
-git_source_org="$(echo ${GIT_SOURCE_ORG})"
-git_dest_owner="$(echo ${GIT_DEST_OWNER})"
-git_dest_project="$(echo ${GIT_DEST_PROJECT})"
-git_dest_ssh_domain="$(echo ${GIT_DEST_SSH_DOMAIN})"
+# shellcheck disable=SC2153
+git_source_owner="${GIT_SOURCE_OWNER}"
+git_source_org="${GIT_SOURCE_ORG}"
+git_dest_owner="${GIT_DEST_OWNER}"
+git_dest_project="${GIT_DEST_PROJECT}"
+git_dest_ssh_domain="${GIT_DEST_SSH_DOMAIN}"
 
-does_git_source_repo_exist=$(gh search repos "${git_project_name}" --owner=${git_source_org} | head -1 )
+does_git_source_repo_exist=$(gh search repos "${git_project_name}" --owner="${git_source_org}" | head -1 )
 # Commented due to taking too long
 # does_git_dest_repo_exist=$(az repos show --repository testarino --detect false --org https://${git_dest_ssh_domain}/${git_dest_owner}/ -p ${git_dest_project})
 
@@ -18,12 +19,12 @@ if [ -z "$does_git_source_repo_exist" ]; then
 else
 
     echo "Now starting the rob process: $git_project_name"
-    az repos create --name ${git_project_name} --detect false --org https://${git_dest_ssh_domain}/${git_dest_owner}/ -p ${git_dest_project}
+    az repos create --name "${git_project_name}" --detect false --org "https://${git_dest_ssh_domain}/${git_dest_owner}/" -p "${git_dest_project}"
 
-    git clone git@${git_source_owner}:${git_source_org}/${git_project_name}.git
-    cd ${git_project_name}
+    git clone "git@${git_source_owner}:${git_source_org}/${git_project_name}.git"
+    cd "${git_project_name}"
 
-    git branch -r | grep -v '\->' | while read remote; do
+    git branch -r | grep -v '\->' | while read -r remote; do
         git branch --track "${remote#origin/}" "$remote"
     done
 
