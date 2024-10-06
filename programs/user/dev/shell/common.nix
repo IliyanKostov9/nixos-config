@@ -35,7 +35,7 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
+    bz = "cd $(fzf-file-search)";
     ls = "eza";
     cat = "bat --theme='base16-256'";
   };
@@ -46,7 +46,6 @@ in
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
-    # KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
 }
 
