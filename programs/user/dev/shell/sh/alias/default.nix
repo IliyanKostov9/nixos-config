@@ -6,7 +6,7 @@ let
   lst = pkgs.writeShellApplication
     {
       name = "lst";
-      text = builtins.readFile ../../bin/bash/eza/tree-icons.sh;
+      text = builtins.readFile ../bin/bash/eza/tree-icons.sh;
     };
   etcher-bin = pkgs.writeShellApplication
     {

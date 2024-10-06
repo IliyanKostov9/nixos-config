@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 python3 -m venv .venv
-source .venv/bin/activate
+# TODO: Fix this from writeShellApplication
+#source .venv/bin/activate
 
 pip install --upgrade pip
 pip install pip-tools

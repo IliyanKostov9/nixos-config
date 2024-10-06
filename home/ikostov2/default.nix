@@ -46,6 +46,7 @@
 
     sh.git.enable = true;
     sh.alias.enable = true;
+    sh.python.enable = true;
 
     gh.enable = true;
     git-extras.enable = true;
