@@ -3,7 +3,6 @@
 # Received via command line
 git_project_name=$1
 
-# shellcheck disable=SC2153
 git_source_owner="${GIT_SOURCE_OWNER}"
 git_source_org="${GIT_SOURCE_ORG}"
 git_dest_owner="${GIT_DEST_OWNER}"

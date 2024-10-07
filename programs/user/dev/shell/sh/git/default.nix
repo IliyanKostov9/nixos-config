@@ -10,13 +10,13 @@ let
 
       text = builtins.readFile ../bin/bash/git/git-all.sh;
     };
-  # git-rob = pkgs.writeShellApplication
-  #   {
-  #     name = "git-rob";
-  #     runtimeInputs = [ pkgs.git ];
-  #
-  #     text = builtins.readFile ../bin/bash/git/git-rob.sh;
-  #   };
+  git-rob = pkgs.writeShellApplication
+    {
+      name = "git-rob";
+      runtimeInputs = [ pkgs.git ];
+      excludeShellChecks = [ "SC2153" ];
+      text = builtins.readFile ../bin/bash/git/git-rob.sh;
+    };
   git-history-rebase = pkgs.writeShellApplication
     {
       name = "git-history-rebase ";
@@ -32,7 +32,7 @@ in
   config = mkIf cfg.enable {
     home.packages = [
       git-all
-      # git-rob
+      git-rob
       git-history-rebase
     ];
   };
