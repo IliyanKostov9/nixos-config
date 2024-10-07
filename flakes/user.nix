@@ -14,6 +14,7 @@ in
         ../home
       ] ++ [
         nix-index-database.hmModules.nix-index
+        sops-nix.homeManagerModules.sops
       ];
     })
     shared.users;

@@ -1,8 +1,8 @@
 { config, ... }:
 {
   imports = [
+    ../../secrets
     ../../programs/user
-    ./secrets
   ];
 
   config.modules = {

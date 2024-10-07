@@ -1,4 +1,4 @@
-{ pkgs }:
+{ config, pkgs }:
 
 {
   shellAliases = {
@@ -37,6 +37,7 @@
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
+    hello_me = "!!HELLO!!";
   };
 }
 
