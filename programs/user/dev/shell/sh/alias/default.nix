@@ -8,12 +8,6 @@ let
       name = "lst";
       text = builtins.readFile ../bin/bash/eza/tree-icons.sh;
     };
-  etcher-bin = pkgs.writeShellApplication
-    {
-      name = "etcher";
-      text = builtins.readFile ../../../../disk-image/etcher/result/bin/etcher;
-      excludeShellChecks = [ "SC2199" "SC2076" ];
-    };
   fzf-file-search = pkgs.writeShellApplication {
     name = "fzf-file-search";
     runtimeInputs = [ pkgs.fzf pkgs.bat pkgs.tree ];
@@ -35,8 +29,6 @@ in
   config = mkIf cfg.enable {
     home.packages = [
       lst
-      etcher-bin
-      # (if config.modules.etcher then etcher-bin else { })
       fzf-file-search
     ];
   };
