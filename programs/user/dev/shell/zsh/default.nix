@@ -8,7 +8,7 @@ in
   config = mkIf cfg.enable (
     let
       # BUG: passing config in common results in an error
-      common = pkgs.callPackage (../common.nix) { };
+      common = pkgs.callPackage (../common) { };
     in
     {
       home.packages = [
