@@ -1,5 +1,7 @@
+## DEFAULT ENCRYPTION: age
+
 SECRET_FILE ?= env_vars
-GPG_KEY_ID ?= placeholder
+USER ?= ikostov2
 
 .PHONY: unlock
 unlock:
@@ -11,9 +13,13 @@ print:
 
 .PHONY: setup
 setup:
-	gpg --export-secret-keys ${GPG_KEY_ID} > ~/Downloads/privkey.gpg
-	sudo mkdir /var/lib/sops
-	sudo chmod 700 /var/lib/sops
-	sudo mv ~/Downloads/privkey.gpg /var/lib/sops/
-
+	mkdir -p ~/.config/sops/age
+	age-keygen -o ~/.config/sops/age/keys.txt
+	echo -e 'Please add this public key: $(shell age-keygen -y ~/.config/sops/age/keys.txt) into .soaps.yaml\n\n==============\nPress ENTER to continue...'
+	read
+	sudo mkdir -p /var/lib/sops-nix
+	sudo sh -c 'echo "AGE-SECRET-KEY-1V4YXNXT..." > /var/lib/sops-nix/key.txt'
+	sudo chown ${USER}:users /var/lib/sops-nix/key.txt
+	sudo chmod 600 /var/lib/sops-nix/key.txt
+	echo "Setup completed! Now create secrets.yaml file by using 'make unlock SECRET_FILE=my_secret_file'"
 
