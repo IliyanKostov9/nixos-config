@@ -1,14 +1,27 @@
 { config, ... }:
 {
   sops = {
-    gnupg.home = "/var/lib/sops";
-    gnupg.sshKeyPaths = [ ];
-    # sops.defaultSopsFile = ./zshrc.yaml;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+    age.generateKey = true;
+    defaultSopsFile = ./env_vars.yaml;
     defaultSopsFormat = "yaml";
-    secrets.hello = {
-      sopsFile = ./zshrc.yaml;
-      key = "hello";
-      path = "%r/hello.txt";
+
+    secrets = {
+      aws_access_key = { };
+      aws_secret_access_key = { };
+      aws_region = { };
+
+      azure_devops_ext_pat = { };
+
+      gh_token = { };
+      git_source_owner = { };
+      git_source_org = { };
+      git_dest_owner = { };
+      git_dest_project = { };
+      git_dest_ssh_domain = { };
+
+      tf_token_app_terraform_io = { };
+      tf_org = { };
     };
   };
 
