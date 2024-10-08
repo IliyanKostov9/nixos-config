@@ -1,16 +1,17 @@
 { inputs, ... }:
 
+with inputs;
 let
   shared = import ./shared.nix
-    { inherit (inputs) nixpkgs alacritty-theme nixpkgs_unstable nixgl nixos-hardware; };
+    { inherit nixpkgs alacritty-theme nixpkgs_unstable nixgl nixos-hardware; };
 in
 rec {
   flake.packages.x86_64-linux = builtins.mapAttrs
     (_: host_attr:
-      inputs.nixos-generators.nixosGenerate
+      nixos-generators.nixosGenerate
         {
           system = "x86_64-linux";
-          modules = host_attr.modules ++ [ inputs.nix-index-database.nixosModules.nix-index ];
+          modules = host_attr.modules ++ [ nix-index-database.nixosModules.nix-index ];
           format = "iso";
           specialArgs = { inherit host_attr; inherit (shared) pkgs system stateVersion users; };
         }

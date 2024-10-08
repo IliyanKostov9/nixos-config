@@ -247,6 +247,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/356624c12086a18f2ea2825fed34523d60ccc4e3.tar.gz"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1728156290,
+        "narHash": "sha256-uogSvuAp+1BYtdu6UWuObjHqSbBohpyARXDWqgI12Ss=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "17ae88b569bb15590549ff478bab6494dde4a907",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1727672256,
@@ -259,6 +275,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1728093190,
+        "narHash": "sha256-CAZF2NRuHmqTtRTNAruWpHA43Gg2UvuCNEIzabP0l6M=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e2f08f4d8b3ecb5cf5c9fd9cb2d53bb3c71807da",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -289,7 +321,27 @@
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs_unstable": "nixpkgs_unstable"
+        "nixpkgs_unstable": "nixpkgs_unstable",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "nixpkgs-stable": "nixpkgs-stable"
+      },
+      "locked": {
+        "lastModified": 1728230538,
+        "narHash": "sha256-sbsMJOZgykaSdFbxLKghc0QMtolzl4P5nqpttBA3d5M=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "2750ed784e93e745a33fb55be7c2657adfb57c00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     }
   },

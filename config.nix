@@ -5,7 +5,7 @@
     ikostov2 = {
       isNormalUser = true;
       description = "ikostov2 profile";
-      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "ikostov2" ];
     };
   };
 
