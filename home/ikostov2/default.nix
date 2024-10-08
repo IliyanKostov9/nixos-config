@@ -1,8 +1,7 @@
-{ config
-, ...
-}:
+{ config, ... }:
 {
   imports = [
+    ../../secrets
     ../../programs/user
   ];
 

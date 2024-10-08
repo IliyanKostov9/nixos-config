@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common) { };
+      common = pkgs.callPackage (../common) { inherit config; };
     in
     {
       home.packages = [
