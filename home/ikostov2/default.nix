@@ -10,7 +10,7 @@
     nix-alien.enable = false;
 
     # API
-    postman.enable = true;
+    postman.enable = false;
 
     # Browsers
     librewolf.enable = true;
@@ -22,7 +22,7 @@
     rclone.enable = true;
 
     # DBMS
-    dbeaver.enable = true;
+    dbeaver.enable = false;
 
     # RDP
     vnc.enable = false;
@@ -42,10 +42,6 @@
     git.enable = true;
     git.userName = "iliyan-kostov";
     git.userEmail = "iliyan.kostov@email.ikostov.org";
-
-    sh.git.enable = true;
-    sh.alias.enable = true;
-    sh.python.enable = true;
 
     gh.enable = true;
     git-extras.enable = true;
