@@ -29,7 +29,9 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    bz = "cd $(fzf-file-search)";
+    # TODO: fzf-file-search doesn't cd into home directory, due to symbolic link issue
+    # bz = "cd $(fzf-file-search)";
+    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
     ls = "eza";
     cat = "bat --theme='base16-256'";
   };

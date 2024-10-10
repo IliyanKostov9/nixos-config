@@ -1,8 +1,7 @@
 { pkgs, lib, config, ... }:
 with lib;
-let
-  cfg = config.modules.sh.python;
 
+let
   py-setup-venv = pkgs.writeShellApplication
     {
       name = "py-setup-venv";
@@ -22,12 +21,8 @@ let
     };
 in
 {
-  options.modules.sh.python = { enable = mkEnableOption "python"; };
-
-  config = mkIf cfg.enable {
-    home.packages = [
-      py-setup-venv
-      py-nix-sh
-    ];
-  };
+  home.packages = [
+    py-setup-venv
+    py-nix-sh
+  ];
 }
