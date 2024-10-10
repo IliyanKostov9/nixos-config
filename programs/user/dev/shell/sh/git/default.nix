@@ -1,8 +1,7 @@
 { pkgs, lib, config, ... }:
 with lib;
-let
-  cfg = config.modules.sh.git;
 
+let
   git-all = pkgs.writeShellApplication
     {
       name = "git-all";
@@ -24,16 +23,11 @@ let
 
       text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
     };
-
 in
 {
-  options.modules.sh.git = { enable = mkEnableOption "git"; };
-
-  config = mkIf cfg.enable {
-    home.packages = [
-      git-all
-      git-rob
-      git-history-rebase
-    ];
-  };
+  home.packages = [
+    git-all
+    git-rob
+    git-history-rebase
+  ];
 }
