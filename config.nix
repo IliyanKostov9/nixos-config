@@ -7,6 +7,12 @@
       description = "ikostov2 profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "ikostov2" ];
     };
+
+    gm = {
+      isNormalUser = true;
+      description = "Garming profile";
+      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "garming" ];
+    };
   };
 
   hosts = {
