@@ -34,6 +34,9 @@
     # File compression
     p7zip.enable = true;
 
+    # Entertainment
+    gaming.enable = true;
+
     # Media
     vlc.enable = true;
     nomacs.enable = true;

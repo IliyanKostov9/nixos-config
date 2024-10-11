@@ -6,6 +6,7 @@
     ./api
     ./browsers
     ./cloud
+    ./entertainment
     ./dev
     ./file-compression
     ./gpu

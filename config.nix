@@ -8,7 +8,7 @@
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "ikostov2" ];
     };
 
-    gm = {
+    garming = {
       isNormalUser = true;
       description = "Garming profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "garming" ];
