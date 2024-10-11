@@ -1,10 +1,3 @@
-# #########################
-# VARIABLES
-# ########################
-
-# Default user, change it to your particular username
-DEFAULT_USER := ikostov2
-
 ##########################
 # TARGET
 # #######################
@@ -23,7 +16,7 @@ setup: ## Setup your nixos system
 
 .PHONY: home-update
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#${DEFAULT_USER} --show-trace --impure --option eval-cache false |& nom
+	home-manager switch --flake .#$(shell whoami) --show-trace --impure --option eval-cache false |& nom
 	
 .PHONY: sys-update-pd
 sys-update-pd: ## Build system configuration for host: personal desktop

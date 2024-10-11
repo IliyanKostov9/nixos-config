@@ -5,13 +5,15 @@
     ikostov2 = {
       isNormalUser = true;
       description = "ikostov2 profile";
-      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "ikostov2" ];
+      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+      initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
 
     garming = {
       isNormalUser = true;
       description = "Garming profile";
-      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "garming" ];
+      extraGroups = [ "libvirtd" "adbusers" "users" "networkmanager" "wheel" ];
+      initialHashedPassword = "$6$cXDCwAyOy2iqBKiW$ZtrH9HI7063o2DMLTc3jm8/Ecrv5wPWUszFUEBg15AtwBIQvuE.Eg5Vo/Qlrg7kwXaBLRIPPGX7EOV8raJWrV.";
     };
   };
 

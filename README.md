@@ -35,12 +35,11 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 ### 🧐 How-to: Create new user
 
 1. Go to config.nix and add your user in the `user` attribute set (you can copy `ikostov2` attrset and replace it with your desired one)
-
-2. Create a directory with name of your user at `home/{username}` and under that, create default.nix (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
-3. Build your system (e.g `make sys-update-wl/pd`)
-4. Finally build your user config for the new user (e.g `make home-update DEFAULT_USER=new-username`)
-
-5. You are all set!
+2. Generate a hashed password for the user by executing `mkpasswd --method=sha-512 ` and put it in the `initialHashedPassword`)
+3. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
+4. Build your system (e.g `make sys-update-wl/pd`)
+5. Finally build your user config for the new user (e.g `make home-update DEFAULT_USER=new-username`)
+6. You are all set!
 
 ## 🏝️ Environment
 
