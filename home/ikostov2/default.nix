@@ -45,7 +45,7 @@
 
     gh.enable = true;
     git-extras.enable = true;
-    gitmoji-cli.enable = true;
+    gitmoji-cli.enable = false;
 
     # Dev - > Shells
     bash.enable = true;
@@ -74,7 +74,7 @@
     # IoT
     qFlipper.enable = true;
 
-    etcher.enable = true;
+    etcher.enable = false;
 
     # Media
     gimp.enable = true;
@@ -102,7 +102,6 @@
 
     # VPN
     openvpn3.enable = true;
-    cisco-anyconnect.enable = true;
 
     # Window manager
     i3wm.enable = true;
@@ -110,7 +109,7 @@
     # X11- utils
     copyq.enable = true;
     flameshot.enable = true;
-    gpick.enable = true;
+    gpick.enable = false;
     normcap.enable = true;
     gtk.enable = true;
   };

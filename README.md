@@ -29,6 +29,20 @@ Please don't try to copy-paste the configuration on your own machine and try to 
   2. You won't learn much doing that, and later when you want to change something in your config it'll be harder for you to achieve that
   3. This config structure is made by my personal taste, not yours ... and if some certain functionalities are either missing or badly implemented - then you would need to fork my repo and make your desired change in your version. Nevertheless, I'm more than open to suggestions for improvements, so please feel free to open an issue!
 
+
+## 🎉 Getting started
+
+To get started, first run `make setup` for the script to label your nixos device partition and swap to `NIXOS_SD` and `NIXOS_BOOT`
+
+### 🧐 How-to: Create new user
+
+1. Go to config.nix and add your user in the `user` attribute set (you can copy `ikostov2` attrset and replace it with your desired one)
+2. Generate a hashed password for the user by executing `mkpasswd --method=sha-512 ` and put it in the `initialHashedPassword`)
+3. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
+4. Build your system (e.g `make sys-update-wl/pd`)
+5. Finally build your user config for the new user (e.g `make home-update DEFAULT_USER=new-username`)
+6. You are all set!
+
 ## 🏝️ Environment
 
 <p align="center">
@@ -48,8 +62,8 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 | Status Bar     | [i3status-rust](https://github.com/greshake/i3status-rust) |
 | Terminal       | [Alacritty](https://alacritty.org/) |
 | Window Manager | [I3WM](https://i3wm.org/) |
-| File Manager   | [Nautilus](https://gitlab.gnome.org/GNOME/nautilus) |
-| GTK Theme      | [Kanagawa](https://github.com/Fausto-Korpsvart/Kanagawa-GKT-Theme) |
+| File Manager   | [PcmanFM](https://en.wikipedia.org/wiki/PCMan_File_Manager) |
+| GTK Theme      | [Adwaita](https://en.wikipedia.org/wiki/Adwaita_(design_language)) |
 | GTK Icon Theme | [Rose-pine](https://github.com/rose-pine/gtk) |
 | Terminal Font  | [OxProto Nerd Font](https://www.nerdfonts.com/font-downloads) |
 
