@@ -16,7 +16,6 @@ in
       efi.canTouchEfiVariables = true;
     };
   } // (if is-secure-boot-enabled then {
-    # NEEDED: For Garnix
     lanzaboote = {
       enable = true;
       pkiBundle = "/etc/secureboot";
