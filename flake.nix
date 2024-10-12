@@ -21,6 +21,10 @@
       url = "github:guibou/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     flake-parts.url = "github:hercules-ci/flake-parts";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -44,5 +48,4 @@
         # inputs.devshell.flakeModule
       ];
     };
-
 }
