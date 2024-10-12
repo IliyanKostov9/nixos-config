@@ -2,6 +2,7 @@
 
 let
   secrets = config.sops.secrets;
+  isPureMode = builtins.hasAttr "pure" (builtins.getEnv "NIX_BUILD_MODE");
 in
 {
   shellAliases = {
@@ -42,7 +43,7 @@ in
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
-  } // (if builtins.pathExists ~/.config/sops-nix then {
+  } // (if !isPureMode && builtins.pathExists ~/.config/sops-nix then {
     # Secrets
 
     AWS_ACCESS_KEY_ID = "$(command cat ${secrets.aws_access_key.path})";
