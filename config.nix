@@ -30,10 +30,15 @@
       ];
 
       boot = {
+        lanzaboote = {
+          enable = true;
+          pkiBundle = "/etc/secureboot";
+        };
         kernelModules = [ "kvm-amd" ];
         kernelParams = [ "nvidia-drm.fbdev=1" ];
         loader = {
-          systemd-boot.enable = true;
+          # WARN: Required by lanzaboote secure boot
+          systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
         };
         initrd = {
@@ -53,11 +58,16 @@
       ];
 
       boot = {
+        lanzaboote = {
+          enable = true;
+          pkiBundle = "/etc/secureboot";
+        };
         kernelModules = [ "kvm-intel" ];
         # Intel Graphics
         kernelParams = [ "i915.force_probe=3e9b" "nvidia-drm.fbdev=1" ];
         loader = {
-          systemd-boot.enable = true;
+          # WARN: Required by lanzaboote secure boot
+          systemd-boot.enable = false;
           efi.canTouchEfiVariables = true;
         };
         initrd = {
