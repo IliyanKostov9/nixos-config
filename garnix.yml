@@ -1,3 +1,13 @@
+builds:
+  default:
+    exclude: []
+    include:
+      # - "*.x86_64-linux.*"
+      - homeConfigurations.*
+      - nixosConfigurations.*
+    type: on-pull-request
+    branch: master
+
 servers:
   - configuration: personalMachine
     deployment:
