@@ -42,6 +42,7 @@ in
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
+  } // (if builtins.pathExists ~/.config/sops-nix then {
     # Secrets
 
     AWS_ACCESS_KEY_ID = "$(command cat ${secrets.aws_access_key.path})";
@@ -59,6 +60,7 @@ in
 
     TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
     TF_ORG = "$(command cat ${secrets.tf_org.path})";
-  };
+
+  } else { });
 }
 

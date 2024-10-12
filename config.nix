@@ -4,12 +4,14 @@
   users = {
     ikostov2 = {
       isNormalUser = true;
+      createHome = false;
       description = "ikostov2 profile";
       extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
       initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
 
     garming = {
+      createHome = true;
       isNormalUser = true;
       description = "Garming profile";
       extraGroups = [ "libvirtd" "adbusers" "users" "networkmanager" "wheel" ];
