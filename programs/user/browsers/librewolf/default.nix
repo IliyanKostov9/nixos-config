@@ -12,6 +12,7 @@ in
 
     programs.librewolf = {
       enable = true;
+
       settings =
         {
           # about:config
@@ -48,7 +49,5 @@ in
           # "browser.policies.runOncePerModification.extensionsInstall" 
         };
     };
-
   };
-
 }
