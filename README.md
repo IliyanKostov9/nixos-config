@@ -32,7 +32,8 @@ Please don't try to copy-paste the configuration on your own machine and try to 
 
 ## 🎉 Getting started
 
-To get started, first run `make setup` for the script to label your nixos device partition and swap to `NIXOS_SD` and `NIXOS_BOOT`
+To get started, first run `make setup` for the script to label your nixos partition devices and enable secure boot.
+Follow the prompts when asked in the process.
 
 ### 🧐 How-to: Create new user
 
