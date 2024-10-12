@@ -18,5 +18,5 @@ with host_attr; {
       enable = true;
       pkiBundle = "/etc/secureboot";
     };
-  } else builtins.trace "WARN: Secure boot is not enabled. Please enable Secure boot by running 'make setup'");
+  } else { });
 }
