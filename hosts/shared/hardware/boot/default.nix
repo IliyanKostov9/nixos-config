@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, host_attr, ... }:
+{ lib, pkgs, modulesPath, host_attr, ... }:
 
 with host_attr; {
 
@@ -10,6 +10,11 @@ with host_attr; {
     lanzaboote = {
       enable = true;
       pkiBundle = "/etc/secureboot";
+    };
+    loader = {
+      # DISABLED: Required by lanzaboote secure boot
+      systemd-boot.enable = lib.mkForce false;
+      efi.canTouchEfiVariables = true;
     };
   };
 }

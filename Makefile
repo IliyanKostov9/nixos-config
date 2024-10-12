@@ -35,7 +35,7 @@ secure-boot: ## Enable secure boot
 	sudo reboot
 
 .PHONY: secure-boot-sign
-secure-boot-sign
+secure-boot-sign:
 	echo "Enrolling keys..."
 	sudo sbctl enroll-keys --microsoft
 	echo -e "Now you'll be rebooted again.\n\Finally after reboot type `bootctl status` to check if secure boot is signed\n\nPress ENTER to continue"
