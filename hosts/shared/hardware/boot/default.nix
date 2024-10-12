@@ -7,5 +7,9 @@ with host_attr; {
   ];
   boot = boot // {
     kernelPackages = pkgs.linuxPackages_6_11;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
   };
 }

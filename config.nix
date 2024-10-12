@@ -30,10 +30,6 @@
       ];
 
       boot = {
-        lanzaboote = {
-          enable = true;
-          pkiBundle = "/etc/secureboot";
-        };
         kernelModules = [ "kvm-amd" ];
         kernelParams = [ "nvidia-drm.fbdev=1" ];
         loader = {
@@ -58,10 +54,6 @@
       ];
 
       boot = {
-        lanzaboote = {
-          enable = true;
-          pkiBundle = "/etc/secureboot";
-        };
         kernelModules = [ "kvm-intel" ];
         # Intel Graphics
         kernelParams = [ "i915.force_probe=3e9b" "nvidia-drm.fbdev=1" ];
