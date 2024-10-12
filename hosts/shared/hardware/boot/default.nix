@@ -8,8 +8,7 @@ with host_attr; {
   boot = boot // {
     kernelPackages = pkgs.linuxPackages_6_11;
     loader = {
-      # DISABLED: Required by lanzaboote secure boot
-      systemd-boot.enable = lib.mkForce false;
+      systemd-boot.enable = if builtints.pathExists "/etc/secureboot" then false else true;
       efi.canTouchEfiVariables = true;
     };
   } // (if builtins.pathExists "/etc/secureboot" then {
