@@ -13,9 +13,16 @@ in
     programs.librewolf = {
       enable = true;
 
+      # about:config
       settings =
         {
-          # about:config
+          # Enable vertical tabs
+          "sidebar.verticalTabs" = true;
+          "sidebar.revamp" = true;
+          "sidebar.visibility" = "always-show";
+          "sidebar.main.tools" = "aichat,history";
+          "sidebar.position_start" = true;
+
           "identity.fxaccounts.enabled " = true;
 
           "browser.contentblocking.category" = "strict";
@@ -45,7 +52,6 @@ in
 
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "geo.enabled" = false;
-
           # "browser.policies.runOncePerModification.extensionsInstall" 
         };
     };

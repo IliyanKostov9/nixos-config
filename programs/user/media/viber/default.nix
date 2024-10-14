@@ -6,8 +6,8 @@ in
   options.modules.viber = { enable = mkEnableOption "viber"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs_unstable.viber
+    home.packages = with pkgs_unstable;[
+      viber
     ];
   };
 
