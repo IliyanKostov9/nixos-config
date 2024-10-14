@@ -61,7 +61,7 @@
     terraform.enable = true;
 
     # Dev > Build tools
-    maven.enable = false;
+    maven.enable = true;
     gradle.enable = false;
 
     # Dev >  Container
