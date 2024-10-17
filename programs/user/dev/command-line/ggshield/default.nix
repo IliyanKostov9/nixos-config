@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      (pkgs_unstable.ggshield.overrideAttrs (old: {
+      (pkgs_unstable.ggshield.overrideAttrs ({
         version = "1.32.0";
         src = pkgs_unstable.fetchFromGitHub {
           owner = "GitGuardian";
