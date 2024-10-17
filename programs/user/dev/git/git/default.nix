@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, user, ... }:
 with lib;
 with lib.types;
 
@@ -27,6 +27,7 @@ in
       extraConfig = {
         diff.colorMoved = "default";
         pull.rebase = false;
+        core.hooksPath = "/home/${user}/.git/hooks";
         init = {
           defaultBranch = "master";
         };

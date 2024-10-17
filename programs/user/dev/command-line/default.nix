@@ -5,5 +5,6 @@
     ./sdkmanager
     ./sops
     ./nix-alien
+    ./ggshield
   ];
 }
