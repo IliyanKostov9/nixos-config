@@ -30,6 +30,7 @@
     # Dev > Command-line
     sops.enable = true;
     bat.enable = true;
+    ggshield.enable = true;
 
     # Dev > Editor
     neovim.enable = true;
@@ -58,7 +59,8 @@
     node.enable = true;
     python.enable = true;
     rust.enable = true;
-    terraform.enable = true;
+    # DISABLED: due to using dev flakes
+    terraform.enable = false;
 
     # Dev > Build tools
     maven.enable = true;

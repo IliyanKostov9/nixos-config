@@ -19,6 +19,7 @@
       git_dest_owner = { };
       git_dest_project = { };
       git_dest_ssh_domain = { };
+      gitguardian_api_key = { };
 
       tf_token_app_terraform_io = { };
       tf_org = { };
