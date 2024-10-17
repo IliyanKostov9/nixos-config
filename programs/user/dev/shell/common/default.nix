@@ -21,6 +21,7 @@ in
     mvn-jar = "mvn -f pom.xml clean package";
     mvn-spring = "mvn spring-boot:run";
     mvn-deps = "mvn dependency:resolve";
+    mvn-deps-tree = "mvn dependency:tree";
 
     # Infra
     tf = "terraform";
@@ -38,7 +39,6 @@ in
 
   sessionVariables = {
     NIX_LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib";
-    XDG_BIN_HOME = "$HOME/.local/bin";
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
@@ -57,6 +57,8 @@ in
     GIT_DEST_OWNER = "$(command cat ${secrets.git_dest_owner.path})";
     GIT_DEST_PROJECT = "$(command cat ${secrets.git_dest_project.path})";
     GIT_DEST_SSH_DOMAIN = "$(command cat ${secrets.git_dest_ssh_domain.path})";
+
+    GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
 
     TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
     TF_ORG = "$(command cat ${secrets.tf_org.path})";
