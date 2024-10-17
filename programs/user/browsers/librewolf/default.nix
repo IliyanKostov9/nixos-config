@@ -25,6 +25,7 @@ in
 
           "identity.fxaccounts.enabled " = true;
 
+          "browser.tabs.hoverPreview.showThumbnails " = false;
           "browser.contentblocking.category" = "strict";
           "browser.download.panel.shown" = true;
           "middlemouse.paste" = false;
