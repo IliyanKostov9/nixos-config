@@ -82,7 +82,7 @@
     gimp.enable = true;
     obs-studio.enable = true;
     vlc.enable = true;
-    calibre.enable = true;
+    calibre.enable = false;
     nomacs.enable = true;
     okular.enable = true;
     viber.enable = true;
