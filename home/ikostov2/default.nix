@@ -82,9 +82,10 @@
     gimp.enable = true;
     obs-studio.enable = true;
     vlc.enable = true;
-    calibre.enable = true;
-    viber.enable = true;
+    calibre.enable = false;
     nomacs.enable = true;
+    okular.enable = true;
+    viber.enable = true;
 
     # Office suuite
     drawio.enable = true;

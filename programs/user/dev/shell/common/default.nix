@@ -26,6 +26,7 @@ in
     # Infra
     tf = "terraform";
     dc = "docker";
+    dcc = "docker compose";
     ku = "kubectl";
 
     # Utils
