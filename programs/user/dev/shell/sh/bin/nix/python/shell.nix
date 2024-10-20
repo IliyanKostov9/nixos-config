@@ -4,6 +4,7 @@
   name = "pipzone";
   targetPkgs = pkgs: (with pkgs; [
     python311
+    pdm
     opencv4
     mesa
     libGL

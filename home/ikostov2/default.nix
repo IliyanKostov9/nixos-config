@@ -22,7 +22,7 @@
     rclone.enable = true;
 
     # DBMS
-    dbeaver.enable = false;
+    dbeaver.enable = true;
 
     # RDP
     vnc.enable = false;
