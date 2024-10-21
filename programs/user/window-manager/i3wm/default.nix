@@ -74,23 +74,11 @@ in
             "${mod}+k" = "focus up";
             "${mod}+l" = "focus right";
 
-            # alternatively, you can use the cursor keys:
-            "${mod}+Left" = "focus left";
-            "${mod}+Down" = "focus down";
-            "${mod}+Up" = "focus up";
-            "${mod}+Right" = "focus right";
-
             # move focused window
             "${mod}+${shift}+h" = "move left";
             "${mod}+${shift}+j" = "move down";
             "${mod}+${shift}+k" = "move up";
             "${mod}+${shift}+l" = "move right";
-
-            # alternatively, you can use the cursor keys:
-            "${mod}+${shift}+Left" = "move left";
-            "${mod}+${shift}+Down" = "move down";
-            "${mod}+${shift}+Up" = "move up";
-            "${mod}+${shift}+Right" = "move right";
 
             # split in horizontal orientation
             "${mod}+z" = "split h";
@@ -202,45 +190,6 @@ in
         top = {
           blocks = [
             {
-              block = "music";
-              format = "{$icon $combo |}";
-              seek_step_secs = 10;
-              separator = " – ";
-              click = [
-                {
-                  button = "left";
-                  action = "play_pause";
-                  widget = ".";
-                }
-                {
-                  button = "middle";
-                  widget = ".";
-                  action = "toggle_format";
-                }
-                {
-                  button = "back";
-                  action = "seek_backward";
-                }
-                {
-                  button = "up";
-                  action = "volume_up";
-                  widget = ".";
-                }
-                {
-                  button = "down";
-                  action = "seek_backward";
-                }
-                {
-                  button = "forward";
-                  action = "seek_foward";
-                }
-              ];
-            }
-            {
-              block = "focused_window";
-              format = "$title.str(max_w:180)| ";
-            }
-            {
               block = "uptime";
               interval = 3600;
             }
@@ -273,10 +222,6 @@ in
               interval = 300;
               use_ipv4 = true;
             }
-            # {
-            #   block = "docker";
-            #   format = " $icon $running/$total ";
-            # }
             {
               block = "battery";
               interval = 30;
