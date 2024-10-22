@@ -25,8 +25,9 @@
       auto-login-user = "ikostov2";
       modules = [
         ./hosts/personal/desktop
-        nixos-hardware.nixosModules.common-pc
+        nixos-hardware.nixosModules.common-pc-ssd
         nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-gpu-nvidia
       ];
 
       boot = {
