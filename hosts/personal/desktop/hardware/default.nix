@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./nvidia
       ./mount
       ./displayManager
       ./systemd
