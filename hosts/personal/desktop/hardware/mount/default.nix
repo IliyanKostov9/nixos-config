@@ -1,7 +1,7 @@
 { ... }:
 {
   fileSystems."/mnt/external_hd" = {
-    device = "/dev/sda1";
+    device = "/dev/sdb1";
     fsType = "ntfs";
     options = [ "users" "nofail" "rw" ];
   };
