@@ -25,12 +25,11 @@
       auto-login-user = "ikostov2";
       modules = [
         ./hosts/personal/desktop
-        nixos-hardware.nixosModules.common-pc-ssd
-        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 
       boot = {
-        kernelModules = [ "kvm-amd" ];
+        kernelModules = [ "kvm-amd" "k10temp" ];
         kernelParams = [ "nvidia-drm.fbdev=1" ];
         initrd = {
           luks.devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
