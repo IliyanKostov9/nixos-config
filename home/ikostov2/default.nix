@@ -8,7 +8,6 @@
   config.modules = {
 
     nix-alien.enable = false;
-
     # API
     postman.enable = false;
 
