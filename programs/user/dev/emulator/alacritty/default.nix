@@ -82,9 +82,7 @@ in
         };
 
         font = {
-          # 8 for laptop
-          # 12 for desktop
-          size = 12;
+          size = if builtins.getEnv "DEVICE" == "desktop" then 12 else 8;
           offset = {
             x = 0;
             y = 0;
