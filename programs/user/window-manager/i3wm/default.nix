@@ -42,6 +42,7 @@ in
             # Keyboard layout
             "${mod}+space" = "exec setxkbmap -layout us";
             "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
+            "${mod}+g" = "exec setxkbmap -layout de";
 
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
@@ -66,7 +67,7 @@ in
             # Mark
             "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
             # Jump
-            "${mod}+g" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
+            "${mod}+/" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
 
             # change focus
             "${mod}+h" = "focus left";
