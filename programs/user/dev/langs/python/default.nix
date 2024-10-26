@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs_unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.python;
 in
@@ -7,12 +7,10 @@ in
 
   config = mkIf cfg.enable {
 
-    home.packages = with pkgs; [
-      #pyenv  # broken: unable to install python
-      python3
-      uv
+    home.packages = [
+      pkgs.python3
+      pkgs_unstable.uv
     ];
   };
-
 }
 
