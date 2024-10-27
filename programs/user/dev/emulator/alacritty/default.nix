@@ -93,11 +93,11 @@ in
           };
 
           normal = {
-            family = "0xProto Nerd Font";
+            family = "${config.modules.fonts.name} Nerd Font";
             style = "Medium";
           };
           bold = {
-            family = "0xProto Nerd Font Mono";
+            family = "${config.modules.fonts.name} Nerd Font Mono";
             style = "Bold";
           };
           italic = {

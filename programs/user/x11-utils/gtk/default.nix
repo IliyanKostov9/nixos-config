@@ -1,31 +1,51 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.gtk;
+with lib.types;
+let
+  cfg = config.modules.gtk;
+  font-name = config.modules.fonts.name;
 in
-{
-  options.modules.gtk = { enable = mkEnableOption "gtk"; };
+rec {
+  options.modules.gtk = {
+    themeName = mkOption {
+      type = str;
+      default = "Adwaita";
+    };
+    cursorName = mkOption {
+      type = str;
+      default = "DMZ-White";
+    };
+    iconName = mkOption {
+      type = str;
+      default = "rose-pine";
+    };
+  };
 
-  config = mkIf cfg.enable {
-    # If the cursor theme doesn't work, then change it manually at: ~/.icons/default/index.theme
+  config = {
+    # FIX: If the cursor theme doesn't work, then change it manually at: ~/.icons/default/index.theme
     gtk = {
       enable = true;
       theme = {
-        name = "Adwaita";
+        name = "${cfg.themeName}";
       };
       cursorTheme = {
-        name = "DMZ-White";
+        name = "${cfg.cursorName}";
       };
       iconTheme = {
-        name = "rose-pine";
-        package = pkgs.rose-pine-icon-theme;
+        name = "${cfg.iconName}";
+        package = pkgs."${cfg.iconName}-icon-theme";
       };
+      font = {
+        name = "${font-name}";
+      };
+
       gtk3.extraConfig = {
         gtk-application-prefer-dark-theme = true;
-        gtk-icon-theme-name = "rose-pine";
-        gtk-theme-name = "Adwaita";
-        gtk-cursor-theme-name = "DMZ-White";
+        gtk-icon-theme-name = "${cfg.iconName}";
+        gtk-theme-name = "${cfg.themeName}";
+        gtk-cursor-theme-name = "${cfg.cursorName}";
+        gtk-font-name = "${font-name}";
 
-        gtk-font-name = "Sans 10";
         gtk-cursor-theme-size = 0;
         gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
         gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
@@ -40,6 +60,5 @@ in
       };
     };
   };
-
 }
 

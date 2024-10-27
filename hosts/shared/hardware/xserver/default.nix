@@ -16,6 +16,14 @@
       # displayManager.gdm.enable = true;
       # Another display manager for i3
       displayManager.lightdm.enable = false;
+      # Disable screen turning off after 10 mins
+      deviceSection = ''
+        Option "BlankTime" "0"
+        Option "StandbyTime" "0"
+        Option "SuspendTime" "0"
+        Option "OffTime" "0"
+        Option "DPMS" "false"
+      '';
       desktopManager = {
         xterm.enable = false;
         gnome.enable = true;

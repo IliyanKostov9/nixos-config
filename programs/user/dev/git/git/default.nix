@@ -25,8 +25,9 @@ in
       lfs.enable = false;
 
       extraConfig = {
-        diff.colorMoved = "default";
+        diff.colorMoved = true;
         pull.rebase = false;
+        push.autoSetupRemote = true;
         core.hooksPath = "/home/${user}/.git/hooks";
         init = {
           defaultBranch = "master";

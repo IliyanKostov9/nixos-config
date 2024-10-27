@@ -12,7 +12,7 @@
     neovim = {
       enable = true;
       defaultEditor = true;
-      # Set to false, because it downloads a nvim pkg copy, and doesn't use the user 'unstable' version
+      # BUG: Set to false, because it downloads a nvim pkg copy, and doesn't use the user 'unstable' version
       vimAlias = false;
     };
   };

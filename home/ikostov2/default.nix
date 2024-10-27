@@ -6,6 +6,7 @@
   ];
 
   config.modules = {
+    fonts.name = "0xProto";
 
     nix-alien.enable = false;
     # API
@@ -113,6 +114,5 @@
     flameshot.enable = true;
     gpick.enable = false;
     normcap.enable = true;
-    gtk.enable = true;
   };
 }

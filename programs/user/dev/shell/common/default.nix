@@ -13,7 +13,14 @@ in
 
     # Python
     py = "python3";
-    venv = "eval $(pdm venv activate)";
+    pip = "uv pip";
+    venv = "source .venv/bin/activate";
+
+    pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
+    pip-sync = "uv pip sync requirements.txt";
+    pip-sync-toml = "uv pip sync pyproject.toml";
+
+    # venv = "eval $(pdm venv activate)";
     pdm-sync = "pdm install && pdm sync --clean";
     pdm-export = "pdm export -o requirements.txt";
 
