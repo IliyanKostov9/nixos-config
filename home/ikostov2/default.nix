@@ -6,6 +6,7 @@
   ];
 
   config.modules = {
+    fonts.name = "0xProto";
 
     nix-alien.enable = false;
     # API

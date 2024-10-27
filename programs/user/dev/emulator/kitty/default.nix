@@ -19,7 +19,7 @@ in
 
       font = {
         size = 10;
-        name = "0xProto Nerd Font";
+        name = "${config.modules.fonts.name} Nerd Font";
       };
       shellIntegration = {
         enableZshIntegration = true;

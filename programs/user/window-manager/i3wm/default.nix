@@ -17,7 +17,7 @@ in
         modifier = "Mod4";
         floating.modifier = "Mod4";
         fonts = {
-          names = [ "0xProtoNerdFontMono-Regular" ];
+          names = [ "${config.modules.fonts.name}NerdFontMono-Regular" ];
           style = "Bold Semi-Condensed";
           size = 9.0;
         };

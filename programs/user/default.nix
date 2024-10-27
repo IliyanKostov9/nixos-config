@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./preferences
     ./rdp
     ./disk-image
     ./api
