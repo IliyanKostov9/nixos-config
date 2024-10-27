@@ -1,9 +1,6 @@
-{ pkgs, lib, config, user, ... }:
+{ pkgs, lib, ... }:
 with lib;
 with lib.types;
-
-let cfg = config.modules.fonts;
-in
 {
   options.modules.fonts = {
     name = mkOption {
