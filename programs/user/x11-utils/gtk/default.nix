@@ -44,8 +44,8 @@ rec {
         gtk-icon-theme-name = "${cfg.iconName}";
         gtk-theme-name = "${cfg.themeName}";
         gtk-cursor-theme-name = "${cfg.cursorName}";
-
         gtk-font-name = "${font-name}";
+
         gtk-cursor-theme-size = 0;
         gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
         gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
