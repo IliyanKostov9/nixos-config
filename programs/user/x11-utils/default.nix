@@ -7,5 +7,6 @@
     ./copyq
     ./gtk
     ./gnome-software
+    ./xdg-apps
   ];
 }

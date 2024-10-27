@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Nomacs
+Exec=nomacs %F
+Icon=nomacs
+Terminal=false
+MimeType=image/jpeg;image/png;image/gif;image/bmp;image/tiff;
