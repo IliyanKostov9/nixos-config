@@ -2,9 +2,13 @@
 
 {
   systemd.sleep.extraConfig = ''
-    AllowSuspend=no
-    AllowHibernation=no
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
+    AllowSuspend=yes
+    AllowHibernation=yes
+    AllowHybridSleep=yes
+    AllowSuspendThenHibernate=yes
+
+    HibernateDelaySec=1h
+    IdleAction=suspend
+    IdleActionSec=10m
   '';
 }
