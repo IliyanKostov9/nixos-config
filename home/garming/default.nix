@@ -54,6 +54,5 @@
     copyq.enable = true;
     flameshot.enable = true;
     normcap.enable = true;
-    gtk.enable = true;
   };
 }

@@ -114,6 +114,5 @@
     flameshot.enable = true;
     gpick.enable = false;
     normcap.enable = true;
-    gtk.enable = true;
   };
 }
