@@ -15,6 +15,7 @@ in
     py = "python3";
     pip = "uv pip";
     venv = "source .venv/bin/activate";
+    venv-dev = "source .devenv/state/venv/bin/activate";
 
     pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
     pip-sync = "uv pip sync requirements.txt";
