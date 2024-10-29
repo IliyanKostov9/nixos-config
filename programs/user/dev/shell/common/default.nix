@@ -2,11 +2,9 @@
 
 let
   secrets = config.sops.secrets;
-  fzf-selection = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview');";
 in
 {
   shellAliases = {
-
     # Git
     git-root = "cd $( git rev-parse --show-toplevel )";
     git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
@@ -40,9 +38,7 @@ in
 
     # Utils
     clip = "xclip -selection clipboard";
-    # TODO: fzf-file-search doesn't cd into home directory, due to symbolic link issue
-    # bz = "cd $(fzf-file-search)";
-    bz = "${fzf-selection} if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
+    bz = "cd $(fzf-search)";
     ls = "eza";
     cat = "bat --theme='base16-256'";
     base = "basename $(pwd)";
