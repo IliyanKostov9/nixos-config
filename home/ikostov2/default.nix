@@ -54,7 +54,7 @@
 
     # Dev > Langs
     go.enable = true;
-    jdk.enable = true;
+    jdk.enable = false;
     lua.enable = true;
     node.enable = true;
     python.enable = true;
@@ -96,7 +96,7 @@
     keepass.enable = true;
 
     # Translate
-    dialect.enable = true;
+    dialect.enable = false;
 
     # Virtualisation
     qemu.enable = true;
