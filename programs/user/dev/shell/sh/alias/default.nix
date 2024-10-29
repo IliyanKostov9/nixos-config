@@ -4,7 +4,10 @@ let
   lst = pkgs.writeShellApplication
     {
       name = "lst";
-      text = builtins.readFile ../bin/bash/eza/tree-icons.sh;
+      runtimeInputs = [ pkgs.eza ];
+      text = ''
+        eza --header --icons --tree --level="''${1:-1}"
+      '';
     };
 
   fzf-search = pkgs.writeShellApplication {
