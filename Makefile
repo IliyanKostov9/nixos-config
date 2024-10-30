@@ -46,13 +46,25 @@ secure-boot-sign:
 home-update:  ## Build home configuration for default user
 	home-manager switch --flake .#$(shell whoami) --show-trace --impure --option eval-cache false |& nom
 	
-.PHONY: sys-update-pd
-sys-update-pd: ## Build system configuration for host: personal desktop
-	sudo -v && sudo nixos-rebuild switch --flake .#hosts-personal-desktop --show-trace |& nom
-		
-.PHONY: sys-update-wl
-sys-update-wl: ## Build system configuration for host: work laptop 
-	sudo -v && sudo nixos-rebuild switch --flake .#hosts-work-laptop --show-trace --impure --option eval-cache false |& nom
+.PHONY: sys-update
+sys-update: ## Build system configuration for all hosts
+	@if ! [ -z $(DEVICE) ]; then \
+	 echo "Building $(DEVICE) system..."; \
+	 sudo -v && sudo nixos-rebuild switch --flake .#$(DEVICE) --show-trace |& nom; \
+  else \
+	  echo -e "DEVICE env variable is not set!\n========================\n\nChoose on what system to build for the following options:\n  1.personal-desktop\n  2.work-laptop\n----------------"; \
+	  read -p "Choice: " choice; \
+	  if [ "$$choice" = "1" ]; then \
+            device="hosts-personal-desktop"; \
+	  elif [ "$$choice" = "2" ]; then \
+	    device="hosts-work-laptop"; \
+	  else \
+	    echo "Error: wrong choice!"; \
+	    exit 1; \
+	  fi; \
+	 echo "Building $$device system..."; \
+	 sudo -v && sudo nixos-rebuild switch --flake .#$$device --show-trace |& nom; \
+	fi
 
 .PHONY: flake-check
 flake-check: ## Evaluate flake and build its checks
