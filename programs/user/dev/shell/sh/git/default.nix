@@ -15,7 +15,18 @@ let
 
         git push || git push --set-upstream origin "''$(git rev-parse --abbrev-ref HEAD)"
       '';
-
+    };
+  git-rm-local-brv = pkgs.writeShellApplication
+    {
+      name = "git-rm-local-brv";
+      runtimeInputs = [ pkgs.git ];
+      text = ''
+        git fetch -p && \
+          for branch in ''$(LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}');
+            do 
+              git branch -D "''$branch"; 
+            done
+      '';
     };
   git-rob = pkgs.writeShellApplication
     {
@@ -34,6 +45,7 @@ let
 in
 {
   home.packages = [
+    git-rm-local-brv
     git-all
     git-rob
     git-history-rebase

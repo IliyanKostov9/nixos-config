@@ -5,16 +5,10 @@ let
 in
 {
   shellAliases = {
-    # Git
-    git-root = "cd $( git rev-parse --show-toplevel )";
-    git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
-    git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
-
     # Python
     py = "python3";
     pip = "uv pip";
     venv = "source .venv/bin/activate";
-    venv-dev = "source .devenv/state/venv/bin/activate";
 
     pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
     pip-sync = "uv pip sync requirements.txt";
@@ -37,6 +31,7 @@ in
     ku = "kubectl";
 
     # Utils
+    gitroot = "cd $(git root)";
     clip = "xclip -selection clipboard";
     bz = "cd $(fzf-search)";
     ls = "eza";

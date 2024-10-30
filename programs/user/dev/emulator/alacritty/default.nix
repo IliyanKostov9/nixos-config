@@ -1,6 +1,8 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.alacritty;
+let
+  cfg = config.modules.alacritty;
+  opacity = 1.0;
 in
 {
   options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
@@ -62,8 +64,7 @@ in
           decorations_theme_variant = "Dark";
           dynamic_padding = false;
           decorations = "full";
-          # Make Alacritty opaque or transparent
-          opacity = 1.0; # 0.5;
+          inherit opacity;
           startup_mode = "Maximized";
           option_as_alt = "OnlyLeft";
 
