@@ -5,12 +5,6 @@ let
 in
 {
   shellAliases = {
-
-    # Git
-    git-root = "cd $( git rev-parse --show-toplevel )";
-    git-prt = "gh pr create --body '$(cat .github/PULL_REQUEST_TEMPLATE.md)'";
-    git-rm-local-brv = "git fetch -p && for branch in `LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done";
-
     # Python
     py = "python3";
     pip = "uv pip";
@@ -37,12 +31,12 @@ in
     ku = "kubectl";
 
     # Utils
+    gitroot = "cd $(git root)";
     clip = "xclip -selection clipboard";
-    # TODO: fzf-file-search doesn't cd into home directory, due to symbolic link issue
-    # bz = "cd $(fzf-file-search)";
-    bz = "selection=\$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --color=always --style=numbers --theme=base16-256 --line-range=:500 {} || tree -C {}' --preview-label='Preview'); if [ -d \"\$selection\" ]; then cd \"\$selection\"; else cd \"\$(dirname \"\$selection\")\"; fi";
+    bz = "cd $(fzf-search)";
     ls = "eza";
     cat = "bat --theme='base16-256'";
+    base = "basename $(pwd)";
   };
 
   sessionVariables = {
@@ -52,7 +46,6 @@ in
     GTK_THEME = "Adwaita:dark";
   } // (if builtins.pathExists "${builtins.getEnv "HOME"}/.config/sops-nix" then {
     # Secrets
-
     AWS_ACCESS_KEY_ID = "$(command cat ${secrets.aws_access_key.path})";
     AWS_SECRET_ACCESS_KEY = "$(command cat ${secrets.aws_secret_access_key.path})";
     AWS_REGION = "$(command cat ${secrets.aws_region.path})";

@@ -1,4 +1,4 @@
 { ... }:
 {
-  imports = [./nixgl];
+  imports = [ ./nixgl ];
 }

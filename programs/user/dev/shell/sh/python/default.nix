@@ -1,15 +1,7 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, ... }:
 with lib;
 
 let
-  py-setup-venv = pkgs.writeShellApplication
-    {
-      name = "py-setup-venv";
-      runtimeInputs = [ pkgs.python3 ];
-
-      text = builtins.readFile ../bin/bash/python/python-venv-setup.sh;
-    };
-
   py-nix-sh = pkgs.writeShellApplication
     {
       name = "py-nix-sh";
@@ -22,7 +14,6 @@ let
 in
 {
   home.packages = [
-    py-setup-venv
     py-nix-sh
   ];
 }

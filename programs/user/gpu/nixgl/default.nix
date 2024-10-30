@@ -11,7 +11,6 @@ in
       pkgs.nixgl.nixGLIntel
     ];
   };
-
 }
 
 
