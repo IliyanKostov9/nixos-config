@@ -19,7 +19,7 @@
     # Cloud
     awscli2.enable = true;
     azure-cli.enable = true;
-    rclone.enable = true;
+    rclone.enable = false;
 
     # DBMS
     dbeaver.enable = true;
@@ -55,11 +55,10 @@
     # Dev > Langs
     go.enable = true;
     jdk.enable = false;
-    lua.enable = true;
+    lua.enable = false;
     node.enable = true;
     python.enable = true;
     rust.enable = true;
-    # DISABLED: due to using dev flakes
     terraform.enable = false;
 
     # Dev > Build tools
