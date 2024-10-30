@@ -3,6 +3,7 @@ with lib;
 let
   cfg = config.modules.alacritty;
   opacity = 1.0;
+  font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
 in
 {
   options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
@@ -83,7 +84,7 @@ in
         };
 
         font = {
-          size = if builtins.getEnv "DEVICE" == "desktop" then 12 else 8;
+          size = font-size;
           offset = {
             x = 0;
             y = 0;
