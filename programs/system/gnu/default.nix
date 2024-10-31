@@ -10,7 +10,7 @@ in
     environment.systemPackages = with pkgs; [
       gnupg
       pinentry-qt
-
+      groff
       gnutar
       gcc
       cmake

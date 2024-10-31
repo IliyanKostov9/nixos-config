@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, user, ... }:
 with lib;
 let cfg = config.modules.bash;
 in
@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common) { inherit config; };
+      common = pkgs.callPackage (../common) { inherit config user; };
     in
     {
       home.packages = [

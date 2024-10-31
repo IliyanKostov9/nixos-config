@@ -1,4 +1,4 @@
-{ config, pkgs }:
+{ config, user, pkgs }:
 
 let
   secrets = config.sops.secrets;
@@ -44,6 +44,8 @@ in
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
     MANPAGER = "nvim +Man!";
     GTK_THEME = "Adwaita:dark";
+    PATH = "$PATH:/home/${user}/.local/bin";
+
   } // (if builtins.pathExists "${builtins.getEnv "HOME"}/.config/sops-nix" then {
     # Secrets
     AWS_ACCESS_KEY_ID = "$(command cat ${secrets.aws_access_key.path})";

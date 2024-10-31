@@ -9,6 +9,7 @@ in
 
     home.packages = [
       pkgs.python3
+      pkgs.pipx
       pkgs_unstable.uv
     ];
   };
