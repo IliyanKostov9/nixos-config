@@ -55,7 +55,7 @@
     # Dev > Langs
     go.enable = true;
     jdk.enable = false;
-    lua.enable = false;
+    lua.enable = true; # REQUIRED: By nvim jdtls
     node.enable = true;
     python.enable = true;
     rust.enable = true;
