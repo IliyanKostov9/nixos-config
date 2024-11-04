@@ -1,3 +1,5 @@
+HDD_PART := /dev/sdb1
+
 ##########################
 # TARGET
 # #######################
@@ -12,9 +14,11 @@ setup: label secure-boot
 label: ## Setup your nixos system
 	echo "Labeling mount points with NIXOS prefix..."
 	sudo e2label $(shell findmnt -n -o SOURCE /) NIXOS_SD
+	sudo ntfslabel $(HDD_PART) NIXOS_HDD
 	sudo fatlabel $(shell findmnt -n -o SOURCE /boot) NIXOS_BOOT
 	echo "Labeling done! Mountpoints:"
 	lsblk -o FSTYPE,LABEL,MOUNTPOINT
+	sudo blkid
 
 secure-boot: ## Enable secure boot
 	echo "Currently secure boot is not enabled"

@@ -8,7 +8,7 @@
   config.modules = {
     fonts.name = "0xProto";
 
-    nix-alien.enable = false;
+    nix-alien.enable = true;
     # API
     postman.enable = false;
 
@@ -54,7 +54,7 @@
 
     # Dev > Langs
     go.enable = true;
-    jdk.enable = false;
+    jdk.enable = true;
     lua.enable = true; # REQUIRED: By nvim jdtls
     node.enable = true;
     python.enable = true;
