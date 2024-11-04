@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.jdk19
+      pkgs.jdk
     ];
   };
 

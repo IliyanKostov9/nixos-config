@@ -34,7 +34,6 @@
 
     # Dev > Editor
     neovim.enable = true;
-    intellij-ulti.enable = true;
 
     # Dev > Emulator
     alacritty.enable = true;
@@ -55,7 +54,7 @@
 
     # Dev > Langs
     go.enable = true;
-    jdk.enable = false;
+    jdk.enable = true;
     lua.enable = true; # REQUIRED: By nvim jdtls
     node.enable = true;
     python.enable = true;
