@@ -28,7 +28,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     sops-nix.url = "github:Mic92/sops-nix";
-    # nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.url = "github:thiagokokada/nix-alien";
     # nur.url = "github:wiedzmin/NUR";
     # devshell.url = "github:numtide/devshell";
     # devshell.inputs.nixpkgs.follows = "nixpkgs";

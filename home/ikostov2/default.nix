@@ -8,7 +8,7 @@
   config.modules = {
     fonts.name = "0xProto";
 
-    nix-alien.enable = false;
+    nix-alien.enable = true;
     # API
     postman.enable = false;
 
@@ -34,6 +34,7 @@
 
     # Dev > Editor
     neovim.enable = true;
+    intellij-ulti.enable = true;
 
     # Dev > Emulator
     alacritty.enable = true;
