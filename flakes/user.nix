@@ -3,7 +3,9 @@
 with inputs;
 let
   shared = import ./shared.nix
-    { inherit nixpkgs alacritty-theme nixpkgs_unstable nixgl nixos-hardware; };
+    {
+      inherit nixpkgs alacritty-theme nixpkgs_unstable nixgl nixos-hardware;
+    };
 in
 {
   flake.homeConfigurations = builtins.mapAttrs

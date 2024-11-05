@@ -6,16 +6,23 @@ rec {
 
   pkgs = import nixpkgs {
     inherit system;
-    overlays = [ (nixgl.overlay) (alacritty-theme.overlays.default) ];
+    overlays = [
+      (nixgl.overlay)
+      (alacritty-theme.overlays.default)
+    ];
     config = { allowUnfree = true; };
   };
-  pkgs_unstable = import nixpkgs_unstable {
-    inherit system;
-    config = { allowUnfree = true; };
-  };
+  pkgs_unstable = import
+    nixpkgs_unstable
+    {
+      inherit system;
+      config = { allowUnfree = true; };
+    };
 
-  config_system = import ../config.nix {
-    inherit nixos-hardware;
-  };
+  config_system = import
+    ../config.nix
+    {
+      inherit nixos-hardware;
+    };
   users = config_system.users;
 }
