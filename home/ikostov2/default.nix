@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    # ./overlays.nix
+    ./overlays.nix
     ../../secrets
     ../../programs/user
   ];
