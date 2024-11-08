@@ -1,4 +1,4 @@
-{ nixpkgs, lib, pkgs, stateVersion, user, ... }:
+{ lib, pkgs, stateVersion, user, ... }:
 let
   username = user;
 in
