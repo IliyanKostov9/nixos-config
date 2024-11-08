@@ -20,6 +20,7 @@ in
 
     # Maven
     mvn-jar = "mvn -f pom.xml clean package";
+    mvn-cc-jar = "mvn -s ~/.m2/cc-settings.xml -f pom.xml clean package";
     mvn-spring = "mvn spring-boot:run";
     mvn-deps = "mvn dependency:resolve";
     mvn-deps-tree = "mvn dependency:tree";

@@ -7,6 +7,7 @@
       ./blueman
       ./env-vars
       ./i3
+      ./ssh
       ./openvpn
       ./users
       ./virtualisation
