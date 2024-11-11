@@ -10,7 +10,15 @@ jobs:
     name: Run statix
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Remove dirs to be ignored during scanning
+        run: |
+          rm -rf ./archive
+          echo "Directory structure"
+          ls -l
+
       - uses: cachix/install-nix-action@v30
         with:
           nix_path: nixpkgs=channel:nixos-unstable

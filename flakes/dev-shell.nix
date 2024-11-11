@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   flake.perSystem = { config, self', inputs', pkgs, system, ... }: {
     flake.devenv.shells.default = {
       name = "Nix devenv";

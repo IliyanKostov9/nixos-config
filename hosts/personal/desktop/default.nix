@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   imports = [
     ./hardware
     ../../shared/options
