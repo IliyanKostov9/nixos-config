@@ -1,5 +1,4 @@
-{ pkgs, lib, config, ... }:
-with lib;
+{ config, ... }:
 {
   # TODO: add if statements if config modules for librewolf and nomacs exist in usr pkgs
   config = {
@@ -13,6 +12,8 @@ with lib;
         "video/*" = [ "vlc.desktop" ];
         "image/jpeg" = [ "nomacs.desktop" ];
         "image/png" = [ "nomacs.desktop" ];
+        "application/x-drawio" = [ "drawio.desktop" ];
+        "application/vnd-visio" = [ "drawio.desktop" ];
       };
       associations.removed = {
         "image/jpeg" = [ "chromium-browser.desktop" ];

@@ -21,9 +21,11 @@
     tmux.enable = true;
 
     # Dev > Git
-    git.enable = true;
-    git.userName = "garming";
-    git.userEmail = "garming.@something.com";
+    git = {
+      enable = true;
+      userName = "garming";
+      userEmail = "garming.@something.com";
+    };
 
     git-extras.enable = true;
 

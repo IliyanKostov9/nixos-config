@@ -1,7 +1,7 @@
 { config, user, pkgs }:
 
 let
-  secrets = config.sops.secrets;
+  inherit (config.sops) secrets;
 in
 {
   shellAliases = {
@@ -33,6 +33,7 @@ in
 
     # Utils
     gitroot = "cd $(git root)";
+    gitunstage = "git restore --staged";
     clip = "xclip -selection clipboard";
     bz = "cd $(fzf-search)";
     ls = "eza";

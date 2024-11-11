@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Draw.io
+Comment=Open and edit Draw.io diagrams
+Exec=drawio %F
+Icon=drawio
+Terminal=false
+Type=Application
+MimeType=application/x-drawio;
+Categories=Graphics;Office;
+StartupNotify=true

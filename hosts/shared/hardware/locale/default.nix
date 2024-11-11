@@ -1,5 +1,4 @@
-{ ... }:
-
+_:
 let
   locale = "en_US.UTF-8";#"bg_BG.UTF-8";
 in

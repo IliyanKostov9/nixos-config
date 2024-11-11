@@ -2,7 +2,9 @@
 
 with host_attr;
 let
-  is-secure-boot-enabled = builtins.pathExists "/etc/secureboot";
+  is-secure-boot-enabled =
+    if builtins.pathExists "/etc/secureboot" then
+      lib.trace "> Secure boot IS enabled!" true else lib.trace "> Secure boot is NOT enabled" false;
 in
 {
   imports = [

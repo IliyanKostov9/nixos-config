@@ -7,8 +7,8 @@ rec {
   pkgs = import nixpkgs {
     inherit system;
     overlays = [
-      (nixgl.overlay)
-      (alacritty-theme.overlays.default)
+      nixgl.overlay
+      alacritty-theme.overlays.default
     ];
     config = { allowUnfree = true; };
   };
@@ -24,5 +24,5 @@ rec {
     {
       inherit nixos-hardware;
     };
-  users = config_system.users;
+  inherit (config_system) users;
 }

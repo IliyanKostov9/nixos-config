@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   # Enable bloothooth support
   hardware.bluetooth = {
     enable = true;
