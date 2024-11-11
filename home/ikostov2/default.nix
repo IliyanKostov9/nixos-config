@@ -41,9 +41,11 @@
     tmux.enable = true;
 
     # Dev > Git
-    git.enable = true;
-    git.userName = "iliyan-kostov";
-    git.userEmail = "iliyan.kostov@email.ikostov.org";
+    git = {
+      enable = true;
+      userName = "iliyan-kostov";
+      userEmail = "iliyan.kostov@email.ikostov.org";
+    };
 
     gh.enable = true;
     git-extras.enable = true;

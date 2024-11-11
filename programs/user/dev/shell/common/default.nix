@@ -1,7 +1,7 @@
 { config, user, pkgs }:
 
 let
-  secrets = config.sops.secrets;
+  inherit (config.sops) secrets;
 in
 {
   shellAliases = {
