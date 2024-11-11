@@ -33,6 +33,7 @@ in
 
     # Utils
     gitroot = "cd $(git root)";
+    gitunstage = "git restore --staged";
     clip = "xclip -selection clipboard";
     bz = "cd $(fzf-search)";
     ls = "eza";

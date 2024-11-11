@@ -11,7 +11,7 @@
 
     nix-alien.enable = true;
     # API
-    postman.enable = false;
+    postman.enable = true;
 
     # Browsers
     librewolf.enable = true;

@@ -30,8 +30,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nix-alien.url = "github:thiagokokada/nix-alien";
     # nur.url = "github:wiedzmin/NUR";
-    # devshell.url = "github:numtide/devshell";
-    # devshell.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { flake-parts, ... }@inputs:
@@ -41,11 +39,10 @@
 
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
-        ./flakes/dev-shell.nix
+        # ./flakes/dev-shell.nix
         ./flakes/system.nix
         ./flakes/user.nix
         ./flakes/export-image.nix
-        # inputs.devshell.flakeModule
       ];
     };
 }
