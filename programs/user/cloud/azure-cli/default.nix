@@ -12,9 +12,8 @@ in
 
   config = mkIf cfg.enable (
     let
-      inherit (lib) isDerivation;
       inherit (builtins) filter attrValues;
-      azure-cli = pkgs.azure-cli.withExtensions (filter (attrValues pkgs.azure-cli-extensions));
+      azure-cli = pkgs.azure-cli.withExtensions (filter lib.isDerivation (attrValues pkgs.azure-cli-extensions));
     in
     {
       home.packages = [ azure-cli ];
