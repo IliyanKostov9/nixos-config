@@ -24,6 +24,7 @@ in
     mvn-spring = "mvn spring-boot:run";
     mvn-deps = "mvn dependency:resolve";
     mvn-deps-tree = "mvn dependency:tree";
+    mvn-run = "mvn compile exec:java";
 
     # Infra
     tf = "terraform";

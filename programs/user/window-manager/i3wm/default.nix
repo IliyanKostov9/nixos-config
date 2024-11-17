@@ -244,8 +244,7 @@ in
             }
             {
               block = "bluetooth";
-              # mac = "CC:98:8B:D1:40:88";
-              mac = "08:BF:B8:4C:CD:5F"; # For personal desktop
+              mac = "08:BF:B8:4C:CD:5F";
               format = " $icon $name{$percentage $battery_icon $available|} ";
               disconnected_format = " $icon{ $name|} ";
               click = [

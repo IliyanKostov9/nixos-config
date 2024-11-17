@@ -11,7 +11,11 @@ rec {
       nixos-generators.nixosGenerate
         {
           system = "x86_64-linux";
-          modules = host_attr.modules ++ [ nix-index-database.nixosModules.nix-index ];
+          modules = host_attr.modules ++ [
+            nix-index-database.nixosModules.nix-index
+            sops-nix.nixosModules.sops
+            lanzaboote.nixosModules.lanzaboote
+          ];
           format = "iso";
           specialArgs = { inherit host_name host_attr; inherit (shared) pkgs system stateVersion users; };
         }

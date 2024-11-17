@@ -9,6 +9,18 @@ in
     home.packages = [
       pkgs.tmux
     ];
+
+    programs.tmux = {
+      enable = true;
+      plugins = with pkgs.tmuxPlugins; [
+        resurrect
+        sensible
+        yank
+        open
+      ];
+      extraConfig = lib.fileContents ./tmux.conf;
+      disableConfirmationPrompt = false;
+    };
   };
 
 }
