@@ -20,6 +20,9 @@ in
       ];
       extraConfig = lib.fileContents ./tmux.conf;
       disableConfirmationPrompt = false;
+      clock24 = true;
+      baseIndex = 1;
+      mouse = true;
     };
   };
 
