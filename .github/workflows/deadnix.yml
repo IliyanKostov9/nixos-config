@@ -25,6 +25,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - uses: DeterminateSystems/nix-installer-action@v15
+      - uses: DeterminateSystems/nix-installer-action@v16
       - uses: DeterminateSystems/magic-nix-cache-action@v8
       - uses: astro/deadnix-action@v1
