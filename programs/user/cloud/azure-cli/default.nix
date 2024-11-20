@@ -10,9 +10,8 @@ in
 {
   options.modules.azure-cli = { enable = mkEnableOption "azure-cli"; };
 
-  config = mkIf cfg.enable (
+  config = mkIf cfg.enable
     {
       home.packages = with pkgs; [ azure-cli ];
-    }
-  );
+    };
 }
