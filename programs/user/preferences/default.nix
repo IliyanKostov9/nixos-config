@@ -1,4 +1,4 @@
 { ... }:
 {
-  imports = [ ./fonts ];
+  imports = [ ./red-light ./fonts ];
 }

@@ -29,7 +29,6 @@
     audio.enable = true;
     pcmanfm.enable = true;
     network.enable = true;
-    red-light.enable = true;
 
     # Desktop control center > display-manager
     catppuccin-sddm.enable = true;

@@ -29,7 +29,6 @@ Please don't try to copy-paste the configuration on your own machine and try to 
   2. You won't learn much doing that, and later when you want to change something in your config it'll be harder for you to achieve that
   3. This config structure is made by my personal taste, not yours ... and if some certain functionalities are either missing or badly implemented - then you would need to fork my repo and make your desired change in your version. Nevertheless, I'm more than open to suggestions for improvements, so please feel free to open an issue!
 
-
 ## 🎉 Getting started
 
 To get started, first run `make setup` for the script to label your nixos partition devices and enable secure boot.
