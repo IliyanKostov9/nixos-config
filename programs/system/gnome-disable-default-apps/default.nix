@@ -7,23 +7,23 @@ in
 
   config = mkIf cfg.enable {
     environment.gnome.excludePackages = with pkgs; [
-      gnome.eog # Image viewer
+      eog # Image viewer
       epiphany # web browser
       gedit # text editor
       simple-scan # document scanner
       yelp # help viewer
       evince # document viewer
-      gnome.totem # video player
-      gnome.geary # email client
-      gnome.gnome-calculator
-      gnome.gnome-characters
-      gnome.gnome-clocks
-      gnome.gnome-contacts
-      gnome.gnome-logs
-      gnome.gnome-maps
-      gnome.gnome-music
+      totem # video player
+      geary # email client
+      gnome-calculator
+      gnome-characters
+      gnome-clocks
+      gnome-contacts
+      gnome-logs
+      gnome-maps
+      gnome-music
       gnome-connections
-      gnome.gnome-font-viewer
+      gnome-font-viewer
 
       # baobab # disk usage analyzer
       # cheese # photo booth
