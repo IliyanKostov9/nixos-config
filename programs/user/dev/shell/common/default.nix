@@ -36,6 +36,7 @@ in
     gitroot = "cd $(git root)";
     gitunstage = "git restore --staged";
     clip = "xclip -selection clipboard";
+    bz = "cd $(fzf-search)";
     ls = "eza";
     cat = "bat --theme='base16-256'";
     base = "basename $(pwd)";
