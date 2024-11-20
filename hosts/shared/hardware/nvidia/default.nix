@@ -11,7 +11,7 @@ in
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = false;
-    nvidiaSettings = false; # Disabled, because vulkan.h breaks it. Affected versions: 558 >
+    nvidiaSettings = true; # Disabled, because vulkan.h breaks it. Affected versions: 558 >
     # package = config.boot.kernelPackages.nvidiaPackages.stable;
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       inherit version;
