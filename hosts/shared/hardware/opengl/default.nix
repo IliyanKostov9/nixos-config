@@ -3,12 +3,12 @@
 {
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+    # driSupport = true;
+    # driSupport32Bit = true;
     extraPackages = with pkgs; [
       libGL
     ];
-    setLdLibraryPath = true;
+    # setLdLibraryPath = true;
   };
 
 }

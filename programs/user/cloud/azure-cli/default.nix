@@ -12,11 +12,11 @@ in
 
   config = mkIf cfg.enable (
     let
-      inherit (builtins) filter attrValues;
-      azure-cli = pkgs.azure-cli.withExtensions (filter lib.isDerivation (attrValues pkgs.azure-cli-extensions));
+      # inherit (builtins) filter attrValues;
+      # azure-cli = pkgs.azure-cli.withExtensions (filter lib.isDerivation (attrValues pkgs.azure-cli-extensions));
     in
     {
-      home.packages = [ azure-cli ];
+      home.packages = with pkgs; [ azure-cli ];
     }
   );
 }

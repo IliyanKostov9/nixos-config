@@ -2,7 +2,7 @@
 
 rec {
   system = "x86_64-linux";
-  stateVersion = "24.05";
+  stateVersion = "24.11";
 
   pkgs = import nixpkgs {
     inherit system;
