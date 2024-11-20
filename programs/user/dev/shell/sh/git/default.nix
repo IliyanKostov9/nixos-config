@@ -37,7 +37,7 @@ let
     };
   git-history-rebase = pkgs.writeShellApplication
     {
-      name = "git-history-rebase ";
+      name = "git-history-rebase";
       runtimeInputs = [ pkgs.git ];
 
       text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;

@@ -13,33 +13,38 @@ in
       pkgs.alacritty
     ];
 
+
     programs.alacritty = {
       enable = true;
       settings = {
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
-        import = [ pkgs.alacritty-theme.gruvbox_material_hard_dark or (throw "Alacritty theme missing!") ];
-        # Favorite themes
-        ##################
-        # Dark blue
-        # > deep_space
-        # Pink
-        # > dracula
-        # > hardhacker
-        # Purple
-        # > iris
-        # Dark green
-        # > alacritty_0_12
-        # > everforest_dark
-        # > gruvbox_material_hard_dark
-        # > gruvbox_dark
-        # > kanagawa_wave
-        # > kanagawa_dragon
-        # Dark
-        # > github_dark_colorblind
-        working_directory = config.home.homeDirectory;
+        general = {
+          import = [ pkgs.alacritty-theme.rose_pine_dawn or (throw "Alacritty theme missing!") ];
+          # gruvbox_material_hard_dark
+
+          # Favorite themes
+          ##################
+          # Dark blue
+          # > deep_space
+          # Pink
+          # > dracula
+          # > hardhacker
+          # Purple
+          # > iris
+          # Dark green
+          # > alacritty_0_12
+          # > everforest_dark
+          # > gruvbox_material_hard_dark
+          # > gruvbox_dark
+          # > kanagawa_wave
+          # > kanagawa_dragon
+          # Dark
+          # > github_dark_colorblind
+          working_directory = config.home.homeDirectory;
+        };
         env.TERM = "xterm-256color";
-        shell.program = "zsh";
+        terminal.shell.program = "zsh";
 
         mouse = {
           hide_when_typing = true;

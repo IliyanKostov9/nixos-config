@@ -10,13 +10,8 @@ in
 {
   options.modules.azure-cli = { enable = mkEnableOption "azure-cli"; };
 
-  config = mkIf cfg.enable (
-    let
-      inherit (builtins) filter attrValues;
-      azure-cli = pkgs.azure-cli.withExtensions (filter lib.isDerivation (attrValues pkgs.azure-cli-extensions));
-    in
+  config = mkIf cfg.enable
     {
-      home.packages = [ azure-cli ];
-    }
-  );
+      home.packages = with pkgs; [ azure-cli ];
+    };
 }
