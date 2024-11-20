@@ -4,6 +4,16 @@ let
   cfg = config.modules.alacritty;
   opacity = 1.0;
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
+  theme =
+    let
+      hour-offset = 2; # BUG: current hour is 2 hours behind for some reason
+
+      hour = pkgs.lib.pipe builtins.currentTime [
+        (time: builtins.div time 3600)
+        (time: builtins.add (time - (builtins.div time 24 * 24)) hour-offset)
+      ];
+    in
+    if hour > 7 && hour < 16 then "rose_pine_dawn" else "gruvbox_material_hard_dark";
 in
 {
   options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
@@ -13,16 +23,13 @@ in
       pkgs.alacritty
     ];
 
-
     programs.alacritty = {
       enable = true;
       settings = {
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
         general = {
-          import = [ pkgs.alacritty-theme.gruvbox_material_hard_dark or (throw "Alacritty theme missing!") ];
-          # gruvbox_material_hard_dark
-
+          import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
           # Favorite themes
           ##################
           # Dark blue
