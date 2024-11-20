@@ -20,7 +20,7 @@ in
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
         general = {
-          import = [ pkgs.alacritty-theme.rose_pine_dawn or (throw "Alacritty theme missing!") ];
+          import = [ pkgs.alacritty-theme.gruvbox_material_hard_dark or (throw "Alacritty theme missing!") ];
           # gruvbox_material_hard_dark
 
           # Favorite themes

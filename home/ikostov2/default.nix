@@ -89,7 +89,7 @@
     okular.enable = true;
     viber.enable = true;
 
-    # Office suuite
+    # Office suite
     drawio.enable = true;
     libreoffice.enable = true;
     mail.enable = true;
@@ -107,6 +107,9 @@
 
     # VPN
     openvpn3.enable = true;
+
+    # Preferences
+    red-light.enable = true;
 
     # Window manager
     i3wm.enable = true;
