@@ -6,11 +6,12 @@ let
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
   theme =
     let
-      hour-offset = 2; # BUG: current hour is 2 hours behind for some reason
+      # NOTE: UTC+2
+      utc-offset = 2;
 
       hour = pkgs.lib.pipe builtins.currentTime [
         (time: builtins.div time 3600)
-        (time: builtins.add (time - (builtins.div time 24 * 24)) hour-offset)
+        (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
       ];
     in
     if hour > 7 && hour < 16 then "rose_pine_dawn" else "gruvbox_material_hard_dark";
