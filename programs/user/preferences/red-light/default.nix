@@ -10,6 +10,7 @@ in
 
     services.redshift = {
       enable = true;
+      tray = true;
       settings = {
         redshift = {
           temp-day = lib.mkForce 6500;

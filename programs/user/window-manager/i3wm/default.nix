@@ -172,9 +172,6 @@ in
         # Disable touchpad
         exec --no-startup-id xinput disable "Elan Touchpad"
 
-        # Red-light
-        exec --no-startup-id redshift-gtk
-
         # Enable transparency
         exec --no-startup-id picom -b
 
