@@ -11,7 +11,7 @@ in
       kubectx
       kubernetes-helm
       kind
-      k3s
+      # k3s
       # k9s
     ];
   };

@@ -14,7 +14,9 @@ let
         (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
       ];
     in
-    if hour > 7 && hour < 16 then "rose_pine_dawn" else "gruvbox_material_hard_dark";
+    if hour > 7 && hour < 16 then "papertheme" else "nord";
+  # rose_pine_dawn
+  # gruvbox_material_hard_dark 
 in
 {
   options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
