@@ -33,7 +33,7 @@
         git-extras.enable = true;
       };
 
-      shells = {
+      shell = {
         bash.enable = true;
         zsh.enable = true;
       };
@@ -49,11 +49,11 @@
 
     media = {
       vlc.enable = true;
-      nomacs.enable = true;
     };
 
     office-suite = {
       libreoffice.enable = true;
+      nomacs.enable = true;
     };
 
     vpn = {
