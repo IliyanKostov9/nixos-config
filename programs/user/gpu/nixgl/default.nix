@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.nixgl;
+let cfg = config.modules.gpu.nixgl;
 in
 {
-  options.modules.nixgl = { enable = mkEnableOption "nixgl"; };
+  options.modules.gpu.nixgl = { enable = mkEnableOption "nixgl"; };
 
   config = mkIf cfg.enable {
     home.packages = [

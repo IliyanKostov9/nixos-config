@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.texstudio;
+let cfg = config.modules.dev.editor.texstudio;
 in
 {
-  options.modules.texstudio = { enable = mkEnableOption "texstudio"; };
+  options.modules.dev.editor.texstudio = { enable = mkEnableOption "texstudio"; };
 
   config = mkIf cfg.enable {
     home.packages = [

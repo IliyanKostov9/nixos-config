@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.gpick;
+let cfg = config.modules.utils.gpick;
 in
 {
-  options.modules.gpick = { enable = mkEnableOption "gpick"; };
+  options.modules.utils.gpick = { enable = mkEnableOption "gpick"; };
 
   config = mkIf cfg.enable {
     home.packages = [

@@ -1,15 +1,15 @@
-{  lib, config, ... }:
+{ lib, config, ... }:
 with lib;
-let cfg = config.modules.chromium;
+let cfg = config.modules.browsers.chromium;
 in
 {
-  options.modules.chromium = { enable = mkEnableOption "chromium"; };
+  options.modules.browsers.chromium = { enable = mkEnableOption "chromium"; };
 
   config = mkIf cfg.enable {
-  programs.chromium.enable = true;
-  nixpkgs.config.chromium = {
-    enableWideVine = true;
-  };
+    programs.chromium.enable = true;
+    nixpkgs.config.chromium = {
+      enableWideVine = true;
+    };
   };
 
 }

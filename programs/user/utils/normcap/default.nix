@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.normcap;
+let cfg = config.modules.utils.normcap;
 in
 {
-  options.modules.normcap = { enable = mkEnableOption "normcap"; };
+  options.modules.utils.normcap = { enable = mkEnableOption "normcap"; };
 
   config = mkIf cfg.enable {
     home.packages = [

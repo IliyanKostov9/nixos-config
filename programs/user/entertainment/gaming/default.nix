@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.gaming;
+let cfg = config.modules.entertainment.gaming;
 in
 {
-  options.modules.gaming = { enable = mkEnableOption "gaming"; };
+  options.modules.entertainment.gaming = { enable = mkEnableOption "gaming"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.red-light;
+let cfg = config.modules.preferences.red-light;
 in
 {
-  options.modules.red-light = { enable = mkEnableOption "red-light"; };
+  options.modules.preferences.red-light = { enable = mkEnableOption "red-light"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ redshift ];

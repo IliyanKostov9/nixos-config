@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.bat;
+let cfg = config.modules.dev.command-line.bat;
 in
 {
-  options.modules.bat = { enable = mkEnableOption "bat"; };
+  options.modules.dev.command-line.bat = { enable = mkEnableOption "bat"; };
 
   config = mkIf cfg.enable {
     home.packages = [

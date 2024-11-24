@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 with lib;
 let
-  cfg = config.modules.alacritty;
+  cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
   theme =
@@ -15,11 +15,9 @@ let
       ];
     in
     if hour > 7 && hour < 16 then "dayfox" else "nordfox";
-  # rose_pine_dawn
-  # gruvbox_material_hard_dark 
 in
 {
-  options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
+  options.modules.dev.emulator.alacritty = { enable = mkEnableOption "alacritty"; };
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -35,6 +33,8 @@ in
           import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
           # Favorite themes
           ##################
+          # rose_pine_dawn
+          # gruvbox_material_hard_dark 
           # Dark blue
           # > deep_space
           # Pink

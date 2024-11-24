@@ -2,11 +2,11 @@
 with lib;
 with lib.types;
 let
-  cfg = config.modules.gtk;
+  cfg = config.modules.utils.gtk;
   font-name = config.modules.fonts.name;
 in
 rec {
-  options.modules.gtk = {
+  options.modules.utils.gtk = {
     themeName = mkOption {
       type = str;
       default = "Adwaita";

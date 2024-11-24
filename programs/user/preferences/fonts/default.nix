@@ -2,7 +2,7 @@
 with lib;
 with lib.types;
 {
-  options.modules.fonts = {
+  options.modules.preferences.fonts = {
     name = mkOption {
       type = str;
       default = "0xProto";

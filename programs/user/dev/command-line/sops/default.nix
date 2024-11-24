@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.sops;
+let cfg = config.modules.dev.command-line.sops;
 in
 {
-  options.modules.sops = { enable = mkEnableOption "sops"; };
+  options.modules.dev.command-line.sops = { enable = mkEnableOption "sops"; };
 
   config = mkIf cfg.enable {
     home.packages = [

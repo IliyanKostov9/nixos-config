@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.kotlin;
+let cfg = config.modules.dev.langs.kotlin;
 in
 {
-  options.modules.kotlin = { enable = mkEnableOption "kotlin"; };
+  options.modules.dev.langs.kotlin = { enable = mkEnableOption "kotlin"; };
 
   config = mkIf cfg.enable {
     home.packages = [

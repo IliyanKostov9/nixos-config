@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.i3wm;
+let cfg = config.modules.window-manager.i3wm;
 in
 {
-  options.modules.i3wm = { enable = mkEnableOption "i3wm"; };
+  options.modules.window-manager.i3wm = { enable = mkEnableOption "i3wm"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

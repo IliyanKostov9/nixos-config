@@ -1,9 +1,9 @@
 { pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.vnc;
+let cfg = config.modules.rdp.vnc;
 in
 {
-  options.modules.vnc = { enable = mkEnableOption "vnc"; };
+  options.modules.rdp.vnc = { enable = mkEnableOption "vnc"; };
 
   config = mkIf cfg.enable {
     home.packages = [

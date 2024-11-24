@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.qemu;
+let cfg = config.modules.virtualisation.qemu;
 in
 {
-  options.modules.qemu = { enable = mkEnableOption "qemu"; };
+  options.modules.virtualisation.qemu = { enable = mkEnableOption "qemu"; };
 
   config = mkIf cfg.enable {
     home.packages = [

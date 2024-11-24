@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.jdk;
+let cfg = config.modules.dev.langs.jdk;
 in
 {
-  options.modules.jdk = { enable = mkEnableOption "jdk"; };
+  options.modules.dev.langs.jdk = { enable = mkEnableOption "jdk"; };
 
   config = mkIf cfg.enable {
     home.packages = [

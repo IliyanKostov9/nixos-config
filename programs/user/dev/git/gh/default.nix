@@ -1,9 +1,9 @@
 { pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.gh;
+let cfg = config.modules.dev.git.gh;
 in
 {
-  options.modules.gh = { enable = mkEnableOption "gh"; };
+  options.modules.dev.git.gh = { enable = mkEnableOption "gh"; };
 
   config = mkIf cfg.enable {
     home.packages = [

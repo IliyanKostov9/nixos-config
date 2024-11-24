@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.ansible;
+let cfg = config.modules.dev.langs.ansible;
 in
 {
-  options.modules.ansible = { enable = mkEnableOption "ansible"; };
+  options.modules.dev.langs.ansible = { enable = mkEnableOption "ansible"; };
 
   config = mkIf cfg.enable {
     home.packages = [

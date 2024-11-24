@@ -1,9 +1,9 @@
 { self, system, pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.nix-alien;
+let cfg = config.modules.dev.command-line.nix-alien;
 in
 {
-  options.modules.nix-alien = { enable = mkEnableOption "nix-alien"; };
+  options.modules.dev.command-line.nix-alien = { enable = mkEnableOption "nix-alien"; };
 
   config = mkIf cfg.enable {
     home.packages = [

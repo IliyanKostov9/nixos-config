@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.gnome-software;
+let cfg = config.modules.utils.gnome-software;
 in
 {
-  options.modules.gnome-software = { enable = mkEnableOption "gnome-software"; };
+  options.modules.utils.gnome-software = { enable = mkEnableOption "gnome-software"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

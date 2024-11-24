@@ -2,10 +2,10 @@
 with lib;
 with lib.types;
 
-let cfg = config.modules.git;
+let cfg = config.modules.dev.git.git;
 in
 {
-  options.modules.git = {
+  options.modules.dev.git.git = {
     enable = mkEnableOption "git";
 
     userName = mkOption {

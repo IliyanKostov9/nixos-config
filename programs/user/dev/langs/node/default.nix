@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.node;
+let cfg = config.modules.dev.langs.node;
 in
 {
-  options.modules.node = { enable = mkEnableOption "node"; };
+  options.modules.dev.langs.node = { enable = mkEnableOption "node"; };
 
   config = mkIf cfg.enable {
     home.packages = [

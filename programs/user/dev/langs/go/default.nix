@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.go;
+let cfg = config.modules.dev.langs.go;
 in
 {
-  options.modules.go = { enable = mkEnableOption "go"; };
+  options.modules.dev.langs.go = { enable = mkEnableOption "go"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.k8s;
+let cfg = config.modules.dev.container.k8s;
 in
 {
-  options.modules.k8s = { enable = mkEnableOption "k8s"; };
+  options.modules.dev.container.k8s = { enable = mkEnableOption "k8s"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
