@@ -68,6 +68,10 @@
         python.enable = true;
         rust.enable = true;
       };
+      linters = {
+        # INFO: Required for yammlint in nvim
+        yamllint.enable = true;
+      };
       shell = {
         bash.enable = true;
         zsh.enable = true;
