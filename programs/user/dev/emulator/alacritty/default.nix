@@ -14,7 +14,7 @@ let
         (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
       ];
     in
-    if hour > 7 && hour < 16 then "papertheme" else "nord";
+    if hour > 7 && hour < 16 then "dayfox" else "nordfox";
   # rose_pine_dawn
   # gruvbox_material_hard_dark 
 in
