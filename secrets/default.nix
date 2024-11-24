@@ -23,7 +23,13 @@
 
       tf_token_app_terraform_io = { };
       tf_org = { };
+
+      ovpn_username = {
+        mode = "0400";
+      };
+      ovpn_password = {
+        mode = "0400";
+      };
     };
   };
-
 }

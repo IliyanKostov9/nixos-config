@@ -6,55 +6,68 @@
   ];
 
   config.modules = {
-
-    # Browsers
-    librewolf.enable = true;
-    chromium.enable = true;
-
-    bat.enable = true;
-
-    # Dev > Editor
-    neovim.enable = true;
-
-    # Dev > Emulator
-    alacritty.enable = true;
-    tmux.enable = true;
-
-    # Dev > Git
-    git = {
-      enable = true;
-      userName = "garming";
-      userEmail = "garming.@something.com";
+    browsers = {
+      librewolf.enable = true;
+      chromium.enable = true;
     };
 
-    git-extras.enable = true;
+    dev = {
+      command-line = {
+        bat.enable = true;
+      };
 
-    # Dev - > Shells
-    bash.enable = true;
-    zsh.enable = true;
+      editor = {
+        neovim.enable = true;
+      };
 
-    # File compression
-    p7zip.enable = true;
+      emulator = {
+        alacritty.enable = true;
+        tmux.enable = true;
+      };
+      git = {
+        git = {
+          enable = true;
+          userName = "garming";
+          userEmail = "garming.@something.com";
+        };
+        git-extras.enable = true;
+      };
 
-    # Entertainment
-    gaming.enable = true;
+      shell = {
+        bash.enable = true;
+        zsh.enable = true;
+      };
+    };
 
-    # Media
-    vlc.enable = true;
-    nomacs.enable = true;
+    file-compression = {
+      p7zip.enable = true;
+    };
 
-    # Office suuite
-    libreoffice.enable = true;
+    entertainment = {
+      gaming.enable = true;
+    };
 
-    # VPN
-    openvpn3.enable = false;
+    media = {
+      vlc.enable = true;
+    };
 
-    # Window manager
-    i3wm.enable = true;
+    office-suite = {
+      libreoffice.enable = true;
+      nomacs.enable = true;
+    };
 
-    # X11- utils
-    copyq.enable = true;
-    flameshot.enable = true;
-    normcap.enable = true;
+    vpn = {
+      openvpn3.enable = false;
+    };
+
+    window-manager = {
+      i3wm.enable = true;
+    };
+
+    utils = {
+      copyq.enable = true;
+      flameshot.enable = true;
+      normcap.enable = true;
+    };
   };
 }

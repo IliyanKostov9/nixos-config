@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.dotnet;
+let cfg = config.modules.dev.langs.dotnet;
 in
 {
-  options.modules.dotnet = { enable = mkEnableOption "dotnet"; };
+  options.modules.dev.langs.dotnet = { enable = mkEnableOption "dotnet"; };
 
   config = mkIf cfg.enable {
     home.packages = [

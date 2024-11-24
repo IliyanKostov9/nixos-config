@@ -2,41 +2,46 @@
 {
   config.modules = {
 
-    curl.enable = true;
-    home-manager.enable = true;
-    nix-output-monitor.enable = true;
-    wget.enable = true;
+    downloader = {
+      curl.enable = true;
+      home-manager.enable = true;
+      wget.enable = true;
 
-    # Deps -> GNU
-    gnu.enable = true;
-    # Disable default gnome apps
-    gnome-disable-default-apps.enable = true;
+      nix = {
+        nix-output-monitor.enable = true;
+      };
+    };
 
-    # Deps -> Lib
-    lib.enable = true;
+    lib = {
+      gnu.enable = true;
+      nix-ld.enable = true;
+    };
 
-    # Deps -> Security
+    gnome-disable-apps.enable = true;
     security.enable = true;
 
-    # Deps -> Utils
-    file-listing.enable = true;
-    fzf.enable = true;
-    monitor.enable = true;
-    xclip.enable = true;
-    zip.enable = true;
+    utils = {
+      dir-content-ls.enable = true;
+      fzf.enable = true;
+      monitor.enable = true;
+      xclip.enable = true;
+      zip.enable = true;
+    };
 
-    # Desktop control center
-    audio.enable = true;
-    pcmanfm.enable = true;
-    network.enable = true;
+    desktop-settings = {
+      audio.enable = true;
+      file-manager.pcmanfm.enable = true;
+      network.enable = true;
+      display-manager.catppuccin-sddm.enable = true;
+    };
 
-    # Desktop control center > display-manager
-    catppuccin-sddm.enable = true;
 
-    # Editor
-    vim.enable = true;
+    editor = {
+      vim.enable = true;
+    };
 
-    # SCM
-    git.enable = true;
+    scm = {
+      git.enable = true;
+    };
   };
 }

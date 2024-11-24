@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.terminator;
+let cfg = config.modules.dev.emulator.terminator;
 in
 {
-  options.modules.terminator = { enable = mkEnableOption "terminator"; };
+  options.modules.dev.emulator.terminator = { enable = mkEnableOption "terminator"; };
 
   config = mkIf cfg.enable {
     home.packages = [

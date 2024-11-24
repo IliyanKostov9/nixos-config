@@ -1,9 +1,9 @@
 { pkgs, lib, config, user, ... }:
 with lib;
-let cfg = config.modules.zsh;
+let cfg = config.modules.dev.shell.zsh;
 in
 {
-  options.modules.zsh = { enable = mkEnableOption "zsh"; };
+  options.modules.dev.shell.zsh = { enable = mkEnableOption "zsh"; };
 
   config = mkIf cfg.enable (
     let

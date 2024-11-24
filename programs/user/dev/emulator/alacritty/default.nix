@@ -1,22 +1,27 @@
 { pkgs, lib, config, ... }:
 with lib;
 let
-  cfg = config.modules.alacritty;
+  cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
+  font-name = config.modules.preferences.fonts.name;
+
   theme =
     let
-      hour-offset = 2; # BUG: current hour is 2 hours behind for some reason
+      # NOTE: UTC+2
+      utc-offset = 2;
 
-      hour = pkgs.lib.pipe builtins.currentTime [
-        (time: builtins.div time 3600)
-        (time: builtins.add (time - (builtins.div time 24 * 24)) hour-offset)
-      ];
+      hour =
+        if (!trivial.inPureEvalMode) then
+          pkgs.lib.pipe builtins.currentTime [
+            (time: builtins.div time 3600)
+            (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
+          ] else trace "> WARN: Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
     in
-    if hour > 7 && hour < 16 then "rose_pine_dawn" else "gruvbox_material_hard_dark";
+    if hour > 7 && hour < 16 then "dayfox" else "nordfox";
 in
 {
-  options.modules.alacritty = { enable = mkEnableOption "alacritty"; };
+  options.modules.dev.emulator.alacritty = { enable = mkEnableOption "alacritty"; };
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -32,6 +37,8 @@ in
           import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
           # Favorite themes
           ##################
+          # rose_pine_dawn
+          # gruvbox_material_hard_dark 
           # Dark blue
           # > deep_space
           # Pink
@@ -107,11 +114,11 @@ in
           };
 
           normal = {
-            family = "${config.modules.fonts.name} Nerd Font";
+            family = "${font-name} Nerd Font";
             style = "Medium";
           };
           bold = {
-            family = "${config.modules.fonts.name} Nerd Font Mono";
+            family = "${font-name} Nerd Font Mono";
             style = "Bold";
           };
           italic = {

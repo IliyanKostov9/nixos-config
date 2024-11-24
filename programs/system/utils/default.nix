@@ -1,10 +1,8 @@
-{ ... }:
-
-{
+_: {
   imports = [
     ./xclip
     ./fzf
-    ./file-listing
+    ./dir-content-ls
     ./zip
     ./monitor
   ];

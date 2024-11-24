@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports =
     [
       ./modules
@@ -12,5 +11,10 @@
       ./users
       ./virtualisation
       ./programs
+      ./cups
+      ./locale
+      ./networking
+      ./pipewire
+      ./security
     ];
 }

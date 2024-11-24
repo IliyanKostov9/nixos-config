@@ -1,9 +1,9 @@
 { pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.ggshield;
+let cfg = config.modules.dev.command-line.ggshield;
 in
 {
-  options.modules.ggshield = { enable = mkEnableOption "ggshield"; };
+  options.modules.dev.command-line.ggshield = { enable = mkEnableOption "ggshield"; };
 
   config = mkIf cfg.enable {
     home.packages = [

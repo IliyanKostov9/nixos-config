@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.docker;
+let cfg = config.modules.dev.container.docker;
 in
 {
-  options.modules.docker = { enable = mkEnableOption "docker"; };
+  options.modules.dev.container.docker = { enable = mkEnableOption "docker"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

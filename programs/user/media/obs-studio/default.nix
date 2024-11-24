@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.obs-studio;
+let cfg = config.modules.media.obs-studio;
 in
 {
-  options.modules.obs-studio = { enable = mkEnableOption "obs-studio"; };
+  options.modules.media.obs-studio = { enable = mkEnableOption "obs-studio"; };
 
   config = mkIf cfg.enable {
     home.packages = [

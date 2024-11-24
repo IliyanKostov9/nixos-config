@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.lazydocker;
+let cfg = config.modules.virtualisation.lazydocker;
 in
 {
-  options.modules.lazydocker = { enable = mkEnableOption "lazydocker"; };
+  options.modules.virtualisation.lazydocker = { enable = mkEnableOption "lazydocker"; };
 
   config = mkIf cfg.enable {
     home.packages = [

@@ -1,9 +1,9 @@
 { pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.dbeaver;
+let cfg = config.modules.dev.dbms.dbeaver;
 in
 {
-  options.modules.dbeaver = { enable = mkEnableOption "dbeaver"; };
+  options.modules.dev.dbms.dbeaver = { enable = mkEnableOption "dbeaver"; };
 
   config = mkIf cfg.enable {
     home.packages = [

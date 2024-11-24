@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.librewolf;
+let cfg = config.modules.browsers.librewolf;
 in
 {
-  options.modules.librewolf = { enable = mkEnableOption "librewolf"; };
+  options.modules.browsers.librewolf = { enable = mkEnableOption "librewolf"; };
 
   config = mkIf cfg.enable {
     home.packages = [

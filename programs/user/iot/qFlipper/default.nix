@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.qFlipper;
+let cfg = config.modules.iot.qFlipper;
 in
 {
-  options.modules.qFlipper = { enable = mkEnableOption "qFlipper"; };
+  options.modules.iot.qFlipper = { enable = mkEnableOption "qFlipper"; };
 
   config = mkIf cfg.enable {
     home.packages = [

@@ -1,15 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.postman;
+let cfg = config.modules.api.postman;
 in
 {
-  options.modules.postman = { enable = mkEnableOption "postman"; };
-  # options.modules.docker = {
-  #   enable = mkOption {
-  #     type = bool;
-  #     default = false;
-  #   };
-  # };
+  options.modules.api.postman = { enable = mkEnableOption "postman"; };
 
   config = mkIf cfg.enable {
     home.packages = [

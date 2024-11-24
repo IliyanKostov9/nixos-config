@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.rust;
+let cfg = config.modules.dev.langs.rust;
 in
 {
-  options.modules.rust = { enable = mkEnableOption "rust"; };
+  options.modules.dev.langs.rust = { enable = mkEnableOption "rust"; };
 
   config = mkIf cfg.enable {
     # Needed for Neovim rnix-lsp and rnix-fmt

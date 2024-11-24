@@ -2,19 +2,25 @@
 with lib;
 with lib.types;
 
-let cfg = config.modules.git;
+let cfg = config.modules.dev.git.git;
 in
 {
-  options.modules.git = {
+  options.modules.dev.git.git = {
     enable = mkEnableOption "git";
 
     userName = mkOption {
       type = str;
       default = "john-doe";
+      description = lib.mkDoc ''
+        Username for git
+      '';
     };
     userEmail = mkOption {
       type = str;
       default = "john.doe@mail.com";
+      description = lib.mkDoc ''
+        Email for git
+      '';
     };
   };
 

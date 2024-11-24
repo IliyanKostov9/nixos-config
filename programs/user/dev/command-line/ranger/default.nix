@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.ranger;
+let cfg = config.modules.dev.command-line.ranger;
 in
 {
-  options.modules.ranger = { enable = mkEnableOption "ranger"; };
+  options.modules.dev.command-line.ranger = { enable = mkEnableOption "ranger"; };
 
   config = mkIf cfg.enable {
     home.packages = [

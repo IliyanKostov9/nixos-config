@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.tmux;
+let cfg = config.modules.dev.emulator.tmux;
 in
 {
-  options.modules.tmux = { enable = mkEnableOption "tmux"; };
+  options.modules.dev.emulator.tmux = { enable = mkEnableOption "tmux"; };
 
   config = mkIf cfg.enable {
     home.packages = [

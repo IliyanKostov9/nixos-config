@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.i3wm;
+let cfg = config.modules.window-manager.i3wm;
 in
 {
-  options.modules.i3wm = { enable = mkEnableOption "i3wm"; };
+  options.modules.window-manager.i3wm = { enable = mkEnableOption "i3wm"; };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -17,7 +17,7 @@ in
         modifier = "Mod4";
         floating.modifier = "Mod4";
         fonts = {
-          names = [ "${config.modules.fonts.name}NerdFontMono-Regular" ];
+          names = [ "${config.modules.preferences.fonts.name}NerdFontMono-Regular" ];
           style = "Bold Semi-Condensed";
           size = 9.0;
         };
@@ -171,9 +171,6 @@ in
 
         # Disable touchpad
         exec --no-startup-id xinput disable "Elan Touchpad"
-
-        # Red-light
-        exec --no-startup-id redshift-gtk
 
         # Enable transparency
         exec --no-startup-id picom -b

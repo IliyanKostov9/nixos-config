@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.drawio;
+let cfg = config.modules.office-suite.drawio;
 in
 {
-  options.modules.drawio = { enable = mkEnableOption "drawio"; };
+  options.modules.office-suite.drawio = { enable = mkEnableOption "drawio"; };
 
   config = mkIf cfg.enable {
     home.packages = [

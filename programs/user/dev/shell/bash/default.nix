@@ -1,9 +1,9 @@
 { pkgs, lib, config, user, ... }:
 with lib;
-let cfg = config.modules.bash;
+let cfg = config.modules.dev.shell.bash;
 in
 {
-  options.modules.bash = { enable = mkEnableOption "bash"; };
+  options.modules.dev.shell.bash = { enable = mkEnableOption "bash"; };
 
   config = mkIf cfg.enable (
     let

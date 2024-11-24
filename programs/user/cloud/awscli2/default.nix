@@ -1,9 +1,9 @@
 { pkgs, pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.awscli2;
+let cfg = config.modules.cloud.awscli2;
 in
 {
-  options.modules.awscli2 = { enable = mkEnableOption "awscli2"; };
+  options.modules.cloud.awscli2 = { enable = mkEnableOption "awscli2"; };
 
   config = mkIf cfg.enable {
     home.packages = [

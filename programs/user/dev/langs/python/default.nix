@@ -1,9 +1,9 @@
 { pkgs, pkgs_unstable, lib, config, ... }:
 with lib;
-let cfg = config.modules.python;
+let cfg = config.modules.dev.langs.python;
 in
 {
-  options.modules.python = { enable = mkEnableOption "python"; };
+  options.modules.dev.langs.python = { enable = mkEnableOption "python"; };
 
   config = mkIf cfg.enable {
 

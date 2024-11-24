@@ -1,9 +1,4 @@
-{ pkgs, ... }:
-
-{
-
-  # TODO: Move zsh elesewhere
-  environment.shells = with pkgs; [ zsh ];
+_: {
   imports = [
     ./git
     ./subversion

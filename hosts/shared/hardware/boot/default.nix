@@ -1,10 +1,12 @@
 { lib, pkgs, modulesPath, host_attr, ... }:
 
 with host_attr;
+with lib;
+with lib.trivial;
 let
   is-secure-boot-enabled =
-    if builtins.pathExists "/etc/secureboot" then
-      lib.trace "> Secure boot IS enabled!" true else lib.trace "> Secure boot is NOT enabled" false;
+    if builtins.pathExists "/etc/secureboot" && !inPureEvalMode then
+      trace "> Secure boot IS enabled!" true else if inPureEvalMode then trace "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enabled secure boot!" false else trace "> Secure boot is NOT enabled" false;
 in
 {
   imports = [

@@ -1,15 +1,13 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.subversion;
+let cfg = config.modules.scm.subversion;
 in
 {
-  options.modules.subversion = { enable = mkEnableOption "subversion"; };
+  options.modules.scm.subversion = { enable = mkEnableOption "subversion"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.subversion
     ];
   };
-
 }
-

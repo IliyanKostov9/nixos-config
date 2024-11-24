@@ -1,11 +1,19 @@
-{ host_attr, ... }:
+{ config, lib, ... }:
+let
+  inherit (config.sops) secrets;
+  ovpn-path = "/var/lib/openvpn/personalVPN.ovpn";
+  is-ovpn-present = if builtins.pathExists ovpn-path then true else false;
+in
 {
   services.openvpn.servers = {
     personalVPN = {
-      # TODO: Fix the dependency issue, where we assume the auto login user has ovpn file located at that path 
-      config = "config /home/${host_attr.auto-login-user}/.config/openvpn/personalVPN.ovpn";
+      config = "config ${ovpn-path}";
+      authUserPass = lib.mkIf (!lib.trivial.inPureEvalMode) {
+        username = builtins.readFile secrets.ovpn_username.path;
+        password = builtins.readFile secrets.ovpn_password.path;
+      };
       updateResolvConf = true;
-      autoStart = true;
+      autoStart = is-ovpn-present;
     };
   };
 }

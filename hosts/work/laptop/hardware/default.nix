@@ -1,10 +1,7 @@
-{ ... }:
-
-{
+_: {
   imports =
     [
       ./displayManager
       ./nvidia
-      ../../../shared/hardware
     ];
 }

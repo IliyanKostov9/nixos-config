@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.calibre;
+let cfg = config.modules.office-suite.calibre;
 in
 {
-  options.modules.calibre = { enable = mkEnableOption "calibre"; };
+  options.modules.office-suite.calibre = { enable = mkEnableOption "calibre"; };
 
   config = mkIf cfg.enable {
     home.packages = [

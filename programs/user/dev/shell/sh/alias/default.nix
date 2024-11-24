@@ -1,5 +1,6 @@
 { pkgs, lib, config, ... }:
 with lib;
+with config.modules.dev.shell;
 let
   lst = pkgs.writeShellApplication
     {
@@ -27,7 +28,7 @@ let
   };
 in
 {
-  home.packages = lib.optionals (config.modules.zsh.enable || config.modules.bash.enable) [
+  home.packages = lib.optionals (zsh.enable || bash.enable) [
     lst
     fzf-search
   ];

@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.intellij-ulti;
+let cfg = config.modules.dev.editor.intellij-ulti;
 in
 {
-  options.modules.intellij-ulti = { enable = mkEnableOption "intellij-ulti"; };
+  options.modules.dev.editor.intellij-ulti = { enable = mkEnableOption "intellij-ulti"; };
 
   config = mkIf cfg.enable {
     home.packages = [

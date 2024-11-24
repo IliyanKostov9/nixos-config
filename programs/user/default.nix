@@ -20,6 +20,6 @@
     ./vpn
     ./win-api
     ./window-manager
-    ./x11-utils
+    ./utils
   ];
 }

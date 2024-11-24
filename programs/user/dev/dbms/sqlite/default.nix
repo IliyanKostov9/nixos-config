@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.sqlite;
+let cfg = config.modules.dev.dbms.sqlite;
 in
 {
-  options.modules.sqlite = { enable = mkEnableOption "sqlite"; };
+  options.modules.dev.dbms.sqlite = { enable = mkEnableOption "sqlite"; };
 
   config = mkIf cfg.enable {
     home.packages = [
