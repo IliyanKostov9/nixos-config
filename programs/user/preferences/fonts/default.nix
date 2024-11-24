@@ -6,6 +6,9 @@ with lib.types;
     name = mkOption {
       type = str;
       default = "0xProto";
+      description = lib.mkDoc ''
+        Nerd fonts for the terminal
+      '';
     };
   };
 

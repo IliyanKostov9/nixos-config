@@ -11,10 +11,16 @@ in
     userName = mkOption {
       type = str;
       default = "john-doe";
+      description = lib.mkDoc ''
+        Username for git
+      '';
     };
     userEmail = mkOption {
       type = str;
       default = "john.doe@mail.com";
+      description = lib.mkDoc ''
+        Email for git
+      '';
     };
   };
 

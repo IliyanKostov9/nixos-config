@@ -23,7 +23,9 @@
 
       tf_token_app_terraform_io = { };
       tf_org = { };
+
+      ovpn_username = { };
+      ovpn_password = { };
     };
   };
-
 }

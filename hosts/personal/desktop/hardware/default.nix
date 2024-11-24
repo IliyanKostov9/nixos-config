@@ -4,6 +4,5 @@ _: {
       ./mount
       ./displayManager
       ./systemd
-      ../../../shared/hardware
     ];
 }

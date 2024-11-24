@@ -10,14 +10,23 @@ rec {
     themeName = mkOption {
       type = str;
       default = "Adwaita";
+      description = lib.mkDoc ''
+        Theme name for gtk
+      '';
     };
     cursorName = mkOption {
       type = str;
       default = "DMZ-White";
+      description = lib.mkDoc ''
+        Cursor name for gtk
+      '';
     };
     iconName = mkOption {
       type = str;
       default = "rose-pine";
+      description = lib.mkDoc ''
+        Icon name for gtk
+      '';
     };
   };
 
