@@ -4,7 +4,6 @@ _: {
     ./desktop-settings
     ./downloader
     ./editor
-    ./gnu
     ./lib
     ./scm
     ./security

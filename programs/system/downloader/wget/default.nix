@@ -3,7 +3,7 @@ with lib;
 let cfg = config.modules.downloader.wget;
 in
 {
-  options.modules.wget = { enable = mkEnableOption "wget"; };
+  options.modules.downloader.wget = { enable = mkEnableOption "wget"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [

@@ -5,8 +5,11 @@
     downloader = {
       curl.enable = true;
       home-manager.enable = true;
-      nix-output-monitor.enable = true;
       wget.enable = true;
+
+      nix = {
+        nix-output-monitor.enable = true;
+      };
     };
 
     lib = {
