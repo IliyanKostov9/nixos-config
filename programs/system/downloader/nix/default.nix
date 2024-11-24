@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   imports = [
     ./comma
     ./nix-update

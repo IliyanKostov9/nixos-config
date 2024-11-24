@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.wget;
+let cfg = config.modules.downloader.wget;
 in
 {
   options.modules.wget = { enable = mkEnableOption "wget"; };
@@ -10,6 +10,4 @@ in
       pkgs.wget
     ];
   };
-
 }
-

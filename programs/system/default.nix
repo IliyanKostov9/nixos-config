@@ -1,8 +1,7 @@
-{ ... }:
-{
+_: {
   imports = [
-    ./gnome-disable-default-apps
-    ./desktop-control-center
+    ./gnome-disable-apps
+    ./desktop-settings
     ./downloader
     ./editor
     ./gnu

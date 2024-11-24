@@ -6,8 +6,9 @@ in
   options.modules.security = { enable = mkEnableOption "security"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ openssl pass age ];
+    environment = {
+      systemPackages = with pkgs; [ openssl pass age ];
+      shells = with pkgs; [ zsh ];
+    };
   };
-
 }
-

@@ -1,12 +1,12 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.gnu;
+let cfg = config.modules.lib.gnu;
 in
 {
-  options.modules.gnu = { enable = mkEnableOption "gnu"; };
+  options.modules.lib.gnu = { enable = mkEnableOption "gnu"; };
 
   config = mkIf cfg.enable {
-    # NOTE: Should probabbly remove this part and move it to lib package
+    # NOTE: Should probabbly remove this part
     environment.systemPackages = with pkgs; [
       gnupg
       pinentry-qt
@@ -29,6 +29,4 @@ in
       ncurses
     ];
   };
-
 }
-

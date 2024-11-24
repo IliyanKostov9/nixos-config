@@ -1,15 +1,13 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.nix-update;
+let cfg = config.modules.downloader.nix.nix-update;
 in
 {
-  options.modules.nix-update = { enable = mkEnableOption "nix-update"; };
+  options.modules.downloader.nix.nix-update = { enable = mkEnableOption "nix-update"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.nix-update
     ];
   };
-
 }
-

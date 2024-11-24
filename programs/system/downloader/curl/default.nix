@@ -1,15 +1,14 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.curl;
+let cfg = config.modules.downloader.curl;
 in
 {
-  options.modules.curl = { enable = mkEnableOption "curl"; };
+  options.modules.downloader.curl = { enable = mkEnableOption "curl"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.curl
     ];
   };
-
 }
 

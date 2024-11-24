@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.file-listing;
+let cfg = config.modules.utils.dir-content-ls;
 in
 {
-  options.modules.file-listing = { enable = mkEnableOption "file-listing"; };
+  options.modules.utils.dir-content-ls = { enable = mkEnableOption "dir-content-ls"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
@@ -11,6 +11,5 @@ in
       eza
     ];
   };
-
 }
 

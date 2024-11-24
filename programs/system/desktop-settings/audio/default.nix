@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.audio;
+let cfg = config.modules.desktop-settings.audio;
 in
 {
-  options.modules.audio = { enable = mkEnableOption "audio"; };
+  options.modules.desktop-settings.audio = { enable = mkEnableOption "audio"; };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
@@ -11,6 +11,5 @@ in
       pamixer
     ];
   };
-
 }
 
