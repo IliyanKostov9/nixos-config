@@ -54,7 +54,7 @@ home-update:  ## Build home configuration for default user
 sys-update: ## Build system configuration for all hosts
 	@if ! [ -z $(DEVICE) ]; then \
 	 echo "Building $(DEVICE) system..."; \
-	 sudo -v && sudo nixos-rebuild switch --flake .#$(DEVICE) --show-trace |& nom; \
+	 sudo -v && sudo nixos-rebuild switch --flake .#$(DEVICE) --show-trace --impure |& nom; \
   else \
 	  echo -e "DEVICE env variable is not set!\n========================\n\nChoose on what system to build for the following options:\n  1.personal-desktop\n  2.work-laptop\n----------------"; \
 	  read -p "Choice: " choice; \
@@ -67,7 +67,7 @@ sys-update: ## Build system configuration for all hosts
 	    exit 1; \
 	  fi; \
 	 echo "Building $$device system..."; \
-	 sudo -v && sudo nixos-rebuild switch --flake .#$$device --show-trace |& nom; \
+	 sudo -v && sudo nixos-rebuild switch --flake .#$$device --show-trace --impure |& nom; \
 	fi
 
 .PHONY: flake-check
