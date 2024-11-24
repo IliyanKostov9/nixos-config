@@ -4,6 +4,8 @@ let
   cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
+  font-name = config.modules.preferences.fonts.name;
+
   theme =
     let
       # NOTE: UTC+2
@@ -110,11 +112,11 @@ in
           };
 
           normal = {
-            family = "${config.modules.fonts.name} Nerd Font";
+            family = "${font-name} Nerd Font";
             style = "Medium";
           };
           bold = {
-            family = "${config.modules.fonts.name} Nerd Font Mono";
+            family = "${font-name} Nerd Font Mono";
             style = "Bold";
           };
           italic = {

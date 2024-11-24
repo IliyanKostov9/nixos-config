@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
 with lib.types;
+with config.modules.preferences;
 let
   cfg = config.modules.utils.gtk;
-  font-name = config.modules.fonts.name;
 in
 rec {
   options.modules.utils.gtk = {
@@ -36,7 +36,7 @@ rec {
         package = pkgs."${cfg.iconName}-icon-theme";
       };
       font = {
-        name = "${font-name}";
+        name = "${fonts.name}";
       };
 
       gtk3.extraConfig = {
@@ -44,7 +44,7 @@ rec {
         gtk-icon-theme-name = "${cfg.iconName}";
         gtk-theme-name = "${cfg.themeName}";
         gtk-cursor-theme-name = "${cfg.cursorName}";
-        gtk-font-name = "${font-name}";
+        gtk-font-name = "${fonts.name}";
 
         gtk-cursor-theme-size = 0;
         gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
