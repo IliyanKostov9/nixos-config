@@ -11,5 +11,10 @@ _: {
       ./users
       ./virtualisation
       ./programs
+      ./cups
+      ./locale
+      ./networking
+      ./pipewire
+      ./security
     ];
 }
