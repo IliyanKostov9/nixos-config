@@ -48,7 +48,7 @@ secure-boot-sign:
 
 .PHONY: home-update
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#$(shell whoami) --show-trace --impure --option eval-cache false |& nom
+	home-manager switch --flake .#$(shell whoami) --show-trace --impure |& nom
 	
 .PHONY: sys-update
 sys-update: ## Build system configuration for all hosts

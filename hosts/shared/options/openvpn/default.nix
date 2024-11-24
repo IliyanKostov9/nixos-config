@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   inherit (config.sops) secrets;
   ovpn-path = "/var/lib/openvpn/personalVPN.ovpn";
@@ -8,7 +8,7 @@ in
   services.openvpn.servers = {
     personalVPN = {
       config = "config ${ovpn-path}";
-      authUserPass = {
+      authUserPass = lib.mkIf (!lib.trivial.inPureEvalMode) {
         username = builtins.readFile secrets.ovpn_username.path;
         password = builtins.readFile secrets.ovpn_password.path;
       };
