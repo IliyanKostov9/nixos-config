@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./editor
     ./emulator
@@ -7,6 +6,7 @@
     ./command-line
     ./shell
     ./langs
+    ./linters
     ./container
     ./build-tools
     ./dbms
