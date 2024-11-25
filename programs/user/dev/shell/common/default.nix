@@ -30,7 +30,7 @@ in
     tf = "terraform";
     dc = "docker";
     dcc = "docker compose";
-    ku = "kubectl";
+    kc = "kubectl";
 
     # Utils
     gitroot = "cd $(git root)";
