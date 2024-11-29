@@ -11,7 +11,7 @@ in
     ];
 
     programs.librewolf = {
-      enable = true;
+      enable = false;
 
       # about:config
       settings =

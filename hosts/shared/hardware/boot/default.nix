@@ -13,7 +13,7 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = boot // {
-    kernelPackages = pkgs.linuxPackages_6_11;
+    kernelPackages = pkgs.linuxPackages_6_12;
     loader = {
       # Note: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
       systemd-boot.enable = !is-secure-boot-enabled;
