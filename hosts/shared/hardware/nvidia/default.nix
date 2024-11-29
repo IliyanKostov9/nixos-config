@@ -1,8 +1,5 @@
 { config, lib, ... }:
 
-let
-  version = "560.35.03";
-in
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
