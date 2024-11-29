@@ -30,7 +30,6 @@
 
       boot = {
         kernelModules = [ "kvm-amd" "k10temp" ];
-        # kernelPackages = pkgs.linux-stereomato-newstable;
         kernelParams = [ "acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1" ];
         initrd = {
           luks.devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";

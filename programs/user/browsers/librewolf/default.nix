@@ -11,7 +11,7 @@ in
     ];
 
     programs.librewolf = {
-      enable = false;
+      enable = false; # BUG: causes nix store collision if enabled
 
       # about:config
       settings =
