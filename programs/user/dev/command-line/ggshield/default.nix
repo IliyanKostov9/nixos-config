@@ -8,12 +8,12 @@ in
   config = mkIf cfg.enable {
     home.packages = [
       (pkgs_unstable.ggshield.overrideAttrs {
-        version = "1.32.0";
+        version = "1.33.0";
         src = pkgs_unstable.fetchFromGitHub {
           owner = "GitGuardian";
           repo = "ggshield";
-          rev = "767ecca08e4cec0e1ffcdfb2d1c63a8fadc2454f";
-          sha256 = "sha256-yqR5kgXhR4YUih46RuSlOmD2CgdN40QpUho6WTha60U=";
+          rev = "537dbb82c54b792a2149e6b50a86de3025e10268";
+          sha256 = "sha256-qvvCBJ56wC56p6tOCb5hh+J7Y/Hec/YgDKNmDbbWNig=";
         };
       })
     ];
