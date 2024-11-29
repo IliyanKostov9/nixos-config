@@ -16,7 +16,11 @@ jobs:
         os:
           # - macos-13 # x86_64-darwin
           # - macos-latest # aarch64-darwin
-          - ubuntu-latest # x86_64-linux
+          - ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
 
     name: Dead Nix Analysis
     runs-on: ${{ matrix.os }}

@@ -34,7 +34,6 @@
         sops.enable = true;
         bat.enable = true;
         ggshield.enable = true;
-        nix-alien.enable = true;
       };
       container = {
         docker.enable = true;
