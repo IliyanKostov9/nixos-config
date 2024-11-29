@@ -14,7 +14,7 @@ in
           sops-nix.nixosModules.sops
           lanzaboote.nixosModules.lanzaboote
         ];
-        specialArgs = { inherit host_name host_attr; inherit (shared) pkgs system stateVersion users; };
+        specialArgs = { inherit host_name host_attr; inherit (shared) pkgs_unstable system stateVersion users; };
       }
     )
     shared.config_system.hosts;
