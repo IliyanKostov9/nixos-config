@@ -1,5 +1,6 @@
-{ nixpkgs, alacritty-theme, nixpkgs_unstable, nixgl, nixos-hardware }:
+{ inputs }:
 
+with inputs;
 rec {
   system = "x86_64-linux";
   stateVersion = "24.11";
