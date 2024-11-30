@@ -5,54 +5,17 @@ let
   inherit (config.sops) secrets;
 
   cfg = config.modules.browsers.librewolf;
-  settings = {
-    # Enable vertical tabs
-    "sidebar.verticalTabs" = true;
-    "sidebar.revamp" = true;
-    "sidebar.visibility" = "always-show";
-    "sidebar.main.tools" = "aichat,history";
-    "sidebar.position_start" = true;
 
-    "identity.fxaccounts.enabled " = true;
-    "browser.tabs.hoverPreview.showThumbnails " = false;
-    "browser.contentblocking.category" = "strict";
-    "browser.download.panel.shown" = true;
-    "middlemouse.paste" = false;
-    "general.autoScroll" = true;
-    "browser.tabs.warnOnClose" = true;
-    "browser.toolbars.bookmarks.visibility" = "newtab";
-    "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
-    "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
-    "browser.urlbar.suggest.bookmark" = true;
-    "browser.urlbar.suggest.engines" = true;
-    "browser.urlbar.suggest.history" = true;
-    "browser.urlbar.suggest.openpage" = true;
-    "browser.urlbar.suggest.topsites" = true;
-
-    # Disable annoying firefox builtin plugins
-    "extensions.pocket.enabled" = false;
-    "browser.tabs.tabmanager.enabled" = false;
-    "browser.firefox-view.virtual-list.enabled" = false;
-    "browser.urlbar.suggest.pocket" = false;
-
-    "extensions.pocket.showHome" = true;
-    "extensions.autoDisableScopes" = 0;
-    # Privacy settings
-    "webgl.disabled" = false;
-    "privacy.resistRingerprinting" = false;
-    "privacy.clearOnShutdown.history" = false;
-    "privacy.clearOnShutdown.downloads" = false;
-    "privacy.clearOnShutdown.cookies" = false;
-    "network.cookie.lifetimePolicy" = 0;
-    "geo.enabled" = false;
-  };
+  settings = import (builtins.toPath ./settings.nix);
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     privacy-badger
     darkreader
     i-dont-care-about-cookies
     user-agent-string-switcher
+  ];
+  extensionsPlusPassbolt = extensions ++ [
+    pkgs.nur.repos.rycee.firefox-addons.passbolt
   ];
   search = {
     force = true;
@@ -70,10 +33,10 @@ let
           };
         };
       };
-      # Google.metaData.hidden = true;
-      # Bing.metaData.hidden = true;
-      # DuckDuckGo.metaData.hidden = true;
-      # "Wikipedia (en)".metaData.hidden = true;
+      Google.metaData.hidden = true;
+      Bing.metaData.hidden = true;
+      DuckDuckGo.metaData.hidden = true;
+      "Wikipedia (en)".metaData.hidden = true;
     };
   };
 in
@@ -81,12 +44,8 @@ in
   options.modules.browsers.librewolf = { enable = mkEnableOption "librewolf"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.librewolf-bin
-    ];
     programs.librewolf = {
       enable = true;
-      # package = pkgs.librewolf-bin;
 
       profiles = {
         Main = {
@@ -95,49 +54,58 @@ in
           containersForce = true;
           isDefault = true;
           containers = {
-            Github = {
+            None = {
               id = 0;
+              name = "None";
+              color = "orange";
+              icon = "circle";
+            };
+
+            Github = {
+              id = 1;
               name = "Github";
-              color = "toolbar";
+              color = "blue";
               icon = "fingerprint";
             };
 
             Mail = {
-              id = 1;
+              id = 2;
               name = "Mail";
               color = "green";
               icon = "tree";
             };
 
             Google = {
-              id = 2;
+              id = 3;
               name = "Google";
               color = "yellow";
               icon = "chill";
             };
 
             Microsoft = {
-              id = 3;
+              id = 4;
               name = "Microsoft";
               color = "turquoise";
               icon = "fingerprint";
             };
 
             AWS = {
-              id = 4;
+              id = 5;
               name = "AWS";
               color = "yellow";
               icon = "fingerprint";
             };
 
             Forums = {
-              id = 5;
+              id = 6;
               name = "Forums";
               color = "red";
               icon = "food";
             };
           };
-          inherit settings search extensions;
+
+          inherit settings search;
+          extensions = extensionsPlusPassbolt;
         };
         Youtube = {
           id = 1;
