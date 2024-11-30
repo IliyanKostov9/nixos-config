@@ -41,4 +41,7 @@
 
   # Don't warn when closing browser
   "browser.tabs.warnOnClose" = false;
+
+  # Dark reader is unable to work if it's enabled
+  "privacy.resistFingerprinting" = false;
 }
