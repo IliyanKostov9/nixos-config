@@ -1,12 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
 let
-  inherit (lib) singleton;
   inherit (config.sops) secrets;
-
   cfg = config.modules.browsers.librewolf;
 
-  settings = import (builtins.toPath ./about-config/settings);
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     privacy-badger
@@ -17,6 +14,8 @@ let
   extensionsPlusPassbolt = extensions ++ [
     pkgs.nur.repos.rycee.firefox-addons.passbolt
   ];
+
+  settings = import (builtins.toPath ./about-config/settings);
   search = {
     force = true;
     default = "DuckDuckGo";
@@ -24,10 +23,10 @@ let
 
     engines = {
       DuckDuckGo = {
-        urls = singleton {
+        urls = lib.singleton {
           template = "https://duckduckgo.com";
 
-          params = singleton {
+          params = lib.singleton {
             name = "q";
             value = "{searchTerms}";
           };
@@ -42,7 +41,6 @@ let
 in
 {
   options.modules.browsers.librewolf = { enable = mkEnableOption "librewolf"; };
-
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
