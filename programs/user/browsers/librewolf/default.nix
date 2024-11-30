@@ -5,7 +5,7 @@ let
   inherit (config.sops) secrets;
 
   cfg = config.modules.browsers.librewolf;
-  settings = import ./settings.nix;
+  inherit (import ./settings.nix) settings;
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     privacy-badger
