@@ -32,10 +32,6 @@ let
           };
         };
       };
-      Google.metaData.hidden = true;
-      Bing.metaData.hidden = true;
-      DuckDuckGo.metaData.hidden = true;
-      "Wikipedia (en)".metaData.hidden = true;
     };
   };
 in
