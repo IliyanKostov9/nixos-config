@@ -29,7 +29,7 @@
     alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     sops-nix.url = "github:Mic92/sops-nix";
     # nix-alien.url = "github:thiagokokada/nix-alien";
-    # nur.url = "github:wiedzmin/NUR";
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = { flake-parts, ... }@inputs:

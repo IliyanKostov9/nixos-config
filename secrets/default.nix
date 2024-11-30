@@ -24,6 +24,8 @@
       tf_token_app_terraform_io = { };
       tf_org = { };
 
+      work_name = { };
+      work_project_name = { };
       ovpn_username = {
         mode = "0400";
       };

@@ -6,6 +6,8 @@
   };
   nix.settings.experimental-features = lib.mkDefault [ "nix-command" "flakes" "pipe-operators" ];
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  nixpkgs.config.allowUnfree = lib.mkDefault true;
+  nixpkgs = {
+    hostPlatform = lib.mkDefault "x86_64-linux";
+    config.allowUnfree = lib.mkDefault true;
+  };
 }

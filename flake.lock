@@ -436,6 +436,21 @@
         "type": "github"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1732961569,
+        "narHash": "sha256-d/yl5ewjzl7Ur98LJFmEky9pbyN6Zx42X5haBJ2V0Pw=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "6fac7ca63269695e7928ff742c9b752c183e21ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks-nix": {
       "inputs": {
         "flake-compat": [
@@ -475,6 +490,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs_unstable": "nixpkgs_unstable",
+        "nur": "nur",
         "sops-nix": "sops-nix"
       }
     },
