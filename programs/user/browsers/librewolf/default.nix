@@ -1,60 +1,95 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.browsers.librewolf;
+let
+  inherit (config.sops) secrets;
+  cfg = config.modules.browsers.librewolf;
+
+  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+    ublock-origin
+    privacy-badger
+    darkreader
+    i-dont-care-about-cookies
+    user-agent-string-switcher
+  ];
+  extensionsPlusPassbolt = extensions ++ [
+    pkgs.nur.repos.rycee.firefox-addons.passbolt
+  ];
+
+  settings = import ./about-config/settings;
+  search = {
+    force = true;
+    default = "DuckDuckGo";
+    privateDefault = "DuckDuckGo";
+
+    engines = {
+      DuckDuckGo = {
+        urls = lib.singleton {
+          template = "https://duckduckgo.com";
+
+          params = lib.singleton {
+            name = "q";
+            value = "{searchTerms}";
+          };
+        };
+      };
+    };
+  };
 in
 {
   options.modules.browsers.librewolf = { enable = mkEnableOption "librewolf"; };
-
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.librewolf
-    ];
-
     programs.librewolf = {
-      enable = false; # BUG: causes nix store collision if enabled
-
-      # about:config
-      settings =
-        {
-          # Enable vertical tabs
-          "sidebar.verticalTabs" = true;
-          "sidebar.revamp" = true;
-          "sidebar.visibility" = "always-show";
-          "sidebar.main.tools" = "aichat,history";
-          "sidebar.position_start" = true;
-
-          "identity.fxaccounts.enabled " = true;
-
-          "browser.tabs.hoverPreview.showThumbnails " = false;
-          "browser.contentblocking.category" = "strict";
-          "browser.download.panel.shown" = true;
-          "middlemouse.paste" = false;
-          "general.autoScroll" = true;
-          # "gnomeTheme.hideSingleTab" = true;
-          "browser.tabs.warnOnClose" = true;
-          # "browser.toolbars.bookmarks.visibility" = "never";
-          "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
-
-          "browser.urlbar.suggest.bookmark" = true;
-          "browser.urlbar.suggest.engines" = true;
-          "browser.urlbar.suggest.history" = true;
-          "browser.urlbar.suggest.openpage" = true;
-          "browser.urlbar.suggest.topsites" = true;
-
-          "webgl.disabled" = false;
-          "privacy.resistRingerprinting" = false;
-          # Box browser window
-          "privacy.resistFingerprinting.letterboxing" = false;
-
-          "privacy.clearOnShutdown.history" = false;
-          "privacy.clearOnShutdown.downloads" = false;
-          "privacy.clearOnShutdown.cookies" = false;
-          "network.cookie.lifetimePolicy" = 0;
-
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-          "geo.enabled" = false;
-          # "browser.policies.runOncePerModification.extensionsInstall" 
+      enable = true;
+      package = pkgs.librewolf.override {
+        extraPolicies = {
+          DisablePocket = true;
+          DisableAccounts = true;
+          DisableTelemetry = true;
+          DisableFirefoxStudies = true;
+          DisableFirefoxAccounts = false; # E.g Firefox Sync
+          DisableFeedbackCommands = true;
+          DontCheckDefaultBrowser = true;
+          NetworkPrediction = true;
+          HttpsOnlyMode = "force_enabled";
+          DNSOverHttps = {
+            Enabled = true;
+            Locked = true;
+          };
+          cfg = {
+            speechSynthesisSupport = false;
+            # extraNativeMessagingHosts = [ pkgs.passff-host ];
+            # enableTridactylNative = true;
+          };
         };
+      };
+
+      profiles = {
+        Main = {
+          id = 0;
+          name = "Main";
+          containersForce = true;
+          isDefault = true;
+          containers = import ./about-config/containers/Main;
+          inherit settings search;
+          extensions = extensionsPlusPassbolt;
+        };
+        Youtube = {
+          id = 1;
+          name = "Youtube";
+          inherit settings search extensions;
+        };
+        Linked-In = {
+          id = 2;
+          name = "Linked-In";
+          inherit settings search extensions;
+        };
+        Work_Project1 = {
+          id = 3;
+          name =
+            if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
+          inherit settings search extensions;
+        };
+      };
     };
   };
 }
