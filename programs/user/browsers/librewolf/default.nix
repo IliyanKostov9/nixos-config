@@ -63,12 +63,14 @@ in
         };
         Work = {
           id = 3;
-          name = builtins.readFile secrets.work_name.path;
+          name =
+            if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
           inherit settings search extensions;
         };
         Work_Project1 = {
           id = 4;
-          name = builtins.readFile secrets.work_project1_name.path;
+          name =
+            if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
           inherit settings search extensions;
         };
       };
