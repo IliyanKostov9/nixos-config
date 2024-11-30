@@ -15,7 +15,7 @@ let
     pkgs.nur.repos.rycee.firefox-addons.passbolt
   ];
 
-  settings = import (builtins.toPath ./about-config/settings);
+  settings = import ./about-config/settings;
   search = {
     force = true;
     default = "DuckDuckGo";
@@ -40,6 +40,28 @@ in
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
+      package = pkgs.librewolf.override {
+        extraPolicies = {
+          DisablePocket = true;
+          DisableAccounts = true;
+          DisableTelemetry = true;
+          DisableFirefoxStudies = true;
+          DisableFirefoxAccounts = false; # E.g Firefox Sync
+          DisableFeedbackCommands = true;
+          DontCheckDefaultBrowser = true;
+          NetworkPrediction = true;
+          HttpsOnlyMode = "force_enabled";
+          DNSOverHttps = {
+            Enabled = true;
+            Locked = true;
+          };
+          cfg = {
+            speechSynthesisSupport = false;
+            # extraNativeMessagingHosts = [ pkgs.passff-host ];
+            # enableTridactylNative = true;
+          };
+        };
+      };
 
       profiles = {
         Main = {
@@ -61,14 +83,8 @@ in
           name = "Linked-In";
           inherit settings search extensions;
         };
-        Work = {
-          id = 3;
-          name =
-            if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
-          inherit settings search extensions;
-        };
         Work_Project1 = {
-          id = 4;
+          id = 3;
           name =
             if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
           inherit settings search extensions;

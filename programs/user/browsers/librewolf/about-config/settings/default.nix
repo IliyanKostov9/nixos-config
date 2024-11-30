@@ -12,7 +12,6 @@
   "browser.download.panel.shown" = true;
   "middlemouse.paste" = false;
   "general.autoScroll" = true;
-  "browser.tabs.warnOnClose" = true;
   "browser.toolbars.bookmarks.visibility" = "newtab";
   "browser.sessionstore.restore_pinned_tabs_on_demand" = true;
   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
@@ -39,4 +38,7 @@
   "privacy.clearOnShutdown.cookies" = false;
   "network.cookie.lifetimePolicy" = 0;
   "geo.enabled" = false;
+
+  # Don't warn when closing browser
+  "browser.tabs.warnOnClose" = false;
 }
