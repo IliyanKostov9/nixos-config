@@ -25,7 +25,7 @@
       tf_org = { };
 
       work_name = { };
-      work_project_name = { };
+      work_project1_name = { };
       ovpn_username = {
         mode = "0400";
       };
