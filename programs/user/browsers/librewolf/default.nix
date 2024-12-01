@@ -3,7 +3,8 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.browsers.librewolf;
-
+in
+let
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     privacy-badger
@@ -38,19 +39,17 @@ in
 {
   options.modules.browsers.librewolf = {
     enable = mkOption {
-      type = str;
+      type = bool;
       default = false;
       description = mkDoc ''
         Enable librewolf
       '';
-
-      profiles = mkOption {
-        type = attrsOf str;
-        default = { };
-        description = mkDoc ''
-          Profiles in librewolf
-        '';
-      };
+    };
+    profiles = mkOption {
+      default = { };
+      description = mkDoc ''
+        Profiles in librewolf
+      '';
     };
   };
 
@@ -81,16 +80,18 @@ in
       };
 
       profiles = builtins.mapAttrs
-        (name: profile
+        (name: profile:
           profile //
-        {
-          inherit settings search;
-          # NOTE: Add passbolt extension only to Main profile
-        } // (if name == "Main" then {
-          extensions = extensionsPlusPassbolt;
-        } else { inherit extensions; })
+          {
+            inherit settings search;
+            # NOTE: Add passbolt extension only to Main profile
+          } // (if name == "Main" then {
+            extensions = extensionsPlusPassbolt;
+          } else {
+            inherit extensions;
+          })
         )
-        cfg.profile;
+        cfg.profiles;
     };
   };
 }

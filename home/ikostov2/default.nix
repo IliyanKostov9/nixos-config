@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   imports = [
     # ./options/overlays
@@ -17,7 +17,7 @@
     browsers = {
       librewolf = {
         enable = true;
-        profiles = import ./options/librewolf/profiles;
+        profiles = import ./options/librewolf/profiles { inherit lib config; };
       };
       chromium.enable = true;
     };
