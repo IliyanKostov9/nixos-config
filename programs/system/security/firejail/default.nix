@@ -7,7 +7,8 @@ in
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
-    firejail = {
+
+    programs.firejail = {
       enable = true;
       wrappedBinaries = {
         viber = {
@@ -24,8 +25,8 @@ in
         };
         chromium = {
           executable = "${pkgs.chromium}/bin/chromium";
-          desktop = "${pkgs.chromium}/share/applications/chromium.desktop";
-          profile = "${pkgs.chromium}/etc/firejail/chromium.profile";
+          desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
+          profile = "${pkgs.chromium}/etc/firejail/chrome.profile";
         };
       };
     };
