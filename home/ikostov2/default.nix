@@ -19,7 +19,6 @@
         enable = true;
         profiles = import ./options/librewolf/profiles { inherit lib config; };
       };
-      chromium.enable = true;
     };
 
     cloud = {
@@ -91,7 +90,6 @@
       gimp.enable = true;
       obs-studio.enable = true;
       vlc.enable = true;
-      viber.enable = false;
     };
 
     office-suite = {

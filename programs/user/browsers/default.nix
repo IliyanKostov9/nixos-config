@@ -1,8 +1,5 @@
-{ ... }:
-
-{
+_: {
   imports = [
-    ./chromium
     ./librewolf
     ./microsoft-edge
   ];

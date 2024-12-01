@@ -1,4 +1,3 @@
-{ ... }:
-{
-  imports = [./p7zip];
+_: {
+  imports = [ ./p7zip ];
 }

@@ -18,7 +18,12 @@
     };
 
     gnome-disable-apps.enable = true;
-    security.enable = true;
+
+    security = {
+      cryptography.enable = true;
+      firejail.enable = true;
+      login.enable = true;
+    };
 
     utils = {
       dir-content-ls.enable = true;
