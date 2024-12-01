@@ -1,7 +1,7 @@
 { config, ... }:
 {
   imports = [
-    # ./overlays.nix
+    # ./options/overlays
     ../../secrets
     ../../programs/user
   ];
@@ -15,7 +15,10 @@
     api.postman.enable = true;
 
     browsers = {
-      librewolf.enable = true;
+      librewolf = {
+        enable = true;
+        profiles = import ./options/librewolf/profiles;
+      };
       chromium.enable = true;
     };
 
@@ -88,7 +91,7 @@
       gimp.enable = true;
       obs-studio.enable = true;
       vlc.enable = true;
-      viber.enable = true;
+      viber.enable = false;
     };
 
     office-suite = {

@@ -8,6 +8,7 @@ in
   config = mkIf cfg.enable {
     # NOTE: Should probabbly remove this part
     environment.systemPackages = with pkgs; [
+      ffmpeg
       gnupg
       pinentry-qt
       groff
