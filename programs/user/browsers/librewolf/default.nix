@@ -3,8 +3,7 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.browsers.librewolf;
-in
-let
+
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
     ublock-origin
     privacy-badger
