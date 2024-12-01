@@ -9,6 +9,8 @@ in
     environment.systemPackages = with pkgs; [
       tree
       eza
+      fd
+      tldr
     ];
   };
 }

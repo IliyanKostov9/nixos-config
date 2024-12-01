@@ -8,7 +8,6 @@ in
   config = mkIf cfg.enable {
     # NOTE: Should probabbly remove this part
     environment.systemPackages = with pkgs; [
-      ffmpeg
       gnupg
       pinentry-qt
       groff
@@ -19,15 +18,8 @@ in
       glibc
       gdb
       libgccjit
-      patchelf
-      readline
-      tcl
-      tk
-      libffi
-      patch
-      libuuid
+      gnupatch
       binutils
-      ncurses
     ];
   };
 }

@@ -9,8 +9,6 @@ in
     environment.systemPackages = with pkgs; [
       fzf
       ripgrep
-      fd
-      tldr
     ];
   };
 }
