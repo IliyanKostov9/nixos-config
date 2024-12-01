@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
 let
-  inherit (config.sops) secrets;
   cfg = config.modules.browsers.librewolf;
 
   extensions = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -36,7 +36,22 @@ let
   };
 in
 {
-  options.modules.browsers.librewolf = { enable = mkEnableOption "librewolf"; };
+  options.modules.browsers.librewolf = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable librewolf
+      '';
+    };
+    profiles = mkOption {
+      default = { };
+      description = mkDoc ''
+        Profiles in librewolf
+      '';
+    };
+  };
+
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
@@ -63,33 +78,19 @@ in
         };
       };
 
-      profiles = {
-        Main = {
-          id = 0;
-          name = "Main";
-          containersForce = true;
-          isDefault = true;
-          containers = import ./about-config/containers/Main;
-          inherit settings search;
-          extensions = extensionsPlusPassbolt;
-        };
-        Youtube = {
-          id = 1;
-          name = "Youtube";
-          inherit settings search extensions;
-        };
-        Linked-In = {
-          id = 2;
-          name = "Linked-In";
-          inherit settings search extensions;
-        };
-        Work_Project1 = {
-          id = 3;
-          name =
-            if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
-          inherit settings search extensions;
-        };
-      };
+      profiles = builtins.mapAttrs
+        (name: profile:
+          profile //
+          {
+            inherit settings search;
+            # NOTE: Add passbolt extension only to Main profile
+          } // (if name == "Main" then {
+            extensions = extensionsPlusPassbolt;
+          } else {
+            inherit extensions;
+          })
+        )
+        cfg.profiles;
     };
   };
 }

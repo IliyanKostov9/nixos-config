@@ -18,15 +18,8 @@ in
       glibc
       gdb
       libgccjit
-      patchelf
-      readline
-      tcl
-      tk
-      libffi
-      patch
-      libuuid
+      gnupatch
       binutils
-      ncurses
     ];
   };
 }

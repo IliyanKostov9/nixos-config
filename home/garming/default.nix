@@ -8,7 +8,6 @@
   config.modules = {
     browsers = {
       librewolf.enable = true;
-      chromium.enable = true;
     };
 
     dev = {

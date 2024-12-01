@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   imports = [
     ./nomacs
     ./okular
