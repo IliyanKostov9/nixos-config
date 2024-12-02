@@ -30,12 +30,13 @@
 
   "extensions.pocket.showHome" = true;
   "extensions.autoDisableScopes" = 0;
+
   # Privacy settings
   "webgl.disabled" = false;
-  "privacy.resistRingerprinting" = false;
   "privacy.clearOnShutdown.history" = false;
   "privacy.clearOnShutdown.downloads" = false;
   "privacy.clearOnShutdown.cookies" = false;
+
   "network.cookie.lifetimePolicy" = 0;
   "geo.enabled" = false;
 

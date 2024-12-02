@@ -8,13 +8,14 @@ in
     name = "Main";
     containersForce = true;
     isDefault = true;
-    containers = import ../containers;
+    containers = import ./containers/Main;
   };
   Youtube = {
     id = 1;
     name = "Youtube";
     containersForce = false;
     isDefault = false;
+    containers = import ./containers/Youtube;
   };
   Linked-In = {
     id = 2;

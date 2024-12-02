@@ -6,7 +6,7 @@
 [![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 <!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
-[![NixOS Unstable](https://img.shields.io/badge/NixOS-24.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+[![NixOS Unstable](https://img.shields.io/badge/NixOS-24.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![GitHub release](https://img.shields.io/github/v/release/iliyan-kostov9/nixos-config)](#)
 [![GitHub release date](https://img.shields.io/github/release-date/iliyan-kostov9/nixos-config)](#)
 [![GitHub last commit](https://img.shields.io/github/last-commit/iliyan-kostov9/nixos-config)](#)
@@ -36,12 +36,10 @@ Follow the prompts when asked in the process.
 
 ### 🧐 How-to: Create new user
 
-1. Go to config.nix and add your user in the `user` attribute set (you can copy `ikostov2` attrset and replace it with your desired one)
-2. Generate a hashed password for the user by executing `mkpasswd --method=sha-512 ` and put it in the `initialHashedPassword`)
-3. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
-4. Build your system (e.g `make sys-update-wl/pd`)
-5. Finally build your user config for the new user (e.g `make home-update DEFAULT_USER=new-username`)
-6. You are all set!
+1. Generate a hashed password for the user by executing `mkpasswd --method=sha-512 ` and put it in the `initialHashedPassword`)
+2. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
+3. Build your system and home manager (e.g `make build`)
+4. You are all set!
 
 ## 🏝️ Environment
 
@@ -73,24 +71,30 @@ Follow the prompts when asked in the process.
 
 1. home-manager
 2. flakes
+3. flake-parts
+4. sops-nix
 
 ## 🏗️ Structure
 
 ```markdown
 .
+.
+├── _config.yml
 ├── archive
 ├── assets
 ├── config.nix
 ├── flake.lock
 ├── flake.nix
 ├── flakes
+├── garnix.yml
 ├── home
 ├── hosts
 ├── LICENSE
 ├── Makefile
 ├── programs
 ├── README.md
-├── TODO.md
+├── scripts
+├── secrets
 └── wallpaper.jpg
 ```
 
@@ -115,15 +119,13 @@ Follow the prompts when asked in the process.
 |:-|:-|
 |make help|Show available commands with their description|
 |make home-update|Build your home configuration|
-|make sys-update-wl|Build your system configuration for work laptop (Thinkpad p53)|
-|make sys-update-pd|Build your system configuration for personal desktop (AMD)|
+|make sys-update-|Build your system configuration|
 |make flake-upgrade|Upgrade flake dependencies
 |make flake-check|Validate flake.nix|
 |make flake-meta|Output the flake input dependencies in a tree format|
-|make clean|Remove user generations|
-|make clean-su|Remove system generations|
-|make show-gen|Show all user generations|
-|make deduplicate|Optimize system libraries|
+|make clean|Remove system and user generations|
+|make gen|Show all user generations|
+|make setup|Setup your system|
 
 ### 🌱 Setup 
 
