@@ -8,8 +8,9 @@ HDD_PART := /dev/sdb1
 help:  ## help target to show available commands with information
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) |  awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: setup label secure-boot
-setup: label secure-boot
+
+.PHONY: setup label secure-boot secure-boot-sign
+setup: label secure-boot secure-boot-sign
 
 label: ## Setup your nixos system
 	echo "Labeling mount points with NIXOS prefix..."
@@ -38,7 +39,6 @@ secure-boot: ## Enable secure boot
 	read
 	sudo reboot
 
-.PHONY: secure-boot-sign
 secure-boot-sign:
 	echo "Enrolling keys..."
 	sudo sbctl enroll-keys --microsoft
@@ -46,55 +46,45 @@ secure-boot-sign:
 	read
 	sudo reboot
 
-.PHONY: home-update
+
+.PHONY: build sys-update home-update 
+build: sys-update home-update 
+
 home-update:  ## Build home configuration for default user
 	home-manager switch --flake .#$(shell whoami) --show-trace --impure |& nom
 	
 .PHONY: sys-update
 sys-update: ## Build system configuration for all hosts
-	@if ! [ -z $(DEVICE) ]; then \
-	 echo "Building $(DEVICE) system..."; \
-	 sudo -v && sudo nixos-rebuild switch --flake .#$(DEVICE) --show-trace --impure |& nom; \
-  else \
-	  echo -e "DEVICE env variable is not set!\n========================\n\nChoose on what system to build for the following options:\n  1.personal-desktop\n  2.work-laptop\n----------------"; \
-	  read -p "Choice: " choice; \
-	  if [ "$$choice" = "1" ]; then \
-            device="hosts-personal-desktop"; \
-	  elif [ "$$choice" = "2" ]; then \
-	    device="hosts-work-laptop"; \
-	  else \
-	    echo "Error: wrong choice!"; \
-	    exit 1; \
-	  fi; \
-	 echo "Building $$device system..."; \
-	 sudo -v && sudo nixos-rebuild switch --flake .#$$device --show-trace --impure |& nom; \
-	fi
+	@./scripts/sys-update.sh
 
-.PHONY: flake-check
+
+.PHONY: clean clean-usr clean-sys optimise
+clean: clean-usr clean-sys optimise
+
+clean-usr : ## Remove old user generations
+	nix-collect-garbage -d |& nom
+
+clean-sys: ## Remove old system generations
+	sudo -v && sudo nix-collect-garbage -d |& nom
+
+optimise: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
+	nix store optimise
+
+################### UTILS ########################
+
+.PHONY: flake flake-check flake-upgrade flake-meta
+flake: 
+	$(MAKE) --no-print-directory help
+
 flake-check: ## Evaluate flake and build its checks
-	nix flake check --all-systems |& nom
-	
-.PHONY: flake-upgrade
+	nix flake check --impure |& nom
+
 flake-upgrade:  ## Upgrade flake related dependencies
 	nix flake update |& nom
 
-.PHONY: flake-meta
 flake-meta: ## Check flake deps
 	nix flake metadata |& nom
 
-.PHONY: clean
-clean: ## Remove old user generations
-	nix-collect-garbage -d |& nom
-
-.PHONY: clean-su
-clean-su: ## Remove old system generations
-	sudo -v && sudo nix-collect-garbage -d |& nom
-
-.PHONY: show-gen
-show-gen: ## Show NixOS generations
+.PHONY: gen
+gen: ## Show NixOS generations
 	nix-env --list-generations |& nom
-
-.PHONY: unique
-unique: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
-	nix store optimise
-
