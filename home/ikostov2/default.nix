@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 {
   imports = [
     # ./options/overlays
@@ -17,7 +17,7 @@
     browsers = {
       librewolf = {
         enable = true;
-        profiles = import ./options/librewolf/profiles { inherit lib config; };
+        profiles = import ./options/librewolf/profiles { inherit lib config pkgs; };
       };
     };
 
@@ -63,14 +63,14 @@
       };
       langs = {
         go.enable = true;
-        jdk.enable = true;
-        lua.enable = true; # REQUIRED: By nvim jdtls
+        jdk.enable = false; # DISABLED: installed openjdk via Mason
+        lua.enable = false; # REQUIRED: By nvim jdtls
+        rust.enable = false;
         node.enable = true;
         python.enable = true;
-        rust.enable = true;
       };
       linters = {
-        # INFO: Required for yammlint in nvim
+        # INFO: Required for yamllint in nvim
         yamllint.enable = true;
       };
       shell = {
