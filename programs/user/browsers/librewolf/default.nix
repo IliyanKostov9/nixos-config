@@ -4,17 +4,6 @@ with lib.types;
 let
   cfg = config.modules.browsers.librewolf;
 
-  extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-    ublock-origin
-    privacy-badger
-    darkreader
-    i-dont-care-about-cookies
-    user-agent-string-switcher
-  ];
-  extensionsPlusPassbolt = extensions ++ [
-    pkgs.nur.repos.rycee.firefox-addons.passbolt
-  ];
-
   settings = import ./about-config/settings;
   search = {
     force = true;
@@ -83,12 +72,8 @@ in
           profile //
           {
             inherit settings search;
-            # NOTE: Add passbolt extension only to Main profile
-          } // (if name == "Main" then {
-            extensions = extensionsPlusPassbolt;
-          } else {
-            inherit extensions;
-          })
+            inherit (profile) extensions;
+          }
         )
         cfg.profiles;
     };
