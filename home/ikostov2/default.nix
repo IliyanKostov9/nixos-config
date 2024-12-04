@@ -1,10 +1,16 @@
 { lib, config, pkgs, ... }:
+let
+  inherit (config.sops) secrets;
+  work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
+  work_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
+in
 {
   imports = [
     # ./options/overlays
     ../../secrets
     ../../programs/user
   ];
+
 
   config.modules = {
     preferences = {
@@ -17,7 +23,7 @@
     browsers = {
       librewolf = {
         enable = true;
-        profiles = import ./options/librewolf/profiles { inherit lib config pkgs; };
+        profiles = import ./options/librewolf/profiles { inherit lib config pkgs work_name work_project1_name; };
       };
     };
 
@@ -29,7 +35,7 @@
 
     dev = {
       build-tools = {
-        maven.enable = true;
+        maven.enable = false;
         gradle.enable = false;
       };
       command-line = {
@@ -49,7 +55,13 @@
       };
       emulator = {
         alacritty.enable = true;
-        tmux.enable = true;
+        tmux = {
+          enable = true;
+          enable-dynamic-conf = true;
+          static-vals = [ "$Work*" "$Work_Project1*" ];
+          dynamic-vals = [ work_name work_project1_name ];
+        };
+
       };
       git = {
         git = {
@@ -116,7 +128,16 @@
     };
 
     window-manager = {
-      i3wm.enable = true;
+      i3wm = {
+        enable = true;
+        librewolf-mappings = {
+          "m" = "Main";
+          "y" = "Youtube";
+          "l" = "Linked-In";
+          "d" = work_name;
+          "o" = work_project1_name;
+        };
+      };
     };
 
     utils = {
