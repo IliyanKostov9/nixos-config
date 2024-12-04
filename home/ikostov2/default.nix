@@ -4,6 +4,7 @@
     # ./options/overlays
     ../../secrets
     ../../programs/user
+    ./options/globals
   ];
 
   config.modules = {
@@ -29,7 +30,7 @@
 
     dev = {
       build-tools = {
-        maven.enable = true;
+        maven.enable = false;
         gradle.enable = false;
       };
       command-line = {

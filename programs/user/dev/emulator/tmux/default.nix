@@ -18,6 +18,7 @@ in
         yank
         open
       ];
+      # extraConfig = import (./tmux.conf).tmux-conf;
       extraConfig = lib.fileContents ./tmux.conf;
       disableConfirmationPrompt = false;
       clock24 = true;
