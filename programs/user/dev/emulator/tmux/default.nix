@@ -2,7 +2,9 @@
 with lib;
 let
   cfg = config.modules.dev.emulator.tmux;
-  tmux-conf = builtins.replaceStrings [ "$Work*" "$Work_Project1*" ] [ config.globals.work_name config.globals.work_project1_name ] (lib.fileContents ./tmux.conf);
+  convert-list-to-lowercase = list: (builtins.map (name: lib.strings.toLower name) list);
+
+  tmux-conf = builtins.replaceStrings [ "$Work*" "$Work_Project1*" ] (convert-list-to-lowercase [ config.globals.work_name config.globals.work_project1_name ]) (lib.fileContents ./tmux.conf);
 in
 {
   options.modules.dev.emulator.tmux = { enable = mkEnableOption "tmux"; };
