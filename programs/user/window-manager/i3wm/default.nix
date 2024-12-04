@@ -1,10 +1,27 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
 let
   cfg = config.modules.window-manager.i3wm;
 in
 {
-  options.modules.window-manager.i3wm = { enable = mkEnableOption "i3wm"; };
+  options.modules.window-manager.i3wm = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable i3wm window manager
+      '';
+    };
+
+    librewolf-mappings = mkOption {
+      type = attrsOf str;
+      default = { "m" = "default"; };
+      description = mkDoc ''
+        Additional i3wm mappings for librewolf profiles
+      '';
+    };
+  };
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
@@ -29,14 +46,7 @@ in
             ctrl = "Control";
             shift = "Shift";
           in
-          lib.mkOptionDefault {
-            # Librewolf
-            # BUG: unable to choose profile via librewolf -P, due to JavaScript error: resource://gre/modules/XULStore.sys.mjs, line 84: Error: Can't find profile directory.
-            "${mod}+${ctrl}+m" = "exec ${pkgs.librewolf}/bin/librewolf -P Main";
-            "${mod}+${ctrl}+y" = "exec ${pkgs.librewolf}/bin/librewolf -P Youtube";
-            "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf -P Linked-In";
-            "${mod}+${ctrl}+d" = "exec ${pkgs.librewolf}/bin/librewolf -P ${config.globals.work_name}";
-            "${mod}+${ctrl}+o" = "exec ${pkgs.librewolf}/bin/librewolf -P ${config.globals.work_project1_name}";
+          {
             "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
             # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
@@ -144,7 +154,15 @@ in
             "${mod}+${alt}+l" = "resize grow width 10 px or 10 ppt";
             # "Return" = "mode 'default'";
             # "${mod}+r" = "resize";
-          };
+
+            # Librewolf
+          } // builtins.listToAttrs (lib.attrsets.mapAttrsToList
+            (key: profile-name: {
+              name = "${mod}+${ctrl}+${key}";
+              value = "exec ${pkgs.librewolf}/bin/librewolf -P ${profile-name}";
+            })
+            cfg.librewolf-mappings);
+
         bars = [
           {
             position = "bottom";

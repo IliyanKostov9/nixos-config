@@ -1,4 +1,4 @@
-{ lib, config, pkgs }:
+{ lib, config, pkgs, work_name, work_project1_name }:
 with pkgs.nur.repos.rycee.firefox-addons;
 
 {
@@ -47,7 +47,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
 
   Work = {
     id = 3;
-    name = config.globals.work_name;
+    name = work_name;
     containersForce = false;
     isDefault = false;
     extensions = [
@@ -62,7 +62,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
 
   Work_Project1 = {
     id = 4;
-    name = config.globals.work_project1_name;
+    name = work_project1_name;
     containersForce = false;
     isDefault = false;
     extensions = [
