@@ -1,9 +1,4 @@
 { config }:
-let
-  inherit (config.sops) secrets;
-  work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
-  work_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
-in
 {
   tmux-conf = ''
     # Enable color support inside of tmux.
@@ -67,8 +62,8 @@ in
     # Tmux sessionizer
     bind-key -r P run-shell "/etc/nixos/programs/user/dev/shell/sh//bin/bash/tmux/tmux-sessionizer.sh ~/repos/personal"
     bind-key -r T run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh ~/repos/tuvarna"
-    bind-key -r O run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh ~/repos/work/${work_name}"
-    bind-key -r O run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh ~/repos/work/${work_project1_name}"
+    bind-key -r D run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh ~/repos/work/${config.globals.work_name}"
+    bind-key -r O run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh ~/repos/work/${config.globals.work_project1_name}"
     bind-key -r C run-shell "/etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-sessionizer.sh config"
     bind-key -r L split-window -h -Z "bash -i /etc/nixos/programs/user/dev/shell/sh/bin/bash/tmux/tmux-ls-sessionizer.sh"
 

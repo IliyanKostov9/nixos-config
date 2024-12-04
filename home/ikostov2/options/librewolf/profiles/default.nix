@@ -1,9 +1,6 @@
 { lib, config, pkgs }:
-
 with pkgs.nur.repos.rycee.firefox-addons;
-let
-  inherit (config.sops) secrets;
-in
+
 {
   Main = {
     id = 0;
@@ -50,8 +47,7 @@ in
 
   Work = {
     id = 3;
-    name =
-      if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
+    name = config.globals.work_name;
     containersForce = false;
     isDefault = false;
     extensions = [
@@ -66,8 +62,7 @@ in
 
   Work_Project1 = {
     id = 4;
-    name =
-      if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
+    name = config.globals.work_project1_name;
     containersForce = false;
     isDefault = false;
     extensions = [

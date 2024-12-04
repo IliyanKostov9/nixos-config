@@ -1,11 +1,7 @@
 { pkgs, lib, config, ... }:
 with lib;
 let
-  inherit (config.sops) secrets;
   cfg = config.modules.window-manager.i3wm;
-
-  work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
-  work_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
 in
 {
   options.modules.window-manager.i3wm = { enable = mkEnableOption "i3wm"; };
@@ -39,8 +35,8 @@ in
             "${mod}+${ctrl}+m" = "exec ${pkgs.librewolf}/bin/librewolf -P Main";
             "${mod}+${ctrl}+y" = "exec ${pkgs.librewolf}/bin/librewolf -P Youtube";
             "${mod}+${ctrl}+l" = "exec ${pkgs.librewolf}/bin/librewolf -P Linked-In";
-            "${mod}+${ctrl}+d" = "exec ${pkgs.librewolf}/bin/librewolf -P ${work_name}";
-            "${mod}+${ctrl}+o" = "exec ${pkgs.librewolf}/bin/librewolf -P ${work_project1_name}";
+            "${mod}+${ctrl}+d" = "exec ${pkgs.librewolf}/bin/librewolf -P ${config.globals.work_name}";
+            "${mod}+${ctrl}+o" = "exec ${pkgs.librewolf}/bin/librewolf -P ${config.globals.work_project1_name}";
             "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
             # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
