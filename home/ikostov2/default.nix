@@ -7,10 +7,8 @@ in
 {
   imports = [
     # ./options/overlays
-    ../../secrets/user/ikostov2
     ../../programs/user
   ];
-
 
   config.modules = {
     preferences = {
