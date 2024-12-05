@@ -24,9 +24,11 @@
       work_project1_name = { };
       ovpn_username = {
         mode = "0400";
+        sopsFile = ./system.yaml;
       };
       ovpn_password = {
         mode = "0400";
+        sopsFile = ./system.yaml;
       };
     };
   };
