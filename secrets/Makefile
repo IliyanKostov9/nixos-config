@@ -1,11 +1,18 @@
 ## DEFAULT ENCRYPTION: age
 
 SECRET_FILE ?= env_vars
-USER ?= ikostov2
+USER ?= $(shell whoami)
 
-.PHONY: unlock
-unlock:
-	sops ${SECRET_FILE}.yaml
+.PHONY: unlock unlock-sys unlock-usr
+unlock: unlock-sys unlock-usr
+	@echo "Unlock secrets"
+
+unlock-sys:
+	sops system/${SECRET_FILE}.yaml
+
+unlock-usr:
+	sops user/${USER}/${SECRET_FILE}.yaml
+
 
 .PHONY: print 
 print:

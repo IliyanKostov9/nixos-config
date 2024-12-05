@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.generateKey = true;
@@ -20,15 +19,11 @@
       tf_token_app_terraform_io = { };
       tf_org = { };
 
-      work_name = { };
-      work_project1_name = { };
-      ovpn_username = {
-        mode = "0400";
-        sopsFile = ./system.yaml;
+      work_name = {
+        sopsFile = ./work.yaml;
       };
-      ovpn_password = {
-        mode = "0400";
-        sopsFile = ./system.yaml;
+      work_project1_name = {
+        sopsFile = ./work.yaml;
       };
     };
   };

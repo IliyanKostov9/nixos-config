@@ -1,7 +1,6 @@
 { config, ... }:
 {
   imports = [
-    ../../secrets
     ../../programs/user
   ];
 

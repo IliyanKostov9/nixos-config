@@ -7,7 +7,7 @@ in
 {
   imports = [
     # ./options/overlays
-    ../../secrets
+    ../../secrets/user/ikostov2
     ../../programs/user
   ];
 
