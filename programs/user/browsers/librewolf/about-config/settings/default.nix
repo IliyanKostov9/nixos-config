@@ -45,4 +45,7 @@
 
   # Dark reader is unable to work if it's enabled
   "privacy.resistFingerprinting" = false;
+
+  # Disable mini-window preview when hovering over tab
+  "browser.tabs.hoverPreview.showThumbnails" = false;
 }

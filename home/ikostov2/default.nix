@@ -28,8 +28,8 @@ in
     };
 
     cloud = {
-      awscli2.enable = true;
-      azure-cli.enable = true;
+      awscli2.enable = false;
+      azure-cli.enable = false;
       rclone.enable = false;
     };
 
@@ -71,7 +71,6 @@ in
         };
         gh.enable = true;
         git-extras.enable = true;
-        gitmoji-cli.enable = false;
       };
       langs = {
         go.enable = true;
@@ -109,7 +108,7 @@ in
       okular.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
-      mail.enable = true;
+      mail.enable = false;
     };
 
     password-manager = {

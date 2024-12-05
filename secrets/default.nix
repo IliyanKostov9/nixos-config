@@ -7,10 +7,6 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
-      aws_access_key = { };
-      aws_secret_access_key = { };
-      aws_region = { };
-
       azure_devops_ext_pat = { };
 
       gh_token = { };
