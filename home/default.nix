@@ -5,7 +5,7 @@ in
 {
   imports = [
     ./${username}
-    (if builtins.pathExists ../secrets/user/${username} then ../secrets/user/${username} else "")
+    (lib.optional (builtins.pathExists ../secrets/user/${username})  ../secrets/user/${username})
   ];
 
   home = {
