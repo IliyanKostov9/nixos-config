@@ -25,8 +25,10 @@ in
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common/variables) { inherit user pkgs; };
-      inherit (cfg) env-vars;
+      common = pkgs.callPackage (../common/variables) {
+        inherit lib pkgs user;
+        inherit (cfg) env-vars;
+      };
     in
     {
       home.packages = [

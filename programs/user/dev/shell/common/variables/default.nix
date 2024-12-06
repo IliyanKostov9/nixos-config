@@ -1,4 +1,4 @@
-{ user, pkgs, env-vars }:
+{ lib, pkgs, user, env-vars }:
 {
   shellAliases = {
     # Python
