@@ -5,7 +5,6 @@ in
 {
   imports = [
     ./${username}
-
   ] ++ (lib.optional (builtins.pathExists ../secrets/user/${username})  ../secrets/user/${username});
 
   home = {
