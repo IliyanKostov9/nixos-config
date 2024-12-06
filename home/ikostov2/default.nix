@@ -84,7 +84,23 @@ in
       };
       shell = {
         bash.enable = true;
-        zsh.enable = true;
+        zsh = {
+          enable = true;
+          env-vars = {
+
+            AZURE_DEVOPS_EXT_PAT = "$(command cat ${secrets.azure_devops_ext_pat.path})";
+            GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
+            GH_TOKEN = "$(command cat ${secrets.gh_token.path})";
+            GIT_SOURCE_OWNER = "$(command cat ${secrets.git_source_owner.path})";
+            GIT_SOURCE_ORG = "$(command cat ${secrets.git_source_org.path})";
+            GIT_DEST_OWNER = "$(command cat ${secrets.git_dest_owner.path})";
+            GIT_DEST_PROJECT = "$(command cat ${secrets.git_dest_project.path})";
+            GIT_DEST_SSH_DOMAIN = "$(command cat ${secrets.git_dest_ssh_domain.path})";
+
+            TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
+            TF_ORG = "$(command cat ${secrets.tf_org.path})";
+          };
+        };
       };
     };
 

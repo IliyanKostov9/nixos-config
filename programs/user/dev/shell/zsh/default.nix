@@ -1,13 +1,32 @@
 { pkgs, lib, config, user, ... }:
 with lib;
+with lib.types;
+
 let cfg = config.modules.dev.shell.zsh;
 in
 {
-  options.modules.dev.shell.zsh = { enable = mkEnableOption "zsh"; };
+  options.modules.dev.shell.zsh = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable zsh
+      '';
+    };
+
+    env-vars = mkOption {
+      type = attrsOf str;
+      default = { };
+      description = mkDoc ''
+        Additional environment variables
+      '';
+    };
+  };
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common) { inherit config user; };
+      common = pkgs.callPackage (../common/variables) { inherit user pkgs; };
+      inherit (cfg) env-vars;
     in
     {
       home.packages = [
