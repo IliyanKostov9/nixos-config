@@ -36,7 +36,6 @@ in
     gitroot = "cd $(git root)";
     gitunstage = "git restore --staged";
     clip = "xclip -selection clipboard";
-    bz = "cd $(fzf-search)";
     ls = "eza";
     cat = "bat --theme='base16-256'";
     base = "basename $(pwd)";
@@ -50,12 +49,9 @@ in
     PATH = "$PATH:/home/${user}/.local/bin";
 
   } // (if builtins.pathExists "${builtins.getEnv "HOME"}/.config/sops-nix" then {
-    # Secrets
-    AWS_ACCESS_KEY_ID = "$(command cat ${secrets.aws_access_key.path})";
-    AWS_SECRET_ACCESS_KEY = "$(command cat ${secrets.aws_secret_access_key.path})";
-    AWS_REGION = "$(command cat ${secrets.aws_region.path})";
 
     AZURE_DEVOPS_EXT_PAT = "$(command cat ${secrets.azure_devops_ext_pat.path})";
+    GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
 
     GH_TOKEN = "$(command cat ${secrets.gh_token.path})";
     GIT_SOURCE_OWNER = "$(command cat ${secrets.git_source_owner.path})";
@@ -64,7 +60,6 @@ in
     GIT_DEST_PROJECT = "$(command cat ${secrets.git_dest_project.path})";
     GIT_DEST_SSH_DOMAIN = "$(command cat ${secrets.git_dest_ssh_domain.path})";
 
-    GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
 
     TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
     TF_ORG = "$(command cat ${secrets.tf_org.path})";

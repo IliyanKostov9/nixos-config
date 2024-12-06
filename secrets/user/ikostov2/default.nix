@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.generateKey = true;
@@ -7,10 +6,6 @@
     defaultSopsFormat = "yaml";
 
     secrets = {
-      aws_access_key = { };
-      aws_secret_access_key = { };
-      aws_region = { };
-
       azure_devops_ext_pat = { };
 
       gh_token = { };
@@ -24,13 +19,11 @@
       tf_token_app_terraform_io = { };
       tf_org = { };
 
-      work_name = { };
-      work_project1_name = { };
-      ovpn_username = {
-        mode = "0400";
+      work_name = {
+        sopsFile = ./work.yaml;
       };
-      ovpn_password = {
-        mode = "0400";
+      work_project1_name = {
+        sopsFile = ./work.yaml;
       };
     };
   };

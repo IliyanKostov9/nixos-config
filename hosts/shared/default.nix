@@ -3,6 +3,6 @@ _: {
     ../../programs/system
     ./options
     ./hardware
-    ../../secrets
+    ../../secrets/system
   ];
 }
