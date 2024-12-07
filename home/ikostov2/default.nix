@@ -25,17 +25,7 @@ in
       };
     };
 
-    cloud = {
-      awscli2.enable = false;
-      azure-cli.enable = false;
-      rclone.enable = false;
-    };
-
     dev = {
-      build-tools = {
-        maven.enable = false;
-        gradle.enable = false;
-      };
       command-line = {
         sops.enable = true;
         bat.enable = true;
@@ -52,7 +42,15 @@ in
         neovim.enable = true;
       };
       emulator = {
-        alacritty.enable = true;
+        alacritty = {
+          enable = true;
+          scheduled = true;
+          start-hour = 7;
+          end-hour = 16;
+          light-theme = "dayfox";
+          dark-theme = "nightfox";
+        };
+
         tmux = {
           enable = true;
           enable-dynamic-conf = true;
@@ -72,9 +70,6 @@ in
       };
       langs = {
         go.enable = true;
-        jdk.enable = false; # DISABLED: installed openjdk via Mason
-        lua.enable = false; # REQUIRED: By nvim jdtls
-        rust.enable = false;
         node.enable = true;
         python.enable = true;
       };
@@ -106,7 +101,6 @@ in
       okular.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
-      mail.enable = false;
     };
 
     password-manager = {
@@ -117,7 +111,6 @@ in
       qemu.enable = true;
       virt-manager.enable = true;
       lazydocker.enable = true;
-
     };
 
     vpn = {

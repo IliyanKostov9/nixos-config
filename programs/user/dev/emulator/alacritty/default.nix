@@ -1,12 +1,14 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
+
 let
   cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
   font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
   font-name = config.modules.preferences.fonts.name;
 
-  theme =
+  scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:
     let
       # NOTE: UTC+2
       utc-offset = 2;
@@ -18,10 +20,69 @@ let
             (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
           ] else trace "> WARN: Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
     in
-    if hour > 7 && hour < 16 then "dayfox" else "nordfox";
+    if (hour > start-hour && hour < end-hour)
+    then light-theme
+    else dark-theme;
 in
 {
-  options.modules.dev.emulator.alacritty = { enable = mkEnableOption "alacritty"; };
+  options.modules.dev.emulator.alacritty = {
+
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable alacritty terminal emulator
+      '';
+    };
+
+    theme = mkOption {
+      type = str;
+      default = "gruvbox_material_hard_dark";
+      description = mkDoc ''
+        color scheme for alacritty
+      '';
+    };
+
+    scheduled = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable schedule theme switching based on time ranges
+      '';
+    };
+
+    start-hour = mkOption {
+      type = int;
+      default = 0;
+      description = mkDoc ''
+        start hour for scheduled
+      '';
+    };
+
+    end-hour = mkOption {
+      type = int;
+      default = 0;
+      description = mkDoc ''
+        end hour for scheduled
+      '';
+    };
+
+    light-theme = mkOption {
+      type = str;
+      default = "rose_pine_dawn";
+      description = mkDoc ''
+        scheduled color scheme for alacritty
+      '';
+    };
+
+    dark-theme = mkOption {
+      type = str;
+      default = "gruvbox_material_hard_dark";
+      description = mkDoc ''
+        scheduled color scheme for alacritty
+      '';
+    };
+  };
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -33,30 +94,35 @@ in
       settings = {
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
-        general = {
-          import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
-          # Favorite themes
-          ##################
-          # rose_pine_dawn
-          # gruvbox_material_hard_dark 
-          # Dark blue
-          # > deep_space
-          # Pink
-          # > dracula
-          # > hardhacker
-          # Purple
-          # > iris
-          # Dark green
-          # > alacritty_0_12
-          # > everforest_dark
-          # > gruvbox_material_hard_dark
-          # > gruvbox_dark
-          # > kanagawa_wave
-          # > kanagawa_dragon
-          # Dark
-          # > github_dark_colorblind
-          working_directory = config.home.homeDirectory;
-        };
+        general =
+          let
+            theme =
+              if cfg.scheduled then
+                scheduled-theme { inherit (cfg) start-hour end-hour light-theme dark-theme; }
+              else cfg.theme;
+          in
+          {
+            import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
+            # Favorite themes
+            ##################
+            # Dark blue
+            # > deep_space
+            # Pink
+            # > dracula
+            # > hardhacker
+            # Purple
+            # > iris
+            # Dark green
+            # > alacritty_0_12
+            # > everforest_dark
+            # > gruvbox_material_hard_dark
+            # > gruvbox_dark
+            # > kanagawa_wave
+            # > kanagawa_dragon
+            # Dark
+            # > github_dark_colorblind
+            working_directory = config.home.homeDirectory;
+          };
         env.TERM = "xterm-256color";
         terminal.shell.program = "zsh";
 
