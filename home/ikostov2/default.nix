@@ -44,11 +44,12 @@ in
       emulator = {
         alacritty = {
           enable = true;
+          theme = "nordfox";
           scheduled = true;
           start-hour = 7;
           end-hour = 16;
           light-theme = "dayfox";
-          dark-theme = "nightfox";
+          dark-theme = "nordfox";
         };
 
         tmux = {
