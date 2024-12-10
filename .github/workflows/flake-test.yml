@@ -1,0 +1,40 @@
+name: Flake ❄️ Tests
+
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "37 13 * * *"
+    - cron: "3 14 * * 1,5"
+  workflow_dispatch:
+
+jobs:
+  flake-checker:
+    name: Flake ❄️ Checker ✅
+    if: github.event.schedule == "37 13 * * *"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: DeterminateSystems/nix-installer-action@v15
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+      - uses: DeterminateSystems/flake-checker-action@v9
+
+  lock-updater:
+    name: Flake ❄️ Lock 🔒️ Updater ✨
+    if: github.event.schedule == "3 14 * * 1,5"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: DeterminateSystems/nix-installer-action@v15
+      - uses: DeterminateSystems/magic-nix-cache-action@v8
+      - uses: DeterminateSystems/update-flake-lock@v24
+        with:
+          pr-title: "chore: update flake.lock"
+          pr-labels: |
+            dependencies
+            automated

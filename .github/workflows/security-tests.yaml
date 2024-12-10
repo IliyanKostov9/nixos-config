@@ -1,0 +1,52 @@
+name: Security scanning
+
+on:
+  pull_request:
+    branches:
+      - master
+
+env:
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+jobs:
+  checkout:
+    name: Checkout repo
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Save repo to artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nixos-config
+          path: .
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 0
+
+  scanning:
+    name: Scan for security checks
+    runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
+
+    steps:
+      - name: Download repo artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nixos-config
+          path: .
+
+      - name: GitGuardian scan
+        uses: GitGuardian/ggshield-action@v1.34.0
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
