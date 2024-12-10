@@ -4,3 +4,14 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "sunday"
+      timezone: "Europe/Sofia"
+    commit-message:
+      prefix: "[github-action] "
+    assignees:
+      - "IliyanKostov9"
+    reviewers:
+      - "IliyanKostov9"
+    labels:
+      - "github-action"
+      - "dependencies"
