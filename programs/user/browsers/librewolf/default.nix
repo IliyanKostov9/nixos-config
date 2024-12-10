@@ -68,7 +68,7 @@ in
       };
 
       profiles = builtins.mapAttrs
-        (name: profile:
+        (_name: profile:
           profile //
           {
             inherit settings search;
