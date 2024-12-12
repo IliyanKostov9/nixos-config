@@ -9,7 +9,7 @@ rec {
     inherit system;
     overlays = [
       nixgl.overlay
-      nur.overlay
+      nur.overlays.default
       alacritty-theme.overlays.default
     ];
     config = { allowUnfree = true; };
