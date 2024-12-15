@@ -47,7 +47,7 @@ in
             shift = "Shift";
           in
           {
-            "${mod}+${ctrl}+c" = "exec ${pkgs.chromium}/bin/chromium";
+            "${mod}+${ctrl}+c" = "exec chromium";
             # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
             "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
