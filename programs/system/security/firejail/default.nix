@@ -8,25 +8,45 @@ in
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
 
-    programs.firejail = {
-      enable = true;
-      wrappedBinaries = {
-        viber = {
-          executable = "${pkgs.viber}/bin/viber";
-          desktop = "${pkgs.viber}/share/applications/viber.desktop";
-          extraArgs = [
-            "--noprofile"
-            "--env=GTK_THEME=Adwaita:dark"
-            "--dbus-user.talk=org.freedesktop.Notifications"
-            "--dbus-user.talk=org.freedesktop.ScreenSaver"
-            "--dbus-user.talk=org.freedesktop.portal.Desktop"
-            "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-          ];
-        };
-        chromium = {
-          executable = "${pkgs.chromium}/bin/chromium";
-          desktop = "${pkgs.chromium}/share/applications/chromium-browser.desktop";
-          profile = "${pkgs.chromium}/etc/firejail/chrome.profile";
+    programs = {
+      # INFO: Chromium policies
+      chromium = {
+        enable = true;
+        homepageLocation = "https://duckduckgo.com";
+        defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
+        extensions = [
+          # Dark reader
+          "eimadpbcbfnmbkopoojfekhnkhdbieeh"
+          # Ublock origin
+          "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+          # Privacy Badger
+          "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
+          # User agent switcher
+          "bhchdcejhohfmigjafbampogmaanbfkg"
+          # Canvas blocker
+          "nomnklagbgmgghhjidfhnoelnjfndfpd"
+        ];
+      };
+
+      firejail = {
+        enable = true;
+        wrappedBinaries = {
+          viber = {
+            executable = "${pkgs.viber}/bin/viber";
+            desktop = "${pkgs.viber}/share/applications/viber.desktop";
+            extraArgs = [
+              "--noprofile"
+              "--env=GTK_THEME=Adwaita:dark"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+            ];
+          };
+          chromium = {
+            executable = "${pkgs.chromium}/bin/chromium";
+            profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
+          };
         };
       };
     };
