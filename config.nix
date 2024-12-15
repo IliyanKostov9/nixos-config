@@ -29,7 +29,7 @@
       ];
 
       boot = {
-        # tmp.useTmpfs = true;
+        tmp.useTmpfs = true;
         kernelModules = [ "kvm-amd" "k10temp" ];
         kernelParams = [ "acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1" ];
         initrd = {
@@ -49,6 +49,7 @@
       ];
 
       boot = {
+        tmp.useTmpfs = true;
         kernelModules = [ "kvm-intel" ];
         kernelParams = [ "i915.force_probe=3e9b" "nvidia-drm.fbdev=1" ];
         initrd = {

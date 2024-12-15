@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+_: {
   fileSystems = {
     "/" =
       {
@@ -19,7 +18,6 @@
     randomEncryption.enable = false;
     # size = 12288;
   }];
-  #lib.mkForce [ ];
 
   zramSwap = {
     priority = 4;
