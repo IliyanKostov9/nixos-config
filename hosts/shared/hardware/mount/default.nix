@@ -1,4 +1,5 @@
-_: {
+{ lib, ... }:
+{
   fileSystems = {
     "/" =
       {
@@ -12,6 +13,18 @@ _: {
         options = [ "fmask=0022" "dmask=0022" ];
       };
   };
-  swapDevices =
-    [{ device = "/dev/disk/by-label/swap"; }];
+  swapDevices = [{
+    device = "/dev/disk/by-label/swap";
+    priority = 3;
+    randomEncryption.enable = false;
+    # size = 12288;
+  }];
+  #lib.mkForce [ ];
+
+  zramSwap = {
+    priority = 4;
+    enable = true;
+    memoryPercent = 50;
+    algorithm = "zstd";
+  };
 }

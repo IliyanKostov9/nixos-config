@@ -29,6 +29,7 @@
       ];
 
       boot = {
+        # tmp.useTmpfs = true;
         kernelModules = [ "kvm-amd" "k10temp" ];
         kernelParams = [ "acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1" ];
         initrd = {
