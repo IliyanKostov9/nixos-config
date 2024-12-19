@@ -1,13 +1,12 @@
-let
-  # nixpkgs = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.11";
-  # pkgs = import nixpkgs { config = { }; overlays = [ ]; };
-  # home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+{ home-manager
+, pkgs
+}:
 
+let
   stateVersion = "24.11";
 in
 pkgs.nixosTest {
   name = "User tests";
-  system = "x86_64-linux";
   # extraPythonPackages = p: [ p.numpy ];
   nodes.machine = { config, pkgs, ... }: {
     imports = [
