@@ -1,7 +1,7 @@
 let
   version = "1.19.21";
 in
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { config = { }; overlays = [ ]; } }:
 pkgs.appimageTools.wrapType2 {
   name = "etcher";
   src = pkgs.fetchurl {

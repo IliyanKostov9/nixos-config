@@ -18,7 +18,7 @@ let
           pkgs.lib.pipe builtins.currentTime [
             (time: builtins.div time 3600)
             (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
-          ] else trace "> WARN: Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
+          ] else warn "> Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
     in
     if (hour > start-hour && hour < end-hour)
     then light-theme

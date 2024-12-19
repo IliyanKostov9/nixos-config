@@ -6,7 +6,7 @@ with lib.trivial;
 let
   is-secure-boot-enabled =
     if builtins.pathExists "/etc/secureboot" && !inPureEvalMode then
-      trace "> Secure boot IS enabled!" true else if inPureEvalMode then trace "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enable secure boot!" false else trace "> Secure boot is NOT enabled" false;
+      trace "> Secure boot IS enabled!" true else if inPureEvalMode then warn "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enable secure boot!" false else warn "> Secure boot is NOT enabled" false;
 in
 {
   imports = [

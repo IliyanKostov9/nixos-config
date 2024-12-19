@@ -43,6 +43,7 @@
         ./flakes/system.nix
         ./flakes/user.nix
         ./flakes/export-image.nix
+        ./tests
       ];
     };
 }

@@ -20,6 +20,4 @@ rec {
         }
     )
     shared.config_system.hosts;
-
-  flake.defaultPackage.x86_64-linux = builtins.head (builtins.attrValues flake.packages.x86_64-linux);
 }
