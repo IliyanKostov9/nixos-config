@@ -1,4 +1,5 @@
 { home-manager
+, shared
 , pkgs
 }:
 
@@ -36,6 +37,20 @@ pkgs.nixosTest {
         extraGroups = [ "wheel" ];
       };
     };
+    home-manager = builtins.listToAttrs
+      (lib.attrsets.mapAttrsToList
+        builtins.mapAttrs
+        (user: _user-attr: {
+          extraSpecialArgs =
+            {
+              inherit self user;
+              inherit (shared) system stateVersion pkgs_unstable;
+            };
+          modules = [
+            ../../home
+          ];
+        })
+        shared.users);
 
     home-manager.users = {
       ikostov2 = {
