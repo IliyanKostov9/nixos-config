@@ -2,7 +2,7 @@ _: {
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.generateKey = true;
-    defaultSopsFile = ./env_vars.yaml;
+    defaultSopsFile = builtins.path { path = ./env_vars.yaml; name = "sops-usr-file-ikostov2-env_vars"; };
     defaultSopsFormat = "yaml";
 
     secrets = {
@@ -20,10 +20,10 @@ _: {
       tf_org = { };
 
       work_name = {
-        sopsFile = ./work.yaml;
+        sopsFile = builtins.path { path = ./work.yaml; name = "sops-usr-secrets-ikostov2-work_name"; };
       };
       work_project1_name = {
-        sopsFile = ./work.yaml;
+        sopsFile = builtins.path { path = ./work.yaml; name = "sops-usr-secrets-ikostov2-work_project1_name"; };
       };
     };
   };

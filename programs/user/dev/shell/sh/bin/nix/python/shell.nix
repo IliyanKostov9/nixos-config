@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { config = { }; overlays = [ ]; } }:
 
 (pkgs.buildFHSUserEnv {
   name = "pipzone";

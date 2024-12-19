@@ -2,7 +2,7 @@ _: {
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.generateKey = true;
-    defaultSopsFile = ./secrets.yaml;
+    defaultSopsFile = builtins.path { path = ./secrets.yaml.yaml; name = "sops-system-file-secrets"; };
     defaultSopsFormat = "yaml";
 
     secrets = {
