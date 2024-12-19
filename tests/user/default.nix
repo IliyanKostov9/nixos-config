@@ -11,13 +11,21 @@ pkgs.nixosTest {
     imports = [
       (import "${home-manager}/nixos")
     ];
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
 
-    services.xserver.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.xserver.desktopManager.gnome.enable = true;
-    services.xserver.windowManager.i3.enable = true;
+    boot.loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
+    services = {
+      displayManager.sddm.enable = true;
+      xserver = {
+        enable = true;
+        desktopManager.gnome.enable = true;
+        windowManager.i3.enable = true;
+      };
+    };
+
     system = {
       inherit stateVersion;
     };

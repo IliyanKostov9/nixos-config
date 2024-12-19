@@ -24,9 +24,6 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           nix_path: nixpkgs=channel:nixos-stable
 
-      - name: Print nixpkgs version
-        run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
-
       - name: Run tests
         run: nix flake check -L
 
