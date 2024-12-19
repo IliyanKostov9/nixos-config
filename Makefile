@@ -88,3 +88,12 @@ flake-meta: ## Check flake deps
 .PHONY: gen
 gen: ## Show NixOS generations
 	nix-env --list-generations |& nom
+
+.PHONY: test test-usr test-sys
+test: test-usr test-sys
+
+test-usr:
+	nix-build tests/user/default.nix
+
+test-sys:
+	nix-build tests/system/default.nix

@@ -1,15 +1,19 @@
 name: ❄️ Nix test ❄️
 
 on:
-  workflow_dispatch:
-
-  # pull_request:
-  #   branches:
-  #     - none
+  pull_request:
+    branches:
+      - master
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+
+    name: Run tests
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -19,14 +23,11 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Nix build
-        run: nix build
+      - name: System tests
+        run: nix build tests/system/default.nix
 
-      - name: Nix install statix
-        run: nix run git+https://git.peppe.rs/languages/statix -- --help
-
-      - name: Nix flake check
-        run: nix flake check
+      - name: User tests
+        run: nix build tests/user/default.nix
 
       - name: Print nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
@@ -35,6 +36,3 @@ jobs:
         uses: cachix/install-nix-action@v30
         with:
           extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
-
-      - name: Run statix
-        run: statix check
