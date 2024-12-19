@@ -31,40 +31,11 @@ pkgs.nixosTest {
     };
 
     users.users = {
-      ikostov2 = {
+      dummy = {
         isNormalUser = true;
         extraGroups = [ "wheel" ];
         # packages = with pkgs; [
         # ];
-      };
-    };
-
-    home-manager =
-      {
-        users = {
-          ikostov2 = import ../../home;
-        };
-        extraSpecialArgs =
-          {
-            user = "ikostov2";
-            inherit system stateVersion pkgs pkgs_unstable;
-          };
-      };
-  };
-
-  nodes.user2 = { config, pkgs, ... }: {
-    imports = [
-      (import "${home-manager}/nixos")
-    ];
-    services.xserver.desktopManager.gnome.enable = true;
-    system = {
-      inherit stateVersion;
-    };
-
-    users.users = {
-      dummy = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" ];
       };
     };
 
@@ -81,12 +52,41 @@ pkgs.nixosTest {
       };
   };
 
+  nodes.user2 = { config, pkgs, ... }: {
+    imports = [
+      (import "${home-manager}/nixos")
+    ];
+    services.xserver.desktopManager.gnome.enable = true;
+    system = {
+      inherit stateVersion;
+    };
+
+    users.users = {
+      fakeuser = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
+    };
+
+    home-manager =
+      {
+        users = {
+          dummy = import ../../home;
+        };
+        extraSpecialArgs =
+          {
+            user = "fakeuser";
+            inherit system stateVersion pkgs pkgs_unstable;
+          };
+      };
+  };
+
   testScript = ''
     user1.wait_for_unit("default.target")
-    user1.succeed("su -- ikostov2 -c 'which librewolf'")
+    user1.succeed("su -- dummy -c 'which librewolf'")
 
     user2.wait_for_unit("default.target")
-    user2.fail("su -- dummy -c 'which vim'")
+    user2.fail("su -- fakeuser -c 'which vim'")
     user2.fail("su -- root -c 'which emacs'")
   '';
 }
