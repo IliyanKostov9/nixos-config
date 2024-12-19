@@ -22,17 +22,15 @@ jobs:
         uses: cachix/install-nix-action@v30
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: System tests
-        run: nix build tests/system/default.nix
-
-      - name: User tests
-        run: nix build tests/user/default.nix
+          nix_path: nixpkgs=channel:nixos-stable
 
       - name: Print nixpkgs version
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
 
       - name: Run tests
-        uses: cachix/install-nix-action@v30
-        with:
-          extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
+        run: make test
+
+      # - name: Run tests
+      #   uses: cachix/install-nix-action@v30
+      #   with:
+      #     extra_nix_config: "system-features = nixos-test benchmark big-parallel kvm"
