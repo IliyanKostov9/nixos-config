@@ -66,13 +66,11 @@ in
           userName = "iliyan-kostov";
           userEmail = "iliyan.kostov@email.ikostov.org";
         };
-        gh.enable = false;
         git-extras.enable = true;
       };
       langs = {
         go.enable = true;
         node.enable = true;
-        python.enable = false;
       };
       linters = {
         # INFO: Required for yamllint in nvim
