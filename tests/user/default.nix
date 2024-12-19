@@ -1,10 +1,14 @@
 let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.11";
-  pkgs = import nixpkgs { config = { }; overlays = [ ]; };
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+  # nixpkgs = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.11";
+  # pkgs = import nixpkgs { config = { }; overlays = [ ]; };
+  # home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+
+  stateVersion = "24.11";
 in
 pkgs.nixosTest {
   name = "User tests";
+  system = "x86_64-linux";
+  # extraPythonPackages = p: [ p.numpy ];
   nodes.machine = { config, pkgs, ... }: {
     imports = [
       (import "${home-manager}/nixos")
@@ -16,22 +20,43 @@ pkgs.nixosTest {
     services.displayManager.sddm.enable = true;
     services.xserver.desktopManager.gnome.enable = true;
     services.xserver.windowManager.i3.enable = true;
-
-    users.users.ikostov2 = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" ];
-      # packages = with pkgs; [
-      # ];
+    system = {
+      inherit stateVersion;
     };
 
-    home-manager.users.ikostov2 = {
-      home.packages = with pkgs; [
-        librewolf
-      ];
-      home.stateVersion = "24.11";
+    users.users = {
+      ikostov2 = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+        # packages = with pkgs; [
+        # ];
+      };
+
+      garming = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
     };
 
-    system.stateVersion = "24.11";
+    home-manager.users = {
+      ikostov2 = {
+        home = {
+          packages = with pkgs; [
+            librewolf
+          ];
+          inherit stateVersion;
+        };
+      };
+
+      garming = {
+        home = {
+          packages = with pkgs; [
+            librewolf
+          ];
+          inherit stateVersion;
+        };
+      };
+    };
   };
 
   testScript = ''
