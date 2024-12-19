@@ -28,7 +28,7 @@ jobs:
         run: nix-instantiate --eval -E '(import <nixpkgs> {}).lib.version'
 
       - name: Run tests
-        run: make test
+        run: nix flake check -L
 
       # - name: Run tests
       #   uses: cachix/install-nix-action@v30
