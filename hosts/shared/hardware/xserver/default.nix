@@ -14,6 +14,7 @@
       enable = true;
       # Enable for using GNOME
       # displayManager.gdm.enable = true;
+
       # Another display manager for i3
       displayManager.lightdm.enable = false;
       # Disable screen turning off after 10 mins

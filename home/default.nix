@@ -3,9 +3,19 @@ let
   username = user;
 in
 {
-  imports = [
-    ./${username}
-  ] ++ (lib.optional (builtins.pathExists ../secrets/user/${username})  ../secrets/user/${username});
+  imports =
+    (if builtins.pathExists ./${username}
+    then [ ./${username} ]
+    else
+      lib.warn
+        "> User: ${username} DOESN'T have home directory under ./home! Defaulting to NONE... "
+        [ ]
+    )
+    ++
+    (if !lib.trivial.inPureEvalMode && builtins.pathExists ../secrets/user/${username}
+    then [ ../secrets/user/${username} ]
+    else [ ]
+    );
 
   home = {
     homeDirectory = "/home/${username}";

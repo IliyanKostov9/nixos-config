@@ -77,7 +77,7 @@ flake:
 	$(MAKE) --no-print-directory help
 
 flake-check: ## Evaluate flake and build its checks
-	nix flake check --impure |& nom
+	nix flake check -L |& nom
 
 flake-upgrade:  ## Upgrade flake related dependencies
 	nix flake update |& nom
