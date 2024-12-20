@@ -1,9 +1,11 @@
+# NOTE: Disabled, because Garnix already does that
 name: ❄️ Nix test ❄️
 
 on:
-  pull_request:
-    branches:
-      - master
+  workflow_dispatch:
+  # pull_request:
+  #   branches:
+  #     - mcwaster
 
 jobs:
   tests:
