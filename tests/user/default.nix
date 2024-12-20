@@ -71,7 +71,7 @@ pkgs.nixosTest {
     home-manager =
       {
         users = {
-          dummy = import ../../home;
+          fakeuser = import ../../home;
         };
         extraSpecialArgs =
           {
@@ -84,6 +84,7 @@ pkgs.nixosTest {
   testScript = ''
     user1.wait_for_unit("default.target")
     user1.succeed("su -- dummy -c 'which librewolf'")
+    user1.succeed("su -- dummy -c 'librewolf -P Dummy'")
 
     user2.wait_for_unit("default.target")
     user2.fail("su -- fakeuser -c 'which vim'")

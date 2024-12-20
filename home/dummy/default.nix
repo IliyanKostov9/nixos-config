@@ -7,7 +7,6 @@
   config.modules = {
     preferences = {
       fonts.name = "0xProto";
-      red-light.enable = true;
     };
 
     api.postman.enable = true;
@@ -15,6 +14,7 @@
     browsers = {
       librewolf = {
         enable = true;
+        profiles = import ./options/librewolf/profiles { inherit lib config pkgs; };
       };
     };
 
