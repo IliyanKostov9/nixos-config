@@ -1,9 +1,18 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
 let cfg = config.modules.security.firejail;
 in
 {
-  options.modules.security.firejail = { enable = mkEnableOption "firejail"; };
+  options.modules.security.firejail = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable firejail
+      '';
+    };
+  };
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
@@ -31,6 +40,18 @@ in
       firejail = {
         enable = true;
         wrappedBinaries = {
+          # NOTE: commented because home manager is managing librewolf
+          # librewolf = {
+          #   executable = "${pkgs.librewolf}/bin/librewolf";
+          #   # profile = "${pkgs.firejail}/etc/firejail/librewolf.profile";
+          #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+          #   extraArgs = [
+          #     "--ignore=private-dev"
+          #     "--env=GTK_THEME=Adwaita:dark"
+          #     "--dbus-user.talk=org.freedesktop.Notifications"
+          #   ];
+          # };
+
           viber = {
             executable = "${pkgs.viber}/bin/viber";
             desktop = "${pkgs.viber}/share/applications/viber.desktop";
@@ -43,6 +64,7 @@ in
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };
+
           chromium = {
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
