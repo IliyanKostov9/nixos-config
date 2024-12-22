@@ -10,15 +10,7 @@ let
 
   scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:
     let
-      # NOTE: UTC+2
-      utc-offset = 2;
-
-      hour =
-        if (!trivial.inPureEvalMode) then
-          pkgs.lib.pipe builtins.currentTime [
-            (time: builtins.div time 3600)
-            (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
-          ] else warn "> Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
+      hour = import (../../../../../utils/get-current-time.nix) { inherit pkgs; };
     in
     if (hour > start-hour && hour < end-hour)
     then light-theme
