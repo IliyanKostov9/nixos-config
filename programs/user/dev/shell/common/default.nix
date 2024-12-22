@@ -1,8 +1,4 @@
-{ config, user, env-vars, pkgs }:
-
-let
-  inherit (config.sops) secrets;
-in
+{ env-vars, pkgs }:
 {
   shellAliases = {
     # Python
