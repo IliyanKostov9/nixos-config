@@ -3,6 +3,18 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.dev.emulator.tmux;
+  cfg-alacritty = config.modules.dev.emulator.alacritty;
+
+  inherit (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }) hour;
+  status-bar-color =
+    if
+      cfg-alacritty.scheduled then
+      (
+        if hour > cfg-alacritty.start-hour && hour < cfg-alacritty.end-hour then
+          cfg-alacritty.light-theme-hex
+        else cfg-alacritty.dark-theme-hex
+      ) else trace "> Scheduled is not enabled. Defaulting to dark theme status bar for tmux..." cfg-alacritty.dark-theme-hex;
+
   convert-list-to-lowercase = list: (builtins.map (name: lib.strings.toLower name) list);
 in
 {
@@ -46,9 +58,12 @@ in
 
     programs.tmux =
       let
+        dynamic-vals = cfg.dynamic-vals ++ [ status-bar-color ];
+        static-vals = cfg.static-vals ++ [ "$STATUS_BAR_BG_THEME*" ];
+
         tmux-conf =
           if cfg.enable-dynamic-conf then
-            builtins.replaceStrings cfg.static-vals (convert-list-to-lowercase cfg.dynamic-vals) (lib.fileContents ./tmux.conf)
+            builtins.replaceStrings static-vals (convert-list-to-lowercase dynamic-vals) (lib.fileContents ./tmux.conf)
           else lib.fileContents ./tmux.conf
         ;
       in

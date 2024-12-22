@@ -10,15 +10,7 @@ let
 
   scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:
     let
-      # NOTE: UTC+2
-      utc-offset = 2;
-
-      hour =
-        if (!trivial.inPureEvalMode) then
-          pkgs.lib.pipe builtins.currentTime [
-            (time: builtins.div time 3600)
-            (time: builtins.add (time - (builtins.div time 24 * 24)) utc-offset)
-          ] else warn "> Cannot retrieve the current hour for alacritty theme. Defaulting back to dark mode..." 0;
+      inherit (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }) hour;
     in
     if (hour > start-hour && hour < end-hour)
     then light-theme
@@ -71,17 +63,33 @@ in
       type = str;
       default = "rose_pine_dawn";
       description = mkDoc ''
-        scheduled color scheme for alacritty
+        scheduled light color scheme for alacritty
       '';
     };
+    light-theme-hex = mkOption
+      {
+        type = str;
+        default = "#f6f2ee";
+        description = mkDoc ''
+          hex representation for light color scheme for alacritty
+        '';
+      };
 
     dark-theme = mkOption {
       type = str;
       default = "gruvbox_material_hard_dark";
       description = mkDoc ''
-        scheduled color scheme for alacritty
+        scheduled dark color scheme for alacritty
       '';
     };
+    dark-theme-hex = mkOption
+      {
+        type = str;
+        default = "#333333";
+        description = mkDoc ''
+          hex representation for dark color scheme for alacritty
+        '';
+      };
   };
 
   config = mkIf cfg.enable {

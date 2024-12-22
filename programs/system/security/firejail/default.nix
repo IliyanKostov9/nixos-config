@@ -1,9 +1,18 @@
 { pkgs, lib, config, ... }:
 with lib;
+with lib.types;
 let cfg = config.modules.security.firejail;
 in
 {
-  options.modules.security.firejail = { enable = mkEnableOption "firejail"; };
+  options.modules.security.firejail = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable firejail
+      '';
+    };
+  };
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
@@ -43,6 +52,7 @@ in
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };
+
           chromium = {
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
