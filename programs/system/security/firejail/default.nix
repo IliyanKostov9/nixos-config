@@ -40,18 +40,6 @@ in
       firejail = {
         enable = true;
         wrappedBinaries = {
-          # NOTE: commented because home manager is managing librewolf
-          # librewolf = {
-          #   executable = "${pkgs.librewolf}/bin/librewolf";
-          #   # profile = "${pkgs.firejail}/etc/firejail/librewolf.profile";
-          #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
-          #   extraArgs = [
-          #     "--ignore=private-dev"
-          #     "--env=GTK_THEME=Adwaita:dark"
-          #     "--dbus-user.talk=org.freedesktop.Notifications"
-          #   ];
-          # };
-
           viber = {
             executable = "${pkgs.viber}/bin/viber";
             desktop = "${pkgs.viber}/share/applications/viber.desktop";
