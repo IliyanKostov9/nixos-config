@@ -1,4 +1,6 @@
-{ pkgs }:
+{ pkgs, lib }:
+with lib;
+
 let
   # NOTE: UTC+2
   utc-offset = 2;

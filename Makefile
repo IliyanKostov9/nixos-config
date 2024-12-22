@@ -52,6 +52,7 @@ build: sys-update home-update
 
 home-update:  ## Build home configuration for default user
 	home-manager switch --flake .#$(shell whoami) --show-trace --impure |& nom
+	tmux source-file ~/.config/tmux/tmux.conf 
 	
 .PHONY: sys-update
 sys-update: ## Build system configuration for all hosts

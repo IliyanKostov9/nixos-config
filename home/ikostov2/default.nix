@@ -50,6 +50,8 @@ in
           end-hour = 16;
           light-theme = "dayfox";
           dark-theme = "nordfox";
+          light-theme-hex = "#f6f2ee";
+          dark-theme-hex = "#2E3440";
         };
 
         tmux = {
