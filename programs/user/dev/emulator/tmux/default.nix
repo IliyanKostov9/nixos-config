@@ -5,7 +5,7 @@ let
   cfg = config.modules.dev.emulator.tmux;
   cfg-alacritty = config.modules.dev.emulator.alacritty;
 
-  hour = (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }).hour;
+  inherit (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }) hour;
   status-bar-color =
     if
       cfg-alacritty.scheduled then

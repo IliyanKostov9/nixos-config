@@ -10,7 +10,7 @@ let
 
   scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:
     let
-      hour = (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }).hour;
+      inherit (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }) hour;
     in
     if (hour > start-hour && hour < end-hour)
     then light-theme
