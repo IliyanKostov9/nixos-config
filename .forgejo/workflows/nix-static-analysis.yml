@@ -16,7 +16,7 @@ jobs:
         os:
           # - macos-13 # x86_64-darwin
           # - macos-latest # aarch64-darwin
-          - ubuntu-latest
+          - docker
 
     permissions:
       contents: write
