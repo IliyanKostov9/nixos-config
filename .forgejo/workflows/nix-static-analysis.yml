@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repo
-        uses: https://code.forgejo.org/actions/checkout@v4
+        uses: actions/checkout@v4 
 
       - uses: DeterminateSystems/nix-installer-action@v15
       - uses: DeterminateSystems/magic-nix-cache-action@v8
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: https://code.forgejo.org/actions/checkout@v4
+        uses: actions/checkout@v4 
 
       - name: Remove dirs to be ignored during scanning
         run: |
