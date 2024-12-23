@@ -1,13 +1,13 @@
 name: Nix ❄️ Static Analysis 🔍️
 
-on:
-  pull_request:
-    branches:
-      - master
-
-concurrency:
-  group: build-${{ github.ref }}
-  cancel-in-progress: true
+# on:
+#   pull_request:
+#     branches:
+#       - master
+#
+# concurrency:
+#   group: build-${{ github.ref }}
+#   cancel-in-progress: true
 
 jobs:
   deadnix:
