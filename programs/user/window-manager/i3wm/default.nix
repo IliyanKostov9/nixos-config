@@ -159,7 +159,7 @@ in
           } // builtins.listToAttrs (lib.attrsets.mapAttrsToList
             (key: profile-name: {
               name = "${mod}+${ctrl}+${key}";
-              value = "exec firejail librewolf -P ${profile-name}";
+              value = "exec librewolf -P ${profile-name}";
             })
             cfg.librewolf-mappings);
 
