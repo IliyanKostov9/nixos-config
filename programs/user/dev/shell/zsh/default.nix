@@ -48,7 +48,7 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-purple-magic";
+          theme = "af-magic";
           custom = "${zsh-themes}";
           plugins = [
             "gh"
