@@ -1,7 +1,16 @@
 { pkgs, lib, config, user, ... }:
 with lib;
 with lib.types;
-let cfg = config.modules.dev.shell.zsh;
+let
+  cfg = config.modules.dev.shell.zsh;
+  zsh-themes = pkgs.stdenv.mkDerivation {
+    name = "oh-my-zsh-custom-dir";
+    phases = [ "buildPhase" ];
+    buildPhase = ''
+      mkdir -p $out/themes
+      cp ${./theme/af-magic.zsh-theme} $out/themes/
+    '';
+  };
 in
 {
   options.modules.dev.shell.zsh = {
@@ -39,7 +48,8 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          theme = ./theme/af-magic.zsh-theme;
+          theme = "af-purple-magic";
+          custom = "${zsh-themes}";
           plugins = [
             "gh"
             "direnv"
