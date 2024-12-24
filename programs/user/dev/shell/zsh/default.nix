@@ -3,16 +3,24 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.dev.shell.zsh;
-  # seasonal-themes = builtins.fetchGit {
-  #   url = "https://github.com/jottenlips/seasonal-zshthemes.git";
-  #   rev = "e99d4850abdd7eef68f0c04ef395d2a00cd782ee";
+
+  # ikostov-zsh-themes = builtins.fetchGit {
+  #   url = "https://github.com/IliyanKostov9/zsh-themes";
+  #   rev = "";
   # };
+  ikostov-zsh-themes = pkgs.fetchFromGitHub {
+    owner = "IliyanKostov9";
+    repo = "zsh-themes";
+    rev = "master";
+    hash = "sha256-lyo8nRXjOoAJRDUNsF8+IHRZSrsGBuLMcrYBTAGP4iA=";
+  };
+
   zsh-themes = pkgs.stdenv.mkDerivation {
-    name = "oh-my-zsh-custom-dir";
+    name = "oh-my-custom-zsh-theme";
     phases = [ "buildPhase" ];
     buildPhase = ''
       mkdir -p $out/themes
-      cp ${./theme/af-purple-magic.zsh-theme} $out/themes/
+      cp ${ikostov-zsh-themes}/themes/*.zsh-theme  $out/themes/
     '';
   };
 in
@@ -52,7 +60,7 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          # theme = "af-magic";
+          theme = "af-purple-magic";
           custom = "${zsh-themes}";
           plugins = [
             "gh"
