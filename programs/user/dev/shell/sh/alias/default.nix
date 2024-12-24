@@ -30,7 +30,7 @@ let
   passbolt-get-password = pkgs.writeShellApplication {
     name = "passbolt-get-password";
     runtimeInputs = with pkgs_unstable; [ go-passbolt-cli ];
-    excludeShellChecks = [ "SC2005" ];
+    excludeShellChecks = [ ];
 
     text = ''
       password_uuid=$(passbolt list resource -c "id" -c "name" | fzf --cycle --border=thinblock --border-label='| Get password secret |' | awk '{print $1;}')
@@ -49,6 +49,6 @@ in
   home.packages = lib.optionals (zsh.enable || bash.enable) [
     lst
     fzf-search
-    passbolt-get-password
+    # passbolt-get-password
   ];
 }
