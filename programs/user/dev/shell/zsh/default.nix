@@ -3,12 +3,16 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.dev.shell.zsh;
+  # seasonal-themes = builtins.fetchGit {
+  #   url = "https://github.com/jottenlips/seasonal-zshthemes.git";
+  #   rev = "e99d4850abdd7eef68f0c04ef395d2a00cd782ee";
+  # };
   zsh-themes = pkgs.stdenv.mkDerivation {
     name = "oh-my-zsh-custom-dir";
     phases = [ "buildPhase" ];
     buildPhase = ''
       mkdir -p $out/themes
-      cp ${./theme/af-magic.zsh-theme} $out/themes/
+      cp ${./theme/af-purple-magic.zsh-theme} $out/themes/
     '';
   };
 in
@@ -48,7 +52,7 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-magic";
+          # theme = "af-magic";
           custom = "${zsh-themes}";
           plugins = [
             "gh"
