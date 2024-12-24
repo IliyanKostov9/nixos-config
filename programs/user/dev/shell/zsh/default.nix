@@ -39,15 +39,7 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-magic";
-          # af-magic
-          # wezm
-          # norm
-          # muse
-          # macovsky
-          # lambda
-          # kolo ?
-          # jnrowe
+          theme = ./theme/af-magic.zsh-theme;
           plugins = [
             "gh"
             "direnv"
