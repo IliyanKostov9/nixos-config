@@ -66,7 +66,7 @@ in
           light-theme = "dayfox";
           dark-theme = "nordfox";
           light-theme-hex = "#f6f2ee";
-          dark-theme-hex = "#2E3440";
+          dark-theme-hex = "#2e3440";
         };
 
         tmux = {
