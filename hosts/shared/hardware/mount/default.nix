@@ -22,7 +22,7 @@ _: {
   zramSwap = {
     priority = 4;
     enable = true;
-    memoryPercent = 50;
+    memoryPercent = 60;
     algorithm = "zstd";
   };
 }
