@@ -12,7 +12,7 @@ let
     owner = "IliyanKostov9";
     repo = "zsh-themes";
     rev = "master";
-    hash = "sha256-lyo8nRXjOoAJRDUNsF8+IHRZSrsGBuLMcrYBTAGP4iA=";
+    hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
   };
 
   zsh-themes = pkgs.stdenv.mkDerivation {
