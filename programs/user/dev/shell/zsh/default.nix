@@ -1,7 +1,28 @@
 { pkgs, lib, config, user, ... }:
 with lib;
 with lib.types;
-let cfg = config.modules.dev.shell.zsh;
+let
+  cfg = config.modules.dev.shell.zsh;
+
+  # ikostov-zsh-themes = builtins.fetchGit {
+  #   url = "https://github.com/IliyanKostov9/zsh-themes";
+  #   rev = "";
+  # };
+  ikostov-zsh-themes = pkgs.fetchFromGitHub {
+    owner = "IliyanKostov9";
+    repo = "zsh-themes";
+    rev = "master";
+    hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
+  };
+
+  zsh-themes = pkgs.stdenv.mkDerivation {
+    name = "oh-my-custom-zsh-theme";
+    phases = [ "buildPhase" ];
+    buildPhase = ''
+      mkdir -p $out/themes
+      cp ${ikostov-zsh-themes}/themes/*.zsh-theme  $out/themes/
+    '';
+  };
 in
 {
   options.modules.dev.shell.zsh = {
@@ -39,15 +60,8 @@ in
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-magic";
-          # af-magic
-          # wezm
-          # norm
-          # muse
-          # macovsky
-          # lambda
-          # kolo ?
-          # jnrowe
+          theme = "af-purple-magic";
+          custom = "${zsh-themes}";
           plugins = [
             "gh"
             "direnv"
