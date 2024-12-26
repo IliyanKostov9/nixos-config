@@ -53,14 +53,7 @@ in
       dbms = {
         dbeaver.enable = true;
       };
-      editor.neovim = {
-        enable = true;
-        github-config-enable = true;
-        github-owner = "IliyanKostov9";
-        github-repo = "nvim-config";
-        github-rev = "master";
-        github-sha256 = "";
-      };
+      editor.neovim.enable = true;
 
       emulator = {
         alacritty = {
