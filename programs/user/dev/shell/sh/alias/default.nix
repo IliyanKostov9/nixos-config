@@ -49,6 +49,6 @@ in
   home.packages = lib.optionals (zsh.enable || bash.enable) [
     lst
     fzf-search
-    # passbolt-get-password
+    passbolt-get-password
   ];
 }

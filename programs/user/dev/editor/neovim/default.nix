@@ -12,7 +12,5 @@ in
       defaultEditor = true;
       extraPackages = with pkgs_unstable; [ yamllint nodejs_22 ];
     };
-
   };
-
 }
