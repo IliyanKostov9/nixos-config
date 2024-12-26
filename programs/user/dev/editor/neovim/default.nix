@@ -3,33 +3,6 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.dev.editor.neovim;
-  config-already-exists = if builtins.pathExists "/home/${user}/.config/nvim/init.lua" then true else false;
-
-  neovim-config =
-    mkIf cfg.github-config-enable {
-      github-repo =
-        if config-already-exists then
-          pkgs_unstable.fetchFromGitHub
-            {
-              owner = cfg.github-owner;
-              repo = cfg.github-repo;
-              rev = cfg.github-rev;
-              hash = cfg.github-sha256;
-            } else lib.error "Error: neovim config already exists!" { };
-
-      neovim-config-derv =
-        if (! config-already-exists) then
-
-          pkgs_unstable.stdenv.mkDerivation
-            {
-              name = "neovim-config";
-              phases = [ "buildPhase" ];
-              buildPhase = ''
-                mkdir -p ~/.config/nvim
-                cp -r ${github-repo} ~/.config/nvim/
-              '';
-            } else { };
-    };
 in
 {
   options.modules.dev.editor.neovim = {
