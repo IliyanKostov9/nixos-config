@@ -53,9 +53,8 @@ in
       dbms = {
         dbeaver.enable = true;
       };
-      editor = {
-        neovim.enable = true;
-      };
+      editor.neovim.enable = true;
+
       emulator = {
         alacritty = {
           enable = true;
@@ -84,14 +83,6 @@ in
           userEmail = "iliyan.kostov@email.ikostov.org";
         };
         git-extras.enable = true;
-      };
-      langs = {
-        go.enable = true;
-        node.enable = true;
-      };
-      linters = {
-        # INFO: Required for yamllint in nvim
-        yamllint.enable = true;
       };
       shell = {
         bash = {
