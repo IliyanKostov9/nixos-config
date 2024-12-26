@@ -6,9 +6,13 @@ in
   options.modules.dev.editor.neovim = { enable = mkEnableOption "neovim"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs_unstable.neovim
-    ];
+    programs.neovim = {
+      enable = true;
+      package = pkgs_unstable.neovim;
+      defaultEditor = true;
+      extraPackages = with pkgs_unstable; [ yamllint nodejs_22 ];
+    };
+
   };
 
 }

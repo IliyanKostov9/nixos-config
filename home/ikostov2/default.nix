@@ -85,14 +85,6 @@ in
         };
         git-extras.enable = true;
       };
-      langs = {
-        go.enable = true;
-        node.enable = true;
-      };
-      linters = {
-        # INFO: Required for yamllint in nvim
-        yamllint.enable = true;
-      };
       shell = {
         bash = {
           enable = true;
