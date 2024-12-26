@@ -1,4 +1,4 @@
-{ pkgs_unstable, lib, user, config, ... }:
+{ pkgs_unstable, lib, config, ... }:
 with lib;
 with lib.types;
 let
