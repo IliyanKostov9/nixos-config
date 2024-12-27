@@ -6,7 +6,7 @@ steps:
   - name: deadnix
     image: nixpkgs/nix:latest
     commands:
-      - nix run github:astro/deadnix --extra-experimental-features
+      - nix run github:astro/deadnix --extra-experimental-features "nix-command flakes"
 
   - name: statix
     image: nixpkgs/nix:latest
@@ -14,7 +14,7 @@ steps:
       - rm -rf ./archive
       - echo "Directory structure"
       - ls -l
-      - nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs
+      - nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs --flake
       - nix-channel --update
       - nix-shell -p cachix --run "cachix use statix"
       - nix shell github:nerdypepper/statix -c statix check .
