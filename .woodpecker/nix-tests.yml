@@ -6,5 +6,5 @@ steps:
   - name: cachix
     image: nixpkgs/nix:latest
     commands:
-      - nix shell nixpkgs#cachix -c cachix use iliyankostov9-nixos-config --authToken "${CACHIX_AUTH_TOKEN}" --extra-experimental-features "nix-command flakes"
+      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#cachix -c cachix use iliyankostov9-nixos-config --authToken "${CACHIX_AUTH_TOKEN}"
       - nix flake check -L
