@@ -14,5 +14,5 @@ steps:
       - rm -rf ./archive
       - echo "Directory structure"
       - ls -l
-      - nix shell nixpkgs#cachix -c cachix use statix
+      - nix shell nixpkgs#cachix -c cachix use statix --extra-experimental-features "nix-command flakes"
       - nix shell github:nerdypepper/statix -c statix check .
