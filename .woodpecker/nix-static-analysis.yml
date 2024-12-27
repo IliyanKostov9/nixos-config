@@ -1,0 +1,18 @@
+when:
+  branch: master
+  event: [pull_request]
+
+steps:
+  - name: deadnix
+    image: nixpkgs/nix:latest
+    commands:
+      - nix run github:astro/deadnix --extra-experimental-features "nix-command flakes"
+
+  - name: statix
+    image: nixpkgs/nix:latest
+    commands:
+      - rm -rf ./archive
+      - echo "Directory structure"
+      - ls -l
+      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#cachix -c cachix use statix 
+      - nix --extra-experimental-features "nix-command flakes" shell github:nerdypepper/statix -c statix check .

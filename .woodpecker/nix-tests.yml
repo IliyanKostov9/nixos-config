@@ -1,0 +1,10 @@
+when:
+  branch: master
+  event: [pull_request]
+
+steps:
+  - name: cachix
+    image: nixpkgs/nix:latest
+    commands:
+      - nix --extra-experimental-features "nix-command flakes" shell nixpkgs#cachix -c cachix use iliyankostov9-nixos-config
+      - nix --extra-experimental-features "nix-command flakes" flake check -L
