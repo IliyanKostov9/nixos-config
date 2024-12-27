@@ -1,0 +1,18 @@
+when:
+  # branch: master
+  event: [push]
+
+steps:
+  - name: deadnix
+    image: nixpkgs/nix:latest
+    commands:
+      - nix run github:astro/deadnix
+
+  - name: statix
+    image: nixpkgs/nix:latest
+    commands:
+      - rm -rf ./archive
+      - echo "Directory structure"
+      - ls -l
+      - nix-shell -p cachix --run "cachix use statix"
+      - nix shell github:nerdypepper/statix -c statix check .

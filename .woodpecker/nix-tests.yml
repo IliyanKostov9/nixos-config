@@ -1,0 +1,10 @@
+when:
+  # branch: master
+  event: [push]
+
+steps:
+  - name: cachix
+    image: nixpkgs/nix:latest
+    commands:
+      - nix-shell -p cachix --run "cachix use iliyankostov9-nixos-config --authToken ${CACHIX_AUTH_TOKEN}"
+      - nix flake check -L
