@@ -1,12 +1,12 @@
 when:
-  # branch: master
-  event: [push]
+  branch: master
+  event: [pull_request]
 
 steps:
-  # - name: deadnix
-  #   image: nixpkgs/nix:latest
-  #   commands:
-  #     - nix run github:astro/deadnix --extra-experimental-features "nix-command flakes"
+  - name: deadnix
+    image: nixpkgs/nix:latest
+    commands:
+      - nix run github:astro/deadnix --extra-experimental-features "nix-command flakes"
 
   - name: statix
     image: nixpkgs/nix:latest
