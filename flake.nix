@@ -30,7 +30,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     # nix-alien.url = "github:thiagokokada/nix-alien";
     nur.url = "github:nix-community/NUR";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { flake-parts, ... }@inputs:
