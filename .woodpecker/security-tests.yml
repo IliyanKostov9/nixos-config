@@ -6,12 +6,8 @@ steps:
   - name: scanning
     image: python:3.11.11
     commands:
-      - echo $GITGUARDIAN_API_KEY
-      - echo "Running GitGuardian scan"
       - python -m pip install --upgrade pip
       - pip install ggshield
       - ggshield secret scan repo .
 
-    settings:
-      GITGUARDIAN_API_KEY:
-        from_secret: GITGUARDIAN_API_KEY
+    secrets: [GITGUARDIAN_API_KEY]
