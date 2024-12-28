@@ -1,6 +1,8 @@
-when:
-  branch: master
-  event: [pull_request]
+when: 
+  event: manual
+# when:
+#   branch: master
+#   event: [pull_request]
 
 steps:
   - name: cachix
