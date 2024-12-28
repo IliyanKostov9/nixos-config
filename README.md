@@ -1,4 +1,5 @@
 # ❄️ NixOS configuration ❄️
+sdsd
 
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
 [![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
