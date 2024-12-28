@@ -1,6 +1,6 @@
 name: 🏔️ Mirror to Codeberg 🏔️
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   sync:
