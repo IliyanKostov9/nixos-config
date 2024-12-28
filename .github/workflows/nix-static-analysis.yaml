@@ -1,9 +1,9 @@
 name: Nix ❄️ Static Analysis 🔍️
 
-on:
-  pull_request:
-    branches:
-      - master
+on: [push]
+  # pull_request:
+  #   branches:
+  #     - master
 
 concurrency:
   group: build-${{ github.ref }}
