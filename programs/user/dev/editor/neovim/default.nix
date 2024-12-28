@@ -19,6 +19,7 @@ in
     programs.neovim = {
       enable = true;
       package = pkgs_unstable.neovim;
+      vimAlias = true;
       defaultEditor = true;
       extraPackages = with pkgs_unstable; [ yamllint nodejs_22 ];
     };
