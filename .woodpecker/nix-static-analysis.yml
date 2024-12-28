@@ -1,4 +1,4 @@
-when: manually
+when: manual
 # when:
 #   branch: master
 #   event: [pull_request]
