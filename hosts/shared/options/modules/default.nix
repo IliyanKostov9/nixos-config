@@ -14,7 +14,6 @@
 
     lib = {
       gnu.enable = true;
-      media.enable = true;
       utils.enable = true;
       nix-ld.enable = true;
     };

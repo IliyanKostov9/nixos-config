@@ -30,7 +30,11 @@ let
   git-rob = pkgs.writeShellApplication
     {
       name = "git-rob";
-      runtimeInputs = [ pkgs.git ];
+      runtimeInputs = with pkgs; [
+        git
+        gh
+        (azure-cli.withExtensions [ azure-cli.extensions.azure-devops ])
+      ];
       excludeShellChecks = [ "SC2153" ];
       text = builtins.readFile ../bin/bash/git/git-rob.sh;
     };

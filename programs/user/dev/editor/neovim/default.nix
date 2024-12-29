@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 with lib.types;
 let
@@ -18,10 +18,9 @@ in
   config = mkIf cfg.enable {
     programs.neovim = {
       enable = true;
-      # package = pkgs_unstable.neovim;
       vimAlias = true;
       defaultEditor = true;
-      extraPackages = with pkgs_unstable; [ yamllint nodejs_22 ];
+      extraPackages = with pkgs; [ yamllint nodejs_22 ];
     };
   };
 }
