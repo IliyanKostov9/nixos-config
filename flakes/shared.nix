@@ -21,7 +21,7 @@ rec {
     {
       inherit system;
       overlays = [
-        neovim-nightly-overlay.overlays.default
+        # neovim-nightly-overlay.overlays.default
       ];
       config = { allowUnfree = true; };
     };
