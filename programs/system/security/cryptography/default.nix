@@ -11,6 +11,8 @@ in
         openssl
         pass
         age
+        pinentry-qt
+        gnupg
       ];
     };
   };

@@ -1,5 +1,7 @@
-{ ... }:
-
-{
-  imports = [ ./maven ./gradle ];
+_: {
+  imports = [
+    ./maven
+    ./gradle
+    ./make
+  ];
 }

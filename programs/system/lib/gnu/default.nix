@@ -8,13 +8,9 @@ in
   config = mkIf cfg.enable {
     # NOTE: Should probabbly remove this part
     environment.systemPackages = with pkgs; [
-      gnupg
-      pinentry-qt
       groff
-      gnutar
-      gcc
-      cmake
-      gnumake
+      # gnutar
+      # gcc
       glibc
       gdb
       libgccjit
