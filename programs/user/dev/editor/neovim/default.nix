@@ -19,7 +19,7 @@ in
     programs.neovim = {
       enable = true;
       vimAlias = true;
-      defaultEditor = true;
+      defaultEditor = lib.mkForce true;
       extraPackages = with pkgs; [ yamllint nodejs_22 ];
     };
   };

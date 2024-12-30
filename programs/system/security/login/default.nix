@@ -6,8 +6,6 @@ in
   options.modules.security.login = { enable = mkEnableOption "login"; };
 
   config = mkIf cfg.enable {
-    environment = {
-      shells = with pkgs; [ zsh ];
-    };
+    environment.shells = with pkgs; [ zsh ];
   };
 }

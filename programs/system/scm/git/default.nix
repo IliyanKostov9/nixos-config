@@ -6,8 +6,10 @@ in
   options.modules.scm.git = { enable = mkEnableOption "git"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.git
-    ];
+    programs.git = {
+      enable = true;
+      prompt.enable = true;
+      lfs.enable = false;
+    };
   };
 }
