@@ -8,13 +8,13 @@ in
   config = mkIf cfg.enable {
     # NOTE: Should probabbly remove this part
     environment.systemPackages = with pkgs; [
-      groff
+      # groff
       # gnutar
       # gcc
       # glibc
       # gdb
       # libgccjit
-      gnupatch
+      # gnupatch
       # binutils
     ];
   };

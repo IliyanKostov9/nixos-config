@@ -1,7 +1,6 @@
 { config, ... }:
 {
   config.modules = {
-
     downloader = {
       curl.enable = true;
       home-manager.enable = true;
@@ -17,7 +16,6 @@
       utils.enable = true;
       nix-ld.enable = true;
     };
-
     gnome-disable-apps.enable = true;
 
     security = {
@@ -32,6 +30,7 @@
       monitor.enable = true;
       xclip.enable = true;
       zip.enable = true;
+      make.enable = true;
     };
 
     desktop-settings = {
@@ -41,13 +40,7 @@
       display-manager.catppuccin-sddm.enable = true;
     };
 
-
-    editor = {
-      vim.enable = true;
-    };
-
-    scm = {
-      git.enable = true;
-    };
+    editor.vim.enable = true;
+    scm.git.enable = true;
   };
 }

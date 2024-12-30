@@ -3,10 +3,10 @@ with lib;
 let cfg = config.modules.dev.build-tools.make;
 in
 {
-  options.modules.dev.build-tools.make = { enable = mkEnableOption "make"; };
+  options.modules.utils.make = { enable = mkEnableOption "make"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
+    environment.systemPackages = with pkgs; [
       pkgs.gnumake
       # cmake
     ];

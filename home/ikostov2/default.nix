@@ -39,7 +39,6 @@ in
     };
 
     dev = {
-      build-tools.make.enable = true;
       command-line = {
         sops.enable = true;
         bat.enable = true;
