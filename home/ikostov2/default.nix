@@ -1,4 +1,5 @@
 { lib, config, pkgs, ... }:
+
 let
   inherit (config.sops) secrets;
   work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
@@ -30,14 +31,11 @@ in
       fonts.name = "0xProto";
       red-light.enable = true;
     };
-
     api.postman.enable = true;
 
-    browsers = {
-      librewolf = {
-        enable = true;
-        profiles = import ./options/librewolf/profiles { inherit lib config pkgs work_name work_project1_name; };
-      };
+    browsers.librewolf = {
+      enable = true;
+      profiles = import ./options/librewolf/profiles { inherit lib config pkgs work_name work_project1_name; };
     };
 
     dev = {
@@ -50,9 +48,7 @@ in
         docker.enable = true;
         k8s.enable = true;
       };
-      dbms = {
-        dbeaver.enable = true;
-      };
+      dbms.dbeaver.enable = true;
       editor.neovim.enable = true;
 
       emulator = {
@@ -76,6 +72,7 @@ in
         };
 
       };
+
       git = {
         git = {
           enable = true;
@@ -84,6 +81,7 @@ in
         };
         git-extras.enable = true;
       };
+
       shell = {
         bash = {
           enable = true;
@@ -96,12 +94,8 @@ in
       };
     };
 
-    file-compression = {
-      p7zip.enable = true;
-    };
-    iot = {
-      qFlipper.enable = true;
-    };
+    file-compression.p7zip.enable = true;
+    iot.qFlipper.enable = true;
 
     media = {
       gimp.enable = true;
@@ -115,31 +109,27 @@ in
       drawio.enable = true;
       libreoffice.enable = true;
     };
-
-    password-manager = {
-      keepass.enable = true;
-    };
+    password-manager.keepass.enable = true;
 
     virtualisation = {
       qemu.enable = true;
       virt-manager.enable = true;
       lazydocker.enable = true;
     };
+    vpn.openvpn3.enable = true;
 
-    vpn = {
-      openvpn3.enable = true;
-    };
+    window-manager.i3wm = {
+      enable = true;
+      librewolf-mappings = {
+        "m" = "Main";
+        "y" = "Youtube";
+        "l" = "Linked-In";
+        "d" = work_name;
+        "o" = work_project1_name;
+      };
 
-    window-manager = {
-      i3wm = {
-        enable = true;
-        librewolf-mappings = {
-          "m" = "Main";
-          "y" = "Youtube";
-          "l" = "Linked-In";
-          "d" = work_name;
-          "o" = work_project1_name;
-        };
+      firejail-mappings = {
+        "y" = "grayjay";
       };
     };
 
@@ -148,5 +138,6 @@ in
       flameshot.enable = true;
       normcap.enable = true;
     };
+
   };
 }

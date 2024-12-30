@@ -6,19 +6,10 @@
       curl.enable = true;
       home-manager.enable = true;
       wget.enable = true;
-
-      nix = {
-        nix-output-monitor.enable = true;
-      };
+      nix.nix-output-monitor.enable = true;
     };
 
-    lib = {
-      gnu.enable = true;
-      media.enable = true;
-      utils.enable = true;
-      nix-ld.enable = true;
-    };
-
+    lib.nix-ld.enable = true;
     gnome-disable-apps.enable = true;
 
     security = {
@@ -32,7 +23,7 @@
       fzf.enable = true;
       monitor.enable = true;
       xclip.enable = true;
-      zip.enable = true;
+      make.enable = true;
     };
 
     desktop-settings = {
@@ -42,13 +33,7 @@
       display-manager.catppuccin-sddm.enable = true;
     };
 
-
-    editor = {
-      vim.enable = true;
-    };
-
-    scm = {
-      git.enable = true;
-    };
+    editor.vim.enable = true;
+    scm.git.enable = true;
   };
 }

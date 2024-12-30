@@ -30,10 +30,11 @@ pkgs.nixosTest {
       inherit stateVersion;
     };
 
+    nix.settings.system-features = [ "kvm" ];
     users.users = {
       dummy = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "kvm" ];
         # packages = with pkgs; [
         # ];
       };
@@ -61,10 +62,11 @@ pkgs.nixosTest {
       inherit stateVersion;
     };
 
+    nix.settings.system-features = [ "kvm" ];
     users.users = {
       fakeuser = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "kvm" ];
       };
     };
 

@@ -9,7 +9,7 @@ in
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [
-        steam-run # Needed for MarkdownPreview Neovim to run
+        steam-run # NOTE: Needed for MarkdownPreview Neovim to run
       ];
     };
   };

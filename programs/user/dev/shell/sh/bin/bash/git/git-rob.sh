@@ -20,11 +20,12 @@ else
     echo "Now starting the rob process: $git_project_name"
     az repos create --name "${git_project_name}" --detect false --org "https://${git_dest_ssh_domain}/${git_dest_owner}/" -p "${git_dest_project}"
 
-    git clone "git@${git_source_owner}:${git_source_org}/${git_project_name}.git"
+    # git clone "git@${git_source_owner}:${git_source_org}/${git_project_name}.git"
+    gh repo clone "https://${git_source_owner}/${git_source_org}/${git_project_name}.git"
     cd "${git_project_name}"
 
     git branch -r | grep -v '\->' | while read -r remote; do
-        git branch --track "${remote#origin/}" "$remote"
+        git branch --track "${remote#origin/}" "$remote" || true
     done
 
     # Default: SSH Azure Repos

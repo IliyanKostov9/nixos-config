@@ -6,8 +6,9 @@ in
   options.modules.editor.vim = { enable = mkEnableOption "vim"; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      pkgs.vim
-    ];
+    programs.vim = {
+      enable = true;
+      defaultEditor = lib.mkDefault false;
+    };
   };
 }

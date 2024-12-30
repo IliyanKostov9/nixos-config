@@ -3,7 +3,7 @@ _: {
     ./xclip
     ./fzf
     ./dir-content-ls
-    ./zip
     ./monitor
+    ./make
   ];
 }

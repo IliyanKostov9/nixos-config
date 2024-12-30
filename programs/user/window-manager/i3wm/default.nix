@@ -3,6 +3,13 @@ with lib;
 with lib.types;
 let
   cfg = config.modules.window-manager.i3wm;
+  key-mappings = { key-name-prefix, value-name-prefix, attr-mappings }:
+    builtins.listToAttrs (lib.attrsets.mapAttrsToList
+      (key: value: {
+        name = "${key-name-prefix}+${key}";
+        value = "${value-name-prefix} ${value}";
+      })
+      attr-mappings);
 in
 {
   options.modules.window-manager.i3wm = {
@@ -19,6 +26,14 @@ in
       default = { "m" = "default"; };
       description = mkDoc ''
         Additional i3wm mappings for librewolf profiles
+      '';
+    };
+
+    firejail-mappings = mkOption {
+      type = attrsOf str;
+      default = { };
+      description = mkDoc ''
+        Additional i3wm mappings for firejail contained pkgs
       '';
     };
   };
@@ -48,7 +63,6 @@ in
           in
           {
             "${mod}+${ctrl}+c" = "exec chromium";
-            # "${mod}+${ctrl}+e" = "exec ${pkgs.microsoft-edge}/bin/microsoft-edge";
 
             "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
             "${alt}+f" = "exec flameshot gui";
@@ -155,13 +169,19 @@ in
             # "Return" = "mode 'default'";
             # "${mod}+r" = "resize";
 
-            # Librewolf
-          } // builtins.listToAttrs (lib.attrsets.mapAttrsToList
-            (key: profile-name: {
-              name = "${mod}+${ctrl}+${key}";
-              value = "exec librewolf -P ${profile-name}";
-            })
-            cfg.librewolf-mappings);
+          }
+          # Librewolf
+          // key-mappings {
+            key-name-prefix = "${mod}+${ctrl}";
+            value-name-prefix = "exec librewolf -P";
+            attr-mappings = cfg.librewolf-mappings;
+          }
+          # Firejail
+          // key-mappings {
+            key-name-prefix = "${mod}+${alt}";
+            value-name-prefix = "exec firejail --noprofile";
+            attr-mappings = cfg.firejail-mappings;
+          };
 
         bars = [
           {
