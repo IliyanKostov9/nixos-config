@@ -1,4 +1,5 @@
 { lib, config, pkgs, ... }:
+
 let
   inherit (config.sops) secrets;
   work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
