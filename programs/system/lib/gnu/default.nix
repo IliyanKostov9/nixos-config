@@ -11,11 +11,11 @@ in
       groff
       # gnutar
       # gcc
-      glibc
-      gdb
-      libgccjit
+      # glibc
+      # gdb
+      # libgccjit
       gnupatch
-      binutils
+      # binutils
     ];
   };
 }

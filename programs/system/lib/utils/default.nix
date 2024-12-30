@@ -7,12 +7,12 @@ in
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      patchelf
-      readline
-      tcl
-      libffi
-      libuuid
-      ncurses
+      # patchelf
+      # readline
+      # tcl
+      # libffi
+      # libuuid
+      # ncurses
     ];
   };
 }

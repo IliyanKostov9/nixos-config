@@ -140,6 +140,10 @@ in
           "d" = work_name;
           "o" = work_project1_name;
         };
+
+        firejail-mappings = {
+          "y" = "grayjay";
+        };
       };
     };
 
