@@ -17,23 +17,9 @@ with pkgs.nur.repos.rycee.firefox-addons;
       user-agent-string-switcher
     ];
   };
-  Youtube = {
+  Social = {
     id = 1;
-    name = "Youtube";
-    containersForce = false;
-    isDefault = false;
-    containers = import ./containers/Youtube;
-    extensions = [
-      ublock-origin
-      privacy-badger
-      darkreader
-      i-dont-care-about-cookies
-      user-agent-string-switcher
-    ];
-  };
-  Linked-In = {
-    id = 2;
-    name = "Linked-In";
+    name = "Social";
     containersForce = false;
     isDefault = false;
     extensions = [
@@ -46,7 +32,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
   };
 
   Work = {
-    id = 3;
+    id = 2;
     name = work_name;
     containersForce = false;
     isDefault = false;
@@ -61,7 +47,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
   };
 
   Work_Project1 = {
-    id = 4;
+    id = 3;
     name = work_project1_name;
     containersForce = false;
     isDefault = false;

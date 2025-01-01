@@ -71,6 +71,7 @@ in
 
             # Keyboard layout
             "${mod}+space" = "exec setxkbmap -layout us";
+            "${mod}+q" = "exec setxkbmap us dvorak";
             "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
             "${mod}+g" = "exec setxkbmap -layout de";
 

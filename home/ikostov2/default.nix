@@ -122,8 +122,7 @@ in
       enable = true;
       librewolf-mappings = {
         "m" = "Main";
-        "y" = "Youtube";
-        "l" = "Linked-In";
+        "l" = "Social";
         "d" = work_name;
         "o" = work_project1_name;
       };
