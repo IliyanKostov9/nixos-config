@@ -1,4 +1,4 @@
-{ lib, config, pkgs }:
+{ pkgs }:
 with pkgs.nur.repos.rycee.firefox-addons;
 {
   Dummy = {

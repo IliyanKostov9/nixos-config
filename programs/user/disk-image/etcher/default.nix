@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, ... }:
 with lib;
 {
   options.modules.disk-image.etcher = { enable = mkEnableOption "etcher"; };

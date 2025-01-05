@@ -1,4 +1,4 @@
-{ host_name, pkgs, ... }:
+{ host_name, ... }:
 {
   environment.variables = {
     GBM_BACKEND = "nvidia-drm";

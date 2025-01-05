@@ -1,4 +1,4 @@
-{ lib, config, pkgs, work_name, work_project1_name }:
+{ pkgs, work_name, work_project1_name }:
 with pkgs.nur.repos.rycee.firefox-addons;
 
 {

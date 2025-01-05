@@ -1,13 +1,12 @@
 { home-manager
 , shared
-, lib
 }:
 with shared;
 
 pkgs.nixosTest {
   name = "User tests";
   # extraPythonPackages = p: [ p.numpy ];
-  nodes.user1 = { config, pkgs, ... }: {
+  nodes.user1 = { pkgs, ... }: {
     imports = [
       (import "${home-manager}/nixos")
     ];
@@ -53,7 +52,7 @@ pkgs.nixosTest {
       };
   };
 
-  nodes.user2 = { config, pkgs, ... }: {
+  nodes.user2 = { pkgs, ... }: {
     imports = [
       (import "${home-manager}/nixos")
     ];

@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, lib, config, ... }:
+{ pkgs_unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.dev.langs.terraform;
 in

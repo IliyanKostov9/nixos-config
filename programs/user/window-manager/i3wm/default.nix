@@ -70,10 +70,11 @@ in
             "${alt}+v" = "exec --no-startup-id copyq menu";
 
             # Keyboard layout
-            "${mod}+space" = "exec setxkbmap -layout us";
-            "${mod}+q" = "exec setxkbmap us dvorak";
+            "${mod}+q" = "exec setxkbmap -layout us";
+            "${mod}+space" = "exec setxkbmap us dvorak";
             "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
-            "${mod}+g" = "exec setxkbmap -layout de";
+            "${mod}+x" = "exec setxkbmap -layout bgd";
+            "${mod}+g" = "exec setxkbmap -layout de -variant dvorak";
 
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";

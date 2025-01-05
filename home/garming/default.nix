@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   imports = [
     ../../programs/user
   ];

@@ -1,5 +1,5 @@
 _: {
-  flake.perSystem = { config, self', inputs', pkgs, system, ... }: {
+  flake.perSystem = { inputs', pkgs, ... }: {
     flake.devenv.shells.default = {
       name = "Nix devenv";
       languages.ansible.enable = true;

@@ -53,6 +53,12 @@ in
             ];
           };
 
+          signal-desktop = {
+            executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
+            profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
+            extraArgs = [ "--env=GTK_THEME=Adwaita:dark" ];
+          };
+
           chromium = {
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";

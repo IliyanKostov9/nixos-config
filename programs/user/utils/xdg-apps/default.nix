@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+_: {
   # TODO: add if statements if config modules for librewolf and nomacs exist in usr pkgs
   config = {
     xdg.mimeApps = {

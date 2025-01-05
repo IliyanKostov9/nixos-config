@@ -17,6 +17,7 @@
 
       # Another display manager for i3
       displayManager.lightdm.enable = false;
+
       # Disable screen turning off after 10 mins
       deviceSection = ''
         Option "BlankTime" "0"
@@ -38,8 +39,15 @@
 
       # Configure keymap in X11
       xkb = {
-        layout = "us";
-        variant = "";
+        layout = "us,bg,de";
+        variant = "dvorak";
+        # xkbOptions = "ctrl:nocaps";
+        # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
+        extraLayouts.bgd = {
+          description = "Bulgarian";
+          languages = [ "bul" ];
+          symbolsFile = ../../options/xkb/dvorak/bg;
+        };
       };
     };
   };

@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../../programs/user
@@ -14,7 +14,7 @@
     browsers = {
       librewolf = {
         enable = true;
-        profiles = import ./options/librewolf/profiles { inherit lib config pkgs; };
+        profiles = import ./options/librewolf/profiles { inherit pkgs; };
       };
     };
 

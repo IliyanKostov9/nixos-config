@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs_unstable, modulesPath, host_attr, ... }:
+{ lib, pkgs_unstable, modulesPath, host_attr, ... }:
 
 with host_attr;
 with lib;
