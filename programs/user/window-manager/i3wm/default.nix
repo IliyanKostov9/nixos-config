@@ -74,7 +74,7 @@ in
             "${mod}+space" = "exec setxkbmap us dvorak";
             "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
             "${mod}+x" = "exec setxkbmap -layout bgd";
-            "${mod}+g" = "exec setxkbmap -layout de -variant dvorak";
+            "${mod}+g" = "exec setxkbmap -layout de";
 
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";

@@ -123,6 +123,7 @@ in
       librewolf-mappings = {
         "m" = "Main";
         "l" = "Social";
+        "y" = "Youtube";
         "d" = work_name;
         "o" = work_project1_name;
       };

@@ -17,6 +17,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
       user-agent-string-switcher
     ];
   };
+
   Social = {
     id = 1;
     name = "Social";
@@ -30,9 +31,23 @@ with pkgs.nur.repos.rycee.firefox-addons;
       user-agent-string-switcher
     ];
   };
+  Youtube = {
+    id = 2;
+    name = "Youtube";
+    containersForce = false;
+    isDefault = false;
+    containers = import ./containers/Youtube;
+    extensions = [
+      ublock-origin
+      privacy-badger
+      darkreader
+      i-dont-care-about-cookies
+      user-agent-string-switcher
+    ];
+  };
 
   Work = {
-    id = 2;
+    id = 3;
     name = work_name;
     containersForce = false;
     isDefault = false;
@@ -47,7 +62,7 @@ with pkgs.nur.repos.rycee.firefox-addons;
   };
 
   Work_Project1 = {
-    id = 3;
+    id = 4;
     name = work_project1_name;
     containersForce = false;
     isDefault = false;
