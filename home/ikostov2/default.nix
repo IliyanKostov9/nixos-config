@@ -35,7 +35,7 @@ in
 
     browsers.librewolf = {
       enable = true;
-      profiles = import ./options/librewolf/profiles { inherit pkgs work_name work_project1_name; };
+      profiles = import ./options/librewolf/profiles { inherit pkgs work_name; };
     };
 
     dev = {
