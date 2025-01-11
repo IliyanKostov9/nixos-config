@@ -5,7 +5,7 @@ with lib.types;
 let
   cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
-  font-size = if builtins.match ".*desktop*." (builtins.getEnv "DEVICE") != null then 12 else 8;
+  font-size = if builtins.match "desktop" (builtins.getEnv "DEVICE") != null then 12 else 8;
   font-name = config.modules.preferences.fonts.name;
 
   scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:

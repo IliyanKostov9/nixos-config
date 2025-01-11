@@ -1,6 +1,6 @@
 _:
 let
-  defaultLocale = "de_DE.UTF-8";
+  defaultLocale = "en_US.UTF-8";
   # en_US.UTF-8
   # bg_BG.UTF-8
 in

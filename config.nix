@@ -20,11 +20,15 @@
   };
 
   hosts = {
-    hosts-personal-desktop = {
+    A320M-PRO = {
       host-name = "baks";
       auto-login-user = "ikostov2";
+      variables = {
+        DEVICE = "desktop";
+        MODEL = "A320M-PRO";
+      };
       modules = [
-        ./hosts/personal/desktop
+        ./hosts/desktop
         nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 
@@ -40,11 +44,15 @@
       };
     };
 
-    hosts-work-laptop = {
+    Thinkpad-p53 = {
       host-name = "baks";
       auto-login-user = "ikostov2";
+      variables = {
+        DEVICE = "laptop";
+        MODEL = "Thinkpad-p53";
+      };
       modules = [
-        ./hosts/work/laptop
+        ./hosts/laptop
         nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 

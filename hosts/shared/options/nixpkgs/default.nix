@@ -1,6 +1,5 @@
 { lib, stateVersion, ... }:
 {
-  # NixOS version
   system = lib.mkDefault {
     inherit stateVersion;
   };

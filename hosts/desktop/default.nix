@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./hardware
-    ../../shared
+    ../shared
   ];
 }
 
