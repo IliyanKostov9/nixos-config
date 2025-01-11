@@ -1,4 +1,4 @@
-{ lib, pkgs_unstable, modulesPath, host_attr, ... }:
+{ lib, pkgs-unstable, modulesPath, host_attr, ... }:
 
 with host_attr;
 with lib;
@@ -13,7 +13,7 @@ in
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot = boot // {
-    kernelPackages = pkgs_unstable.linuxPackages_6_12;
+    kernelPackages = pkgs-unstable.linuxPackages_6_12;
     loader = {
       # Note: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
       systemd-boot.enable = !is-secure-boot-enabled;

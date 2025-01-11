@@ -1,4 +1,4 @@
-{ pkgs_unstable, lib, config, ... }:
+{ pkgs-unstable, lib, config, ... }:
 with lib;
 with lib.types;
 let
@@ -44,7 +44,7 @@ in
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
-      package = pkgs_unstable.librewolf.override {
+      package = pkgs-unstable.librewolf.override {
         extraPolicies = {
           DisablePocket = true;
           DisableAccounts = true;

@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, lib, config, ... }:
+{ pkgs, pkgs-unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.cloud.awscli2;
 in
@@ -7,7 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs_unstable.awscli2
+      pkgs-unstable.awscli2
       pkgs.aws-sam-cli
     ];
   };

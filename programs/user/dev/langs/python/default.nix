@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, lib, config, ... }:
+{ pkgs, pkgs-unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.dev.langs.python;
 in
@@ -10,7 +10,7 @@ in
     home.packages = [
       pkgs.python3
       pkgs.pipx
-      pkgs_unstable.uv
+      pkgs-unstable.uv
     ];
   };
 }

@@ -47,7 +47,7 @@ pkgs.nixosTest {
         extraSpecialArgs =
           {
             user = "dummy";
-            inherit system stateVersion pkgs pkgs_unstable;
+            inherit system stateVersion pkgs pkgs-unstable;
           };
       };
   };
@@ -77,7 +77,7 @@ pkgs.nixosTest {
         extraSpecialArgs =
           {
             user = "fakeuser";
-            inherit system stateVersion pkgs pkgs_unstable;
+            inherit system stateVersion pkgs pkgs-unstable;
           };
       };
   };

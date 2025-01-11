@@ -1,4 +1,4 @@
-{ pkgs, pkgs_unstable, lib, config, ... }:
+{ pkgs, pkgs-unstable, lib, config, ... }:
 with lib;
 with config.modules.dev.shell;
 let
@@ -29,7 +29,7 @@ let
 
   passbolt-get-password = pkgs.writeShellApplication {
     name = "passbolt-get-password";
-    runtimeInputs = with pkgs_unstable; [ go-passbolt-cli ];
+    runtimeInputs = with pkgs-unstable; [ go-passbolt-cli ];
     excludeShellChecks = [ ];
 
     text = ''

@@ -23,8 +23,7 @@ in
   };
 
   nixpkgs.config.allowUnfree = true;
-  # Disable annoying home news
   news.display = "silent";
-  # Let home Manager install and manage itself.
+  # NOTE: Let home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

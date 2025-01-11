@@ -16,7 +16,7 @@ rec {
             lanzaboote.nixosModules.lanzaboote
           ]);
           format = "iso";
-          specialArgs = { inherit host_name host_attr; inherit (shared) pkgs_unstable system stateVersion users; };
+          specialArgs = { inherit host_name host_attr; inherit (shared) pkgs-unstable system stateVersion users; };
         }
     )
     shared.config_system.hosts;

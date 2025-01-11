@@ -12,7 +12,7 @@ in
       inherit (shared) pkgs;
       extraSpecialArgs = {
         inherit self user;
-        inherit (shared) system stateVersion pkgs_unstable;
+        inherit (shared) system stateVersion pkgs-unstable;
       };
       modules = [
         ../home

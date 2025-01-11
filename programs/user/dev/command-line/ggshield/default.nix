@@ -1,4 +1,4 @@
-{ pkgs_unstable, lib, config, ... }:
+{ pkgs-unstable, lib, config, ... }:
 with lib;
 let cfg = config.modules.dev.command-line.ggshield;
 in
@@ -7,9 +7,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = [
-      (pkgs_unstable.ggshield.overrideAttrs {
+      (pkgs-unstable.ggshield.overrideAttrs {
         version = "1.33.0";
-        src = pkgs_unstable.fetchFromGitHub {
+        src = pkgs-unstable.fetchFromGitHub {
           owner = "GitGuardian";
           repo = "ggshield";
           rev = "537dbb82c54b792a2149e6b50a86de3025e10268";

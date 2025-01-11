@@ -16,8 +16,8 @@ rec {
         ];
         config = { allowUnfree = true; };
       };
-  pkgs_unstable = import
-    nixpkgs_unstable
+  pkgs-unstable = import
+    nixpkgs-unstable
     {
       inherit system;
       overlays = [
