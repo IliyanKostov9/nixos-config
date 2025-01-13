@@ -58,10 +58,10 @@ in
           scheduled = true;
           start-hour = 7;
           end-hour = 16;
-          light-theme = "dayfox";
-          dark-theme = "nordfox";
-          light-theme-hex = "#f6f2ee";
-          dark-theme-hex = "#2e3440";
+          light-theme = "rose_pine_dawn";
+          dark-theme = "kanagawa_dragon";
+          light-theme-hex = "#faf4ed";
+          dark-theme-hex = "#181616";
         };
 
         tmux = {
@@ -105,7 +105,6 @@ in
 
     office-suite = {
       nomacs.enable = true;
-      okular.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
     };

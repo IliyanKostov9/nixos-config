@@ -7,8 +7,7 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      libreoffice-qt
-      hunspell
+      libreoffice
       hunspellDicts.en_US
     ];
   };
