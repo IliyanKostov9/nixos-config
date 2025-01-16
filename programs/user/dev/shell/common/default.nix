@@ -32,6 +32,7 @@
     gitroot = "cd $(git root)";
     gitunstage = "git restore --staged";
     clip = "xclip -selection clipboard";
+    lo = "libreoffice";
     ls = "eza";
     cat = "bat --theme='base16-256'";
     base = "basename $(pwd)";

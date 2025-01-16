@@ -126,12 +126,16 @@ in
             "${mod}+t" = "layout tabbed";
             "${mod}+e" = "layout toggle split";
 
+
             # toggle tiling / floating
             "${mod}+${shift}+space" = "floating toggle";
             # change focus between tiling / floating windows
             "${mod}+${alt}+space" = "focus mode_toggle";
             # focus the parent container
             "${mod}+a" = "focus parent";
+
+            "${mod}+${shift}+minus" = "move scratchpad";
+            "${mod}+minus" = "scratchpad show";
 
             # switch to workspace
             "${mod}+1" = "workspace number 1";

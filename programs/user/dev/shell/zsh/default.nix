@@ -4,16 +4,18 @@ with lib.types;
 let
   cfg = config.modules.dev.shell.zsh;
 
-  # ikostov-zsh-themes = builtins.fetchGit {
-  #   url = "https://github.com/IliyanKostov9/zsh-themes";
-  #   rev = "";
-  # };
-  ikostov-zsh-themes = pkgs.fetchFromGitHub {
-    owner = "IliyanKostov9";
-    repo = "zsh-themes";
-    rev = "master";
-    hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
+  ikostov-zsh-themes = builtins.fetchGit {
+    url = "https://codeberg.org/iliyan-kostov/zsh-themes.git";
+    rev = "939914434ce2aeb66a544840026beb0b5edbe2fb";
   };
+
+  # INFO: Removed from github
+  # ikostov-zsh-themes = pkgs.fetchFromGitHub {
+  #   owner = "IliyanKostov9";
+  #   repo = "zsh-themes";
+  #   rev = "master";
+  #   hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
+  # };
 
   zsh-themes = pkgs.stdenv.mkDerivation {
     name = "oh-my-custom-zsh-theme";
