@@ -16,9 +16,7 @@ in
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
-
     programs = {
-      # INFO: Chromium policies
       chromium = {
         enable = true;
         homepageLocation = "https://duckduckgo.com";

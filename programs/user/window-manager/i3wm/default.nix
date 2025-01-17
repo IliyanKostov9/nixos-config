@@ -179,7 +179,8 @@ in
           # Librewolf
           // key-mappings {
             key-name-prefix = "${mod}+${ctrl}";
-            value-name-prefix = "exec librewolf -P";
+            # BUG: can't use --apparmor, due to bug described at apparmor module
+            value-name-prefix = "exec firejail --seccomp librewolf -P";
             attr-mappings = cfg.librewolf-mappings;
           }
           # Firejail
