@@ -10,4 +10,6 @@ steps:
       - pip install ggshield -q
       - ggshield secret scan repo . --format text --with-incident-details
 
-    secrets: [GITGUARDIAN_API_KEY]
+    environment:
+      GITGUARDIAN_API_KEY:
+        from_secret: GITGUARDIAN_API_KEY

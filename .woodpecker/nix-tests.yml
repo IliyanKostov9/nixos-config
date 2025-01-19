@@ -1,5 +1,3 @@
-# when: 
-#   event: manual
 when:
   branch: master
   event: [pull_request]

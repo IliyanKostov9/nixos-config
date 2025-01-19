@@ -39,7 +39,7 @@
 
       # Configure keymap in X11
       xkb = {
-        layout = "us,bg,de";
+        layout = "us";
         variant = "dvorak";
         # xkbOptions = "ctrl:nocaps";
         # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
