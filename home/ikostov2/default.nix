@@ -54,7 +54,7 @@ in
       emulator = {
         alacritty = {
           enable = true;
-          theme = "nordfox";
+          theme = "kanagawa_dragon";
           scheduled = true;
           start-hour = 7;
           end-hour = 16;

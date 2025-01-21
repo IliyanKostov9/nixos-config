@@ -1,4 +1,4 @@
-{ pkgs-unstable, lib, config, ... }:
+{ lib, config, ... }:
 with lib;
 with lib.types;
 let
@@ -44,28 +44,29 @@ in
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
-      package = pkgs-unstable.librewolf.override {
-        extraPolicies = {
-          DisablePocket = true;
-          DisableAccounts = true;
-          DisableTelemetry = true;
-          DisableFirefoxStudies = true;
-          DisableFirefoxAccounts = false; # E.g Firefox Sync
-          DisableFeedbackCommands = true;
-          DontCheckDefaultBrowser = true;
-          NetworkPrediction = true;
-          HttpsOnlyMode = "force_enabled";
-          DNSOverHttps = {
-            Enabled = true;
-            Locked = true;
-          };
-          cfg = {
-            speechSynthesisSupport = false;
-            # extraNativeMessagingHosts = [ pkgs.passff-host ];
-            # enableTridactylNative = true;
-          };
-        };
-      };
+      package = null; # NOTE: For firejail
+      # package = pkgs-unstable.librewolf.override {
+      #   extraPolicies = {
+      #     DisablePocket = true;
+      #     DisableAccounts = true;
+      #     DisableTelemetry = true;
+      #     DisableFirefoxStudies = true;
+      #     DisableFirefoxAccounts = false; # E.g Firefox Sync
+      #     DisableFeedbackCommands = true;
+      #     DontCheckDefaultBrowser = true;
+      #     NetworkPrediction = true;
+      #     HttpsOnlyMode = "force_enabled";
+      #     DNSOverHttps = {
+      #       Enabled = true;
+      #       Locked = true;
+      #     };
+      # cfg = {
+      # speechSynthesisSupport = false;
+      # extraNativeMessagingHosts = [ pkgs.passff-host ];
+      # enableTridactylNative = true;
+      # };
+      # };
+      # };
 
       profiles = builtins.mapAttrs
         (_name: profile:

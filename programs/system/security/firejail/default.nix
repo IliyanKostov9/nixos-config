@@ -61,6 +61,11 @@ in
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
           };
+
+          librewolf = {
+            executable = "${pkgs.librewolf}/bin/librewolf";
+            desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+          };
         };
       };
     };
