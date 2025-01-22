@@ -2,6 +2,7 @@ _: {
   imports =
     [
       ./modules
+      ./garbage-collect
       ./nixpkgs
       ./blueman
       ./env-vars
