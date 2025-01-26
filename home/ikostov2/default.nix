@@ -55,7 +55,7 @@ in
         alacritty = {
           enable = true;
           theme = "kanagawa_dragon";
-          scheduled = true;
+          scheduled = false;
           start-hour = 7;
           end-hour = 16;
           light-theme = "rose_pine_dawn";
