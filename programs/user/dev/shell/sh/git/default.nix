@@ -5,14 +5,12 @@ let
   git-all = pkgs.writeShellApplication
     {
       name = "git-all";
-      runtimeInputs = [ pkgs.git ];
+      runtimeInputs = with pkgs; [ git git-extras ];
       text = ''
-        IFS=' '
         git_message="''$*"
 
         git add .
-        git commit -a -m "''${git_message}"
-        git push || git push --set-upstream origin "''$(git rev-parse --abbrev-ref HEAD)"
+        git-magic -m "''${git_message}" -fp
       '';
     };
   git-rm-local-brv = pkgs.writeShellApplication

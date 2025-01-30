@@ -17,7 +17,7 @@ in
       geary # email client
       gnome-calculator
       gnome-characters
-      gnome-clocks
+      # gnome-clocks
       gnome-contacts
       gnome-logs
       gnome-maps
