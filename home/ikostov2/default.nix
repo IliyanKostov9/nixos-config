@@ -114,7 +114,6 @@ in
       qemu.enable = true;
       virt-manager.enable = true;
       lazydocker.enable = true;
-      aws-workspaces.enable = true;
     };
     vpn.openvpn3.enable = true;
 
