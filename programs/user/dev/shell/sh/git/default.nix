@@ -10,7 +10,7 @@ let
         git_message="''$*"
 
         git add .
-        git-magic -m "''${git_message}" -fp
+        git-magic -m "''${git_message}" -p
       '';
     };
   git-rm-local-brv = pkgs.writeShellApplication

@@ -70,10 +70,8 @@ in
             "${alt}+v" = "exec --no-startup-id copyq menu";
 
             # Keyboard layout
-            "${mod}+q" = "exec setxkbmap -layout us";
             "${mod}+space" = "exec setxkbmap us dvorak";
-            "${mod}+b" = "exec setxkbmap -layout bg -variant phonetic";
-            "${mod}+x" = "exec setxkbmap -layout bgd";
+            "${mod}+b" = "exec setxkbmap -layout bgd";
             "${mod}+g" = "exec setxkbmap -layout de";
 
             # PC

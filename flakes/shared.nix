@@ -20,9 +20,6 @@ rec {
     nixpkgs-unstable
     {
       inherit system;
-      overlays = [
-        # neovim-nightly-overlay.overlays.default
-      ];
       config = { allowUnfree = true; };
     };
 
