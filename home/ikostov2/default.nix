@@ -107,6 +107,7 @@ in
       nomacs.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
+      calibre.enable = true;
     };
     password-manager.keepass.enable = true;
 
