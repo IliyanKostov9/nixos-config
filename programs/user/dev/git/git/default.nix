@@ -44,9 +44,10 @@ in
         pull.rebase = false;
         push.autoSetupRemote = true;
 
-        gpg.format = "ssh";
-        commit.gpgSign = true;
-        user.signingkey = "/home/${user}/.ssh/id_github_personal.pub";
+        signing = {
+          signByDefault = true;
+          key = "417977398E1F932F897546B26105AB13B9DCDD1B";
+        };
 
         safe.directory = "/etc/nixos";
         init = {
