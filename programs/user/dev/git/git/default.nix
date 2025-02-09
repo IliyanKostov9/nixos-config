@@ -37,7 +37,7 @@ in
 
         signing = {
           signByDefault = true;
-          # key = "417977398E1F932F897546B26105AB13B9DCDD1B";
+          key = "417977398E1F932F897546B26105AB13B9DCDD1B";
         };
 
         safe.directory = "/etc/nixos";
