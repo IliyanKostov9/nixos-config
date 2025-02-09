@@ -32,6 +32,7 @@ in
     };
     gpgKey = mkOption {
       type = str;
+      default = "";
       description = mkDoc ''
         KEY ID of GPG key to sign
       '';
