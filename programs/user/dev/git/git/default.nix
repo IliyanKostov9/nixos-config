@@ -43,7 +43,6 @@ in
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
-        core.hooksPath = "/home/${user}/.git/hooks";
 
         gpg.format = "ssh";
         commit.gpgSign = true;
@@ -54,6 +53,7 @@ in
           defaultBranch = "master";
         };
         core = {
+          hooksPath = "/home/${user}/.git/hooks";
           editor = "nvim";
         };
       };
