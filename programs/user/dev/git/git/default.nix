@@ -29,18 +29,25 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
-      difftastic = {
-        enable = false; # NOTE: Doesn't properly work on git diff
-        background = "light";
-        display = "inline";
-        color = "auto";
-      };
+      # delta = {
+      #   enable = true;
+      #   options = {
+      #     syntax-theme = "kanagawa_dragon";
+      #     navigate = true;
+      #     # side-by-side = true;
+      #     line-numbers = true;
+      #   };
+      # };
 
       extraConfig = {
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
         core.hooksPath = "/home/${user}/.git/hooks";
+
+        gpg.format = "ssh";
+        commit.gpgSign = true;
+        user.signingkey = "/home/${user}/.ssh/id_github_personal.pub";
         init = {
           defaultBranch = "master";
         };
