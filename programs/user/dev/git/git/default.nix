@@ -29,22 +29,17 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
+      signing = {
+        signByDefault = true;
+        key = "6105AB13B9DCDD1B";
+      };
 
       extraConfig = {
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
-
-        signing = {
-          signByDefault = true;
-          key = "6105AB13B9DCDD1B";
-        };
-
         safe.directory = "/etc/nixos";
-        init = {
-          defaultBranch = "master";
-        };
-
+        init.defaultBranch = "master";
         core = {
           hooksPath = "/home/${user}/.git/hooks";
           editor = "nvim";
