@@ -37,13 +37,14 @@ in
 
         signing = {
           signByDefault = true;
-          key = "417977398E1F932F897546B26105AB13B9DCDD1B";
+          key = "6105AB13B9DCDD1B";
         };
 
         safe.directory = "/etc/nixos";
         init = {
           defaultBranch = "master";
         };
+
         core = {
           hooksPath = "/home/${user}/.git/hooks";
           editor = "nvim";
