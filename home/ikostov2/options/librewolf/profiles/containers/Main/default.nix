@@ -6,11 +6,11 @@
     icon = "circle";
   };
 
-  Github = {
+  Git = {
     id = 1;
-    name = "Github";
+    name = "Git";
     color = "blue";
-    icon = "fingerprint";
+    icon = "vacation";
   };
 
   Mail = {
@@ -30,13 +30,13 @@
   Microsoft = {
     id = 4;
     name = "Microsoft";
-    color = "turquoise";
+    color = "blue";
     icon = "fingerprint";
   };
 
-  AWS = {
+  Amazon = {
     id = 5;
-    name = "AWS";
+    name = "Amazon";
     color = "yellow";
     icon = "fingerprint";
   };
@@ -46,5 +46,12 @@
     name = "Forums";
     color = "red";
     icon = "food";
+  };
+
+  Chat = {
+    id = 7;
+    name = "Chat";
+    color = "green";
+    icon = "chill";
   };
 }

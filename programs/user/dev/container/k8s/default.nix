@@ -8,7 +8,7 @@ in
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       kubectl
-      kubectx
+      # kubectx
       kubernetes-helm
       kind
       # k3s

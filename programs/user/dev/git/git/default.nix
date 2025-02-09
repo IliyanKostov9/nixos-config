@@ -22,6 +22,22 @@ in
         Email for git
       '';
     };
+
+    shouldGPGSign = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Sign git commits via GPG
+      '';
+    };
+    gpgKey = mkOption {
+      type = str;
+      default = "";
+      description = mkDoc ''
+        KEY ID of GPG key to sign
+      '';
+    };
+
   };
 
   config = mkIf cfg.enable {
@@ -29,16 +45,19 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
+      signing = {
+        signByDefault = cfg.shouldGPGSign;
+        key = cfg.gpgKey;
+      };
 
       extraConfig = {
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
-        core.hooksPath = "/home/${user}/.git/hooks";
-        init = {
-          defaultBranch = "master";
-        };
+        safe.directory = "/etc/nixos";
+        init.defaultBranch = "master";
         core = {
+          hooksPath = "/home/${user}/.git/hooks";
           editor = "nvim";
         };
       };
