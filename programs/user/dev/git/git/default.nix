@@ -29,15 +29,6 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
-      # delta = {
-      #   enable = true;
-      #   options = 
-      #     syntax-theme = "kanagawa_dragon";
-      #     navigate = true;
-      #     # side-by-side = true;
-      #     line-numbers = true;
-      #   };
-      # };
 
       extraConfig = {
         diff.colorMoved = true;
@@ -46,7 +37,7 @@ in
 
         signing = {
           signByDefault = true;
-          key = "417977398E1F932F897546B26105AB13B9DCDD1B";
+          # key = "417977398E1F932F897546B26105AB13B9DCDD1B";
         };
 
         safe.directory = "/etc/nixos";
