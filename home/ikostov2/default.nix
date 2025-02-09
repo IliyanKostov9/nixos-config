@@ -78,6 +78,8 @@ in
           enable = true;
           userName = "iliyan-kostov";
           userEmail = "iliyan.kostov@email.ikostov.org";
+          shouldGPGSign = true;
+          gpgKey = "6105AB13B9DCDD1B";
         };
         git-extras.enable = true;
       };

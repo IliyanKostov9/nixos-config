@@ -22,6 +22,21 @@ in
         Email for git
       '';
     };
+
+    shouldGPGSign = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Sign git commits via GPG
+      '';
+    };
+    gpgKey = mkOption {
+      type = str;
+      description = mkDoc ''
+        KEY ID of GPG key to sign
+      '';
+    };
+
   };
 
   config = mkIf cfg.enable {
@@ -30,8 +45,8 @@ in
       inherit (cfg) userName userEmail;
       lfs.enable = false;
       signing = {
-        signByDefault = true;
-        key = "6105AB13B9DCDD1B";
+        signByDefault = cfg.shouldGPGSign;
+        key = cfg.gpgKey;
       };
 
       extraConfig = {
