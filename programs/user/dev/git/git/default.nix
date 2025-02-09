@@ -29,6 +29,12 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
+      difftastic = {
+        enable = false; # NOTE: Doesn't properly work on git diff
+        background = "light";
+        display = "inline";
+        color = "auto";
+      };
 
       extraConfig = {
         diff.colorMoved = true;
