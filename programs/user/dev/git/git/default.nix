@@ -31,7 +31,7 @@ in
       lfs.enable = false;
       # delta = {
       #   enable = true;
-      #   options = {
+      #   options = 
       #     syntax-theme = "kanagawa_dragon";
       #     navigate = true;
       #     # side-by-side = true;
@@ -48,6 +48,8 @@ in
         gpg.format = "ssh";
         commit.gpgSign = true;
         user.signingkey = "/home/${user}/.ssh/id_github_personal.pub";
+
+        safe.directory = "/etc/nixos";
         init = {
           defaultBranch = "master";
         };
