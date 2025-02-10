@@ -29,9 +29,9 @@ in
           # Privacy Badger
           "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # User agent switcher
-          "bhchdcejhohfmigjafbampogmaanbfkg"
+          # "bhchdcejhohfmigjafbampogmaanbfkg"
           # Canvas blocker
-          "nomnklagbgmgghhjidfhnoelnjfndfpd"
+          # "nomnklagbgmgghhjidfhnoelnjfndfpd"
         ];
       };
 
