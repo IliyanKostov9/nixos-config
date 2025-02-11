@@ -34,6 +34,7 @@ in
     api.postman.enable = true;
 
     browsers.librewolf = {
+      package = null; # NOTE: For firejail
       enable = true;
       profiles = import ./options/librewolf/profiles { inherit pkgs work_name; };
     };

@@ -33,6 +33,14 @@ in
         Enable librewolf
       '';
     };
+
+    package = mkOption {
+      default = pkgs.librewolf;
+      description = mkDoc ''
+        Use librewolf package
+      '';
+    };
+
     profiles = mkOption {
       default = { };
       description = mkDoc ''
@@ -44,7 +52,7 @@ in
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
-      package = null; # NOTE: For firejail
+      package = cfg.package;
       # package = pkgs-unstable.librewolf.override {
       #   extraPolicies = {
       #     DisablePocket = true;
