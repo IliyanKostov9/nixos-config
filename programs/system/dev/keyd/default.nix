@@ -26,7 +26,7 @@ in
               "f2" = "down";
               "f3" = "up";
               "f4" = "right";
-              "rightalt" = "backspace";
+              "rightshift" = "backspace";
             };
           };
         };
