@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 with lib;
 with lib.types;
 let
@@ -52,7 +52,7 @@ in
   config = mkIf cfg.enable {
     programs.librewolf = {
       enable = true;
-      package = cfg.package;
+      inherit (cfg) package;
       # package = pkgs-unstable.librewolf.override {
       #   extraPolicies = {
       #     DisablePocket = true;
