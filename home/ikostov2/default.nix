@@ -24,6 +24,7 @@ in
   imports = [
     # ./options/overlays
     ../../programs/user
+    ./options/ssh
   ];
 
   config.modules = {
