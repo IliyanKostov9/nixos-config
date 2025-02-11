@@ -34,5 +34,6 @@ _: {
 
     editor.vim.enable = true;
     scm.git.enable = true;
+    dev.keyd.enable = true;
   };
 }

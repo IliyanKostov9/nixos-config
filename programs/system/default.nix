@@ -8,5 +8,6 @@ _: {
     ./scm
     ./security
     ./utils
+    ./dev
   ];
 }
