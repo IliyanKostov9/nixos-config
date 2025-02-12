@@ -26,6 +26,11 @@ in
               "f2" = "down";
               "f3" = "up";
               "f4" = "right";
+              "left" = "f1";
+              "down" = "f2";
+              "up" = "f3";
+              "right" = "f4";
+
               "rightshift" = "backspace";
             };
           };
