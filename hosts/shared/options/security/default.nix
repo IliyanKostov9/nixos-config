@@ -24,7 +24,6 @@
   services = {
     # NOTE: For GNOME only
     gnome.gnome-keyring.enable = true;
-    sudo-rs.enable = false;
     openssh = {
       enable = false;
       settings.PasswordAuthentication = false;
