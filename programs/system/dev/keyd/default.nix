@@ -12,6 +12,13 @@ in
         Enable keyd
       '';
     };
+    mappings = mkOption {
+      type = attrs;
+      default = { };
+      description = mkDoc ''
+        Main keymaps for all keyboard layouts 
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -21,18 +28,7 @@ in
         default = {
           ids = [ "*" ];
           settings = {
-            main = {
-              "f1" = "left";
-              "f2" = "down";
-              "f3" = "up";
-              "f4" = "right";
-              "left" = "f1";
-              "down" = "f2";
-              "up" = "f3";
-              "right" = "f4";
-
-              "rightshift" = "backspace";
-            };
+            main = cfg.mappings;
           };
         };
       };

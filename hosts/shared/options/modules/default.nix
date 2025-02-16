@@ -34,6 +34,22 @@ _: {
 
     editor.vim.enable = true;
     scm.git.enable = true;
-    dev.keyd.enable = true;
+    dev.keyd =
+      {
+        enable = true;
+        mappings = {
+          # "f1" = "left";
+          # "f2" = "down";
+          # "f3" = "up";
+          # "f4" = "right";
+          # "left" = "f1";
+          # "down" = "f2";
+          # "up" = "f3";
+          # "right" = "f4";
+
+          "rightshift" = "up";
+          "rightcontrol" = "right";
+        };
+      };
   };
 }
