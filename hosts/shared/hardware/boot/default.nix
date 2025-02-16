@@ -18,6 +18,8 @@ in
       # Note: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
       systemd-boot.enable = !is-secure-boot-enabled;
       efi.canTouchEfiVariables = true;
+      timeout = 10;
+      grub.timeoutStyle = "countdown";
     };
   } // (if is-secure-boot-enabled then {
     lanzaboote = {
