@@ -111,6 +111,7 @@ in
       drawio.enable = true;
       libreoffice.enable = true;
       calibre.enable = true;
+      okular.enable = true;
     };
     password-manager.keepass.enable = true;
 

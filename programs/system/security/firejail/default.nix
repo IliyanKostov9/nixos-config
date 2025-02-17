@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, pkgs-unstable, lib, config, ... }:
 with lib;
 with lib.types;
 let cfg = config.modules.security.firejail;
@@ -63,8 +63,8 @@ in
           };
 
           librewolf = {
-            executable = "${pkgs.librewolf}/bin/librewolf";
-            desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+            executable = "${pkgs-unstable.librewolf}/bin/librewolf";
+            desktop = "${pkgs-unstable.librewolf}/share/applications/librewolf.desktop";
           };
         };
       };
