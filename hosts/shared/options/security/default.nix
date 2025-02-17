@@ -21,9 +21,13 @@
       ];
     };
   };
-  services.openssh = {
-    enable = false;
-    settings.PasswordAuthentication = false;
+  services = {
+    # NOTE: For GNOME only
+    gnome.gnome-keyring.enable = true;
+    openssh = {
+      enable = false;
+      settings.PasswordAuthentication = false;
+    };
   };
 
 }
