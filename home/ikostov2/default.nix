@@ -32,6 +32,7 @@ in
       red-light.enable = true;
     };
     api.postman.enable = true;
+    rdp.citrix.enable = true;
 
     browsers.librewolf = {
       package = null; # NOTE: For firejail
@@ -111,6 +112,7 @@ in
       drawio.enable = true;
       libreoffice.enable = true;
       calibre.enable = true;
+      okular.enable = true;
     };
     password-manager.keepass.enable = true;
 
