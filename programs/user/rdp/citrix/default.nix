@@ -6,9 +6,11 @@ in
   options.modules.rdp.citrix = { enable = mkEnableOption "citrix"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.citrix_workspace
-    ];
+    home.packages =
+      if (!trivial.inPureEvalMode) then
+        [
+          pkgs.citrix_workspace
+        ] else lib.warn "> Unable to install citrix package, due to running in pure evaluation mode!" [ ];
   };
 
   # NOTE: instructions
