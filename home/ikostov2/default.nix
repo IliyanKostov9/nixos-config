@@ -109,6 +109,7 @@ in
 
     office-suite = {
       nomacs.enable = true;
+      syncthing.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
       calibre.enable = true;
