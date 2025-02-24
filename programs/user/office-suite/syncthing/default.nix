@@ -2,8 +2,6 @@
 with lib;
 let
   cfg = config.modules.office-suite.syncthing;
-  pi-device-id = "MNIVCER-6VJMNPT-T55L7ZT-XOHRLDF-WLR7EOE-GQGUUTI-6TNPC7A-VQOZXQA";
-  pixel-device-id = "6B5TCVO-BP3Z67E-CTRQUM6-XIMZ6KM-WUP55UT-PDWIQTU-HAAPCLB-KV4CGAS";
 in
 {
   options.modules.office-suite.syncthing = { enable = mkEnableOption "syncthing"; };
