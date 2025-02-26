@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./flameshot
-    ./gpick
     ./normcap
     ./copyq
     ./gtk

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 with lib;
 let cfg = config.modules.utils.copyq;
 in
@@ -6,9 +6,9 @@ in
   options.modules.utils.copyq = { enable = mkEnableOption "copyq"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.copyq
-    ];
+    services.copyq = {
+      enable = true;
+    };
   };
 
 }
