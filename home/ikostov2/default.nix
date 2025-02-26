@@ -121,7 +121,7 @@ in
       virt-manager.enable = true;
       lazydocker.enable = true;
     };
-    vpn.openvpn3.enable = true;
+    vpn.openvpn.enable = true;
 
     window-manager.i3wm = {
       enable = true;

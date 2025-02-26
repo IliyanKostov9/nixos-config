@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./openvpn3
+    ./openvpn
     ./cisco-anyconnect
   ];
 }

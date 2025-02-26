@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 with lib;
-let cfg = config.modules.vpn.openvpn3;
+let cfg = config.modules.vpn.openvpn;
 in
 {
-  options.modules.vpn.openvpn3 = { enable = mkEnableOption "openvpn3"; };
+  options.modules.vpn.openvpn = { enable = mkEnableOption "openvpn"; };
 
   config = mkIf cfg.enable {
     home.packages = [

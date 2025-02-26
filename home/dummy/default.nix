@@ -64,7 +64,7 @@
     };
 
     vpn = {
-      openvpn3.enable = true;
+      openvpn.enable = true;
     };
 
     window-manager = {
