@@ -9,8 +9,8 @@ in
     programs.eza = {
       enable = true;
       git = true;
-      icons = "auto";
-      colors = "always";
+      icons = "never";
+      colors = "auto";
       enableZshIntegration = true;
       enableBashIntegration = true;
     };
