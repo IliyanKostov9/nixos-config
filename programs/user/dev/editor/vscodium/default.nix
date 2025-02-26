@@ -10,6 +10,5 @@ in
       pkgs.vscodium
     ];
   };
-
 }
 

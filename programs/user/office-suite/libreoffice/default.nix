@@ -11,5 +11,4 @@ in
       hunspellDicts.en_US
     ];
   };
-
 }

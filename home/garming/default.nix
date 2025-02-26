@@ -33,7 +33,7 @@ _: {
       nomacs.enable = true;
     };
 
-    vpn.openvpn3.enable = false;
+    vpn.openvpn.enable = false;
     window-manager.i3wm.enable = true;
 
     utils = {

@@ -42,8 +42,8 @@ in
 
     dev = {
       command-line = {
-        sops.enable = true;
         bat.enable = true;
+        eza.enable = true;
         ggshield.enable = true;
       };
       container = {
@@ -118,11 +118,10 @@ in
     password-manager.keepass.enable = true;
 
     virtualisation = {
-      qemu.enable = true;
       virt-manager.enable = true;
       lazydocker.enable = true;
     };
-    vpn.openvpn3.enable = true;
+    vpn.openvpn.enable = true;
 
     window-manager.i3wm = {
       enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ lib, config, ... }:
 with lib;
 let cfg = config.modules.utils.flameshot;
 in
@@ -6,9 +6,17 @@ in
   options.modules.utils.flameshot = { enable = mkEnableOption "flameshot"; };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.flameshot
-    ];
+    services.flameshot = {
+      enable = true;
+      settings = {
+        General = {
+          disabledTrayIcon = true;
+          showStartupLaunchMessage = false;
+          showDesktopNotification = false;
+          savePath = "~/Pictures";
+        };
+      };
+    };
   };
 
 }
