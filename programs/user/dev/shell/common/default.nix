@@ -34,7 +34,7 @@
     clip = "xclip -selection clipboard";
     lo = "libreoffice";
     ls = "eza";
-    cat = "bat --theme='base16-256'";
+    cat = "bat";
     base = "basename $(pwd)";
   };
 
@@ -47,4 +47,3 @@
     }
     env-vars;
 }
-

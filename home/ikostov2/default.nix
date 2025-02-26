@@ -42,8 +42,8 @@ in
 
     dev = {
       command-line = {
-        sops.enable = true;
         bat.enable = true;
+        eza.enable = true;
         ggshield.enable = true;
       };
       container = {

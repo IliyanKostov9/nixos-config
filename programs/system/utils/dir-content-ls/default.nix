@@ -8,7 +8,6 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       tree
-      eza
       fd
       tldr
     ];

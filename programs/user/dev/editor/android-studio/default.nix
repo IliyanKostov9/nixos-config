@@ -10,5 +10,4 @@ in
       pkgs.android-studio
     ];
   };
-
 }

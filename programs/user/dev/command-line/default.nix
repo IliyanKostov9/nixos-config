@@ -1,10 +1,9 @@
-{ ... }:
-{
+_: {
   imports = [
     ./bat
     ./ranger
+    ./eza
     ./sdkmanager
-    ./sops
     ./nix-alien
     ./ggshield
   ];
