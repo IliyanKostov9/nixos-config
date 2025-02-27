@@ -29,7 +29,9 @@ in
           # Privacy Badger
           "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # User agent switcher
-          # "bhchdcejhohfmigjafbampogmaanbfkg"
+          "bhchdcejhohfmigjafbampogmaanbfkg"
+          # I don't care about cookies
+          "fihnjjcciajhdojfnbdddfaoknhalnja"
           # Canvas blocker
           # "nomnklagbgmgghhjidfhnoelnjfndfpd"
         ];
