@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ user, lib, config, ... }:
 with lib;
 let cfg = config.modules.utils.flameshot;
 in
@@ -13,7 +13,7 @@ in
           disabledTrayIcon = true;
           showStartupLaunchMessage = false;
           showDesktopNotification = false;
-          savePath = "~/Pictures";
+          savePath = "/home/${user}/Pictures";
         };
       };
     };
