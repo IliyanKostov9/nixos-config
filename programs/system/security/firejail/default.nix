@@ -21,6 +21,7 @@ in
         enable = true;
         homepageLocation = "https://duckduckgo.com";
         defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
+        defaultSearchProviderSuggestURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
         extensions = [
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh"
@@ -29,7 +30,9 @@ in
           # Privacy Badger
           "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # User agent switcher
-          # "bhchdcejhohfmigjafbampogmaanbfkg"
+          "bhchdcejhohfmigjafbampogmaanbfkg"
+          # I don't care about cookies
+          "fihnjjcciajhdojfnbdddfaoknhalnja"
           # Canvas blocker
           # "nomnklagbgmgghhjidfhnoelnjfndfpd"
         ];
@@ -58,7 +61,7 @@ in
           };
 
           chromium = {
-            executable = "${pkgs.chromium}/bin/chromium";
+            executable = "${pkgs.ungoogled-chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
           };
 
