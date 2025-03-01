@@ -383,7 +383,7 @@ in
 
     # pkill picom && picom -b
     services.picom = {
-      enable = true;
+      enable = false;
       settings = {
         backend = "glx";
         active-opacity = 1.0;
