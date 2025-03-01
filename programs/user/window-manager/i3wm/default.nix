@@ -233,13 +233,6 @@ in
           blocks =
             let
               # BUG: Not working
-              privacy = {
-                block = "privacy";
-                driver =
-                  [{
-                    name = "pipewire";
-                  }];
-              };
               uptime = {
                 block = "uptime";
                 interval = 3600;
