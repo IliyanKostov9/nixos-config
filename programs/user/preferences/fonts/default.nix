@@ -7,7 +7,7 @@ with lib.types;
       type = str;
       default = "0xProto";
       description = lib.mkDoc ''
-        Nerd fonts for the terminal
+        Nerd font for the terminal and apps
       '';
     };
   };

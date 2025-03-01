@@ -84,7 +84,6 @@ in
             "${mod}+Return" = "exec alacritty";
             "${mod}+${shift}+q" = "kill";
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal alacritty";
-            # Select theme:  "rofi-theme-selector";
             # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
             # Fallback to primary monitor
@@ -233,13 +232,14 @@ in
         top = {
           blocks =
             let
-              privacy = {
-                block = "privacy";
-                driver =
-                  [{
-                    name = "pipewire";
-                  }];
-              };
+              # BUG: Not working
+              # privacy = {
+              #   block = "privacy";
+              #   driver =
+              #     [{
+              #       name = "pipewire";
+              #     }];
+              # };
               uptime = {
                 block = "uptime";
                 interval = 3600;
@@ -338,7 +338,6 @@ in
               };
             in
             [
-              privacy
               uptime
               toggle
               net
@@ -361,13 +360,23 @@ in
       };
     };
 
+    # Select theme:  "rofi-theme-selector";
     programs.rofi = {
       enable = true;
+      theme = "dmenu";
+      # android_notification
+      font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";
+      location = "center";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
+      extraConfig = {
+        show-icons = false;
+        modi = "drun,run";
+      };
     };
 
     # pkill picom && picom -b
     services.picom = {
-      enable = false;
+      enable = true;
       settings = {
         backend = "glx";
         active-opacity = 1.0;
@@ -474,8 +483,8 @@ in
           "100:class_g = 'slop'"
           "100:fullscreen"
 
-          "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-          "100:_GTK_FRAME_EXTENTS@:c"
+          "0:_NET_WM_STATE *= '_NET_WM_STATE_HIDDEN'"
+          "100:_GTK_FRAME_EXTENTS"
         ];
 
         shadow-exclude = [
@@ -504,32 +513,14 @@ in
           "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
         ];
 
-        corner-radius = 15.0;
-        rounded-corners-exclude = [
-          "class_g *= ''"
-
-          "class_g != 'Dunst'"
-          "class_g != 'Polybar'"
-          "class_g *= 'Thunar'"
-          "class_g *= 'thunar'"
-          "class_g = 'Alacritty'"
-          "class_g = 'URxvt'"
-          "class_g = 'XTerm'"
-          "class_g = 'awesome'"
-          "class_g = 'firefox'"
-          "class_g = 'kitty'"
-
-          "window_type = 'menu'"
-          "window_type = 'normal'"
-          "window_type = 'popup'"
-        ];
-
+        # NOTE: Rounded corners
+        # corner-radius = 15.0;
         shadow = true;
         shadow-radius = 9.0;
         shadow-offset-x = -9.0;
         shadow-offset-y = -9.0;
         shadow-opacity = 0.8;
-        shadow-exclude-reg = "x10+0+0";
+        clip-shadow-above = true;
         shadow-red = 0.0;
         shadow-green = 0.3;
         shadow-blue = 0.35;
