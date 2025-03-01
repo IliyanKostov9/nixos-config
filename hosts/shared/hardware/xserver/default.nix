@@ -32,9 +32,6 @@
       };
       windowManager.i3 = {
         enable = true;
-        extraPackages = with pkgs; [
-          rofi
-        ];
       };
 
       # Configure keymap in X11

@@ -39,11 +39,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      i3
-      # picom
-    ];
-
     xsession.windowManager.i3 = {
       enable = true;
       config = {
@@ -364,6 +359,10 @@ in
           icons = "material-nf";
         };
       };
+    };
+
+    programs.rofi = {
+      enable = true;
     };
 
     # pkill picom && picom -b
