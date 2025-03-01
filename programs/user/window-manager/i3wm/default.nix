@@ -314,7 +314,7 @@ in
               click = [
                 {
                   button = "left";
-                  cmd = "pavucontrol --tab=3";
+                  cmd = "pwvucontrol --tab=3";
                 }
               ];
             }
