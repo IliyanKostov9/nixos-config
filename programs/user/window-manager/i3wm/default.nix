@@ -75,10 +75,17 @@ in
             "${mod}+${alt}+Page_Up" = "exec reboot";
             "${mod}+${alt}+End" = "exec i3-msg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
+
             ## Audio
-            "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
-            "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
-            "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
+            ### Pipewire
+            "${mod}+${alt}+plus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
+            "${mod}+${alt}+minus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%-'";
+            "${mod}+${alt}+m" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+
+            ### PulseAudio
+            # "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
+            # "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
+            # "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
             # Default i3 options
             "${mod}+Return" = "exec alacritty";
