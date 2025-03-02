@@ -48,6 +48,7 @@ _: {
           # "right" = "f4";
           "rightshift" = "backspace";
           "rightcontrol" = "right";
+          "rightalt" = "up";
         };
       };
   };
