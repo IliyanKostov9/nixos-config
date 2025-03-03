@@ -12,7 +12,6 @@ on:
 jobs:
   flake-checker:
     name: Flake ❄️ Checker ✅
-    if: github.event.schedule == "37 13 * * *"
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +23,6 @@ jobs:
 
   lock-updater:
     name: Flake ❄️ Lock 🔒️ Updater ✨
-    if: github.event.schedule == "3 14 * * 1,5"
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
