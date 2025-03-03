@@ -22,6 +22,10 @@ jobs:
       - uses: DeterminateSystems/flake-checker-action@v9
 
   lock-updater:
+    permissions:
+      contents: write
+      pull-requests: write
+
     name: Flake ❄️ Lock 🔒️ Updater ✨
     runs-on: ubuntu-22.04
     steps:
