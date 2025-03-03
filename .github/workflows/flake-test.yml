@@ -1,12 +1,8 @@
 name: Flake ❄️ Tests
 
 on:
-  push:
-    branches:
-      - master
   schedule:
-    - cron: "37 13 * * *"
-    - cron: "3 14 * * 1,5"
+    - cron: "0 0 * * 0"
   workflow_dispatch:
 
 jobs:
@@ -18,7 +14,10 @@ jobs:
         with:
           fetch-depth: 0
       - uses: DeterminateSystems/nix-installer-action@v15
-      - uses: DeterminateSystems/magic-nix-cache-action@v8
+      - uses: cachix/cachix-action@v14
+        with:
+          name: iliyankostov9-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - uses: DeterminateSystems/flake-checker-action@v9
 
   lock-updater:
@@ -33,7 +32,10 @@ jobs:
         with:
           fetch-depth: 0
       - uses: DeterminateSystems/nix-installer-action@v15
-      - uses: DeterminateSystems/magic-nix-cache-action@v8
+      - uses: cachix/cachix-action@v14
+        with:
+          name: iliyankostov9-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - uses: DeterminateSystems/update-flake-lock@v24
         with:
           pr-title: "chore: update flake.lock"
