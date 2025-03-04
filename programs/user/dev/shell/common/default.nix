@@ -31,6 +31,7 @@
     # Utils
     gitroot = "cd $(git root)";
     gitunstage = "git restore --staged";
+    gitig = "git-ignore";
     clip = "xclip -selection clipboard";
     lo = "libreoffice";
     ls = "eza";
