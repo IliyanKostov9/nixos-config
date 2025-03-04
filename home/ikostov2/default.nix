@@ -129,7 +129,7 @@ in
         "l" = "Social";
         "y" = "Youtube";
         "d" = work_name;
-        "o" = work_project1_name;
+        "t" = "Test";
       };
 
       firejail-mappings = {

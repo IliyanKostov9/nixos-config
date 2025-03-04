@@ -60,4 +60,16 @@ with pkgs.nur.repos.rycee.firefox-addons;
       user-agent-string-switcher
     ];
   };
+
+  Test = {
+    id = 4;
+    name = "Test";
+    containersForce = false;
+    isDefault = false;
+    extensions = [
+      ublock-origin
+      privacy-badger
+      darkreader
+    ];
+  };
 }
