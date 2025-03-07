@@ -46,7 +46,7 @@ _: {
           # "down" = "f2";
           # "up" = "f3";
           # "right" = "f4";
-          "rightshift" = "backspace";
+          "rightshift" = "down";
           "rightcontrol" = "right";
           "rightalt" = "up";
         };

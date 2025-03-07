@@ -93,10 +93,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.alacritty
-    ];
-
     programs.alacritty = {
       enable = true;
       settings = {
@@ -111,24 +107,6 @@ in
           in
           {
             import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
-            # Favorite themes
-            ##################
-            # Dark blue
-            # > deep_space
-            # Pink
-            # > dracula
-            # > hardhacker
-            # Purple
-            # > iris
-            # Dark green
-            # > alacritty_0_12
-            # > everforest_dark
-            # > gruvbox_material_hard_dark
-            # > gruvbox_dark
-            # > kanagawa_wave
-            # > kanagawa_dragon
-            # Dark
-            # > github_dark_colorblind
             working_directory = config.home.homeDirectory;
           };
         env.TERM = "xterm-256color";
