@@ -45,6 +45,10 @@ in
       enable = true;
       inherit (cfg) userName userEmail;
       lfs.enable = false;
+      ignores = [
+        "*~"
+        "*.swp"
+      ];
       signing = {
         signByDefault = cfg.shouldGPGSign;
         key = cfg.gpgKey;
