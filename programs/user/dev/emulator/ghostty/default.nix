@@ -37,8 +37,8 @@ in
 
       settings = {
         gtk-titlebar = false;
-        font-size = font-size;
-        theme = cfg.theme;
+        inherit fontn-size;
+        inherit (cfg) theme;
         command = "zsh";
         mouse-hide-while-typing = true;
         window-save-state = "always";
