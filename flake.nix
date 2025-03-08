@@ -48,14 +48,19 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
 
-      imports = [
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.devenv.flakeModule
-        ./flakes/dev-shell.nix
-        ./flakes/system.nix
-        ./flakes/user.nix
-        # ./flakes/export-image.nix
-        ./tests
-      ];
+      imports =
+        [
+          inputs.flake-parts.flakeModules.easyOverlay
+          inputs.devenv.flakeModule
+          ./flakes/system.nix
+          ./flakes/user.nix
+          # ./flakes/export-image.nix
+          ./tests
+        ]
+        ++ (
+          if (inputs.devenv-root != null)
+          then [./flakes/dev-shell.nix]
+          else []
+        );
     };
 }
