@@ -34,7 +34,6 @@ jobs:
 
       - name: Run tests
         run: |
-          export NIX_PATH=devenv-root=none
           nix flake check -L
 
       - name: Run tests

@@ -107,18 +107,6 @@
         "type": "github"
       }
     },
-    "devenv-root": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-d6xi4mKdjkX2JFicDIv5niSzpyI0m/Hnm8GGAIU04kY=",
-        "type": "file",
-        "url": "file:///dev/null"
-      },
-      "original": {
-        "type": "file",
-        "url": "file:///dev/null"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -696,7 +684,6 @@
       "inputs": {
         "alacritty-theme": "alacritty-theme",
         "devenv": "devenv",
-        "devenv-root": "devenv-root",
         "flake-parts": "flake-parts_3",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",

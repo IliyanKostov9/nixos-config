@@ -2,12 +2,7 @@
   description = "Iliyan K's NixOS config";
 
   inputs = {
-    devenv-root = {
-      url = "file+file:///dev/null";
-      flake = false;
-    };
     devenv.url = "github:cachix/devenv";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nur.url = "github:nix-community/NUR";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -42,7 +37,7 @@
   outputs = {
     flake-parts,
     devenv,
-    devenv-root,
+    nixpkgs,
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -58,9 +53,11 @@
           ./tests
         ]
         ++ (
-          if (inputs.devenv-root != null)
-          then [./flakes/dev-shell.nix]
-          else []
+          if !(nixpkgs.lib.trivial.inPureEvalMode)
+          then [
+            ./flakes/dev-shell.nix
+          ]
+          else nixpkgs.lib.trivial.warn "> Cannot activate devShells while in pure eval mode!" []
         );
     };
 }
