@@ -66,6 +66,11 @@ in
           dark-theme-hex = "#181616";
         };
 
+        ghostty = {
+          enable = true;
+          theme = "kanagawa_dragon";
+        };
+
         tmux = {
           enable = true;
           enable-dynamic-conf = true;
