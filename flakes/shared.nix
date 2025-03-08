@@ -1,29 +1,29 @@
-{ inputs }:
-
-with inputs;
-rec {
+{inputs}:
+with inputs; rec {
   system = "x86_64-linux";
   stateVersion = "24.11";
   pkgs =
     import
-      nixpkgs
-      {
-        inherit system;
-        overlays = [
-          nixgl.overlay
-          nur.overlays.default
-          alacritty-theme.overlays.default
-        ];
-        config = { allowUnfree = true; };
-      };
-  pkgs-unstable = import
+    nixpkgs
+    {
+      inherit system;
+      overlays = [
+        # nixgl.overlay
+        nur.overlays.default
+        alacritty-theme.overlays.default
+      ];
+      config = {allowUnfree = true;};
+    };
+  pkgs-unstable =
+    import
     nixpkgs-unstable
     {
       inherit system;
-      config = { allowUnfree = true; };
+      config = {allowUnfree = true;};
     };
 
-  config_system = import
+  config_system =
+    import
     ../config.nix
     {
       inherit nixos-hardware;
