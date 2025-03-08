@@ -39,11 +39,6 @@
     # };
   };
 
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
-  };
-
   outputs = {
     flake-parts,
     devenv,
@@ -56,33 +51,11 @@
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.devenv.flakeModule
-        # ./flakes/dev-shell.nix
+        ./flakes/dev-shell.nix
         ./flakes/system.nix
         ./flakes/user.nix
         # ./flakes/export-image.nix
         ./tests
       ];
-
-      perSystem = {
-        config,
-        self',
-        inputs',
-        pkgs,
-        system,
-        ...
-      }: {
-        devenv.shells.default = {
-          name = "NixOS devenv";
-          git-hooks.hooks = {
-            # Common
-            actionlint.enable = true;
-            checkmake.enable = true;
-          };
-          devenv.root = let
-            devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
-          in
-            pkgs.lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
-        };
-      };
     };
 }
