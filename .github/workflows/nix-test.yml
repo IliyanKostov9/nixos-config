@@ -33,7 +33,9 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Run tests
-        run: nix flake check -L
+        run: |
+          export NIX_PATH=devenv-root=none
+          nix flake check -L
 
       - name: Run tests
         uses: cachix/install-nix-action@v30

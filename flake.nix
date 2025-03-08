@@ -2,10 +2,10 @@
   description = "Iliyan K's NixOS config";
 
   inputs = {
-    # devenv-root = {
-    #   url = "file+file:///dev/null";
-    #   flake = false;
-    # };
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
     devenv.url = "github:cachix/devenv";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
