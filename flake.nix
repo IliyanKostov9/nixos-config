@@ -53,7 +53,7 @@
           ./tests
         ]
         ++ (
-          if !(nixpkgs.lib.trivial.inPureEvalMode)
+          if !nixpkgs.lib.trivial.inPureEvalMode
           then [
             ./flakes/dev-shell.nix
           ]
