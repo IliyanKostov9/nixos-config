@@ -16,6 +16,7 @@
         beautysh.enable = true;
         commitizen.enable = true;
         flake-checker.enable = true;
+        lychee.enable = true;
       };
     };
   };
