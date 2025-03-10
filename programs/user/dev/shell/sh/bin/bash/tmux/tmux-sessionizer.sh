@@ -6,6 +6,7 @@ else
     selected=$(find ~/work ~/projects ~/ ~/work ~/personal ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
+
 if [[ -z $selected ]]; then
     exit 0
 fi
