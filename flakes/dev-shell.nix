@@ -13,7 +13,8 @@
       git-hooks.hooks = {
         actionlint.enable = true;
         checkmake.enable = true;
-        beautysh.enable = true;
+        # beautysh.enable = true;
+        shfmt.enable = true;
         commitizen.enable = true;
         flake-checker.enable = true;
         lychee.enable = true;
