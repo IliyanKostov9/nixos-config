@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if ! [ -z $MODEL ]; then 
- echo "Building $MODEL system..."; 
+if ! [ -z $MODEL ]; then
+    echo "Building $MODEL system...";
 
- sudo -v && sudo nixos-rebuild switch --flake .#$MODEL --show-trace --impure |& nom; 
-else 
-  echo -e """
-    MODEL env variable is not set! 
+    sudo -v && sudo nixos-rebuild switch --flake .#$MODEL --show-trace --impure |& nom;
+else
+    echo -e """
+    MODEL env variable is not set!
     =============================================================
     | Choose on what system to build for the following options: |
     |###########################################################|
@@ -15,19 +15,19 @@ else
     =============================================================
     """
 
-read -p "Choice: " choice; 
+    read -p "Choice: " choice;
 
-if [ "$choice" = "1" ]; then 
-  model="A320M-PRO"; 
+    if [ "$choice" = "1" ]; then
+        model="A320M-PRO";
 
-elif [ "$choice" = "2" ]; then 
-  model="Thinkpad-p53"; 
+    elif [ "$choice" = "2" ]; then
+        model="Thinkpad-p53";
 
-else 
-  echo "Error: wrong choice!"; 
-  exit 1; 
-fi; 
+    else
+        echo "Error: wrong choice!";
+        exit 1;
+    fi;
 
-echo "Building $model system..."; 
-sudo -v && sudo nixos-rebuild switch --flake .#$model --show-trace --impure |& nom; 
+    echo "Building $model system...";
+    sudo -v && sudo nixos-rebuild switch --flake .#$model --show-trace --impure |& nom;
 fi

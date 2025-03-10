@@ -8,7 +8,7 @@ keepGens=$keepGensDef; keepDays=$keepDaysDef
 ## Usage
 usage () {
     printf "Usage:\n\t ./trim-generations.sh <keep-gernerations> <keep-days> <profile> \n\n
-(defaults are: Keep-Gens=$keepGensDef Keep-Days=$keepDaysDef Profile=user)\n\n"
+    (defaults are: Keep-Gens=$keepGensDef Keep-Days=$keepDaysDef Profile=user)\n\n"
     printf "If you enter any parameters, you must enter all three, or none to use defaults.\n"
     printf "Example:\n\t trim-generations.sh 15 10 home-manager\n"
     printf "  this will work on the home-manager profile and keep all generations from the\n"
@@ -19,24 +19,24 @@ usage () {
 
 if [ $# -eq 1 ]; then      # if help requested
     if [ $1 = "-h" ]; then
-         usage
-         exit 1;
+        usage
+        exit 1;
     fi
     if [ $1 = "--help" ]; then
-         usage
-         exit 2;
+        usage
+        exit 2;
     fi
     printf "Dont recognise your option exiting..\n\n"
     usage
     exit 3;
 
-    elif [ $# -eq 0 ]; then            # print the defaults
-        printf "The current defaults are:\n Keep-Gens=$keepGensDef Keep-Days=$keepDaysDef \n\n"
-        read -p "Keep these defaults? (y/n):" answer
+elif [ $# -eq 0 ]; then            # print the defaults
+    printf "The current defaults are:\n Keep-Gens=$keepGensDef Keep-Days=$keepDaysDef \n\n"
+    read -p "Keep these defaults? (y/n):" answer
 
-        case "$answer" in
+    case "$answer" in
         [yY1] )
-                printf "Using defaults..\n"
+            printf "Using defaults..\n"
             ;;
         [nN0] ) printf "ok, doing nothing, exiting..\n"
             exit 6;
@@ -44,7 +44,7 @@ if [ $# -eq 1 ]; then      # if help requested
         *     ) printf "%b" "Doing nothing, exiting.."
             exit 7;
             ;;
-        esac
+    esac
 fi
 
 ## Handle parameters (and change if root)
@@ -76,17 +76,17 @@ else
         read -p "is that ok? (y/n): " asnwer
         #printf "$asnwer"
         case "$asnwer" in
-        [yY1] )
-            printf "ok, continuing..\n"
-            ;;
-        [nN0] )
-            printf "ok, doing nothing, exiting..\n"
-            exit 6;
-            ;;
-        *     )
-            printf "%b" "Doing nothing, exiting.."
-            exit 7;
-            ;;
+            [yY1] )
+                printf "ok, continuing..\n"
+                ;;
+            [nN0] )
+                printf "ok, doing nothing, exiting..\n"
+                exit 6;
+                ;;
+            *     )
+                printf "%b" "Doing nothing, exiting.."
+                exit 7;
+                ;;
         esac
     fi
     if [ $2 -lt 0 ]; then
@@ -94,17 +94,17 @@ else
         read -p "is that ok? (y/n): " asnwer
 
         case "$asnwer" in
-        [yY1] )
-            printf "ok, continuing..\n"
-            ;;
-        [nN0] )
-            printf "ok, doing nothing, exiting..\n"
-            exit 6;
-            ;;
-        *     )
-            printf "%b" "Doing nothing, exiting.."
-            exit 7;
-            ;;
+            [yY1] )
+                printf "ok, continuing..\n"
+                ;;
+            [nN0] )
+                printf "ok, doing nothing, exiting..\n"
+                exit 6;
+                ;;
+            *     )
+                printf "%b" "Doing nothing, exiting.."
+                exit 7;
+                ;;
         esac
     fi
     keepGens=$1; keepDays=$2;
@@ -153,7 +153,7 @@ choose () {
 
     case "$answer" in
         [yY1] ) #printf "answered yes!\n"
-             nix-env --delete-generations -p $profile ${!gens[@]}
+            nix-env --delete-generations -p $profile ${!gens[@]}
             exit 0
             ;;
         [nN0] ) printf "Ok doing nothing exiting..\n"
