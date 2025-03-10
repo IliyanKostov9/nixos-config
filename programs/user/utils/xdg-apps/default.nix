@@ -4,21 +4,20 @@ _: {
     xdg.mimeApps = {
       enable = true;
       defaultApplications = {
-        "inode/directory" = [ "pcmanfm.desktop" ];
-        "x-scheme-handler/http" = [ "librewolf.desktop" ];
-        "x-scheme-handler/https" = [ "librewolf.desktop" ];
-        "text/html" = [ "librewolf.desktop" ];
-        "video/*" = [ "vlc.desktop" ];
-        "image/jpeg" = [ "nomacs.desktop" ];
-        "image/png" = [ "nomacs.desktop" ];
-        "application/x-drawio" = [ "drawio.desktop" ];
-        "application/vnd-visio" = [ "drawio.desktop" ];
+        "inode/directory" = ["pcmanfm.desktop"];
+        "x-scheme-handler/http" = ["librewolf.desktop"];
+        "x-scheme-handler/https" = ["librewolf.desktop"];
+        "text/html" = ["librewolf.desktop"];
+        "video/*" = ["vlc.desktop"];
+        "image/jpeg" = ["nomacs.desktop"];
+        "image/png" = ["nomacs.desktop"];
+        "application/x-drawio" = ["drawio.desktop"];
+        "application/vnd-visio" = ["drawio.desktop"];
       };
       associations.removed = {
-        "image/jpeg" = [ "chromium-browser.desktop" ];
-        "image/png" = [ "chromium-browser.desktop" ];
+        "image/jpeg" = ["chromium-browser.desktop"];
+        "image/png" = ["chromium-browser.desktop"];
       };
     };
   };
-
 }

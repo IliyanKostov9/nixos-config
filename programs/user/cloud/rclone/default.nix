@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.cloud.rclone;
-in
 {
-  options.modules.cloud.rclone = { enable = mkEnableOption "rclone"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.cloud.rclone;
+in {
+  options.modules.cloud.rclone = {enable = mkEnableOption "rclone";};
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -11,5 +15,4 @@ in
       pkgs.rclone-browser
     ];
   };
-
 }

@@ -1,12 +1,16 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.preferences.red-light;
-in
 {
-  options.modules.preferences.red-light = { enable = mkEnableOption "red-light"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.preferences.red-light;
+in {
+  options.modules.preferences.red-light = {enable = mkEnableOption "red-light";};
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ redshift ];
+    home.packages = with pkgs; [redshift];
 
     services.redshift = {
       enable = true;
@@ -36,6 +40,4 @@ in
       };
     };
   };
-
 }
-

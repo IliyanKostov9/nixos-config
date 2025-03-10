@@ -1,11 +1,21 @@
-{ lib, config, pkgs, ... }:
-
-let
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: let
   inherit (config.sops) secrets;
-  work_project1_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_project1_name.path else "Work_Project1";
-  work_name = if (!lib.trivial.inPureEvalMode) then builtins.readFile secrets.work_name.path else "Work";
+  work_project1_name =
+    if (!lib.trivial.inPureEvalMode)
+    then builtins.readFile secrets.work_project1_name.path
+    else "Work_Project1";
+  work_name =
+    if (!lib.trivial.inPureEvalMode)
+    then builtins.readFile secrets.work_name.path
+    else "Work";
   env-vars =
-    if (!lib.trivial.inPureEvalMode) then {
+    if (!lib.trivial.inPureEvalMode)
+    then {
       AZURE_DEVOPS_EXT_PAT = "$(command cat ${secrets.azure_devops_ext_pat.path})";
       GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
 
@@ -18,9 +28,9 @@ let
 
       TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
       TF_ORG = "$(command cat ${secrets.tf_org.path})";
-    } else { };
-in
-{
+    }
+    else {};
+in {
   imports = [
     # ./options/overlays
     ../../programs/user
@@ -37,7 +47,7 @@ in
     browsers.librewolf = {
       package = null; # NOTE: For firejail
       enable = true;
-      profiles = import ./options/librewolf/profiles { inherit pkgs work_name; };
+      profiles = import ./options/librewolf/profiles {inherit pkgs work_name;};
     };
 
     dev = {
@@ -69,10 +79,9 @@ in
         tmux = {
           enable = true;
           enable-dynamic-conf = true;
-          static-vals = [ "$Work*" "$Work_Project1*" ];
-          dynamic-vals = [ work_name work_project1_name ];
+          static-vals = ["$Work*" "$Work_Project1*"];
+          dynamic-vals = [work_name work_project1_name];
         };
-
       };
 
       git = {
@@ -142,6 +151,5 @@ in
       flameshot.enable = true;
       normcap.enable = true;
     };
-
   };
 }

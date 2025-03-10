@@ -1,9 +1,13 @@
-{ user, lib, config, ... }:
-with lib;
-let cfg = config.modules.utils.flameshot;
-in
 {
-  options.modules.utils.flameshot = { enable = mkEnableOption "flameshot"; };
+  user,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.utils.flameshot;
+in {
+  options.modules.utils.flameshot = {enable = mkEnableOption "flameshot";};
 
   config = mkIf cfg.enable {
     services.flameshot = {
@@ -18,6 +22,4 @@ in
       };
     };
   };
-
 }
-

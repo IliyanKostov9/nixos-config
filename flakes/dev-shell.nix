@@ -17,7 +17,7 @@
         commitizen.enable = true;
 
         flake-checker.enable = true;
-        lychee.enable = true;
+        # lychee.enable = true;
       };
     };
   };

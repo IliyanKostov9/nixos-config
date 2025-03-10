@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ../../programs/user
   ];
@@ -14,7 +13,7 @@
     browsers = {
       librewolf = {
         enable = true;
-        profiles = import ./options/librewolf/profiles { inherit pkgs; };
+        profiles = import ./options/librewolf/profiles {inherit pkgs;};
       };
     };
 
@@ -41,7 +40,6 @@
         tmux = {
           enable = true;
         };
-
       };
       git = {
         git = {

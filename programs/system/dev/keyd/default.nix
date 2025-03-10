@@ -1,9 +1,12 @@
-{ lib, config, ... }:
-with lib;
-with lib.types;
-let cfg = config.modules.dev.keyd;
-in
 {
+  lib,
+  config,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.dev.keyd;
+in {
   options.modules.dev.keyd = {
     enable = mkOption {
       type = bool;
@@ -14,9 +17,9 @@ in
     };
     mappings = mkOption {
       type = attrs;
-      default = { };
+      default = {};
       description = mkDoc ''
-        Main keymaps for all keyboard layouts 
+        Main keymaps for all keyboard layouts
       '';
     };
   };
@@ -26,7 +29,7 @@ in
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings = {
             main = cfg.mappings;
           };

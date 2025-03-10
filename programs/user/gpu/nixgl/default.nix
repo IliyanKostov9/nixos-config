@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.gpu.nixgl;
-in
 {
-  options.modules.gpu.nixgl = { enable = mkEnableOption "nixgl"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.gpu.nixgl;
+in {
+  options.modules.gpu.nixgl = {enable = mkEnableOption "nixgl";};
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -12,8 +16,6 @@ in
     ];
   };
 }
-
-
 # Use it in cases of these errors:
 # libGL error: unable to load driver: i965_dri.so
 # libGL error: driver pointer missing
@@ -23,3 +25,4 @@ in
 # libGL error: failed to load driver: i965
 # libGL error: unable to load driver: swrast_dri.so
 # libGL error: failed to load driver: swrast
+

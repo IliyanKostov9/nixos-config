@@ -1,17 +1,24 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-with lib.types;
-let
+with lib.types; let
   cfg = config.modules.window-manager.i3wm;
-  key-mappings = { key-name-prefix, value-name-prefix, attr-mappings }:
+  key-mappings = {
+    key-name-prefix,
+    value-name-prefix,
+    attr-mappings,
+  }:
     builtins.listToAttrs (lib.attrsets.mapAttrsToList
       (key: value: {
         name = "${key-name-prefix}+${key}";
         value = "${value-name-prefix} ${value}";
       })
       attr-mappings);
-in
-{
+in {
   options.modules.window-manager.i3wm = {
     enable = mkOption {
       type = bool;
@@ -23,7 +30,7 @@ in
 
     librewolf-mappings = mkOption {
       type = attrsOf str;
-      default = { "m" = "default"; };
+      default = {"m" = "default";};
       description = mkDoc ''
         Additional i3wm mappings for librewolf profiles
       '';
@@ -31,7 +38,7 @@ in
 
     firejail-mappings = mkOption {
       type = attrsOf str;
-      default = { };
+      default = {};
       description = mkDoc ''
         Additional i3wm mappings for firejail contained pkgs
       '';
@@ -45,17 +52,16 @@ in
         modifier = "Mod4";
         floating.modifier = "Mod4";
         fonts = {
-          names = [ "${config.modules.preferences.fonts.name}NerdFontMono-Regular" ];
+          names = ["${config.modules.preferences.fonts.name}NerdFontMono-Regular"];
           style = "Bold Semi-Condensed";
           size = 9.0;
         };
-        keybindings =
-          let
-            mod = config.xsession.windowManager.i3.config.modifier;
-            alt = "Mod1";
-            ctrl = "Control";
-            shift = "Shift";
-          in
+        keybindings = let
+          mod = config.xsession.windowManager.i3.config.modifier;
+          alt = "Mod1";
+          ctrl = "Control";
+          shift = "Shift";
+        in
           {
             "${mod}+${ctrl}+c" = "exec chromium";
 
@@ -126,7 +132,6 @@ in
             "${mod}+t" = "layout tabbed";
             "${mod}+e" = "layout toggle split";
 
-
             # toggle tiling / floating
             "${mod}+${shift}+space" = "floating toggle";
             # change focus between tiling / floating windows
@@ -174,7 +179,6 @@ in
             "${mod}+${alt}+l" = "resize grow width 10 px or 10 ppt";
             # "Return" = "mode 'default'";
             # "${mod}+r" = "resize";
-
           }
           # Librewolf
           // key-mappings {
@@ -237,129 +241,127 @@ in
       enable = true;
       bars = {
         top = {
-          blocks =
-            let
-              # BUG: Not working
-              # privacy = {
-              #   block = "privacy";
-              #   driver =
-              #     [{
-              #       name = "pipewire";
-              #     }];
-              # };
-              uptime = {
-                block = "uptime";
-                interval = 3600;
-              };
-              toggle = {
-                block = "toggle";
-                format = " $icon ";
-                interval = 5;
-                command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
-                command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
-                command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
-                click = [
-                  {
-                    button = "left";
-                    action = "toggle";
-                    widget = ".";
-                  }
-                ];
-              };
+          blocks = let
+            # BUG: Not working
+            # privacy = {
+            #   block = "privacy";
+            #   driver =
+            #     [{
+            #       name = "pipewire";
+            #     }];
+            # };
+            uptime = {
+              block = "uptime";
+              interval = 3600;
+            };
+            toggle = {
+              block = "toggle";
+              format = " $icon ";
+              interval = 5;
+              command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
+              command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
+              command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
+              click = [
+                {
+                  button = "left";
+                  action = "toggle";
+                  widget = ".";
+                }
+              ];
+            };
 
-              net = {
-                block = "net";
-                format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
-                interval = 5;
-                missing_format = " x ";
-                inactive_format = " $icon ";
-              };
+            net = {
+              block = "net";
+              format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
+              interval = 5;
+              missing_format = " x ";
+              inactive_format = " $icon ";
+            };
 
-              external-ip = {
-                block = "external_ip";
-                format = "$country_flag ";
-                with_network_manager = true;
-                interval = 300;
-                use_ipv4 = true;
-              };
-              battery = {
-                block = "battery";
-                interval = 30;
-                format = " $icon $percentage $time"; # $power
-                full_format = " $icon";
-                info = 60;
-                good = 60;
-                warning = 30;
-                critical = 15;
-                full_threshold = 95;
-                missing_format = "";
-              };
+            external-ip = {
+              block = "external_ip";
+              format = "$country_flag ";
+              with_network_manager = true;
+              interval = 300;
+              use_ipv4 = true;
+            };
+            battery = {
+              block = "battery";
+              interval = 30;
+              format = " $icon $percentage $time"; # $power
+              full_format = " $icon";
+              info = 60;
+              good = 60;
+              warning = 30;
+              critical = 15;
+              full_threshold = 95;
+              missing_format = "";
+            };
 
-              backlight = {
-                block = "backlight";
-                format = " $icon $brightness |";
-                invert_icons = true;
-                device = "intel_backlight";
-                missing_format = "";
-              };
-              bluetooth = {
-                block = "bluetooth";
-                mac = "08:BF:B8:4C:CD:5F";
-                format = " $icon $name{$percentage $battery_icon $available|} ";
-                disconnected_format = " $icon{ $name|} ";
-                click = [
-                  {
-                    button = "left";
-                    cmd = "blueman-manager";
-                  }
-                ];
-              };
+            backlight = {
+              block = "backlight";
+              format = " $icon $brightness |";
+              invert_icons = true;
+              device = "intel_backlight";
+              missing_format = "";
+            };
+            bluetooth = {
+              block = "bluetooth";
+              mac = "08:BF:B8:4C:CD:5F";
+              format = " $icon $name{$percentage $battery_icon $available|} ";
+              disconnected_format = " $icon{ $name|} ";
+              click = [
+                {
+                  button = "left";
+                  cmd = "blueman-manager";
+                }
+              ];
+            };
 
-              keyboard-layout = {
-                block = "keyboard_layout";
-                driver = "setxkbmap";
-                interval = 1;
-                format = " ^icon_keyboard $layout ";
-              };
-              sound = {
-                block = "sound";
-                show_volume_when_muted = true;
-                headphones_indicator = true;
-                click = [
-                  {
-                    button = "left";
-                    cmd = "pwvucontrol";
-                  }
-                ];
-              };
-              time = {
-                block = "time";
-                interval = 60;
-                format = " $icon $timestamp.datetime(f:'%a %d/%m %R') ";
-                click = [
-                  {
-                    button = "left";
-                    cmd = "gnome-calendar";
-                  }
-                ];
-              };
-            in
-            [
-              uptime
-              toggle
-              net
-              external-ip
-              battery
-              backlight
-              bluetooth
-              keyboard-layout
-              sound
-              time
-            ];
+            keyboard-layout = {
+              block = "keyboard_layout";
+              driver = "setxkbmap";
+              interval = 1;
+              format = " ^icon_keyboard $layout ";
+            };
+            sound = {
+              block = "sound";
+              show_volume_when_muted = true;
+              headphones_indicator = true;
+              click = [
+                {
+                  button = "left";
+                  cmd = "pwvucontrol";
+                }
+              ];
+            };
+            time = {
+              block = "time";
+              interval = 60;
+              format = " $icon $timestamp.datetime(f:'%a %d/%m %R') ";
+              click = [
+                {
+                  button = "left";
+                  cmd = "gnome-calendar";
+                }
+              ];
+            };
+          in [
+            uptime
+            toggle
+            net
+            external-ip
+            battery
+            backlight
+            bluetooth
+            keyboard-layout
+            sound
+            time
+          ];
           settings = {
             theme = {
               theme = "bad-wolf";
-              overrides = { separator = ""; };
+              overrides = {separator = "";};
             };
           };
           icons = "material-nf";

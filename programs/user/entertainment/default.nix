@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./gaming ];
+  imports = [./gaming];
 }

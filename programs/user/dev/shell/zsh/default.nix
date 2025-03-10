@@ -1,7 +1,11 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-with lib.types;
-let
+with lib.types; let
   cfg = config.modules.dev.shell.zsh;
 
   # ikostov-zsh-themes = builtins.fetchGit {
@@ -18,26 +22,25 @@ let
 
   zsh-themes = pkgs.stdenv.mkDerivation {
     name = "oh-my-custom-zsh-theme";
-    phases = [ "buildPhase" ];
+    phases = ["buildPhase"];
     buildPhase = ''
       mkdir -p $out/themes
       cp ${ikostov-zsh-themes}/themes/*.zsh-theme  $out/themes/
     '';
   };
-in
-{
+in {
   options.modules.dev.shell.zsh = {
     enable = mkOption {
       type = bool;
       default = false;
       description = mkDoc ''
-        Enable zsh shell 
+        Enable zsh shell
       '';
     };
 
     env-vars = mkOption {
       type = attrsOf str;
-      default = { };
+      default = {};
       description = mkDoc ''
         Additional env-vars
       '';
@@ -46,9 +49,8 @@ in
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common) { inherit (cfg) env-vars; };
-    in
-    {
+      common = pkgs.callPackage ../common {inherit (cfg) env-vars;};
+    in {
       programs.zsh = {
         enable = true;
         enableCompletion = true;

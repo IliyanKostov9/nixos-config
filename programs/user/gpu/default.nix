@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./nixgl ];
+  imports = [./nixgl];
 }

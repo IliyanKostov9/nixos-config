@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.desktop-settings.display-manager.catppuccin-sddm;
-in
 {
-  options.modules.desktop-settings.display-manager.catppuccin-sddm = { enable = mkEnableOption "catppuccin-sddm"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.desktop-settings.display-manager.catppuccin-sddm;
+in {
+  options.modules.desktop-settings.display-manager.catppuccin-sddm = {enable = mkEnableOption "catppuccin-sddm";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
@@ -19,4 +23,3 @@ in
     ];
   };
 }
-

@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./i3wm ];
+  imports = [./i3wm];
 }

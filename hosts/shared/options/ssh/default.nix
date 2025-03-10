@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.ssh = {
     startAgent = true; #NOTE: Auto-start ssh-add agent
     enableAskPassword = true;

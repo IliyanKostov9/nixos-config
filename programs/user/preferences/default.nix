@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./red-light ./fonts ];
+  imports = [./red-light ./fonts];
 }

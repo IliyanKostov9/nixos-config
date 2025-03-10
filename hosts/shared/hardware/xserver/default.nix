@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   services = {
     # Enable for using I3
     displayManager.sddm = {
@@ -42,7 +44,7 @@
         # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
         extraLayouts.bgd = {
           description = "Bulgarian";
-          languages = [ "bul" ];
+          languages = ["bul"];
           symbolsFile = ../../options/xkb/dvorak/bg;
         };
       };

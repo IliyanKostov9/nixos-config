@@ -1,10 +1,13 @@
-{ lib, config, user, ... }:
-with lib;
-with lib.types;
-
-let cfg = config.modules.dev.git.git;
-in
 {
+  lib,
+  config,
+  user,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.dev.git.git;
+in {
   options.modules.dev.git.git = {
     enable = mkEnableOption "git";
 
@@ -37,7 +40,6 @@ in
         KEY ID of GPG key to sign
       '';
     };
-
   };
 
   config = mkIf cfg.enable {
@@ -67,5 +69,4 @@ in
       };
     };
   };
-
 }

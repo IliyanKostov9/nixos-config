@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./wine ];
+  imports = [./wine];
 }

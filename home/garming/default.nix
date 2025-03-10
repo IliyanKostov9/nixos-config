@@ -4,7 +4,6 @@ _: {
   ];
 
   config.modules = {
-
     browsers.librewolf.enable = true;
 
     dev = {

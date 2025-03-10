@@ -1,7 +1,6 @@
 _: {
-  imports =
-    [
-      ./displayManager
-      ./nvidia
-    ];
+  imports = [
+    ./displayManager
+    ./nvidia
+  ];
 }

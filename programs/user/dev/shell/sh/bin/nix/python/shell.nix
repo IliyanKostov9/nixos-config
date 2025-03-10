@@ -1,5 +1,10 @@
-{ pkgs ? import <nixpkgs> { config = { }; overlays = [ ]; } }:
-
+{
+  pkgs ?
+    import <nixpkgs> {
+      config = {};
+      overlays = [];
+    },
+}:
 (pkgs.buildFHSUserEnv {
   name = "pipzone";
   targetPkgs = pkgs: (with pkgs; [
@@ -17,4 +22,5 @@
   runScript = "zsh";
 
   LD_LIBRARY_PATH = "${pkgs.zlib}/lib:/run/opengl-driver/lib/:${pkgs.lib.makeLibraryPath}:${pkgs.stdenv.cc.cc.lib.outPath}/lib";
-}).env
+})
+.env

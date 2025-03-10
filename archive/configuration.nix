@@ -1,16 +1,16 @@
 # Edit this configuration file to define what should be installed on your system.  Help is available in the configuration.nix(5) man page and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # <home-manager/nixos>
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # <home-manager/nixos>
+  ];
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -34,8 +34,7 @@
     LC_MONETARY = "bg_BG.UTF-8";
     LC_NAME = "bg_BG.UTF-8";
     LC_NUMERIC = "bg_BG.UTF-8";
-    LC_PAPER =
-      "bg_BG.UTF-8";
+    LC_PAPER = "bg_BG.UTF-8";
     LC_TELEPHONE = "bg_BG.UTF-8";
     LC_TIME = "bg_BG.UTF-8";
   };
@@ -57,7 +56,7 @@
     };
   };
   # I3 support
-  environment.pathsToLink = [ "/libexec" ];
+  environment.pathsToLink = ["/libexec"];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -86,7 +85,7 @@
   users.users.ikostov2 = {
     isNormalUser = true;
     description = "ikostov2";
-    extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+    extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel"];
     packages = with pkgs; [
       postman
       obs-studio
@@ -214,7 +213,7 @@
 
   # Enable nerd fonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "0xProto" ]; })
+    (nerdfonts.override {fonts = ["0xProto"];})
   ];
 
   # Needed for compatibility purposes

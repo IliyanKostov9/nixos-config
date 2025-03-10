@@ -1,20 +1,24 @@
-{ lib, stateVersion, user, ... }:
-let
-  username = user;
-in
 {
+  lib,
+  stateVersion,
+  user,
+  ...
+}: let
+  username = user;
+in {
   imports =
-    (if builtins.pathExists ./${username}
-    then [ ./${username} ]
-    else
-      lib.warn
+    (
+      if builtins.pathExists ./${username}
+      then [./${username}]
+      else
+        lib.warn
         "> User: ${username} DOESN'T have home directory under ./home! Defaulting to NONE... "
-        [ ]
+        []
     )
-    ++
-    (if !lib.trivial.inPureEvalMode && builtins.pathExists ../secrets/user/${username}
-    then [ ../secrets/user/${username} ]
-    else [ ]
+    ++ (
+      if !lib.trivial.inPureEvalMode && builtins.pathExists ../secrets/user/${username}
+      then [../secrets/user/${username}]
+      else []
     );
 
   home = {

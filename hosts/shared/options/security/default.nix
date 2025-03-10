@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   security = {
     rtkit.enable = true;
     apparmor = {
@@ -29,5 +28,4 @@
       settings.PasswordAuthentication = false;
     };
   };
-
 }

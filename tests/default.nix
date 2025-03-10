@@ -1,11 +1,10 @@
-{ inputs, ... }:
-let
-  shared = import ../flakes/shared.nix
+{inputs, ...}: let
+  shared =
+    import ../flakes/shared.nix
     {
       inherit inputs;
     };
-in
-{
+in {
   flake.checks."x86_64-linux" = {
     users = import ./user {
       inherit (inputs) home-manager;

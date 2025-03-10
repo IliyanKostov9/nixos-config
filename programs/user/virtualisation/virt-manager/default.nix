@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.virtualisation.virt-manager;
-in
 {
-  options.modules.virtualisation.virt-manager = { enable = mkEnableOption "virt-manager"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.virtualisation.virt-manager;
+in {
+  options.modules.virtualisation.virt-manager = {enable = mkEnableOption "virt-manager";};
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [

@@ -1,10 +1,13 @@
-{ pkgs, lib, config, ... }:
-
-with lib;
-with lib.types;
-let cfg = config.modules.security.firejail;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.security.firejail;
+in {
   options.modules.security.firejail = {
     enable = mkOption {
       type = bool;
@@ -58,7 +61,7 @@ in
           signal-desktop = {
             executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
             profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
-            extraArgs = [ "--env=GTK_THEME=Adwaita:dark" ];
+            extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
           };
 
           chromium = {

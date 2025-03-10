@@ -1,7 +1,10 @@
-{ pkgs, lib, ... }:
-with lib;
-with lib.types;
 {
+  pkgs,
+  lib,
+  ...
+}:
+with lib;
+with lib.types; {
   options.modules.preferences.fonts = {
     name = mkOption {
       type = str;
@@ -15,7 +18,7 @@ with lib.types;
   config = {
     fonts.fontconfig.enable = true;
     home.packages = [
-      (pkgs.nerdfonts.override { fonts = [ "FiraCode" "0xProto" ]; })
+      (pkgs.nerdfonts.override {fonts = ["FiraCode" "0xProto"];})
     ];
   };
 }

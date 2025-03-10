@@ -4,6 +4,5 @@ _: {
     mode = "center";
   };
   services.displayManager.defaultSession = "none+i3";
-  environment.pathsToLink = [ "/libexec" ];
+  environment.pathsToLink = ["/libexec"];
 }
-

@@ -1,7 +1,11 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-with lib.types;
-let
+with lib.types; let
   cfg = config.modules.browsers.librewolf;
 
   settings = import ./about-config/settings;
@@ -23,8 +27,7 @@ let
       };
     };
   };
-in
-{
+in {
   options.modules.browsers.librewolf = {
     enable = mkOption {
       type = bool;
@@ -42,7 +45,7 @@ in
     };
 
     profiles = mkOption {
-      default = { };
+      default = {};
       description = mkDoc ''
         Profiles in librewolf
       '';
@@ -76,13 +79,15 @@ in
       # };
       # };
 
-      profiles = builtins.mapAttrs
-        (_name: profile:
-          profile //
-          {
-            inherit settings search;
-            inherit (profile) extensions;
-          }
+      profiles =
+        builtins.mapAttrs
+        (
+          _name: profile:
+            profile
+            // {
+              inherit settings search;
+              inherit (profile) extensions;
+            }
         )
         cfg.profiles;
     };

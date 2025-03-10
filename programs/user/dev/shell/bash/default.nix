@@ -1,21 +1,25 @@
-{ pkgs, lib, config, ... }:
-with lib;
-with lib.types;
-let cfg = config.modules.dev.shell.bash;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.dev.shell.bash;
+in {
   options.modules.dev.shell.bash = {
     enable = mkOption {
       type = bool;
       default = false;
       description = mkDoc ''
-        Enable BASH shell 
+        Enable BASH shell
       '';
     };
 
     env-vars = mkOption {
       type = attrsOf str;
-      default = { };
+      default = {};
       description = mkDoc ''
         Additional env-vars
       '';
@@ -24,9 +28,8 @@ in
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage (../common) { inherit (cfg) env-vars; };
-    in
-    {
+      common = pkgs.callPackage ../common {inherit (cfg) env-vars;};
+    in {
       programs.bash = {
         enable = true;
         enableCompletion = true;

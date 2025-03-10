@@ -1,12 +1,10 @@
-{ nixos-hardware }:
-
-{
+{nixos-hardware}: {
   users = {
     ikostov2 = {
       isNormalUser = true;
       createHome = false;
       description = "ikostov2 profile";
-      extraGroups = [ "libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" ];
+      extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel"];
       initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
 
@@ -14,7 +12,7 @@
       createHome = true;
       isNormalUser = true;
       description = "Garming profile";
-      extraGroups = [ "libvirtd" "adbusers" "users" "networkmanager" "wheel" ];
+      extraGroups = ["libvirtd" "adbusers" "users" "networkmanager" "wheel"];
       initialHashedPassword = "$6$cXDCwAyOy2iqBKiW$ZtrH9HI7063o2DMLTc3jm8/Ecrv5wPWUszFUEBg15AtwBIQvuE.Eg5Vo/Qlrg7kwXaBLRIPPGX7EOV8raJWrV.";
     };
   };
@@ -34,12 +32,12 @@
 
       boot = {
         tmp.useTmpfs = true;
-        kernelModules = [ "kvm-amd" "k10temp" ];
-        kernelParams = [ "acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1" ];
+        kernelModules = ["kvm-amd" "k10temp"];
+        kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
         initrd = {
           luks.devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
           luks.devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
-          availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
         };
       };
     };
@@ -58,12 +56,12 @@
 
       boot = {
         tmp.useTmpfs = true;
-        kernelModules = [ "kvm-intel" ];
-        kernelParams = [ "i915.force_probe=3e9b" "nvidia-drm.fbdev=1" ];
+        kernelModules = ["kvm-intel"];
+        kernelParams = ["i915.force_probe=3e9b" "nvidia-drm.fbdev=1"];
         initrd = {
           luks.devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
           luks.devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
-          availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
+          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
         };
       };
     };

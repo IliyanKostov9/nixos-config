@@ -1,11 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-with lib.types;
-
-let
-  cfg = config.modules.dev.emulator.ghostty;
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.dev.emulator.ghostty;
+in {
   options.modules.dev.emulator.ghostty = {
     enable = mkOption {
       type = bool;
@@ -22,7 +24,6 @@ in
         color scheme for ghostty
       '';
     };
-
   };
 
   config = mkIf cfg.enable {
@@ -61,4 +62,3 @@ in
     };
   };
 }
-

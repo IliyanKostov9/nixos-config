@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./vim ];
+  imports = [./vim];
 }

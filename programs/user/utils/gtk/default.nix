@@ -1,11 +1,14 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
 with lib.types;
-with config.modules.preferences;
-let
+with config.modules.preferences; let
   cfg = config.modules.utils.gtk;
-in
-rec {
+in rec {
   options.modules.utils.gtk = {
     themeName = mkOption {
       type = str;
@@ -70,4 +73,3 @@ rec {
     };
   };
 }
-

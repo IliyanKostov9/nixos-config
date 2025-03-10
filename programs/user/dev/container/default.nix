@@ -1,3 +1,3 @@
 _: {
-  imports = [ ./docker ./k8s ];
+  imports = [./docker ./k8s];
 }

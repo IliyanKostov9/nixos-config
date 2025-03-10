@@ -1,7 +1,8 @@
-{ pkgs, work_name }:
-with pkgs.nur.repos.rycee.firefox-addons;
-
 {
+  pkgs,
+  work_name,
+}:
+with pkgs.nur.repos.rycee.firefox-addons; {
   Main = {
     id = 0;
     name = "Main";

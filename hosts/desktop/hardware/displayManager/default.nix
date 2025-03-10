@@ -1,6 +1,4 @@
-{ host_attr, ... }:
-
-{
+{host_attr, ...}: {
   services = {
     displayManager.autoLogin = {
       enable = true;

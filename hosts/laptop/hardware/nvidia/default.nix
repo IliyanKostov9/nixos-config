@@ -1,6 +1,4 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   hardware.nvidia.prime = {
     sync.enable = true;
     intelBusId = "PCI:0:2:0";
@@ -8,7 +6,7 @@
   };
   specialisation = {
     on-the-go.configuration = {
-      system.nixos.tags = [ "on-the-go" ];
+      system.nixos.tags = ["on-the-go"];
       hardware.nvidia = {
         prime = {
           sync.enable = lib.mkForce false;

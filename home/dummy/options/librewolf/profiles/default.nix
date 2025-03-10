@@ -1,6 +1,5 @@
-{ pkgs }:
-with pkgs.nur.repos.rycee.firefox-addons;
-{
+{pkgs}:
+with pkgs.nur.repos.rycee.firefox-addons; {
   Dummy = {
     id = 0;
     name = "Dummy";
@@ -17,6 +16,6 @@ with pkgs.nur.repos.rycee.firefox-addons;
     name = "Testarino";
     containersForce = false;
     isDefault = false;
-    extensions = [ ];
+    extensions = [];
   };
 }

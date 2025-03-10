@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.gnome-disable-apps;
-in
 {
-  options.modules.gnome-disable-apps = { enable = mkEnableOption "gnome-disable-default-apps"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.gnome-disable-apps;
+in {
+  options.modules.gnome-disable-apps = {enable = mkEnableOption "gnome-disable-default-apps";};
 
   config = mkIf cfg.enable {
     environment.gnome.excludePackages = with pkgs; [

@@ -1,10 +1,15 @@
-{ config, lib, ... }:
-let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (config.sops) secrets;
   ovpn-path = "/var/lib/openvpn/personalVPN.ovpn";
-  is-ovpn-present = if builtins.pathExists ovpn-path then true else false;
-in
-{
+  is-ovpn-present =
+    if builtins.pathExists ovpn-path
+    then true
+    else false;
+in {
   services.openvpn.servers = {
     personalVPN = {
       config = "config ${ovpn-path}";

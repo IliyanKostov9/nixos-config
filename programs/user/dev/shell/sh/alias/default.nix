@@ -1,23 +1,27 @@
-{ pkgs, pkgs-unstable, lib, config, ... }:
+{
+  pkgs,
+  pkgs-unstable,
+  lib,
+  config,
+  ...
+}:
 with lib;
-with config.modules.dev.shell;
-let
+with config.modules.dev.shell; let
   fzf-search = pkgs.writeShellApplication {
     name = "fzf-search";
-    runtimeInputs = with pkgs; [ fzf bat tree ];
-    excludeShellChecks = [ "SC2005" ];
+    runtimeInputs = with pkgs; [fzf bat tree];
+    excludeShellChecks = ["SC2005"];
 
     text = ''
       selection=$(find . -type f -o -type d | fzf --cycle --border=thinblock --border-label='| Search here |' --preview 'bat --line-range=:500 {} || tree -C {}' --preview-label='Preview');
 
       if [ -d "$selection" ]; then
-        echo "$selection" 
+        echo "$selection"
       else
          echo "$(dirname "$selection")"
       fi
     '';
   };
-
   # passbolt-get-password = pkgs.writeShellApplication {
   #   name = "passbolt-get-password";
   #   runtimeInputs = with pkgs-unstable; [ go-passbolt-cli ];
@@ -35,8 +39,7 @@ let
   #     echo "$result"
   #   '';
   # };
-in
-{
+in {
   home.packages = lib.optionals (zsh.enable || bash.enable) [
     fzf-search
     # passbolt-get-password

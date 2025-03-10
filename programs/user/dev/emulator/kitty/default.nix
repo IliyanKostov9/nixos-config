@@ -1,9 +1,13 @@
-{ pkgs, lib, config, ... }:
-with lib;
-let cfg = config.modules.dev.emulator.kitty;
-in
 {
-  options.modules.dev.emulator.kitty = { enable = mkEnableOption "kitty"; };
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+with lib; let
+  cfg = config.modules.dev.emulator.kitty;
+in {
+  options.modules.dev.emulator.kitty = {enable = mkEnableOption "kitty";};
 
   config = mkIf cfg.enable {
     home.packages = [
@@ -34,7 +38,6 @@ in
         "ctrl+shift+t" = "set_tab_title";
         "ctrl+alt+." = "move_tab_forward";
         "ctrl+alt+," = "move_tab_backward";
-
 
         # Layouts
         "ctrl+space" = "next_layout";
@@ -75,6 +78,4 @@ in
       };
     };
   };
-
 }
-

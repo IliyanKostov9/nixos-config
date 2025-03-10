@@ -1,24 +1,32 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 with lib;
-with lib.types;
-
-let
+with lib.types; let
   cfg = config.modules.dev.emulator.alacritty;
   opacity = 1.0;
-  font-size = if builtins.match "desktop" (builtins.getEnv "DEVICE") != null then 12 else 8;
+  font-size =
+    if builtins.match "desktop" (builtins.getEnv "DEVICE") != null
+    then 12
+    else 8;
   font-name = config.modules.preferences.fonts.name;
 
-  scheduled-theme = { start-hour, end-hour, light-theme, dark-theme }:
-    let
-      inherit (import (../../../../../utils/get-current-time.nix) { inherit pkgs lib; }) hour;
-    in
+  scheduled-theme = {
+    start-hour,
+    end-hour,
+    light-theme,
+    dark-theme,
+  }: let
+    inherit (import ../../../../../utils/get-current-time.nix {inherit pkgs lib;}) hour;
+  in
     if (hour > start-hour && hour < end-hour)
     then light-theme
     else dark-theme;
-in
-{
+in {
   options.modules.dev.emulator.alacritty = {
-
     enable = mkOption {
       type = bool;
       default = false;
@@ -66,7 +74,8 @@ in
         scheduled light color scheme for alacritty
       '';
     };
-    light-theme-hex = mkOption
+    light-theme-hex =
+      mkOption
       {
         type = str;
         default = "#f6f2ee";
@@ -82,7 +91,8 @@ in
         scheduled dark color scheme for alacritty
       '';
     };
-    dark-theme-hex = mkOption
+    dark-theme-hex =
+      mkOption
       {
         type = str;
         default = "#333333";
@@ -98,17 +108,15 @@ in
       settings = {
         selection.save_to_clipboard = true;
         colors.draw_bold_text_with_bright_colors = true;
-        general =
-          let
-            theme =
-              if cfg.scheduled then
-                scheduled-theme { inherit (cfg) start-hour end-hour light-theme dark-theme; }
-              else cfg.theme;
-          in
-          {
-            import = [ pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!") ];
-            working_directory = config.home.homeDirectory;
-          };
+        general = let
+          theme =
+            if cfg.scheduled
+            then scheduled-theme {inherit (cfg) start-hour end-hour light-theme dark-theme;}
+            else cfg.theme;
+        in {
+          import = [pkgs.alacritty-theme."${theme}" or (throw "Alacritty theme missing!")];
+          working_directory = config.home.homeDirectory;
+        };
         env.TERM = "xterm-256color";
         terminal.shell.program = "zsh";
 
@@ -210,4 +218,3 @@ in
     };
   };
 }
-

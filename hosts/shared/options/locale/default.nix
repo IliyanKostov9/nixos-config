@@ -1,10 +1,8 @@
-_:
-let
+_: let
   defaultLocale = "en_US.UTF-8";
   # en_US.UTF-8
   # bg_BG.UTF-8
-in
-{
+in {
   time.timeZone = "Europe/Sofia";
 
   i18n = {

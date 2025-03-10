@@ -1,8 +1,7 @@
 _: {
-  imports =
-    [
-      ./mount
-      ./displayManager
-      ./systemd
-    ];
+  imports = [
+    ./mount
+    ./displayManager
+    ./systemd
+  ];
 }
