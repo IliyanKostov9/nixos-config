@@ -9,7 +9,6 @@ _: {
         ControllerMode = "dual";
         FastConnectable = "true";
         Experimental = true;
-        Enable = "Source,Sink,Media,Socket";
       };
     };
   };
