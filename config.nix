@@ -24,6 +24,7 @@
       variables = {
         DEVICE = "desktop";
         MODEL = "A320M-PRO";
+        CPU = "Amd";
       };
       modules = [
         ./hosts/desktop
@@ -48,6 +49,7 @@
       variables = {
         DEVICE = "laptop";
         MODEL = "Thinkpad-p53";
+        CPU = "Intel";
       };
       modules = [
         ./hosts/laptop

@@ -7,6 +7,6 @@
     enableAllFirmware = true;
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     # NOTE: needed for Allium58
-    hardware.keyboard.qmk.enable = false;
+    keyboard.qmk.enable = false;
   };
 }
