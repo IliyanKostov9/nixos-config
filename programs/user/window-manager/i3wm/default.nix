@@ -353,7 +353,6 @@ in {
             external-ip
             battery
             backlight
-            bluetooth
             keyboard-layout
             sound
             time
