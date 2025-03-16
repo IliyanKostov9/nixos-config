@@ -33,6 +33,7 @@
 in {
   imports = [
     # ./options/overlays
+    ./options/blueman-applet
     ../../programs/user
   ];
 

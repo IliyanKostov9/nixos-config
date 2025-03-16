@@ -1,3 +1,3 @@
 _: {
-  services.blueman.enable = true;
+  services.bluemanenable = true;
 }
