@@ -1,5 +1,5 @@
 {pkgs ? import <nixpkgs> {}}: let
-  username = "ikostov2";
+  username = "iliyan";
 
   jdk-overlay = self: super: {
     jdk =
