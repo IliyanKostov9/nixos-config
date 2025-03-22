@@ -12,7 +12,6 @@
       name = "NixOS devenv";
       git-hooks.hooks = {
         actionlint.enable = true;
-        # checkmake.enable = true;
         beautysh.enable = true;
         commitizen.enable = true;
 
