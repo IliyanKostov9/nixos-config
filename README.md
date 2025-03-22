@@ -37,7 +37,7 @@ Follow the prompts when asked in the process.
 ### 🧐 How-to: Create new user
 
 1. Generate a hashed password for the user by executing `mkpasswd --method=sha-512 ` and put it in the `initialHashedPassword`)
-2. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from ikostov2 and enable/disable the programs you need for your user)
+2. Create a directory with name of your user at `home/{username}` and under that, create `default.nix` (you can copy `default.nix` content from iliyan and enable/disable the programs you need for your user)
 3. Build your system and home manager (e.g `make build`)
 4. You are all set!
 
