@@ -82,9 +82,9 @@
   };
 
   services.libinput.enable = true;
-  users.users.ikostov2 = {
+  users.users.iliyan = {
     isNormalUser = true;
-    description = "ikostov2";
+    description = "iliyan";
     extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel"];
     packages = with pkgs; [
       postman
@@ -142,7 +142,7 @@
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "ikostov2";
+  services.displayManager.autoLogin.user = "iliyan";
   # Workaround for GNOME auto:wlogin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
