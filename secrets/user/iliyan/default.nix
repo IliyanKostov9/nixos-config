@@ -4,7 +4,7 @@ _: {
     age.generateKey = true;
     defaultSopsFile = builtins.path {
       path = ./env_vars.yaml;
-      name = "sops-usr-file-ikostov2-env_vars";
+      name = "sops-usr-file-iliyan-env_vars";
     };
     defaultSopsFormat = "yaml";
 
@@ -25,13 +25,13 @@ _: {
       work_name = {
         sopsFile = builtins.path {
           path = ./work.yaml;
-          name = "sops-usr-secrets-ikostov2-work_name";
+          name = "sops-usr-secrets-iliyan-work_name";
         };
       };
       work_project1_name = {
         sopsFile = builtins.path {
           path = ./work.yaml;
-          name = "sops-usr-secrets-ikostov2-work_project1_name";
+          name = "sops-usr-secrets-iliyan-work_project1_name";
         };
       };
     };

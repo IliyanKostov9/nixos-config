@@ -5,6 +5,7 @@
   shellAliases = {
     # Python
     py = "python3";
+    uy = "uv run";
     pip = "uv pip";
     venv = "source .venv/bin/activate";
 

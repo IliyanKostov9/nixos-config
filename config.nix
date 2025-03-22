@@ -1,9 +1,9 @@
 {nixos-hardware}: {
   users = {
-    ikostov2 = {
+    iliyan = {
       isNormalUser = true;
       createHome = false;
-      description = "ikostov2 profile";
+      description = "Iliyan's profile";
       extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel"];
       initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
@@ -20,7 +20,7 @@
   hosts = {
     A320M-PRO = {
       host-name = "baks";
-      auto-login-user = "ikostov2";
+      auto-login-user = "iliyan";
       variables = {
         DEVICE = "desktop";
         MODEL = "A320M-PRO";
@@ -45,7 +45,7 @@
 
     Thinkpad-p53 = {
       host-name = "baks";
-      auto-login-user = "ikostov2";
+      auto-login-user = "iliyan";
       variables = {
         DEVICE = "laptop";
         MODEL = "Thinkpad-p53";
