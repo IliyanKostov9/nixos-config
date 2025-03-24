@@ -46,7 +46,7 @@ _: {
         # "right" = "f4";
         "rightshift" = "down";
         #"rightcontrol" = "overload(right_control_layer, rightcontrol)";
-        "rightcontrol" = "up";
+        "rightcontrol" = "right";
         "rightalt" = "up";
       };
     };
