@@ -16,6 +16,7 @@
     # venv = "eval $(pdm venv activate)";
     pdm-sync = "pdm install && pdm sync --clean";
     pdm-export = "pdm export -o requirements.txt";
+    uv-export = "uv pip compile pyproject.toml -o requirements.txt";
 
     # Maven
     mvn-jar = "mvn -f pom.xml clean package";
