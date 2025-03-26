@@ -3,7 +3,7 @@
   users,
   ...
 }: {
-  # REQUIRED: for initialHashedPassword
+  # NOTE: REQUIRED: for initialHashedPassword
   users.mutableUsers = false;
   users.users =
     builtins.mapAttrs

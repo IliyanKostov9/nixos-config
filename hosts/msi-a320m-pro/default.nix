@@ -3,5 +3,7 @@ _: {
     ./mount
     ./displayManager
     ./systemd
+    ../common
+    ../common/gpu/nvidia
   ];
 }

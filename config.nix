@@ -18,16 +18,15 @@
   };
 
   hosts = {
-    A320M-PRO = {
+    MSI-A320M-PRO = {
       host-name = "baks";
       auto-login-user = "iliyan";
       variables = {
         DEVICE = "desktop";
-        MODEL = "A320M-PRO";
-        CPU = "Amd";
+        MODEL = "MSI-A320M-PRO";
       };
       modules = [
-        ./hosts/desktop
+        ./hosts/msi-a320m-pro
         nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 
@@ -43,16 +42,15 @@
       };
     };
 
-    Thinkpad-p53 = {
+    Lenovo-Thinkpad-p53 = {
       host-name = "baks";
       auto-login-user = "iliyan";
       variables = {
         DEVICE = "laptop";
-        MODEL = "Thinkpad-p53";
-        CPU = "Intel";
+        MODEL = "Lenovo-Thinkpad-p53";
       };
       modules = [
-        ./hosts/laptop
+        ./hosts/lenovo-thinkpad-p53
         nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 
@@ -60,6 +58,33 @@
         tmp.useTmpfs = true;
         kernelModules = ["kvm-intel"];
         kernelParams = ["i915.force_probe=3e9b" "nvidia-drm.fbdev=1"];
+        initrd = {
+          luks.devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
+          luks.devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
+          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
+        };
+      };
+    };
+
+    Lenovo-IdeaPad-Pro5 = {
+      host-name = "baks";
+      auto-login-user = "iliyan";
+      variables = {
+        DEVICE = "laptop";
+        MODEL = "Lenovo-IdeaPad-Pro5";
+      };
+      modules = [
+        ./hosts/lenovo-ideapad-pro5
+        nixos-hardware.nixosModules.common-cpu-intel-lunar-lake
+        nixos-hardware.nixosModules.common-gpu-intel
+        nixos-hardware.nixosModules.common-pc-laptop-ssd
+        nixos-hardware.nixosModules.common-pc-laptop
+      ];
+
+      boot = {
+        tmp.useTmpfs = true;
+        kernelModules = ["kvm-intel"];
+        kernelParams = ["i915.force_probe=3e9b"];
         initrd = {
           luks.devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
           luks.devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";

@@ -32,6 +32,10 @@ in {
           ids = ["*"];
           settings = {
             main = cfg.mappings;
+            "right_control_layer" = {
+              q = "1";
+              w = "2";
+            };
           };
         };
       };
