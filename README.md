@@ -3,7 +3,7 @@
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
 [![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/iliyan-kostov9/nixos-config/flake-checker.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
-[![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/gitguardian.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
+[![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 <!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-24.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
