@@ -26,7 +26,7 @@
         MODEL = "MSI-A320M-PRO";
       };
       modules = [
-        ./hosts/a320m-pro
+        ./hosts/msi-a320m-pro
         nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 

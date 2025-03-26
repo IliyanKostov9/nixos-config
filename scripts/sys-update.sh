@@ -10,9 +10,9 @@ else
     =============================================================
     | Choose on what system to build for the following options: |
     |###########################################################|
-    | 1.MSI-A320M-PRO                                               |
-    | 2.Lenovo-Thinkpad-p53                                            |
-    | 3.Lenovo-IdeaPad-Pro5                                            |
+    | 1.MSI-A320M-PRO                                           |
+    | 2.Lenovo-Thinkpad-p53                                     |
+    | 3.Lenovo-IdeaPad-Pro5                                     |
     =============================================================
     """
 
