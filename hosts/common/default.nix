@@ -1,8 +1,8 @@
 _: {
   imports = [
-    ../../programs/system
     ./options
     ./hardware
+    ../../programs/system
     ../../secrets/system
   ];
 }

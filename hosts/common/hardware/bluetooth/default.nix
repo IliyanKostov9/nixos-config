@@ -1,7 +1,7 @@
 _: {
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = false;
+    powerOnBoot = true;
     settings.Policy.AutoEnable = "true";
     settings = {
       General = {
