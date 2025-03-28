@@ -58,7 +58,20 @@ in {
             ];
           };
 
-          signal-desktop = {
+          whatsapp = {
+            executable = "${pkgs.whatsie}/bin/whatsie";
+            desktop = "${pkgs.whatsie}/share/applications/whatsie.desktop";
+            extraArgs = [
+              "--noprofile"
+              "--env=GTK_THEME=Adwaita:dark"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+            ];
+          };
+
+          signal = {
             executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
             profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
             extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
