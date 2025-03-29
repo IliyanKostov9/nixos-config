@@ -1,11 +1,15 @@
 #!/bin/bash
 
+# NOTE: Requirements
+# GITLAB_GROUP_ID (group1/group2/project) don't start with https
+# AZURE_ORG
+# $AZURE_PROJECT
+
 if [[ -z "$AZURE_ORG" || -z "$AZURE_PROJECT" || -z "$GITLAB_GROUP_ID" ]]; then
     echo "Error: Missing environment variables."
     echo "Ensure AZURE_ORG, AZURE_PROJECT, and GITLAB_GROUP_ID are set."
     exit 1
 fi
-
 
 echo "Authenticating with Azure DevOps..."
 az devops configure --defaults organization="https://dev.azure.com/$AZURE_ORG" project="$AZURE_PROJECT"
@@ -28,7 +32,7 @@ echo "$REPOS" | jq -c '.[]' | while read -r repo; do
     fi
 
     echo "Cloning $REPO_NAME from Azure DevOps..."
-    git clone "git@ssh.dev.azure.com:v3/${AZURE_ORG}/${AZURE_PROJECT}/$REPO_NAME"
+    git clone "git@ssh.dev.azure.com:v3/${AZURE_ORG}/${AZURE_PROJECT}/$REPO_NAME" || true # NOTE: for empty repos situation
     cd "$REPO_NAME" || exit
 
     git branch -r | grep -v '\->' | while read -r remote; do
