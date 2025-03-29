@@ -30,6 +30,7 @@ with lib; let
             done
       '';
     };
+
   git-rob =
     pkgs.writeShellApplication
     {
@@ -42,6 +43,20 @@ with lib; let
       excludeShellChecks = ["SC2153"];
       text = builtins.readFile ../bin/bash/git/git-rob.sh;
     };
+
+  gitlab-rob =
+    pkgs.writeShellApplication
+    {
+      name = "gitlab-rob";
+      runtimeInputs = with pkgs; [
+        git
+        glab
+        (azure-cli.withExtensions [azure-cli.extensions.azure-devops])
+      ];
+      excludeShellChecks = ["SC2153"];
+      text = builtins.readFile ../bin/bash/git/gitlab-rob.sh;
+    };
+
   git-history-rebase =
     pkgs.writeShellApplication
     {
@@ -55,6 +70,7 @@ in {
     git-rm-local-brv
     git-all
     git-rob
+    gitlab-rob
     git-history-rebase
   ];
 }
