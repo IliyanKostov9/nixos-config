@@ -1,50 +1,50 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# Received via command line
-git_project_name=$1
+if [[ -z "$AZURE_ORG" || -z "$AZURE_PROJECT" || -z "$GITLAB_GROUP_ID" ]]; then
+    echo "Error: Missing environment variables."
+    echo "Ensure AZURE_ORG, AZURE_PROJECT, and GITLAB_GROUP_ID are set."
+    exit 1
+fi
 
-git_source_owner="${GIT_SOURCE_OWNER}"
-git_source_org="${GIT_SOURCE_ORG}"
-git_dest_owner="${GIT_DEST_OWNER}"
-git_dest_project="${GIT_DEST_PROJECT}"
-git_dest_ssh_domain="${GIT_DEST_SSH_DOMAIN}"
 
-does_git_source_repo_exist=$(gh search repos "${git_project_name}" --owner="${git_source_org}" | head -1 )
-# Commented due to taking too long
-# does_git_dest_repo_exist=$(az repos show --repository testarino --detect false --org https://${git_dest_ssh_domain}/${git_dest_owner}/ -p ${git_dest_project})
+echo "Authenticating with Azure DevOps..."
+az devops configure --defaults organization="https://dev.azure.com/$AZURE_ORG" project="$AZURE_PROJECT"
 
-if [ -z "$does_git_source_repo_exist" ]; then
-    echo "Source repo: $git_project_name doesn't exist!"
-else
+echo "Fetching repositories from Azure DevOps..."
+REPOS=$(az repos list --query "[].{name:name, cloneUrl:remoteUrl}" -o json)
 
-    echo "Now starting the rob process: $git_project_name"
-    az repos create --name "${git_project_name}" --detect false --org "https://${git_dest_ssh_domain}/${git_dest_owner}/" -p "${git_dest_project}"
+if [[ "$REPOS" == "[]" ]]; then
+    echo "No repositories found in Azure DevOps project: $AZURE_PROJECT"
+    exit 1
+fi
 
-    # git clone "git@${git_source_owner}:${git_source_org}/${git_project_name}.git"
-    gh repo clone "https://${git_source_owner}/${git_source_org}/${git_project_name}.git"
-    cd "${git_project_name}"
+echo "$REPOS" | jq -c '.[]' | while read -r repo; do
+    REPO_NAME=$(echo "$repo" | jq -r '.name')
+    echo "Processing repository: $REPO_NAME"
+
+    if glab repo view "$GITLAB_GROUP_ID/$REPO_NAME" &>/dev/null; then
+        echo "Repository $REPO_NAME already exists in GitLab. Skipping..."
+        continue
+    fi
+
+    echo "Cloning $REPO_NAME from Azure DevOps..."
+    git clone "git@ssh.dev.azure.com:v3/${AZURE_ORG}/${AZURE_PROJECT}/$REPO_NAME"
+    cd "$REPO_NAME" || exit
 
     git branch -r | grep -v '\->' | while read -r remote; do
         git branch --track "${remote#origin/}" "$remote" || true
     done
 
-    # Default: SSH Azure Repos
-    git remote set-url origin "git@ssh.${git_dest_ssh_domain}:v3/${git_dest_owner}/${git_dest_project}/$(basename "$(git rev-parse --show-toplevel)")"
+    export NO_PROMPT=1
+    glab repo create "$REPO_NAME" --private --group "$GITLAB_GROUP_ID"
 
-    git push --all origin
+    git remote add gitlab "git@gitlab.com:$GITLAB_GROUP_ID/$REPO_NAME.git"
+    git push --all gitlab
 
     cd ..
-    echo "Git rob finished for project ${git_project_name}!"
+    rm -rf "$REPO_NAME"
 
-fi
+    echo "Successfully migrated $REPO_NAME to GitLab."
+done
 
-# Prerequisites
-# ###########
-# Dependencies
-# GH CLI
-# Az CLI + Az DevOps extension
-# gh auth login # command
-# az devops login # command
-# #######
-# Usage
-# git-rob <REPO-NAME>
+echo "Migration completed!"

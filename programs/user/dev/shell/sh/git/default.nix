@@ -51,9 +51,9 @@ with lib; let
       runtimeInputs = with pkgs; [
         git
         glab
+        jq
         (azure-cli.withExtensions [azure-cli.extensions.azure-devops])
       ];
-      excludeShellChecks = ["SC2153"];
       text = builtins.readFile ../bin/bash/git/gitlab-rob.sh;
     };
 

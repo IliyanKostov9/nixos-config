@@ -18,6 +18,10 @@
         flake-checker.enable = true;
         # lychee.enable = true;
       };
+
+      packages = with pkgs; [
+        sops
+      ];
     };
   };
 }
