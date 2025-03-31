@@ -5,31 +5,45 @@
   ...
 }: let
   inherit (config.sops) secrets;
-  work_project1_name =
+  get-secret = {
+    secret-name,
+    fallback-secret-name,
+  }: let
+  in
     if (!lib.trivial.inPureEvalMode)
-    then builtins.readFile secrets.work_project1_name.path
-    else "Work_Project1";
-  work_name =
-    if (!lib.trivial.inPureEvalMode)
-    then builtins.readFile secrets.work_name.path
-    else "Work";
+    then let
+      does-secret-exist =
+        builtins.hasAttr secret-name secrets && builtins.pathExists secrets."${secret-name}".path;
+    in
+      if does-secret-exist
+      then builtins.readFile secrets."${secret-name}".path
+      else lib.warn "> Cannot set Work_Name_New as env varibale, because it's not found in the secret keystore! Falling back to ${fallback-secret-name}" fallback-secret-name
+    else lib.warn "> Cannot assign secret in pure eval mode! Falling back to ${fallback-secret-name}" fallback-secret-name;
+
+  work_name = get-secret {
+    secret-name = "work_name";
+    fallback-secret-name = "Work";
+  };
+  work_project1_name = get-secret {
+    secret-name = "work_project1_name";
+    fallback-secret-name = "Work_Project1";
+  };
+  work_name_new = get-secret {
+    secret-name = "work_name_new";
+    fallback-secret-name = "Work_Name_New";
+  };
+
   env-vars =
     if (!lib.trivial.inPureEvalMode)
     then {
       AZURE_DEVOPS_EXT_PAT = "$(command cat ${secrets.azure_devops_ext_pat.path})";
       GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
-
       GH_TOKEN = "$(command cat ${secrets.gh_token.path})";
-      GIT_SOURCE_OWNER = "$(command cat ${secrets.git_source_owner.path})";
-      GIT_SOURCE_ORG = "$(command cat ${secrets.git_source_org.path})";
-      GIT_DEST_OWNER = "$(command cat ${secrets.git_dest_owner.path})";
-      GIT_DEST_PROJECT = "$(command cat ${secrets.git_dest_project.path})";
-      GIT_DEST_SSH_DOMAIN = "$(command cat ${secrets.git_dest_ssh_domain.path})";
 
       TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
       TF_ORG = "$(command cat ${secrets.tf_org.path})";
     }
-    else {};
+    else lib.warn "> Cannot set user env variables, because the build is in pure eval mode!" {};
 in {
   imports = [
     # ./options/overlays
@@ -48,7 +62,7 @@ in {
     browsers.librewolf = {
       package = null; # NOTE: For firejail
       enable = true;
-      profiles = import ./options/librewolf/profiles {inherit pkgs work_name;};
+      profiles = import ./options/librewolf/profiles {inherit pkgs work_name work_name_new;};
     };
 
     dev = {
@@ -139,6 +153,8 @@ in {
         "l" = "Social";
         "y" = "Youtube";
         "d" = work_name;
+        "o" = work_project1_name;
+        "a" = work_name_new;
         "t" = "Test";
       };
 
