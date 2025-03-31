@@ -22,6 +22,7 @@ if [[ "$REPOS" == "[]" ]]; then
     exit 1
 fi
 
+export GIT_LFS_SKIP_SMUDGE="1 git push --force"
 echo "$REPOS" | jq -c '.[]' | while read -r repo; do
     REPO_NAME=$(echo "$repo" | jq -r '.name')
     echo "Processing repository: $REPO_NAME"
@@ -32,7 +33,8 @@ echo "$REPOS" | jq -c '.[]' | while read -r repo; do
     fi
 
     echo "Cloning $REPO_NAME from Azure DevOps..."
-    git clone "git@ssh.dev.azure.com:v3/${AZURE_ORG}/${AZURE_PROJECT}/$REPO_NAME" || true # NOTE: for empty repos situation
+
+    git clone "git@ssh.dev.azure.com:v3/${AZURE_ORG}/${AZURE_PROJECT}/$REPO_NAME" 2>&1 || true
     cd "$REPO_NAME" || exit
 
     git branch -r | grep -v '\->' | while read -r remote; do

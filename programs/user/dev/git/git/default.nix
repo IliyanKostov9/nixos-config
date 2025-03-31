@@ -57,6 +57,9 @@ in {
       };
 
       extraConfig = {
+        lfs.allowincompletepush = true;
+        filter.lfs.required = false;
+        "lfs.https://gitlab.com/*/info/lfs.locksverify" = true;
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
