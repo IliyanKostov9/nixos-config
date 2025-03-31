@@ -1,8 +1,10 @@
-{host_attr, ...}: {
+_: let
+  auto-login-user = "iliyan";
+in {
   services = {
     displayManager.autoLogin = {
       enable = true;
-      user = host_attr.auto-login-user;
+      user = auto-login-user;
     };
   };
 }

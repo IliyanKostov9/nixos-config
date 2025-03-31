@@ -14,16 +14,25 @@ with lib.trivial; let
     else if inPureEvalMode
     then warn "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enable secure boot!" false
     else warn "> Secure boot is NOT enabled" false;
+
+  boot-initrd-availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
+  boot-tmp-useTmpfs = true;
+  boot-merged =
+    boot
+    // {
+      tmp.useTmpfs = boot-tmp-useTmpfs;
+      initrd.availableKernelModules = boot-initrd-availableKernelModules;
+    };
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   boot =
-    boot
+    boot-merged
     // {
       kernelPackages = pkgs-unstable.linuxPackages_6_13;
       loader = {
-        # Note: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
+        # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
         systemd-boot.enable = !is-secure-boot-enabled;
         efi.canTouchEfiVariables = true;
         timeout = 10;
