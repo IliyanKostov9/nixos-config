@@ -57,6 +57,8 @@ in {
       };
 
       extraConfig = {
+        lfs.allowincompletepush = true;
+        filter.lfs.required = false;
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;

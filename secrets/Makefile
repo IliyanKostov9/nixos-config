@@ -13,6 +13,8 @@ unlock-sys:
 unlock-usr:
 	sops user/${USER}/${SECRET_FILE}.yaml
 
+unlock-work:
+	sops user/${USER}/work.yaml
 
 .PHONY: print 
 print:
@@ -29,4 +31,5 @@ setup:
 	sudo chown ${USER}:users /var/lib/sops-nix/key.txt
 	sudo chmod 600 /var/lib/sops-nix/key.txt
 	echo "Setup completed! Now create secrets.yaml file by using 'make unlock SECRET_FILE=my_secret_file'"
+
 
