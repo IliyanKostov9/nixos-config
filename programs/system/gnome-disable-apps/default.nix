@@ -28,15 +28,15 @@ in {
       gnome-music
       gnome-connections
       gnome-font-viewer
+      # gnome-calendar
 
       # baobab # disk usage analyzer
-      # cheese # photo booth
+      cheese # photo booth
       # seahorse # password manager
       # file-roller # archive manager
-      # gnome-calendar
-      # gnome-photos
-      # gnome-screenshot
-      # gnome-system-monitor
+      gnome-photos
+      gnome-screenshot
+      gnome-system-monitor
       # gnome-weather
       # gnome-disk-utility
     ];

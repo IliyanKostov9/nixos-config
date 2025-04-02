@@ -75,6 +75,7 @@ in {
             "${mod}+q" = "exec setxkbmap us";
             "${mod}+b" = "exec setxkbmap -layout bgd";
             "${mod}+g" = "exec setxkbmap -layout de";
+            "${mod}+c" = "exec setxkbmap -layout fr";
 
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";

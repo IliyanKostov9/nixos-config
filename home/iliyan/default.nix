@@ -8,7 +8,8 @@
   get-secret = {
     secret-name,
     fallback-secret-name,
-  }: if (!lib.trivial.inPureEvalMode)
+  }:
+    if (!lib.trivial.inPureEvalMode)
     then let
       does-secret-exist =
         builtins.hasAttr secret-name secrets && builtins.pathExists secrets."${secret-name}".path;
