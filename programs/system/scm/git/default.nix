@@ -12,7 +12,7 @@ in {
     programs.git = {
       enable = true;
       prompt.enable = true;
-      lfs.enable = true;
+      lfs.enable = false;
     };
   };
 }

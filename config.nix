@@ -92,24 +92,22 @@
     };
   };
 
-  Lenovo-Thinpad-E16 = {
+  Lenovo-Legion-16ahp9 = {
     variables = {
       DEVICE = "laptop";
-      MODEL = "Lenovo-Thinkpad-E16";
+      MODEL = "Lenovo-Legion-16AHP9";
     };
     modules = [
-      ./hosts/lenovo-thinkpad-e16
-      nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
+      ./hosts/lenovo-legion-16ahp9
+      nixos-hardware.nixosModules.lenovo-legion-16ahp9
     ];
 
     boot = {
       kernelModules = ["kvm-amd" "k10temp"];
-      kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never"];
+      kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
       initrd = {
         availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
         luks = {
-          devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
-          devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
         };
       };
     };
