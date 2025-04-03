@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./modules
     ../common
     ../common/gpu/nvidia/laptop
     ../common/gpu/nvidia/laptop/prime/amd
