@@ -12,7 +12,7 @@ else
     |###########################################################|
     | 1.MSI-A320M-PRO                                           |
     | 2.Lenovo-Thinkpad-p53                                     |
-    | 3.Lenovo-IdeaPad-Pro5                                     |
+    | 3.Lenovo-Legion-16ahp9                                    |
     =============================================================
     """
 
@@ -25,7 +25,7 @@ else
         model="Lenovo-Thinkpad-p53";
 
     elif [ "$choice" = "3" ]; then
-        model="Lenovo-IdeaPad-Pro5";
+        model="Lenovo-Legion-16ahp9";
 
     else
         echo "Error: wrong choice!";

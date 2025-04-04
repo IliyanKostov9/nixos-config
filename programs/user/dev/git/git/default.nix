@@ -46,7 +46,6 @@ in {
     programs.git = {
       enable = true;
       inherit (cfg) userName userEmail;
-      lfs.enable = false;
       ignores = [
         "*~"
         "*.swp"
@@ -57,8 +56,6 @@ in {
       };
 
       extraConfig = {
-        lfs.allowincompletepush = true;
-        filter.lfs.required = false;
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
