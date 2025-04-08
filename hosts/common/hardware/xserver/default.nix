@@ -36,6 +36,7 @@
         enable = true;
       };
 
+      console.keyMap = "dvorak";
       # Configure keymap in X11
       xkb = {
         layout = "us";

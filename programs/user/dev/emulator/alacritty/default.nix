@@ -11,7 +11,9 @@ with lib.types; let
   font-size =
     if builtins.match "desktop" (builtins.getEnv "DEVICE") != null
     then 12
-    else 8;
+    else 12;
+  # NOTE: Lenovo legion needs font 12
+  # else 8;
   font-name = config.modules.preferences.fonts.name;
 
   scheduled-theme = {

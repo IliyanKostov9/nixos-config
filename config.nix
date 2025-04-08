@@ -90,24 +90,24 @@
         };
       };
     };
-  };
 
-  Lenovo-Legion-16ahp9 = {
-    variables = {
-      DEVICE = "laptop";
-      MODEL = "Lenovo-Legion-16AHP9";
-    };
-    modules = [
-      ./hosts/lenovo-legion-16ahp9
-      nixos-hardware.nixosModules.lenovo-legion-16ahp9
-    ];
+    Lenovo-Legion-16ahp9 = {
+      variables = {
+        DEVICE = "laptop";
+        MODEL = "Lenovo-Legion-16ahp9";
+      };
+      modules = [
+        ./hosts/lenovo-legion-16ahp9
+        nixos-hardware.nixosModules.lenovo-legion-16aph8
+      ];
 
-    boot = {
-      kernelModules = ["kvm-amd" "k10temp"];
-      kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
-      initrd = {
-        availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-        luks = {
+      boot = {
+        kernelModules = ["kvm-amd" "k10temp"];
+        kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
+        initrd = {
+          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
+          luks = {
+          };
         };
       };
     };

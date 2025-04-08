@@ -49,6 +49,7 @@ in {
     xsession.windowManager.i3 = {
       enable = true;
       config = {
+        terminal = "alactritty";
         modifier = "Mod4";
         floating.modifier = "Mod4";
         fonts = {
@@ -227,6 +228,7 @@ in {
 
         # Disable touchpad
         exec --no-startup-id xinput disable "Elan Touchpad"
+        exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
 
         # Enable transparency
         # exec --no-startup-id picom &
@@ -303,7 +305,8 @@ in {
               block = "backlight";
               format = " $icon $brightness |";
               invert_icons = true;
-              device = "intel_backlight";
+              # NOTE: for amd cpu this option is not required!
+              # device = "intel_backlight";
               missing_format = "";
             };
 

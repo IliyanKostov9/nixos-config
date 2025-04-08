@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./lenovo-legion
     ./audio
     ./display-manager
     ./app-search

@@ -13,7 +13,7 @@ in {
   services.openvpn.servers = {
     personalVPN = {
       config = "config ${ovpn-path}";
-      authUserPass = lib.mkIf (!lib.trivial.inPureEvalMode) {
+      authUserPass = lib.mkIf (!lib.trivial.inPureEvalMode && is-ovpn-present) {
         username = builtins.readFile secrets.ovpn_username.path;
         password = builtins.readFile secrets.ovpn_password.path;
       };

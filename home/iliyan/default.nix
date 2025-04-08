@@ -56,7 +56,7 @@ in {
       red-light.enable = true;
     };
     api.postman.enable = true;
-    rdp.citrix.enable = true;
+    #rdp.citrix.enable = true;
 
     browsers.librewolf = {
       package = null; # NOTE: For firejail

@@ -33,5 +33,5 @@ else
     fi;
 
     echo "Building $model system...";
-    sudo -v && sudo nixos-rebuild switch --flake .#$model --show-trace --impure |& nom;
+    sudo -v && sudo nixos-rebuild switch --flake .#$model --show-trace --impure
 fi
