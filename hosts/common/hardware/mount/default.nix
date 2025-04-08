@@ -10,19 +10,23 @@ _: {
       options = ["fmask=0022" "dmask=0022"];
     };
   };
+
   swapDevices = [
-    {
-      device = "/dev/disk/by-label/swap";
-      priority = 3;
-      randomEncryption.enable = false;
-      # size = 12288;
-    }
   ];
+
+  # swapDevices = [
+  #   {
+  #     device = "/dev/disk/by-label/swap";
+  #     priority = 3;
+  #     randomEncryption.enable = false;
+  # size = 12288;
+  # }
+  # ];
 
   zramSwap = {
     priority = 4;
     enable = true;
-    memoryPercent = 60;
+    memoryPercent = 40;
     algorithm = "zstd";
   };
 }

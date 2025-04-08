@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+  console.keyMap = "dvorak";
   services = {
     # Enable for using I3
     displayManager.sddm = {
@@ -36,7 +37,6 @@
         enable = true;
       };
 
-      console.keyMap = "dvorak";
       # Configure keymap in X11
       xkb = {
         layout = "us";

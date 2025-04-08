@@ -1,5 +1,10 @@
 {pkgs, ...}: {
   security = {
+    tpm2 = {
+      enable = true;
+      pkcs11.enable = true;
+      tctiEnvironment.enable = true;
+    };
     rtkit.enable = true;
     apparmor = {
       enable = true;
