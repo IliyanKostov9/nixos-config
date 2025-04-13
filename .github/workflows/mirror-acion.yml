@@ -7,7 +7,7 @@ jobs:
     name: checkout
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -17,7 +17,7 @@ jobs:
           REPO_FULL_NAME="${{ github.repository }}"
           REPO_NAME="${REPO_FULL_NAME#*/}.git"
           echo "Repo name extracted: $REPO_NAME"
-          echo "::set-output name=repo_name::$REPO_NAME"
+          echo "repo_name=$REPO_NAME" >> "$GITHUB_OUTPUT"
 
       - name: Mirror to Codeberg
         uses: yesolutions/mirror-action@master
@@ -25,6 +25,6 @@ jobs:
           REMOTE: "https://codeberg.org/${{ secrets.GIT_USERNAME }}/${{ steps.repo_name.outputs.repo_name }}"
           GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
           GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
-          # Push all branches
+          # NOTE: Push all branches
           PUSH_ALL_REFS: "true"
           DEBUG: "true"
