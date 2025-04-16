@@ -30,11 +30,11 @@ in {
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh"
           # Ublock origin
-          "cjpalhdlnbpafiamejdnhcphjbkeiagm"
+          "ddkjiahejlhfcafbddmgiahcphecmpfh"
           # Privacy Badger
           "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # User agent switcher
-          # "bhchdcejhohfmigjafbampogmaanbfkg"
+          "bhchdcejhohfmigjafbampogmaanbfkg"
           # I don't care about cookies
           "fihnjjcciajhdojfnbdddfaoknhalnja"
           # Canvas blocker

@@ -309,19 +309,6 @@ in {
               # device = "intel_backlight";
               missing_format = "";
             };
-            bluetooth = {
-              block = "bluetooth";
-              mac = "08:BF:B8:4C:CD:5F";
-              format = " $icon $name{$percentage $battery_icon $available|} ";
-              disconnected_format = " $icon{ $name|} ";
-              click = [
-                {
-                  button = "left";
-
-                  cmd = "blueman-manager";
-                }
-              ];
-            };
 
             keyboard-layout = {
               block = "keyboard_layout";
@@ -358,7 +345,6 @@ in {
             external-ip
             battery
             backlight
-            bluetooth
             keyboard-layout
             sound
             time

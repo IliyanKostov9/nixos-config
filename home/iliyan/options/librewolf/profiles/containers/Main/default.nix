@@ -24,21 +24,21 @@
     id = 3;
     name = "Google";
     color = "yellow";
-    icon = "chill";
+    icon = "cart";
   };
 
   Microsoft = {
     id = 4;
     name = "Microsoft";
     color = "blue";
-    icon = "fingerprint";
+    icon = "cart";
   };
 
   Amazon = {
     id = 5;
     name = "Amazon";
     color = "yellow";
-    icon = "fingerprint";
+    icon = "cart";
   };
 
   Forums = {
@@ -52,6 +52,13 @@
     id = 7;
     name = "Chat";
     color = "green";
-    icon = "chill";
+    icon = "food";
+  };
+
+  BG = {
+    id = 8;
+    name = "Bulgaria";
+    color = "green";
+    icon = "fingerprint";
   };
 }
