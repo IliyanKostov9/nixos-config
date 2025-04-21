@@ -61,4 +61,11 @@
     color = "green";
     icon = "fingerprint";
   };
+
+  France = {
+    id = 9;
+    name = "France";
+    color = "toolbar";
+    icon = "fingerprint";
+  };
 }
