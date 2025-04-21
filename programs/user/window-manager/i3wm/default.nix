@@ -227,7 +227,10 @@ in {
         exec --no-startup-id i3-msg "workspace 1"
 
         # Disable touchpad
+        #
+        ## Thinkpad
         exec --no-startup-id xinput disable "Elan Touchpad"
+        ## Legion
         exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
 
         # Enable transparency
