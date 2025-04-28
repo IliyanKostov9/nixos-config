@@ -4,7 +4,7 @@ _: let
   # en_US.UTF-8
   # bg_BG.UTF-8
 in {
-  time.timeZone = "Europe/Sofia";
+  time.timeZone = "Europe/Paris";
 
   i18n = {
     inherit defaultLocale;
