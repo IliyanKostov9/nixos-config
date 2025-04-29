@@ -12,7 +12,6 @@ in {
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      tray.enable = true;
       # BUG: For some reason the settings option is not found in home manager
       #   guiAddress = "127.0.0.1:8384";
       #   settings = {
