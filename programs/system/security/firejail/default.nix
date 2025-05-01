@@ -55,6 +55,11 @@ in {
               "--dbus-user.talk=org.freedesktop.ScreenSaver"
               "--dbus-user.talk=org.freedesktop.portal.Desktop"
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+              "--nonewprivs"
+              "--noblacklist=/dev/video0"
+              "--noblacklist=/dev/video1"
+              "--private-dev"
+              "--private-cache"
             ];
           };
 
