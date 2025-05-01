@@ -1,7 +1,6 @@
 _: {
   imports = [
     ./modules
-    ./displayManager
     ../common
     ../common/gpu/nvidia/laptop
     # NOTE: already provided by nixos modules

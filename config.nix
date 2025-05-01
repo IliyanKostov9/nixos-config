@@ -4,7 +4,7 @@
       isNormalUser = true;
       createHome = true;
       description = "Iliyan's profile";
-      extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "tss" "i2c"];
+      extraGroups = ["libvirtd" "adbusers" "kvm" "docker" "users" "networkmanager" "wheel" "tss"];
       initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
 
@@ -29,7 +29,7 @@
       ];
 
       boot = {
-        kernelModules = ["kvm-amd" "k10temp" "i2c-dev"];
+        kernelModules = ["kvm-amd" "k10temp"];
         kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
         initrd = {
           # NOTE: For some reason it's unable to boot when moved to boot nix module as common attr set
