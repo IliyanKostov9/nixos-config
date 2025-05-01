@@ -72,7 +72,7 @@
       };
       modules = [
         ./hosts/lenovo-ideapad-pro5
-        nixos-hardware.nixosModules.common-cpu-intel-lunar-lake
+        nixos-hardware.nixosModules.common-cpu-intel
         nixos-hardware.nixosModules.common-gpu-intel
         nixos-hardware.nixosModules.common-pc-laptop-ssd
         nixos-hardware.nixosModules.common-pc-laptop
