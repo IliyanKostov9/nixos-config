@@ -41,6 +41,10 @@
 
       TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
       TF_ORG = "$(command cat ${secrets.tf_org.path})";
+
+      ZVM_CURSOR_STYLE_ENABLED = "false";
+      ZVM_INIT_MODE = "sourcing";
+      AUTOPAIR_INIT_INHIBIT = "1";
     }
     else lib.warn "> Cannot set user env variables, because the build is in pure eval mode!" {};
 in {
@@ -78,8 +82,10 @@ in {
       editor.neovim.enable = true;
 
       emulator = {
+        default = "ghostty";
+        ghostty.enable = true;
         alacritty = {
-          enable = true;
+          enable = false;
           theme = "kanagawa_dragon";
           scheduled = false;
           start-hour = 7;
@@ -93,8 +99,8 @@ in {
         tmux = {
           enable = true;
           enable-dynamic-conf = true;
-          static-vals = ["$Work*" "$Work_Project1*"];
-          dynamic-vals = [work_name work_project1_name];
+          static-vals = ["$Work*" "$Work_Project1*" "$Work_New*"];
+          dynamic-vals = [work_name work_project1_name work_name_new];
         };
       };
 

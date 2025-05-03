@@ -7,14 +7,8 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.alacritty;
+  inherit (config.modules.preferences) fonts;
   opacity = 1.0;
-  font-size =
-    if builtins.match "desktop" (builtins.getEnv "DEVICE") != null
-    then 12
-    else 12;
-  # NOTE: Lenovo legion needs font 12
-  # else 8;
-  font-name = config.modules.preferences.fonts.name;
 
   scheduled-theme = {
     start-hour,
@@ -165,7 +159,7 @@ in {
         };
 
         font = {
-          size = font-size;
+          inherit (fonts) size;
           offset = {
             x = 0;
             y = 0;
@@ -176,19 +170,19 @@ in {
           };
 
           normal = {
-            family = "${font-name} Nerd Font";
+            inherit (fonts) family;
             style = "Medium";
           };
           bold = {
-            family = "${font-name} Nerd Font Mono";
+            family = fonts.family-bold;
             style = "Bold";
           };
           italic = {
-            family = "DejaVu Serif, Regular Italic";
+            family = fonts.family-italic;
             style = "Italic";
           };
           bold_italic = {
-            family = "DejaVu Serif, Regular Italic";
+            family = fonts.family-bold-italic;
             style = "Bold Italic";
           };
         };

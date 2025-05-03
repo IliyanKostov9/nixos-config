@@ -7,6 +7,7 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.ghostty;
+  inherit (config.modules.preferences) fonts;
 in {
   options.modules.dev.emulator.ghostty = {
     enable = mkOption {
@@ -19,9 +20,9 @@ in {
 
     theme = mkOption {
       type = str;
-      default = "gruvbox_material_hard_dark";
+      default = "Kanagawa Dragon";
       description = mkDoc ''
-        color scheme for ghostty
+        Color scheme for ghostty
       '';
     };
   };
@@ -36,28 +37,42 @@ in {
 
       settings = {
         gtk-titlebar = false;
-        inherit fontn-size;
+        font-size = fonts.size;
         inherit (cfg) theme;
-        command = "zsh";
+        font-family = fonts.family;
+        font-family-bold = fonts.family-bold;
+        font-family-italic = fonts.family-italic;
+        font-family-bold-italic = fonts.family-bold-italic;
+
+        shell-integration = "zsh";
         mouse-hide-while-typing = true;
-        window-save-state = "always";
-        cursor-style-blink = false;
-        font-thicken = false;
         shell-integration-features = "no-cursor";
-        # font-feature = [ "-calt" "-liga" "-dlig" ];
         adjust-cursor-thickness = "1";
-        window-decoration = false;
         cursor-style = "block";
-        # font-feature = "+liga";
-        # window-padding-x = 8;
-        # window-padding-y = 8;
-        font-family = "0xProto Nerd Font";
+        cursor-style-blink = false;
+        window-save-state = "always";
+        font-thicken = false;
+        window-decoration = false;
         confirm-close-surface = false;
         window-theme = "dark";
-        window-padding-x = 2;
-        window-padding-y = 2;
         window-padding-balance = true;
         window-padding-color = "extend";
+        resize-overlay = "never";
+        resize-overlay-position = "center";
+        resize-overlay-duration = "0s";
+        # background-opacity = 0.9;
+        # background-blur = true;
+
+        app-notifications = [
+          ''
+            no-clipboard-copy
+          ''
+        ];
+        keybind = [
+          ''
+            ctrl+alt+v=paste_from_clipboard
+          ''
+        ];
       };
     };
   };
