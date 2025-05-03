@@ -56,25 +56,23 @@ in {
         enableCompletion = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = false;
-        defaultKeymap = "vicmd";
         autocd = true;
         cdpath = [
           ''
             ~/Downloads
-
           ''
         ];
         history = {
           size = 10000;
           path = "${config.xdg.dataHome}/zsh/history";
         };
-        plugins = [
-          {
-            name = "vi-mode";
-            src = pkgs.zsh-vi-mode;
-            file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-          }
-        ];
+        # plugins = [
+        #   {
+        #     name = "vi-mode";
+        #     src = pkgs.zsh-vi-mode;
+        #     file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        #   }
+        # ];
         oh-my-zsh = {
           enable = true;
           theme = "af-purple-magic";
@@ -82,16 +80,21 @@ in {
           plugins = [
             ''
               direnv
+              vi-mode
             ''
           ];
         };
         inherit (common) shellAliases;
         inherit (common) sessionVariables;
-        initExtra = lib.mkOrder 1000 ''
-          source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-          bindkey '^f' autosuggest-accept;
-          bindkey -v
+        initExtra = ''
+          bindkey -M vicmd 'V' edit-command-line
         '';
+        # initExtra = lib.mkOrder 1000 ''
+        #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+        #   bindkey -v
+        #   bindkey '^f' autosuggest-accept;
+        #   bindkey -M viins '^Q' vi-cmd-modebindkey -M viins '^Q' vi-cmd-mode
+        # '';
       };
 
       programs.direnv = {

@@ -10,7 +10,7 @@ with inputs; rec {
       overlays = [
         # nixgl.overlay
         nur.overlays.default
-        alacritty-theme.overlays.default
+        # alacritty-theme.overlays.default
       ];
       config = {allowUnfree = true;};
     };

@@ -96,9 +96,10 @@ in {
             # "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
             # Default i3 options
-            "${mod}+Return" = "exec alacritty";
+            # "${mod}+Return" = "exec alacritty";
+            "${mod}+Return" = "exec ghostty";
             "${mod}+${shift}+q" = "kill";
-            "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal alacritty";
+            "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal ghostty";
             # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
             # Fallback to primary monitor
@@ -370,7 +371,8 @@ in {
       # android_notification
       font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";
       location = "center";
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      # terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal = "${pkgs.ghostty}/bin/ghostty";
       extraConfig = {
         show-icons = false;
         modi = "drun,run";

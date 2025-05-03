@@ -84,7 +84,7 @@ in {
       emulator = {
         ghostty.enable = true;
         alacritty = {
-          enable = true;
+          enable = false;
           theme = "kanagawa_dragon";
           scheduled = false;
           start-hour = 7;

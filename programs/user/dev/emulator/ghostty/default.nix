@@ -102,7 +102,6 @@ in {
         keybind = [
           ''
             ctrl+alt+v=paste_from_clipboard
-            action:ctrl+[ = "text:\x1b"
           ''
         ];
       };
