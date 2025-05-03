@@ -7,6 +7,7 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.alacritty;
+  fonts = config.modules.preferences.fonts;
   opacity = 1.0;
 
   scheduled-theme = {
@@ -158,7 +159,7 @@ in {
         };
 
         font = {
-          size = font-size;
+          size = fonts.size;
           offset = {
             x = 0;
             y = 0;
@@ -169,19 +170,19 @@ in {
           };
 
           normal = {
-            family = config.modules.preferences.fonts.family;
+            family = fonts.family;
             style = "Medium";
           };
           bold = {
-            family = config.modules.preferences.fonts.family-bold;
+            family = fonts.family-bold;
             style = "Bold";
           };
           italic = {
-            family = config.modules.preferences.fonts.family-italic;
+            family = fonts.family-italic;
             style = "Italic";
           };
           bold_italic = {
-            family = config.modules.preferences.fonts.family-bold-italic;
+            family = fonts.family-bold-italic;
             style = "Bold Italic";
           };
         };
