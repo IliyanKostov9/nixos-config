@@ -7,7 +7,6 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.ghostty;
-  font-name = config.modules.preferences.fonts.name;
   font-size =
     if builtins.match "desktop" (builtins.getEnv "DEVICE") != null
     then 12
