@@ -58,6 +58,8 @@ in {
         window-padding-balance = true;
         window-padding-color = "extend";
         resize-overlay = "never";
+        resize-overlay-position = "center";
+        resize-overlay-duration = "0s";
         # background-opacity = 0.9;
         # background-blur = true;
 
