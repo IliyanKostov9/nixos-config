@@ -7,7 +7,7 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.alacritty;
-  fonts = config.modules.preferences.fonts;
+  inherit (config.modules.preferences) fonts;
   opacity = 1.0;
 
   scheduled-theme = {
@@ -159,7 +159,7 @@ in {
         };
 
         font = {
-          size = fonts.size;
+          inherit (fonts) size;
           offset = {
             x = 0;
             y = 0;
@@ -170,7 +170,7 @@ in {
           };
 
           normal = {
-            family = fonts.family;
+            inherit (fonts) family;
             style = "Medium";
           };
           bold = {

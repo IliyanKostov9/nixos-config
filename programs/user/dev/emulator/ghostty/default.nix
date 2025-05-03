@@ -7,7 +7,7 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.ghostty;
-  fonts = config.modules.preferences.fonts;
+  inherit (config.modules.preferences) fonts;
 in {
   options.modules.dev.emulator.ghostty = {
     enable = mkOption {
