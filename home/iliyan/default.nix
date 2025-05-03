@@ -82,6 +82,7 @@ in {
       editor.neovim.enable = true;
 
       emulator = {
+        default = "ghostty";
         ghostty.enable = true;
         alacritty = {
           enable = false;

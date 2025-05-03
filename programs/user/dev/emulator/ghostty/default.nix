@@ -7,10 +7,7 @@
 with lib;
 with lib.types; let
   cfg = config.modules.dev.emulator.ghostty;
-  font-size =
-    if builtins.match "desktop" (builtins.getEnv "DEVICE") != null
-    then 12
-    else 12;
+  fonts = config.modules.preferences.fonts;
 in {
   options.modules.dev.emulator.ghostty = {
     enable = mkOption {
@@ -28,38 +25,6 @@ in {
         Color scheme for ghostty
       '';
     };
-
-    font-family = mkOption {
-      type = str;
-      default = "0xProto Nerd Font";
-      description = mkDoc ''
-        Font family
-      '';
-    };
-
-    font-family-bold = mkOption {
-      type = str;
-      default = "0xProto Nerd Font Mono";
-      description = mkDoc ''
-        Bold font family
-      '';
-    };
-
-    font-family-italic = mkOption {
-      type = str;
-      default = "DejaVu Serif, Regular Italic";
-      description = mkDoc ''
-        Italic font
-      '';
-    };
-
-    font-family-bold-italic = mkOption {
-      type = str;
-      default = "DejaVu Serif, Regular Italic";
-      description = mkDoc ''
-        Italic font bold
-      '';
-    };
   };
 
   config = mkIf cfg.enable {
@@ -72,8 +37,13 @@ in {
 
       settings = {
         gtk-titlebar = false;
-        inherit font-size;
-        inherit (cfg) theme font-family font-family-bold font-family-italic font-family-bold-italic;
+        font-size = fonts.size;
+        inherit (cfg) theme;
+        font-family = fonts.family;
+        font-family-bold = fonts.family-bold;
+        font-family-italic = fonts.family-italic;
+        font-family-bold-italic = fonts.family-bold-italic;
+
         shell-integration = "zsh";
         mouse-hide-while-typing = true;
         shell-integration-features = "no-cursor";

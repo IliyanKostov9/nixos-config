@@ -1,4 +1,20 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.modules.dev.emulator;
+in {
+  options.modules.dev.emulator = {
+    default = lib.mkOption {
+      type = lib.types.str;
+      default = "ghostty";
+      description = lib.mkDoc ''
+        Name of the terminal
+      '';
+    };
+  };
+
   imports = [
     ./macos
     ./ghostty
