@@ -162,10 +162,6 @@ in {
         "a" = work_name_new;
         "t" = "Test";
       };
-
-      firejail-mappings = {
-        "y" = "grayjay";
-      };
     };
 
     utils = {
