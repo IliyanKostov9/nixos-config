@@ -1,6 +1,6 @@
 {
   lib,
-  pkgs-unstable,
+  pkgs,
   modulesPath,
   host_attr,
   ...
@@ -21,7 +21,7 @@ in {
   boot =
     boot
     // {
-      kernelPackages = pkgs-unstable.linuxPackages_6_14;
+      # kernelPackages = pkgs.linuxPackages_6_14;
       tmp.useTmpfs = true;
       loader = {
         # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa

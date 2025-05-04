@@ -11,13 +11,23 @@ with lib.types; let
   settings = import ./about-config/settings;
   search = {
     force = true;
-    default = "DuckDuckGo";
-    privateDefault = "DuckDuckGo";
+    default = "Mullvad-Leta";
+    privateDefault = "Mullvad-Leta";
 
     engines = {
       DuckDuckGo = {
         urls = lib.singleton {
           template = "https://duckduckgo.com";
+
+          params = lib.singleton {
+            name = "q";
+            value = "{searchTerms}";
+          };
+        };
+      };
+      Mullvad-Leta = {
+        urls = lib.singleton {
+          template = "https://leta.mullvad.net/";
 
           params = lib.singleton {
             name = "q";

@@ -1,6 +1,4 @@
 {
-  intl.accept_languages = "de";
-
   identity.fxaccounts.enabled = false;
   middlemouse.paste = false;
   general.autoScroll = true;
