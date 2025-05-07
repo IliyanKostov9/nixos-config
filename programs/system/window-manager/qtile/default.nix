@@ -25,7 +25,7 @@ in {
         with pkgs.python3Packages; [
           qtile-extras
         ];
-      # configFile = ./my_qtile_config.py;
+      configFile = ./src/config.py;
     };
   };
 }
