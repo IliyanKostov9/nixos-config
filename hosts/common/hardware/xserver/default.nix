@@ -16,10 +16,7 @@
     xserver = {
       enable = true;
       # Enable for using GNOME
-      # displayManager.gdm.enable = true;
-
-      # Another display manager for i3
-      displayManager.lightdm.enable = false;
+      displayManager.gdm.enable = false;
 
       # Disable screen turning off after 10 mins
       deviceSection = ''
@@ -32,9 +29,6 @@
       desktopManager = {
         xterm.enable = false;
         gnome.enable = true;
-      };
-      windowManager.i3 = {
-        enable = true;
       };
 
       # Configure keymap in X11

@@ -6,8 +6,6 @@ _: {
     ./nixpkgs
     ./blueman
     ./env-vars
-    ./i3wm
-    ./qtile
     ./ssh
     ./openvpn
     ./users

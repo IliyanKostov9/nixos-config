@@ -1,5 +1,7 @@
 _: {
   config.modules = {
+    window-manager.qtile.enable = true;
+
     downloader = {
       curl.enable = true;
       home-manager.enable = true;
