@@ -102,13 +102,19 @@
       ];
 
       boot = {
-        kernelModules = ["kvm-amd" "k10temp"];
+        kernelModules = [
+          "kvm-amd"
+          "k10temp"
+          "nvidia"
+          "i915"
+          "nvidia_modeset"
+          "nvidia_uvm"
+          "nvidia_drm"
+        ];
         kernelParams = [
           "acpi_enforce_resources=lax"
           "transparent_hugepage=never"
           "nvidia-drm.fbdev=1"
-          "processor.max_cstate=1"
-          "idle=nomwait"
         ];
         initrd = {
           availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
