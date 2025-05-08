@@ -7,12 +7,12 @@
   services = {
     # Enable for using I3
     displayManager.sddm = {
+      wayland.enable = true;
       enable = true;
       theme = lib.mkDefault "catppuccin-macchiato";
       package = pkgs.kdePackages.sddm;
     };
     libinput.enable = true;
-    # Enable the X11 windowing system.
     xserver = {
       enable = true;
       # Enable for using GNOME

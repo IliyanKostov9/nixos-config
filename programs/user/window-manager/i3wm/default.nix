@@ -50,7 +50,7 @@ in {
     xsession.windowManager.i3 = {
       enable = true;
       config = {
-        terminal = "alactritty";
+        inherit terminal;
         modifier = "Mod4";
         floating.modifier = "Mod4";
         fonts = {
@@ -361,20 +361,6 @@ in {
           };
           icons = "material-nf";
         };
-      };
-    };
-
-    # Select theme:  "rofi-theme-selector";
-    programs.rofi = {
-      enable = true;
-      theme = "dmenu";
-      # android_notification
-      font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";
-      location = "center";
-      terminal = "${pkgs.${terminal}}/bin/${terminal}";
-      extraConfig = {
-        show-icons = false;
-        modi = "drun,run";
       };
     };
 

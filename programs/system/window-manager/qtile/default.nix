@@ -19,12 +19,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.displayManager.defaultSession = "qtile";
     services.xserver.windowManager.qtile = {
       enable = true;
       extraPackages = python3Packages:
-        with pkgs.python3Packages; [
-          qtile-extras
-        ];
+        with pkgs.python3Packages;
+          [
+            qtile-extras
+          ]
+          ++ [pkgs.kbdd];
       configFile = ./src/config.py;
     };
   };

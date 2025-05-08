@@ -1,4 +1,5 @@
 {
+  pkgs,
   user,
   lib,
   config,
@@ -12,6 +13,8 @@ in {
   config = mkIf cfg.enable {
     services.flameshot = {
       enable = true;
+      # NOTE: For wayland
+      package = pkgs.flameshot.override {enableWlrSupport = true;};
       settings = {
         General = {
           disabledTrayIcon = true;
