@@ -8,6 +8,7 @@ in {
   imports = [
     ./i3wm
     ./qtile
+    ./sway
   ];
 
   # Select theme:  "rofi-theme-selector";

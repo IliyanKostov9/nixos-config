@@ -1,0 +1,27 @@
+{
+  lib,
+  config,
+  ...
+}:
+with lib;
+with lib.types; let
+  cfg = config.modules.window-manager.sway;
+in {
+  options.modules.window-manager.sway = {
+    enable = mkOption {
+      type = bool;
+      default = false;
+      description = mkDoc ''
+        Enable sway window manager
+      '';
+    };
+  };
+
+  config = mkIf cfg.enable {
+    security.polkit.enable = true;
+    programs.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+    };
+  };
+}

@@ -1,6 +1,6 @@
 _: {
   config.modules = {
-    window-manager.qtile.enable = true;
+    window-manager.sway.enable = true;
 
     downloader = {
       curl.enable = true;
