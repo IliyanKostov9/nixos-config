@@ -22,7 +22,7 @@ in {
     services.displayManager.defaultSession = "qtile";
     services.xserver.windowManager.qtile = {
       enable = true;
-      extraPackages = python3Packages:
+      extraPackages = _python3Packages:
         with pkgs.python3Packages;
           [
             qtile-extras
