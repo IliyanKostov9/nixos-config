@@ -1,6 +1,6 @@
 _: {
   config.modules = {
-    window-manager.sway.enable = true;
+    window-manager.i3wm.enable = true;
 
     downloader = {
       curl.enable = true;

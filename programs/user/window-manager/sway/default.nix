@@ -33,7 +33,7 @@ in {
       type = attrsOf str;
       default = {"m" = "default";};
       description = mkDoc ''
-        Additional i3wm mappings for librewolf profiles
+        Additional sway mappings for librewolf profiles
       '';
     };
 
@@ -41,7 +41,7 @@ in {
       type = attrsOf str;
       default = {};
       description = mkDoc ''
-        Additional i3wm mappings for firejail contained pkgs
+        Additional sway mappings for firejail contained pkgs
       '';
     };
   };
@@ -49,7 +49,6 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
-      systemd.enable = true;
       swaynag.enable = true;
       config = {
         inherit terminal;
@@ -61,7 +60,7 @@ in {
           size = 9.0;
         };
         keybindings = let
-          mod = config.xsession.windowManager.i3.config.modifier;
+          mod = "Mod4";
           alt = "Mod1";
           ctrl = "Control";
           shift = "Shift";
@@ -84,7 +83,7 @@ in {
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
             "${mod}+${alt}+Page_Up" = "exec reboot";
-            "${mod}+${alt}+End" = "exec i3-msg exit";
+            # "${mod}+${alt}+End" = "exec i3-msg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
 
             ## Audio
@@ -98,7 +97,7 @@ in {
             # "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
             # "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
-            # Default i3 options
+            # Default sway options
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+${shift}+q" = "kill";
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal ${terminal}";
@@ -108,9 +107,9 @@ in {
             "${mod}+${alt}+q" = "exec xrandr --output HDMI-0 --auto";
 
             # Mark
-            "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
+            # "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
             # Jump
-            "${mod}+/" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
+            # "${mod}+/" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
 
             # change focus
             "${mod}+h" = "focus left";
@@ -172,7 +171,7 @@ in {
 
             # reload the configuration file
             "${mod}+${shift}+c" = "reload";
-            # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+            # restart sway inplace (preserves your layout/session, can be used to upgrade i3)
             "${mod}+${shift}+r" = "restart";
             # exit i3 (logs you out of your X session)
             "${mod}+${shift}+e" = "exec 'i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'";
@@ -198,21 +197,21 @@ in {
             value-name-prefix = "exec firejail --noprofile";
             attr-mappings = cfg.firejail-mappings;
           };
-
-        bars = [
-          {
-            position = "bottom";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
-            colors = {
-              background = "#444444";
-              focusedWorkspace = {
-                background = "#A4936E";
-                border = "#333333";
-                text = "#ffffff";
-              };
-            };
-          }
-        ];
+        #
+        # bars = [
+        #   {
+        #     position = "bottom";
+        #     # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+        #     colors = {
+        #       background = "#444444";
+        #       focusedWorkspace = {
+        #         background = "#A4936E";
+        #         border = "#333333";
+        #         text = "#ffffff";
+        #       };
+        #     };
+        #   }
+        # ];
       };
       extraConfig = ''
         default_border pixel 1
@@ -224,10 +223,7 @@ in {
         for_window [class="blueman-manager"] floating enable
         for_window [class="copyq"] focus
 
-        exec --no-startup-id dex --autostart --environment i3
-        exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-        exec --no-startup-id nm-applet
-        exec --no-startup-id i3-msg "workspace 1"
+        # exec --no-startup-id nm-applet
 
         # Disable touchpad
         #
@@ -242,281 +238,8 @@ in {
         # Autostart clipboard
         exec --no-startup-id copyq
 
-        tiling_drag modifier titlebar
+        # tiling_drag modifier titlebar
       '';
     };
-
-    # programs.i3status-rust = {
-    #   enable = true;
-    #   bars = {
-    #     top = {
-    #       blocks = let
-    #         # BUG: Not working
-    #         # privacy = {
-    #         #   block = "privacy";
-    #         #   driver =
-    #         #     [{
-    #         #       name = "pipewire";
-    #         #     }];
-    #         # };
-    #         uptime = {
-    #           block = "uptime";
-    #           interval = 3600;
-    #         };
-    #         toggle = {
-    #           block = "toggle";
-    #           format = " $icon ";
-    #           interval = 5;
-    #           command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
-    #           command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
-    #           command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
-    #           click = [
-    #             {
-    #               button = "left";
-    #               action = "toggle";
-    #               widget = ".";
-    #             }
-    #           ];
-    #         };
-    #
-    #         net = {
-    #           block = "net";
-    #           format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
-    #           interval = 5;
-    #           missing_format = " x ";
-    #           inactive_format = " $icon ";
-    #         };
-    #
-    #         external-ip = {
-    #           block = "external_ip";
-    #           format = "$country_flag ";
-    #           with_network_manager = true;
-    #           interval = 300;
-    #           use_ipv4 = true;
-    #         };
-    #         battery = {
-    #           block = "battery";
-    #           interval = 30;
-    #           format = " $icon $percentage $time"; # $power
-    #           full_format = " $icon";
-    #           info = 60;
-    #           good = 60;
-    #           warning = 30;
-    #           critical = 15;
-    #           full_threshold = 95;
-    #           missing_format = "";
-    #         };
-    #
-    #         backlight = {
-    #           block = "backlight";
-    #           format = " $icon $brightness |";
-    #           invert_icons = true;
-    #           # NOTE: for amd cpu this option is not required!
-    #           # device = "intel_backlight";
-    #           missing_format = "";
-    #         };
-    #
-    #         keyboard-layout = {
-    #           block = "keyboard_layout";
-    #           driver = "setxkbmap";
-    #           interval = 1;
-    #           format = " ^icon_keyboard $layout ";
-    #         };
-    #         sound = {
-    #           block = "sound";
-    #           show_volume_when_muted = true;
-    #           headphones_indicator = true;
-    #           click = [
-    #             {
-    #               button = "left";
-    #               cmd = "pwvucontrol";
-    #             }
-    #           ];
-    #         };
-    #         time = {
-    #           block = "time";
-    #           interval = 60;
-    #           format = " $icon $timestamp.datetime(f:'%a %d/%m %R') ";
-    #           click = [
-    #             {
-    #               button = "left";
-    #               cmd = "gnome-calendar";
-    #             }
-    #           ];
-    #         };
-    #       in [
-    #         uptime
-    #         toggle
-    #         net
-    #         external-ip
-    #         battery
-    #         backlight
-    #         keyboard-layout
-    #         sound
-    #         time
-    #       ];
-    #       settings = {
-    #         theme = {
-    #           theme = "bad-wolf";
-    #           overrides = {separator = "";};
-    #         };
-    #       };
-    #       icons = "material-nf";
-    #     };
-    #   };
-    # };
-    #
-    # # pkill picom && picom -b
-    # services.picom = {
-    #   enable = false;
-    #   settings = {
-    #     backend = "glx";
-    #     active-opacity = 1.0;
-    #     detect-client-leader = true;
-    #     detect-client-opacity = true;
-    #     detect-rounded-corners = false;
-    #     detect-transient = true;
-    #     frame-opacity = 1.0;
-    #     glx-no-rebind-pixmap = false;
-    #     glx-no-stencil = false;
-    #     glx-swap-method = 1;
-    #
-    #     # Remove blur on unfocused windows
-    #     inactive-dim = 0;
-    #     inactive-opacity = 1.0;
-    #
-    #     transparent-clipping = false;
-    #     unredir-if-possible = true;
-    #     use-damage = true;
-    #     vsync = false;
-    #     xrender-sync-fence = true; # for nvidia only
-    #
-    #     wintypes = {
-    #       dock = {
-    #         opacity = 1.0;
-    #         shadow = false;
-    #         full-shadow = false;
-    #       };
-    #       menu = {
-    #         fade = false;
-    #         opacity = false;
-    #         shadow = false;
-    #         full-shadow = false;
-    #       };
-    #       utility = {
-    #         fade = false;
-    #         opacity = false;
-    #         shadow = false;
-    #         full-shadow = false;
-    #       };
-    #       tooltip = {
-    #         fade = false;
-    #         opacity = false;
-    #         shadow = false;
-    #         full-shadow = false;
-    #         focus = false;
-    #       };
-    #       dropdown_menu = {
-    #         opacity = 0.89;
-    #         fade = false;
-    #         shadow = false;
-    #         full-shadow = false;
-    #       };
-    #       popup_menu = {
-    #         opacity = 0.89;
-    #         fade = false;
-    #         shadow = false;
-    #         full-shadow = false;
-    #       };
-    #     };
-    #
-    #     opacity-exclude = [
-    #       "class_g = 'mpv'"
-    #       "class_i = 'mpv'"
-    #     ];
-    #
-    #     focus-exclude = [
-    #       "class_g *?= 'Steam'"
-    #       "class_g = 'Polybar'"
-    #       "class_g = 'mpv'"
-    #       "class_g = 'rofi'"
-    #       "class_g = 'slop'"
-    #       "name *?= 'Steam'"
-    #     ];
-    #
-    #     blur-background-exclude = [
-    #       "class_g *= 'Peek'"
-    #       "class_g *= 'overlay'"
-    #       "class_g = 'nwim'"
-    #       "class_g = 'slop'"
-    #       "class_g = 'term'"
-    #       "class_g = 'xsnow'"
-    #       "class_i = 'nwim'"
-    #       "class_i = 'term'"
-    #       "name *= 'overlay'"
-    #       "name *= 'polybar-floating_wm'"
-    #       "window_type = 'desktop'"
-    #       "window_type = 'dnd'"
-    #
-    #       "_GTK_FRAME_EXTENTS@:c"
-    #     ];
-    #
-    #     blur = {
-    #       method = "dual_kawase"; # gaussian
-    #       blur-strength = 7;
-    #       blur-background-fixed = true;
-    #     };
-    #
-    #     opacity-rule = [
-    #       "80:class_g = 'i3-frame'"
-    #       "90:class_g = 'Joplin'"
-    #       "95:class_g = 'Zathura'"
-    #       "100:class_g = 'mpv'"
-    #       "100:class_g = 'slop'"
-    #       "100:fullscreen"
-    #
-    #       "0:_NET_WM_STATE *= '_NET_WM_STATE_HIDDEN'"
-    #       "100:_GTK_FRAME_EXTENTS"
-    #     ];
-    #
-    #     shadow-exclude = [
-    #       "! name~=''"
-    #       "!focused"
-    #
-    #       "class_g *= 'overlay'"
-    #       "class_g = 'Conky'"
-    #       "class_g = 'Dunst'"
-    #       "class_g = 'Firefox' && argb"
-    #       "class_g = 'Rofi'"
-    #       "class_g = 'Synapse'"
-    #       "class_g ?= 'Cairo-dock'"
-    #
-    #       "name *= 'Chromium'"
-    #       "name *= 'overlay'"
-    #       "name *= 'picom'"
-    #       "name *= 'polybar'"
-    #
-    #       # Zoom
-    #       "name = 'cpt_frame_window'"
-    #       "name = 'cpt_frame_xcb_window'"
-    #       "name = 'as_toolbar'"
-    #
-    #       "_GTK_FRAME_EXTENTS@:c"
-    #       "_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-    #     ];
-    #
-    #     # NOTE: Rounded corners
-    #     # corner-radius = 15.0;
-    #     shadow = true;
-    #     shadow-radius = 9.0;
-    #     shadow-offset-x = -9.0;
-    #     shadow-offset-y = -9.0;
-    #     shadow-opacity = 0.8;
-    #     clip-shadow-above = true;
-    #     shadow-red = 0.0;
-    #     shadow-green = 0.3;
-    #     shadow-blue = 0.35;
-    #   };
-    # };
   };
 }
