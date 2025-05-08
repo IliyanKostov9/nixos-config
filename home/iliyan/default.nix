@@ -55,6 +55,8 @@ in {
   ];
 
   config.modules = {
+    window-manager.qtile.enable = true;
+
     preferences = {
       fonts.name = "0xProto";
       red-light.enable = true;
@@ -150,19 +152,6 @@ in {
       lazydocker.enable = true;
     };
     vpn.openvpn.enable = true;
-
-    window-manager.i3wm = {
-      enable = true;
-      librewolf-mappings = {
-        "m" = "Main";
-        "l" = "Social";
-        "y" = "Youtube";
-        "d" = work_name;
-        "o" = work_project1_name;
-        "a" = work_name_new;
-        "t" = "Test";
-      };
-    };
 
     utils = {
       copyq.enable = true;

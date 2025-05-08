@@ -28,7 +28,6 @@ in {
             qtile-extras
           ]
           ++ [pkgs.kbdd];
-      configFile = ./src/config.py;
     };
   };
 }
