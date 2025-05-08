@@ -1,4 +1,5 @@
 import subprocess
+import os
 from libqtile import bar, layout, qtile, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
@@ -152,8 +153,7 @@ for i in groups:
 layouts = [
     layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Max(),
-    # Try more layouts by unleashing below layouts.
-    # layout.Stack(num_stacks=2),
+    layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
@@ -164,10 +164,6 @@ layouts = [
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
-
-
-font = "0xProto Nerd Font Mono"
-fontsize = 18
 
 widget_defaults = dict(
     font="0xProto Nerd Font Mono",
@@ -193,8 +189,6 @@ screens = [
                     name_transform=lambda name: name.upper(),
                 ),
                 # widget.TextBox("iliyan", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
                 widget.Sep(),
                 widget.Spacer(),
                 widget.Wlan(),
@@ -214,7 +208,8 @@ screens = [
                     configured_keyboards=["us(dvorak)", "bg"], font="sans"
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.Systray(),
+                # widget.Systray(),
+                widget.StatusNotifier(),
             ],
             24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders

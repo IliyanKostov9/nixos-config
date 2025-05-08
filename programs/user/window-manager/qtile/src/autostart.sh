@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 nm-applet &
+blueman-applet &
 copyq &
-qtile start -b wayland &
