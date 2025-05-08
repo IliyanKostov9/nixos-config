@@ -22,7 +22,7 @@ _: {
       dir-content-ls.enable = true;
       fzf.enable = true;
       monitor.enable = true;
-      xclip.enable = true;
+      clipboard.xorg.enable = true;
       make.enable = true;
     };
 

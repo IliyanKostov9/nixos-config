@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./xclip
+    ./clipboard
     ./fzf
     ./dir-content-ls
     ./monitor
