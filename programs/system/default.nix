@@ -9,5 +9,6 @@ _: {
     ./security
     ./utils
     ./dev
+    ./window-manager
   ];
 }

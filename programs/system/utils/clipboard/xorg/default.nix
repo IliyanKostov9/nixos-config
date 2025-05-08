@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.xclip;
+  cfg = config.modules.utils.clipboard.xorg;
 in {
-  options.modules.utils.xclip = {enable = mkEnableOption "xclip";};
+  options.modules.utils.clipboard.xorg = {enable = mkEnableOption "xorg";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = [

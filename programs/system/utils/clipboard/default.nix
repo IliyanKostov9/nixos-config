@@ -1,0 +1,6 @@
+_: {
+  imports = [
+    ./xorg
+    ./wayland
+  ];
+}

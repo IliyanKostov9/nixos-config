@@ -1,5 +1,7 @@
 _: {
   config.modules = {
+    window-manager.i3wm.enable = true;
+
     downloader = {
       curl.enable = true;
       home-manager.enable = true;
@@ -20,7 +22,7 @@ _: {
       dir-content-ls.enable = true;
       fzf.enable = true;
       monitor.enable = true;
-      xclip.enable = true;
+      clipboard.xorg.enable = true;
       make.enable = true;
     };
 
