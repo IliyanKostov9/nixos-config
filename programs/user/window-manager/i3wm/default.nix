@@ -202,10 +202,10 @@ in {
             position = "bottom";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             colors = {
-              background = "#CCD0DA"; # 444444
+              background = "#444444";
               focusedWorkspace = {
-                background = "#CCD0DA"; #A4936E
-                border = "#1C1B19";
+                background = "#A4936E";
+                border = "#333333";
                 text = "#ffffff";
               };
             };
@@ -355,8 +355,7 @@ in {
           ];
           settings = {
             theme = {
-              # bad-wolf
-              theme = "ctp-latte";
+              theme = "bad-wolf";
               overrides = {separator = "";};
             };
           };
