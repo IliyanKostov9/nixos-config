@@ -5,7 +5,7 @@
 }: {
   services.xserver.videoDrivers = [
     "nvidia"
-    "amdgpu"
+    # "amdgpu"
   ];
 
   hardware = {

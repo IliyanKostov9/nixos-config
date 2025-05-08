@@ -202,10 +202,10 @@ in {
             position = "bottom";
             statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             colors = {
-              background = "#444444";
+              background = "#CCD0DA"; # 444444
               focusedWorkspace = {
-                background = "#A4936E";
-                border = "#333333";
+                background = "#CCD0DA"; #A4936E
+                border = "#1C1B19";
                 text = "#ffffff";
               };
             };
@@ -235,7 +235,7 @@ in {
         exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
 
         # Enable transparency
-        # exec --no-startup-id picom &
+        exec --no-startup-id picom &
 
         # Autostart clipboard
         exec --no-startup-id copyq
@@ -355,7 +355,8 @@ in {
           ];
           settings = {
             theme = {
-              theme = "bad-wolf";
+              # bad-wolf
+              theme = "ctp-latte";
               overrides = {separator = "";};
             };
           };
@@ -366,7 +367,7 @@ in {
 
     # pkill picom && picom -b
     services.picom = {
-      enable = false;
+      enable = true;
       settings = {
         backend = "glx";
         active-opacity = 1.0;

@@ -106,7 +106,7 @@
           "kvm-amd"
           "k10temp"
           "nvidia"
-          "amdgpu"
+          # "amdgpu"
           "i915"
           "nvidia_modeset"
           "nvidia_uvm"
