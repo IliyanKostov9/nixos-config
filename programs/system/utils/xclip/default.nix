@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.xclip
+      pkgs.wl-clipboard
     ];
   };
 }
