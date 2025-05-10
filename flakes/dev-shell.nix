@@ -14,8 +14,6 @@
         actionlint.enable = true;
         beautysh.enable = true;
         commitizen.enable = true;
-        black.enable = true;
-
         flake-checker.enable = true;
         # lychee.enable = true;
       };

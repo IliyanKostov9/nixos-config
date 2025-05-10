@@ -98,6 +98,13 @@ in {
             # NOTE: Ungoogled chromium doesn't use the plugins
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
+            extraArgs = [
+              "--env=GTK_THEME=Adwaita:dark"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+            ];
           };
 
           librewolf = {

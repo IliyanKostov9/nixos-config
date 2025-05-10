@@ -80,7 +80,7 @@ keys = [
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
-    Key([mod, alt], "n", lazy.spawn("pcmanfm ~/"), desc="File manager"),
+    Key([mod, alt], "n", lazy.spawn("pcmanfm ~"), desc="File manager"),
     Key([alt], "f", lazy.spawn("flameshot gui"), desc="Flameshot"),
     Key([alt], "n", lazy.spawn("normcap"), desc="OCR"),
     Key([alt], "v", lazy.spawn("copyq menu"), desc="Clipboard manager"),
@@ -151,10 +151,10 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
     layout.Max(),
-    layout.Stack(num_stacks=2),
-    # layout.Bsp(),
+    # layout.Columns(border_focus_stack=["#5499c7", "#8f3d3d"], border_width=2),
+    # layout.Stack(num_stacks=2),
+    layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
@@ -178,47 +178,51 @@ screens = [
         wallpaper_mode="fill",
         bottom=bar.Bar(
             [
-                # widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
-                # widget.WindowName(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                # widget.TextBox("iliyan", foreground="#d75f5f"),
                 widget.Sep(),
                 widget.Spacer(),
-                widget.Wlan(),
+                # widget.Wlan(),
                 # widget.Net(format="{interface}: U {up} D {down} T {total}"),
-                # widget.Backlight(),
                 widget.Battery(),
                 widget.BatteryIcon(),
-                widget.Bluetooth(),
-                widget.Volume(),
-                widget.Wallpaper(),
-                widget.Wttr(location={"Nice": "Home"}),
-                widget.OpenWeather(location="Nice"),
+                widget.Wttr(location={"Nice": "Nice, France"}),
+                widget.PulseVolume(
+                    emoji=True,
+                    limit_max_volume=True,
+                    step=5,
+                    fmt="{}",
+                    unmute_format="{emoji} {volume}%",
+                    mute_format="🔇 Muted",
+                    update_interval=0.5,
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("pwvucontrol"),
+                        "Button2": lazy.spawn(
+                            "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+                        ),
+                    },
+                ),
                 widget.KeyboardLayout(
-                    configured_keyboards=["us(dvorak)", "bg"], font="sans"
+                    configured_keyboards=["us(dvorak)", "bgd"], font="sans"
                 ),
-                widget.KeyboardKbdd(
-                    configured_keyboards=["us(dvorak)", "bg"], font="sans"
+                widget.Clock(
+                    format="%Y-%m-%d %a %H:%M",
+                    mouse_callbacks={
+                        "Button1": lambda: qtile.cmd_spawn("gnome-calendar"),
+                    },
                 ),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                # widget.Systray(),
                 widget.StatusNotifier(),
             ],
-            24,
+            26,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
-        # You can uncomment this variable if you see that on X11 floating resize/moving is laggy
-        # By default we handle these events delayed to already improve performance, however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can set it to 60 to indicate that you limit it to 60 events per second
-        # x11_drag_polling_rate = 60,
     ),
 ]
 
@@ -238,7 +242,7 @@ mouse = [
 
 
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: list
+dgroups_app_rules = []
 follow_mouse_focus = True
 bring_front_click = False
 floats_kept_above = True
@@ -270,7 +274,7 @@ wl_input_rules = None
 # xcursor theme (string or None) and size (integer) for Wayland backend
 # NOTE: Cursor
 wl_xcursor_theme = None
-wl_xcursor_size = 25
+wl_xcursor_size = 23
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
@@ -285,7 +289,20 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
+    # denv = dict(os.environ)
+    # denv["XDG_CURRENT_DESKTOP"] = "qtile"
+    # p = subprocess.Popen(
+    #     [
+    #         "systemctl",
+    #         "--user",
+    #         "import-environment",
+    #         "WAYLAND_DISPLAY",
+    #         "XDG_CURRENT_DESKTOP",
+    #     ],
+    #     env=denv,
+    # ).wait()
+
     home = os.path.expanduser(
         "/etc/nixos/programs/system/window-manager/qtile/src/autostart.sh"
     )
-    subprocess.call(home)
+    subprocess.call([home])

@@ -57,12 +57,8 @@ in rec {
         gtk-theme-name = "${cfg.themeName}";
         gtk-cursor-theme-name = "${cfg.cursorName}";
         gtk-font-name = "${fonts.name}";
-
-        gtk-cursor-theme-size = 0;
         gtk-toolbar-style = "GTK_TOOLBAR_BOTH_HORIZ";
         gtk-toolbar-icon-size = "GTK_ICON_SIZE_LARGE_TOOLBAR";
-        gtk-button-images = 0;
-        gtk-menu-images = 0;
         gtk-enable-event-sounds = 1;
         gtk-enable-input-feedback-sounds = 1;
         gtk-xft-antialias = 1;

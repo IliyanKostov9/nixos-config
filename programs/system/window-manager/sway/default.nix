@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -18,10 +19,11 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.displayManager.defaultSession = "sway";
+    # services.displayManager.defaultSession = "sway";
     security.polkit.enable = true;
     programs.sway = {
       enable = true;
+      package = pkgs.sway.override {extraOptions = ["--unsupported-gpu"];};
       wrapperFeatures.gtk = true;
     };
   };

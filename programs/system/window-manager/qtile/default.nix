@@ -19,9 +19,22 @@ in {
   };
 
   config = mkIf cfg.enable {
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal
+        xdg-desktop-portal-gnome
+      ];
+    };
+    programs.xwayland.enable = true;
+    services.xserver.displayManager.sessionPackages = [pkgs.qtile-unwrapped];
     services.displayManager.defaultSession = "qtile";
     services.xserver.windowManager.qtile = {
       enable = true;
+      package = pkgs.qtile-unwrapped;
       extraPackages = _python3Packages:
         with pkgs.python3Packages;
           [
