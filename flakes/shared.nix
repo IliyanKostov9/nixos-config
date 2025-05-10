@@ -11,7 +11,7 @@ with inputs; rec {
         # nixgl.overlay
         nur.overlays.default
         alacritty-theme.overlays.default
-        (self: super: {
+        (_self: super: {
           qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (_: rec {
             postInstall = let
               qtileSession = ''
