@@ -285,7 +285,20 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def autostart():
+    # denv = dict(os.environ)
+    # denv["XDG_CURRENT_DESKTOP"] = "qtile"
+    # p = subprocess.Popen(
+    #     [
+    #         "systemctl",
+    #         "--user",
+    #         "import-environment",
+    #         "WAYLAND_DISPLAY",
+    #         "XDG_CURRENT_DESKTOP",
+    #     ],
+    #     env=denv,
+    # ).wait()
+
     home = os.path.expanduser(
         "/etc/nixos/programs/system/window-manager/qtile/src/autostart.sh"
     )
-    subprocess.call(home)
+    subprocess.call([home])

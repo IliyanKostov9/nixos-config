@@ -50,6 +50,7 @@ in {
     wayland.windowManager.sway = {
       enable = true;
       swaynag.enable = true;
+      wrapperFeatures.gtk = true;
       config = {
         inherit terminal;
         modifier = "Mod4";
@@ -197,21 +198,21 @@ in {
             value-name-prefix = "exec firejail --noprofile";
             attr-mappings = cfg.firejail-mappings;
           };
-        #
-        # bars = [
-        #   {
-        #     position = "bottom";
-        #     # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
-        #     colors = {
-        #       background = "#444444";
-        #       focusedWorkspace = {
-        #         background = "#A4936E";
-        #         border = "#333333";
-        #         text = "#ffffff";
-        #       };
-        #     };
-        #   }
-        # ];
+
+        bars = [
+          {
+            position = "bottom";
+            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
+            colors = {
+              background = "#444444";
+              focusedWorkspace = {
+                background = "#A4936E";
+                border = "#333333";
+                text = "#ffffff";
+              };
+            };
+          }
+        ];
       };
       extraConfig = ''
         default_border pixel 1

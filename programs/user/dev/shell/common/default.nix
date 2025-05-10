@@ -3,6 +3,8 @@
   pkgs,
 }: {
   shellAliases = {
+    wifi = "nmcli device wifi connect 'SFR_2838_5GHZ' --ask";
+
     # Python
     py = "python3";
     uy = "uv run";

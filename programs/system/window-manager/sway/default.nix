@@ -18,7 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.displayManager.defaultSession = "sway";
+    # services.displayManager.defaultSession = "sway";
     security.polkit.enable = true;
     programs.sway = {
       enable = true;

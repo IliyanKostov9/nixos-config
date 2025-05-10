@@ -1,6 +1,6 @@
 _: {
   config.modules = {
-    window-manager.i3wm.enable = true;
+    window-manager.qtile.enable = true;
 
     downloader = {
       curl.enable = true;
@@ -23,6 +23,7 @@ _: {
       fzf.enable = true;
       monitor.enable = true;
       clipboard.xorg.enable = true;
+      clipboard.wayland.enable = true;
       make.enable = true;
     };
 
