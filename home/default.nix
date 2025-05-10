@@ -1,5 +1,4 @@
 {
-  pkgs,
   lib,
   stateVersion,
   user,

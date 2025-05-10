@@ -23,7 +23,6 @@ _: {
       fzf.enable = true;
       monitor.enable = true;
       clipboard.xorg.enable = true;
-      clipboard.wayland.enable = true;
       make.enable = true;
     };
 
