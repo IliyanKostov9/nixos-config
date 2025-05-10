@@ -35,7 +35,7 @@ in {
     services.xserver.windowManager.qtile = {
       enable = true;
       package = pkgs.qtile-unwrapped;
-      extraPackages = python3Packages:
+      extraPackages = _python3Packages:
         with pkgs.python3Packages;
           [
             qtile-extras
