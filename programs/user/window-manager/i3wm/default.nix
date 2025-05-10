@@ -66,7 +66,6 @@ in {
         in
           {
             "${mod}+${ctrl}+c" = "exec chromium";
-
             "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
             "${alt}+f" = "exec flameshot gui";
             "${alt}+n" = "exec normcap";
@@ -85,32 +84,21 @@ in {
             "${mod}+${alt}+End" = "exec i3-msg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
 
-            ## Audio
-            ### Pipewire
+            # Pipewire
             "${mod}+${alt}+plus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
             "${mod}+${alt}+minus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%-'";
             "${mod}+${alt}+m" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-
-            ### PulseAudio
-            # "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
-            # "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
-            # "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
             # Default i3 options
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+${shift}+q" = "kill";
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal ${terminal}";
-            # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
-
-            # Fallback to primary monitor
-            "${mod}+${alt}+q" = "exec xrandr --output HDMI-0 --auto";
 
             # Mark
             "${mod}+m" = "exec i3-input -F 'mark %s' -l 1 -P 'Mark: '";
             # Jump
             "${mod}+/" = "exec i3-input -F '[con_mark = \"%s\"] focus' -l 1 -P 'Goto: '";
 
-            # change focus
             "${mod}+h" = "focus left";
             "${mod}+j" = "focus down";
             "${mod}+k" = "focus up";
@@ -122,9 +110,7 @@ in {
             "${mod}+${shift}+k" = "move up";
             "${mod}+${shift}+l" = "move right";
 
-            # split in horizontal orientation
             "${mod}+z" = "split h";
-            # split in vertical orientation
             "${mod}+v" = "split v";
 
             # enter fullscreen mode for the focused container
@@ -145,7 +131,6 @@ in {
             "${mod}+${shift}+minus" = "move scratchpad";
             "${mod}+minus" = "scratchpad show";
 
-            # switch to workspace
             "${mod}+1" = "workspace number 1";
             "${mod}+2" = "workspace number 2";
             "${mod}+3" = "workspace number 3";
@@ -156,7 +141,6 @@ in {
             "${mod}+8" = "workspace number 8";
             "${mod}+9" = "workspace number 9";
             "${mod}+0" = "workspace number 10";
-            # move focused container to workspace
             "${mod}+${shift}+1" = "move container to workspace number 1";
             "${mod}+${shift}+2" = "move container to workspace number 2";
             "${mod}+${shift}+3" = "move container to workspace number 3";
@@ -214,31 +198,33 @@ in {
       };
       extraConfig = ''
         default_border pixel 1
-        # Disable titlebar
+
+        # NOTE:  Disable titlebar
         for_window [class=".*"] border pixel 0
         for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+
         # Enable border color
         # for_window [class="^.*"] border pixel 2
         for_window [class="blueman-manager"] floating enable
         for_window [class="copyq"] focus
 
         exec --no-startup-id dex --autostart --environment i3
-        exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-        exec --no-startup-id nm-applet
         exec --no-startup-id i3-msg "workspace 1"
+        exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+        # Autostart
+        exec --no-startup-id nm-applet
+        exec --no-startup-id copyq
+        exec --no-startup-id copyq
+        exec --no-startup-id viber
+        exec --no-startup-id whatsapp
+        exec --no-startup-id librewolf
 
         # Disable touchpad
-        #
         ## Thinkpad
         exec --no-startup-id xinput disable "Elan Touchpad"
         ## Legion
         exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
-
-        # Enable transparency
-        exec --no-startup-id picom &
-
-        # Autostart clipboard
-        exec --no-startup-id copyq
 
         tiling_drag modifier titlebar
       '';
@@ -249,14 +235,6 @@ in {
       bars = {
         top = {
           blocks = let
-            # BUG: Not working
-            # privacy = {
-            #   block = "privacy";
-            #   driver =
-            #     [{
-            #       name = "pipewire";
-            #     }];
-            # };
             uptime = {
               block = "uptime";
               interval = 3600;
