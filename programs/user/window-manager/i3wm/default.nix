@@ -226,6 +226,13 @@ in {
         ## Legion
         exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
 
+
+        ## Autoplace apps in workplaces
+        assign [class="ghostty"] 1
+        assign [class="librewolf"] 2
+        assign [class="chromium"] 5
+
+
         tiling_drag modifier titlebar
       '';
     };

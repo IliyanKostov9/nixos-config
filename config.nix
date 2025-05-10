@@ -105,11 +105,6 @@
         kernelModules = [
           "kvm-amd"
           "k10temp"
-          "nvidia"
-          "i915"
-          "nvidia_modeset"
-          "nvidia_uvm"
-          "nvidia_drm"
         ];
         kernelParams = [
           "acpi_enforce_resources=lax"
