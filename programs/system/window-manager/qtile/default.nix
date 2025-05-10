@@ -26,6 +26,7 @@ in {
         xdg-desktop-portal-gtk
         xdg-desktop-portal-wlr
         xdg-desktop-portal
+        xdg-desktop-portal-gnome
       ];
     };
     programs.xwayland.enable = true;

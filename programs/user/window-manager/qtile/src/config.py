@@ -80,7 +80,7 @@ keys = [
         lazy.widget["keyboardlayout"].next_keyboard(),
         desc="Next keyboard layout",
     ),
-    Key([mod, alt], "n", lazy.spawn("pcmanfm ~/"), desc="File manager"),
+    Key([mod, alt], "n", lazy.spawn("pcmanfm ~"), desc="File manager"),
     Key([alt], "f", lazy.spawn("flameshot gui"), desc="Flameshot"),
     Key([alt], "n", lazy.spawn("normcap"), desc="OCR"),
     Key([alt], "v", lazy.spawn("copyq menu"), desc="Clipboard manager"),
@@ -202,10 +202,10 @@ screens = [
                 widget.Wttr(location={"Nice": "Home"}),
                 widget.OpenWeather(location="Nice"),
                 widget.KeyboardLayout(
-                    configured_keyboards=["us(dvorak)", "bg"], font="sans"
+                    configured_keyboards=["us(dvorak)", "bgd"], font="sans"
                 ),
                 widget.KeyboardKbdd(
-                    configured_keyboards=["us(dvorak)", "bg"], font="sans"
+                    configured_keyboards=["us(dvorak)", "bgd"], font="sans"
                 ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 # widget.Systray(),
