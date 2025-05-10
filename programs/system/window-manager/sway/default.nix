@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -22,6 +23,7 @@ in {
     security.polkit.enable = true;
     programs.sway = {
       enable = true;
+      package = pkgs.sway.override {extraOptions = ["--unsupported-gpu"];};
       wrapperFeatures.gtk = true;
     };
   };
