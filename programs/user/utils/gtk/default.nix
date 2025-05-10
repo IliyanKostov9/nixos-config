@@ -19,7 +19,7 @@ in rec {
     };
     cursorName = mkOption {
       type = str;
-      default = "DMZ-White";
+      default = "DMZ-Black";
       description = mkDoc ''
         Cursor name for gtk
       '';

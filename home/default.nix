@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   stateVersion,
   user,
@@ -23,6 +24,17 @@ in {
   home = {
     homeDirectory = "/home/${username}";
     inherit username stateVersion;
+    pointerCursor = {
+      x11.enable = true;
+      gtk.enable = true;
+      name = "DMZ-Black";
+      package = pkgs.vanilla-dmz;
+      size = 32;
+    };
+  };
+  # NOTE: Text scaling
+  xresources.properties = {
+    "Xft.dpi" = "144";
   };
 
   nixpkgs.config.allowUnfree = true;
