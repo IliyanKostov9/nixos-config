@@ -1,6 +1,6 @@
 _: {
   config.modules = {
-    window-manager.i3wm.enable = true;
+    window-manager.sway.enable = true;
 
     downloader = {
       curl.enable = true;
@@ -22,7 +22,7 @@ _: {
       dir-content-ls.enable = true;
       fzf.enable = true;
       monitor.enable = true;
-      clipboard.xorg.enable = true;
+      clipboard.wayland.enable = true;
       make.enable = true;
     };
 

@@ -47,10 +47,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    imports = [
+      ../style/picom
+      ../style/i3status-rust
+    ];
     wayland.windowManager.sway = {
       enable = true;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
+      extraOptions = ["--unsupported-gpu"];
       config = {
         inherit terminal;
         modifier = "Mod4";
@@ -215,6 +220,16 @@ in {
         ];
       };
       extraConfig = ''
+        output eDP-1 {
+          scale 1.5
+          mode 2560x1600@165Hz
+        }
+
+        input * {
+          xkb_layout us
+          xkb_variant dvorak
+        }
+
         default_border pixel 1
         # Disable titlebar
         for_window [class=".*"] border pixel 0
@@ -224,7 +239,7 @@ in {
         for_window [class="blueman-manager"] floating enable
         for_window [class="copyq"] focus
 
-        # exec --no-startup-id nm-applet
+        exec --no-startup-id nm-applet
 
         # Disable touchpad
         #
@@ -233,136 +248,9 @@ in {
         ## Legion
         exec --no-startup-id xinput disable "ELAN06FA:00 04F3:327E Touchpad"
 
-        # Enable transparency
-        # exec --no-startup-id picom &
-
         # Autostart clipboard
         exec --no-startup-id copyq
-
-
-        output * resolution 1920x1080 position 0,0
-        # tiling_drag modifier titlebar
       '';
-    };
-
-    programs.i3status-rust = {
-      enable = true;
-      bars = {
-        top = {
-          blocks = let
-            # BUG: Not working
-            # privacy = {
-            #   block = "privacy";
-            #   driver =
-            #     [{
-            #       name = "pipewire";
-            #     }];
-            # };
-            uptime = {
-              block = "uptime";
-              interval = 3600;
-            };
-            toggle = {
-              block = "toggle";
-              format = " $icon ";
-              interval = 5;
-              command_on = "xrandr --output HDMI-0 --auto && xrandr --output eDP-1-1 --off";
-              command_off = "xrandr --output HDMI-0 --off && xrandr --output eDP-1-1 --auto";
-              command_state = "xrandr | grep 'HDMI-0 connected 1920x' | grep -v eDP-1-1";
-              click = [
-                {
-                  button = "left";
-                  action = "toggle";
-                  widget = ".";
-                }
-              ];
-            };
-
-            net = {
-              block = "net";
-              format = "$icon {$signal_strength ssid @$frequency|wired} via $device ";
-              interval = 5;
-              missing_format = " x ";
-              inactive_format = " $icon ";
-            };
-
-            external-ip = {
-              block = "external_ip";
-              format = "$country_flag ";
-              with_network_manager = true;
-              interval = 300;
-              use_ipv4 = true;
-            };
-            battery = {
-              block = "battery";
-              interval = 30;
-              format = " $icon $percentage $time"; # $power
-              full_format = " $icon";
-              info = 60;
-              good = 60;
-              warning = 30;
-              critical = 15;
-              full_threshold = 95;
-              missing_format = "";
-            };
-
-            backlight = {
-              block = "backlight";
-              format = " $icon $brightness |";
-              invert_icons = true;
-              # NOTE: for amd cpu this option is not required!
-              # device = "intel_backlight";
-              missing_format = "";
-            };
-
-            keyboard-layout = {
-              block = "keyboard_layout";
-              driver = "setxkbmap";
-              interval = 1;
-              format = " ^icon_keyboard $layout ";
-            };
-            sound = {
-              block = "sound";
-              show_volume_when_muted = true;
-              headphones_indicator = true;
-              click = [
-                {
-                  button = "left";
-                  cmd = "pwvucontrol";
-                }
-              ];
-            };
-            time = {
-              block = "time";
-              interval = 60;
-              format = " $icon $timestamp.datetime(f:'%a %d/%m %R') ";
-              click = [
-                {
-                  button = "left";
-                  cmd = "gnome-calendar";
-                }
-              ];
-            };
-          in [
-            uptime
-            toggle
-            net
-            external-ip
-            battery
-            backlight
-            keyboard-layout
-            sound
-            time
-          ];
-          settings = {
-            theme = {
-              theme = "bad-wolf";
-              overrides = {separator = "";};
-            };
-          };
-          icons = "material-nf";
-        };
-      };
     };
   };
 }

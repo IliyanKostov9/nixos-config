@@ -49,7 +49,9 @@ in {
 
   config = mkIf cfg.enable (
     let
-      common = pkgs.callPackage ../common {inherit (cfg) env-vars;};
+      common = pkgs.callPackage ../common {
+        inherit (cfg) env-vars;
+      };
     in {
       programs.zsh = {
         enable = true;
