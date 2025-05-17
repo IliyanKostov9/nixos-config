@@ -370,7 +370,7 @@ in {
 
         transparent-clipping = false;
         unredir-if-possible = true;
-        use-damage = true;
+        use-damage = false;
         vsync = false;
         xrender-sync-fence = true; # for nvidia only
 
