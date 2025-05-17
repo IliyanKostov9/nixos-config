@@ -20,6 +20,11 @@ with lib.types; let
       })
       attr-mappings);
 in {
+  imports = [
+    ../style/picom
+    ../style/i3status-rust
+  ];
+
   options.modules.window-manager.sway = {
     enable = mkOption {
       type = bool;
@@ -47,10 +52,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    imports = [
-      ../style/picom
-      ../style/i3status-rust
-    ];
     wayland.windowManager.sway = {
       enable = true;
       swaynag.enable = true;
@@ -89,25 +90,18 @@ in {
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
             "${mod}+${alt}+Page_Up" = "exec reboot";
-            # "${mod}+${alt}+End" = "exec i3-msg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
 
             ## Audio
             ### Pipewire
-            "${mod}+${alt}+plus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
+            "${mod}+${alt}+equal" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
             "${mod}+${alt}+minus" = "exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%-'";
             "${mod}+${alt}+m" = "exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-
-            ### PulseAudio
-            # "${mod}+${alt}+plus" = "exec --no-startup-id pamixer --increase 5";
-            # "${mod}+${alt}+minus" = "exec --no-startup-id pamixer --decrease 5";
-            # "${mod}+${alt}+m" = "exec --no-startup-id pamixer --toggle-mute";
 
             # Default sway options
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+${shift}+q" = "kill";
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal ${terminal}";
-            # "${mod}+${alt}+d" = "exec --no-startup-id xfce4-appfinder";
 
             # Fallback to primary monitor
             "${mod}+${alt}+q" = "exec xrandr --output HDMI-0 --auto";
@@ -226,9 +220,11 @@ in {
         }
 
         input * {
-          xkb_layout us
-          xkb_variant dvorak
+          xkb_layout us,bgd
+          xkb_variant dvorak,dvorak
+          xkb_options "grp:alt_shift_toggle"
         }
+
 
         default_border pixel 1
         # Disable titlebar

@@ -24,7 +24,6 @@ in {
     ../style/picom
     ../style/i3status-rust
   ];
-
   options.modules.window-manager.i3wm = {
     enable = mkOption {
       type = bool;
