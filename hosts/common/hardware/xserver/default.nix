@@ -38,9 +38,9 @@
         # xkbOptions = "ctrl:nocaps";
         # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
         extraLayouts.bgd = {
-          description = "Bulgarian";
-          languages = ["bul"];
-          symbolsFile = ../../options/xkb/dvorak/bg;
+          description = "Bulgarian Dvorak";
+          languages = ["bgd"];
+          symbolsFile = ../../options/xkb/dvorak/bgd;
         };
       };
     };

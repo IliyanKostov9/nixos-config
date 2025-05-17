@@ -55,7 +55,7 @@ in {
   ];
 
   config.modules = {
-    window-manager.i3wm = {
+    window-manager.sway = {
       enable = true;
       librewolf-mappings = {
         "m" = "Main";

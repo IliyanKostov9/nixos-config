@@ -1,4 +1,3 @@
-default partial alphanumeric_keys
 xkb_symbols "bgd" {
   name[Group1]= "Bulgarian Dvorak";
 
