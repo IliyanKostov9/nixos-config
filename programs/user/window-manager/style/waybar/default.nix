@@ -198,8 +198,8 @@ _: {
           on-click = "pwvucontrol";
           on-click-right = "pwvucontrol";
           on-click-middle = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
-          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%-'";
+          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
           scroll-step = 5;
           format-icons = {
             headphone = "";

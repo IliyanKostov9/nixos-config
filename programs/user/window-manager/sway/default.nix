@@ -21,7 +21,6 @@ with lib.types; let
       attr-mappings);
 in {
   imports = [
-    ../style/picom
     ../style/waybar
   ];
 
@@ -62,7 +61,6 @@ in {
         export WLR_NO_HARDWARE_CURSORS=1
         export WLR_RENDERER_ALLOW_SOFTWARE=1
         export WLR_BACKEND="drm"
-        # export NIXOS_OZONE_WL=1
         export XDG_SESSION_DESKTOP=sway
         export SDL_VIDEODRIVER=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
@@ -203,6 +201,12 @@ in {
       extraConfig = ''
         default_border pixel 1
 
+        # NOTE: Hide tabs if it's only 1
+        gaps outer 0
+        gaps inner 0
+        hide_edge_borders --i3 smart
+        workspace_layout tabbed
+
         output eDP-1 {
           scale 1.5
           mode 2560x1600@165Hz
@@ -212,14 +216,6 @@ in {
           xkb_layout us
           xkb_variant dvorak
         }
-
-        # NOTE:  Disable titlebar
-        for_window [class=".*"] border pixel 0
-        client.focused          #77dd77 #285577 #ffffff #2e9ef4 #285577
-        client.focused_inactive #222222 #333333 #888888 #292d3e #222222
-        client.unfocused        #222222 #222222 #888888 #292d3e #222222
-        client.urgent           #2f343a #900000 #ffffff #900000 #2f343a
-        client.background       #282c34
 
         # Enable border color
         # for_window [class="^.*"] border pixel 2
