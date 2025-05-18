@@ -156,6 +156,7 @@ _: {
       mainBar = {
         layer = "bottom";
         position = "bottom";
+        height = 12;
         modules-left = [
           "sway/workspaces"
         ];
