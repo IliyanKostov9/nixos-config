@@ -46,7 +46,7 @@ _: {
       }
 
       #workspaces {
-        border-radius: 1rem;
+        border-radius: 0rem;
         margin: 4px;
         background-color: @surface0;
         margin-left: 1rem;
@@ -54,7 +54,7 @@ _: {
 
       #workspaces button {
         color: @flamingo;
-        border-radius: 1rem;
+        border-radius: 0rem;
         padding: 0.2rem;
       }
 
@@ -70,15 +70,7 @@ _: {
       #workspaces button.focused {
         background-color: #64727D;
         box-shadow: inset 0 -3px @main;
-      }
-
-      #workspaces button.urgent {
-        background-color: #eb4d4b;
-      }
-
-      #mode {
-        background-color: #64727D;
-        border-bottom: 3px solid #ffffff;
+        border-radius: 0;
       }
 
       #custom-music,
