@@ -35,19 +35,19 @@ _: {
 
       * {
         font-family: FantasqueSansMono Nerd Font;
-        font-size: 12px;
+        font-size: 11px;
         min-height: 0;
       }
 
       #waybar {
         background: @main;
         color: @text;
-        margin: 5px 5px;
+        margin: 4px 4px;
       }
 
       #workspaces {
         border-radius: 1rem;
-        margin: 5px;
+        margin: 4px;
         background-color: @surface0;
         margin-left: 1rem;
       }
@@ -83,6 +83,7 @@ _: {
 
       #custom-music,
       #tray,
+      #keyboard-state,
       #backlight,
       #clock,
       #battery,
@@ -116,7 +117,11 @@ _: {
         color: @yellow;
       }
 
-      #backlight, #battery {
+      #keyboard-state {
+        color: @yellow;
+      }
+
+      #backlight, #battery, #keyboard-state {
           border-radius: 0;
       }
 
@@ -163,8 +168,48 @@ _: {
           "backlight"
           "battery"
           "tray"
-          "clock#utc"
+          "clock"
         ];
+        clock = {
+          format = "{:%H:%M}  ";
+        };
+        network = {
+          format = "{ifname}";
+          format-wifi = " Connected ";
+          format-ethernet = "{ipaddr}/{cidr} 󰈀";
+          format-disconnected = "Disconnected 󱛅";
+          tooltip-format = "{ifname} via {gwaddr} 󰛳";
+          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+          tooltip-format-ethernet = "{ifname} ";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+        };
+        "custom/space" = {
+          format = " ┃ {}";
+        };
+        tray = {
+          icon-size = 15;
+          spacing = 10;
+        };
+        pulseaudio = {
+          format = "{icon}   {volume}%";
+          format-muted = "";
+          on-click = "pwvucontrol";
+          on-click-right = "pwvucontrol";
+          on-click-middle = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%+'";
+          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ '5%-'";
+          scroll-step = 5;
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
+          };
+        };
         backlight = {
           format = "{icon} {percent}%";
           format-icons = [" " " " " " " " " " " " " " " " " "];
