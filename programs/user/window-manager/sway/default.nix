@@ -199,20 +199,6 @@ in {
           };
 
         bars = [];
-        # bars = [
-        #   {
-        #     position = "bottom";
-        #     statusCommand = "${pkgs.waybar}/bin/waybar ~/.config/i3status-rust/config-top.toml";
-        #     colors = {
-        #       background = "#444444";
-        #       focusedWorkspace = {
-        #         background = "#A4936E";
-        #         border = "#333333";
-        #         text = "#ffffff";
-        #       };
-        #     };
-        #   }
-        # ];
       };
       extraConfig = ''
         default_border pixel 1
