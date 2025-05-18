@@ -22,7 +22,7 @@ with lib.types; let
 in {
   imports = [
     ../style/picom
-    ../style/i3status-rust
+    ../style/waybar
   ];
 
   options.modules.window-manager.sway = {
@@ -200,7 +200,6 @@ in {
         bars = [
           {
             position = "bottom";
-            statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-top.toml";
             colors = {
               background = "#444444";
               focusedWorkspace = {
@@ -251,6 +250,7 @@ in {
         exec viber
         exec whatsapp
         exec librewolf
+        exec waybar
 
         # Disable touchpad
         #
