@@ -57,6 +57,19 @@ in {
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];
+      extraSessionCommands = ''
+        export WLR_NO_HARDWARE_CURSORS=1
+        export WLR_RENDERER_ALLOW_SOFTWARE=1
+        export WLR_BACKEND="drm"
+        # export NIXOS_OZONE_WL=1
+        export XDG_SESSION_DESKTOP=sway
+        export SDL_VIDEODRIVER=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export CLUTTER_BACKEND=wayland
+        export ELM_ENGINE=wayland_egl
+        export NO_AT_BRIDGE=1
+        export _JAVA_AWT_WM_NONREPARENTING=1
+      '';
       config = {
         inherit terminal;
         modifier = "Mod4";
@@ -81,11 +94,12 @@ in {
             "${alt}+v" = "exec --no-startup-id copyq menu";
 
             # Keyboard layout
-            "${mod}+space" = "exec setxkbmap us dvorak";
-            "${mod}+q" = "exec setxkbmap us";
-            "${mod}+b" = "exec setxkbmap -layout bgd";
-            "${mod}+g" = "exec setxkbmap -layout de";
-            "${mod}+c" = "exec setxkbmap -layout fr";
+            "${mod}+space" = "exec swaymsg input '*' xkb_layout us";
+
+            "${mod}+q" = "exec swaymsg input type:keyboard xkb_variant ' '";
+            "${mod}+b" = "exec swaymsg input '*' xkb_layout bgd";
+            "${mod}+g" = "exec swaymsg input '*' xkb_layout de";
+            "${mod}+c" = "exec swaymsg input '*' xkb_layout fr";
 
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
@@ -220,11 +234,9 @@ in {
         }
 
         input * {
-          xkb_layout us,bgd
-          xkb_variant dvorak,dvorak
-          xkb_options "grp:alt_shift_toggle"
+          xkb_layout us
+          xkb_variant dvorak
         }
-
 
         default_border pixel 1
         # Disable titlebar

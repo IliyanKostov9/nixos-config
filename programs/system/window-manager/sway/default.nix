@@ -26,5 +26,9 @@ in {
       package = pkgs.sway.override {extraOptions = ["--unsupported-gpu"];};
       wrapperFeatures.gtk = true;
     };
+
+    environment.systemPackages = [
+      pkgs.qt5.qtwayland
+    ];
   };
 }

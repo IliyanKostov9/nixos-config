@@ -34,12 +34,12 @@
       # Configure keymap in X11
       xkb = {
         layout = "us";
-        variant = "dvorak";
-        # xkbOptions = "ctrl:nocaps";
+        # variant = "dvorak,";
+        options = "grp:shifts_toggle";
         # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
         extraLayouts.bgd = {
           description = "Bulgarian Dvorak";
-          languages = ["bgd"];
+          languages = ["bul"];
           symbolsFile = ../../options/xkb/dvorak/bgd;
         };
       };

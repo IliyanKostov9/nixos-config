@@ -1,4 +1,10 @@
-_: {
+{config, ...}: let
+  cfg = config.modules.window-manager;
+  keyboard-driver =
+    if cfg.sway.enable == true
+    then "sway"
+    else "setxkbmap";
+in {
   programs.i3status-rust = {
     enable = true;
     bars = {
@@ -63,7 +69,7 @@ _: {
 
           keyboard-layout = {
             block = "keyboard_layout";
-            driver = "setxkbmap";
+            driver = keyboard-driver;
             interval = 1;
             format = " ^icon_keyboard $layout ";
           };

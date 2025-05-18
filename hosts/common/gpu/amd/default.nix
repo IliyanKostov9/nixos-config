@@ -7,6 +7,7 @@
       libGL
       libvdpau-va-gl
       amdvlk
+      rocmPackages.clr.icd
     ];
   };
 }
