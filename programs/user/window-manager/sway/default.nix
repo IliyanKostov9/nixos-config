@@ -105,6 +105,7 @@ in {
             # PC
             "${mod}+${alt}+Page_Down" = "exec shutdown -h now";
             "${mod}+${alt}+Page_Up" = "exec reboot";
+            "${mod}+${alt}+End" = "exec swaymsg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
 
             ## Audio
@@ -197,19 +198,21 @@ in {
             attr-mappings = cfg.firejail-mappings;
           };
 
-        bars = [
-          {
-            position = "bottom";
-            colors = {
-              background = "#444444";
-              focusedWorkspace = {
-                background = "#A4936E";
-                border = "#333333";
-                text = "#ffffff";
-              };
-            };
-          }
-        ];
+        bars = [];
+        # bars = [
+        #   {
+        #     position = "bottom";
+        #     statusCommand = "${pkgs.waybar}/bin/waybar ~/.config/i3status-rust/config-top.toml";
+        #     colors = {
+        #       background = "#444444";
+        #       focusedWorkspace = {
+        #         background = "#A4936E";
+        #         border = "#333333";
+        #         text = "#ffffff";
+        #       };
+        #     };
+        #   }
+        # ];
       };
       extraConfig = ''
         default_border pixel 1
@@ -250,14 +253,13 @@ in {
         exec viber
         exec whatsapp
         exec librewolf
-        exec waybar
 
         # Disable touchpad
         #
         ## Thinkpad
-        exec swaymsg input "Elan Touchpad" events disabled
+        exec_always swaymsg input "Elan Touchpad" events disabled
         ## Legion
-        exec swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
+        exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
 
         ## Autoplace apps in workplaces
         assign [class="ghostty"] 1
