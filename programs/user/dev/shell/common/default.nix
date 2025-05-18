@@ -1,7 +1,12 @@
 {
   env-vars,
   pkgs,
-}: {
+}: let
+  clip =
+    if builtins.getEnv "XDG_SESSION_TYPE" == "wayland"
+    then "wl-copy"
+    else "xclip -selection clipboard";
+in {
   shellAliases = {
     # Python
     py = "python3";
@@ -36,7 +41,7 @@
     gitroot = "cd $(git root)";
     gitunstage = "git restore --staged";
     gitig = "git-ignore";
-    clip = "xclip -selection clipboard";
+    inherit clip;
     lo = "libreoffice";
     ls = "eza";
     cat = "bat";

@@ -6,5 +6,6 @@ _: {
     # NOTE: already provided by nixos modules
     #    ../common/gpu/nvidia/laptop/prime/amd
     ../common/gpu/nvidia
+    ../common/gpu/amd
   ];
 }
