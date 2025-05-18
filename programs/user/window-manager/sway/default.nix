@@ -238,23 +238,26 @@ in {
         for_window [class="blueman-manager"] floating enable
         for_window [class="copyq"] focus
 
+        # Wallpaper
+        exec swaybg -i /etc/nixos/.background-image.jpg -m fill
+
         exec_always dex --autostart --environment sway
         exec_always swaymsg workspace 1
         exec_always xss-lock --transfer-sleep-lock -- i3lock --nofork
 
         # Autostart
-        exec_always nm-applet
-        exec_always copyq
-        exec_always viber
-        exec_always whatsapp
-        exec_always librewolf
+        exec nm-applet
+        exec copyq
+        exec viber
+        exec whatsapp
+        exec librewolf
 
         # Disable touchpad
         #
         ## Thinkpad
-        exec_always swaymsg input "Elan Touchpad" events disabled
+        exec swaymsg input "Elan Touchpad" events disabled
         ## Legion
-        exec_always swaymsg input "ELAN06FA:00 04F3:327E Touchpad" events disabled
+        exec swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
 
         ## Autoplace apps in workplaces
         assign [class="ghostty"] 1
