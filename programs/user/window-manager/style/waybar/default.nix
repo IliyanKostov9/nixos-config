@@ -1,9 +1,4 @@
-{config, ...}: let
-  font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";
-  font-size = "13px";
-  opacity = "0.85";
-  text-color = "#ffffff";
-in {
+_: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -60,7 +55,7 @@ in {
       #workspaces button {
         color: @flamingo;
         border-radius: 1rem;
-        padding: 0.4rem;
+        padding: 0.2rem;
       }
 
       #workspaces button.active {
@@ -70,6 +65,20 @@ in {
       #workspaces button:hover {
         color: @sapphire;
         border-radius: 1rem;
+      }
+
+      #workspaces button.focused {
+        background-color: #64727D;
+        box-shadow: inset 0 -3px @main;
+      }
+
+      #workspaces button.urgent {
+        background-color: #eb4d4b;
+      }
+
+      #mode {
+        background-color: #64727D;
+        border-bottom: 3px solid #ffffff;
       }
 
       #custom-music,
