@@ -152,9 +152,10 @@ _: {
         modules-left = [
           "sway/workspaces"
         ];
-        # modules-center = [
-        #   "sway/window"
-        # ];
+        modules-center = [
+          # "sway/window"
+          "custom/scroll-workspace"
+        ];
         modules-right = [
           "network"
           "pulseaudio"
@@ -163,8 +164,14 @@ _: {
           "tray"
           "clock"
         ];
+        "custom/scroll-workspace" = {
+          "format" = "                                                                                                          ";
+          "on-scroll-up" = "swaymsg workspace prev";
+          "on-scroll-down" = "swaymsg workspace next";
+          "tooltip" = false;
+        };
         clock = {
-          format = "{:%H:%M}  ";
+          format = "{:%d %m %Y %H:%M  }";
         };
         network = {
           format = "{ifname}";
