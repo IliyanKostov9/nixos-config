@@ -113,7 +113,7 @@ _: {
         color: @yellow;
       }
 
-      #backlight, #battery, #keyboard-state {
+      #backlight, #battery {
           border-radius: 0;
       }
 
@@ -142,6 +142,13 @@ _: {
       #tray {
         margin-right: 1rem;
         border-radius: 1rem;
+      }
+
+      #network {
+        padding: 0.5rem 1rem;
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 1rem;
+        color: @blue;
       }
     '';
     settings = {
@@ -172,6 +179,7 @@ _: {
         };
         clock = {
           format = "{:%d %m %Y %H:%M  }";
+          on-click = "gnome-calendar";
         };
         network = {
           format = "{ifname}";
@@ -189,7 +197,7 @@ _: {
         };
         tray = {
           icon-size = 15;
-          spacing = 10;
+          spacing = 12;
         };
         pulseaudio = {
           format = "{icon}   {volume}%";
@@ -212,6 +220,8 @@ _: {
         };
         backlight = {
           format = "{icon} {percent}%";
+          "on-scroll-up" = "brightnessctl s 1%+";
+          "on-scroll-down" = "brightnessctl s 1%-";
           format-icons = [" " " " " " " " " " " " " " " " " "];
         };
         battery = {
@@ -222,7 +232,7 @@ _: {
             critical = 25;
           };
           format = "{icon} {capacity}% {power:2.1f}W";
-          format-charging = " {capacity}% {power:2.1f}W";
+          format-charging = "⚡ {capacity}% {power:2.1f}W";
           format-plugged = " {capacity}% {power:2.1f}W";
           format-alt = "{icon} {time}";
           format-icons = [" " " " " " " " " "];
