@@ -1,9 +1,4 @@
-{config, ...}: let
-  font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";
-  font-size = "13px";
-  opacity = "0.85";
-  text-color = "#ffffff";
-in {
+{config, ...}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
