@@ -25,10 +25,11 @@ in {
       enable = true;
       package = pkgs.sway.override {extraOptions = ["--unsupported-gpu"];};
       wrapperFeatures.gtk = true;
+      extraPackages = with pkgs; [
+        swaybg
+        qt5.qtwayland
+        wl-clipboard
+      ];
     };
-
-    environment.systemPackages = [
-      pkgs.qt5.qtwayland
-    ];
   };
 }

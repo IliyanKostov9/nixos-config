@@ -22,7 +22,6 @@ _: {
       dir-content-ls.enable = true;
       fzf.enable = true;
       monitor.enable = true;
-      clipboard.wayland.enable = true;
       make.enable = true;
     };
 

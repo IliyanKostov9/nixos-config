@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   config,
   ...
@@ -19,7 +20,12 @@ in {
 
   config = mkIf cfg.enable {
     services = {
-      xserver.windowManager.i3.enable = true;
+      xserver.windowManager.i3 = {
+        enable = true;
+        extraPackages = [
+          xclip
+        ];
+      };
       displayManager.defaultSession = "none+i3";
     };
     environment.pathsToLink = ["/libexec"];
