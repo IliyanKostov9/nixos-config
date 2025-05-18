@@ -76,7 +76,7 @@ in {
         fonts = {
           names = ["${config.modules.preferences.fonts.name}NerdFontMono-Regular"];
           style = "Bold Semi-Condensed";
-          size = 9.0;
+          size = 7.0;
         };
         keybindings = let
           mod = "Mod4";
