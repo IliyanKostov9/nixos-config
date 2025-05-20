@@ -14,10 +14,12 @@ in {
               nix-index-database.nixosModules.nix-index
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
+              # inputs.nixpkgs.nixosModules.readOnlyPkgs
             ]);
           specialArgs = {
             inherit host_name host_attr;
             inherit (shared) pkgs pkgs-unstable system stateVersion users;
+            # nixpkgs.pkgs = pkgs;
           };
         }
     )

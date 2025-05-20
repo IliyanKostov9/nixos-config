@@ -10,7 +10,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     containersForce = true;
     isDefault = true;
     containers = import ./containers/Main;
-    extensions = [
+    extensions.packages = [
       passbolt
       ublock-origin
       privacy-badger
@@ -25,7 +25,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = "Social";
     containersForce = false;
     isDefault = false;
-    extensions = [
+    extensions.packages = [
       ublock-origin
       privacy-badger
       darkreader
@@ -39,7 +39,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     containersForce = false;
     isDefault = false;
     containers = import ./containers/Youtube;
-    extensions = [
+    extensions.packages = [
       ublock-origin
       privacy-badger
       darkreader
@@ -53,7 +53,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = work_name;
     containersForce = false;
     isDefault = false;
-    extensions = [
+    extensions.packages = [
       passbolt
       ublock-origin
       privacy-badger
@@ -67,7 +67,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = work_name_new;
     containersForce = false;
     isDefault = false;
-    extensions = [
+    extensions.packages = [
       passbolt
       ublock-origin
       privacy-badger
@@ -82,7 +82,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = "Test";
     containersForce = false;
     isDefault = false;
-    extensions = [
+    extensions.packages = [
       ublock-origin
       privacy-badger
       darkreader

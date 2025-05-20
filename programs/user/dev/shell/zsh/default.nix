@@ -88,7 +88,7 @@ in {
         };
         inherit (common) shellAliases;
         inherit (common) sessionVariables;
-        initExtra = ''
+        initContent = ''
           bindkey -M vicmd 'V' edit-command-line
         '';
         # initExtra = lib.mkOrder 1000 ''

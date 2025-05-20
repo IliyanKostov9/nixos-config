@@ -1,4 +1,8 @@
-_: {
+{pkgs, ...}: {
+  fonts.packages = with pkgs.nerd-fonts; [
+    _0xproto
+    fira-code
+  ];
   programs = {
     zsh.enable = true;
     gnupg.agent.enable = true;

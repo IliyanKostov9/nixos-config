@@ -5,7 +5,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = "Dummy";
     containersForce = false;
     isDefault = true;
-    extensions = [
+    extensions.packages = [
       ublock-origin
       privacy-badger
       i-dont-care-about-cookies
@@ -16,6 +16,6 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     name = "Testarino";
     containersForce = false;
     isDefault = false;
-    extensions = [];
+    extensions.packages = [];
   };
 }

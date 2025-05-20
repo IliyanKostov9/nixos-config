@@ -178,7 +178,7 @@ _: {
           "tooltip" = false;
         };
         clock = {
-          format = "{:%d %m %Y %H:%M  }";
+          format = "{:%d/%m/%Y %H:%M  }";
           on-click = "gnome-calendar";
         };
         network = {
