@@ -114,7 +114,7 @@ in {
 
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+${shift}+q" = "kill";
-            "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun -icon-theme 'oomox-rose-pine' -show-icons -sidebar-mode -transient-window -matching normal -sorting-method fzf -terminal ${terminal}";
+            "${mod}+d" = "exec ${pkgs.wofi}/bin/wofi --show drun --allow-images --sort-order fzf --term ${terminal} --hide-scroll";
 
             # change focus
             "${mod}+h" = "focus left";
@@ -248,6 +248,35 @@ in {
         assign [class="librewolf"] 2
         assign [class="chromium"] 5
       '';
+    };
+    programs.wofi = {
+      enable = true;
+      settings = {
+        allow_markup = true;
+        width = 650;
+        show = "drun";
+        prompt = "Apps";
+        normal_window = true;
+        layer = "top";
+        height = "325px";
+        orientation = "vertical";
+        halign = "fill";
+        line_wrap = "off";
+        dynamic_lines = false;
+        allow_images = true;
+        image_size = 24;
+        exec_search = false;
+        hide_search = false;
+        parse_search = false;
+        insensitive = true;
+        hide_scroll = true;
+        no_actions = true;
+        sort_order = "default";
+        gtk_dark = true;
+        filter_rate = 100;
+        key_expand = "Tab";
+        key_exit = "Escape";
+      };
     };
   };
 }
