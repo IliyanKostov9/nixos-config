@@ -249,6 +249,7 @@ in {
         assign [class="chromium"] 5
       '';
     };
+
     programs.wofi = {
       enable = true;
       settings = {

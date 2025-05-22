@@ -79,7 +79,7 @@ _: {
       #backlight,
       #clock,
       #battery,
-      #pulseaudio,
+      #wireplumber,
       #custom-lock,
       #custom-power {
         background-color: @surface0;
@@ -117,7 +117,7 @@ _: {
           border-radius: 0;
       }
 
-      #pulseaudio {
+      #wireplumber {
         color: @maroon;
         border-radius: 1rem 0px 0px 1rem;
         margin-left: 1rem;
@@ -159,13 +159,13 @@ _: {
         modules-left = [
           "sway/workspaces"
         ];
-        modules-center = [
-          # "sway/window"
-          "custom/scroll-workspace"
-        ];
+        # modules-center = [
+        # "sway/window"
+        # "custom/scroll-workspace"
+        # ];
         modules-right = [
           "network"
-          "pulseaudio"
+          "wireplumber"
           "backlight"
           "battery"
           "tray"
@@ -199,14 +199,10 @@ _: {
           icon-size = 15;
           spacing = 12;
         };
-        pulseaudio = {
+        wireplumber = {
           format = "{icon}   {volume}%";
           format-muted = "";
           on-click = "pwvucontrol";
-          on-click-right = "pwvucontrol";
-          on-click-middle = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
           scroll-step = 5;
           format-icons = {
             headphone = "";
@@ -220,8 +216,6 @@ _: {
         };
         backlight = {
           format = "{icon} {percent}%";
-          "on-scroll-up" = "brightnessctl s 1%+";
-          "on-scroll-down" = "brightnessctl s 1%-";
           format-icons = [" " " " " " " " " " " " " " " " " "];
         };
         battery = {

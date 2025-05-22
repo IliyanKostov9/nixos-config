@@ -29,7 +29,6 @@ in {
         swaybg
         qt5.qtwayland
         wl-clipboard
-        brightnessctl
       ];
     };
   };
