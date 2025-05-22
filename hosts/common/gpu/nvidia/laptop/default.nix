@@ -12,10 +12,10 @@
       system.nixos.tags = ["on-the-go"];
       hardware.nvidia = {
         prime = {
-          sync.enable = lib.mkForce false;
+          sync.enable = lib.mkDefault true;
           offload = {
-            enable = lib.mkForce true;
-            enableOffloadCmd = lib.mkForce true;
+            # enable = lib.mkDefault true;
+            # enableOffloadCmd = lib.mkDefault true;
           };
         };
       };

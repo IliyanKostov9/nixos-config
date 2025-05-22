@@ -234,7 +234,7 @@ in {
         exec copyq
         exec viber
         exec whatsapp
-        exec librewolf
+        exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
         # Disable touchpad
         #
@@ -242,11 +242,6 @@ in {
         exec_always swaymsg input "Elan Touchpad" events disabled
         ## Legion
         exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
-
-        ## Autoplace apps in workplaces
-        assign [class="ghostty"] 1
-        assign [class="librewolf"] 2
-        assign [class="chromium"] 5
       '';
     };
 

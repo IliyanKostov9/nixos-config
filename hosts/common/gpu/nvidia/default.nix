@@ -20,7 +20,6 @@
     nvidia = {
       modesetting.enable = true;
       nvidiaSettings = true;
-      open = false;
       package = config.boot.kernelPackages.nvidiaPackages.beta;
       # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       #   version = "565.57.01";
