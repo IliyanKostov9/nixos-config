@@ -14,6 +14,7 @@ in {
               nix-index-database.nixosModules.nix-index
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
+              stylix.nixosModules.stylix
               # inputs.nixpkgs.nixosModules.readOnlyPkgs
             ]);
           specialArgs = {

@@ -16,5 +16,6 @@ _: {
     ./networking
     ./pipewire
     ./security
+    ./style
   ];
 }

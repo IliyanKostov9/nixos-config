@@ -21,6 +21,7 @@ in {
       then [../secrets/user/${username}]
       else []
     );
+
   home = {
     homeDirectory = "/home/${username}";
     inherit username stateVersion;
