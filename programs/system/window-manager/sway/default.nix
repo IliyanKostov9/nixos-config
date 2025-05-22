@@ -23,7 +23,6 @@ in {
     security.polkit.enable = true;
     programs.sway = {
       enable = true;
-      package = pkgs.sway.override {extraOptions = ["--unsupported-gpu"];};
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
         swaybg

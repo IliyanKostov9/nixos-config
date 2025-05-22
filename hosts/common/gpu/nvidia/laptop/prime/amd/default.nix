@@ -1,3 +1,3 @@
-_: {
-  hardware.nvidia.prime.amdgpuBusId = "PCI:54:0:0";
+{lib, ...}: {
+  hardware.nvidia.prime.amdgpuBusId = lib.mkDefault "PCI:54:0:0";
 }
