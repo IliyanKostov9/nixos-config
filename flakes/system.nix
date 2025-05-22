@@ -15,12 +15,13 @@ in {
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
               stylix.nixosModules.stylix
-              # inputs.nixpkgs.nixosModules.readOnlyPkgs
+              {
+                nixpkgs.pkgs = shared.pkgs;
+              }
             ]);
           specialArgs = {
             inherit host_name host_attr;
-            inherit (shared) pkgs pkgs-unstable system stateVersion users;
-            # nixpkgs.pkgs = pkgs;
+            inherit (shared) pkgs-unstable system stateVersion users;
           };
         }
     )
