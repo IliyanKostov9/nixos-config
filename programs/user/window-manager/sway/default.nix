@@ -86,7 +86,6 @@ in {
         in
           {
             "${mod}+${ctrl}+c" = "exec chromium";
-
             "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
             "${alt}+f" = "exec flameshot gui";
             "${alt}+n" = "exec normcap";
@@ -94,7 +93,6 @@ in {
 
             # Keyboard layout
             "${mod}+space" = "exec swaymsg input '*' xkb_layout us";
-
             "${mod}+q" = "exec swaymsg input type:keyboard xkb_variant ' '";
             "${mod}+b" = "exec swaymsg input '*' xkb_layout bgd";
             "${mod}+g" = "exec swaymsg input '*' xkb_layout de";
@@ -128,9 +126,7 @@ in {
             "${mod}+${shift}+k" = "move up";
             "${mod}+${shift}+l" = "move right";
 
-            # split in horizontal orientation
             "${mod}+z" = "split h";
-            # split in vertical orientation
             "${mod}+v" = "split v";
 
             # enter fullscreen mode for the focused container

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  work_name,
-  work_name_new,
-}:
+{pkgs}:
 with pkgs.nur.repos.rycee.firefox-addons; {
   Main = {
     id = 0;
@@ -48,37 +44,8 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     ];
   };
 
-  Work = {
-    id = 3;
-    name = work_name;
-    containersForce = false;
-    isDefault = false;
-    extensions.packages = [
-      passbolt
-      ublock-origin
-      privacy-badger
-      darkreader
-      i-dont-care-about-cookies
-      user-agent-string-switcher
-    ];
-  };
-  WorkNew = {
-    id = 4;
-    name = work_name_new;
-    containersForce = false;
-    isDefault = false;
-    extensions.packages = [
-      passbolt
-      ublock-origin
-      privacy-badger
-      darkreader
-      i-dont-care-about-cookies
-      user-agent-string-switcher
-    ];
-  };
-
   Test = {
-    id = 5;
+    id = 3;
     name = "Test";
     containersForce = false;
     isDefault = false;

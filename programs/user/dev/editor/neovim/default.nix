@@ -23,7 +23,7 @@ in {
       enable = true;
       vimAlias = true;
       defaultEditor = lib.mkForce true;
-      extraPackages = with pkgs; [yamllint nodejs_24 unzip];
+      extraPackages = with pkgs; [yamllint nodejs_22 unzip];
     };
   };
 }

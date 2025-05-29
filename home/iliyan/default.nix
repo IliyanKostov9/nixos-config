@@ -61,9 +61,6 @@ in {
         "m" = "Main";
         "l" = "Social";
         "y" = "Youtube";
-        "d" = work_name;
-        "o" = work_project1_name;
-        "a" = work_name_new;
         "t" = "Test";
       };
     };
@@ -78,7 +75,7 @@ in {
     browsers.librewolf = {
       package = null; # NOTE: For firejail
       enable = true;
-      profiles = import ./options/librewolf/profiles {inherit pkgs work_name work_name_new;};
+      profiles = import ./options/librewolf/profiles {inherit pkgs;};
     };
 
     dev = {

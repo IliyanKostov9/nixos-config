@@ -48,22 +48,15 @@
     icon = "food";
   };
 
-  Chat = {
-    id = 7;
-    name = "Chat";
-    color = "green";
-    icon = "food";
-  };
-
   BG = {
-    id = 8;
+    id = 7;
     name = "Bulgaria";
     color = "green";
     icon = "fingerprint";
   };
 
   France = {
-    id = 9;
+    id = 8;
     name = "France";
     color = "toolbar";
     icon = "fingerprint";
