@@ -155,10 +155,7 @@ in {
     };
     password-manager.keepass.enable = true;
 
-    virtualisation = {
-      virt-manager.enable = true;
-      lazydocker.enable = true;
-    };
+    virtualisation.lazydocker.enable = true;
     vpn.openvpn.enable = true;
 
     utils = {

@@ -26,7 +26,6 @@ in {
     homeDirectory = "/home/${username}";
     inherit username stateVersion;
     pointerCursor = {
-      x11.enable = true;
       gtk.enable = true;
       name = "DMZ-Black";
       package = pkgs.vanilla-dmz;
