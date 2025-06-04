@@ -151,6 +151,7 @@ in {
       syncthing.enable = true;
       drawio.enable = true;
       libreoffice.enable = true;
+      master-pdf.enable = true;
       okular.enable = true;
     };
     password-manager.keepass.enable = true;

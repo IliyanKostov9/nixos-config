@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./master-pdf
     ./nomacs
     ./okular
     ./syncthing

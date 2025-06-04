@@ -8,7 +8,7 @@ unlock: unlock-sys unlock-usr
 	@echo "Unlock secrets"
 
 unlock-sys:
-	sops system/${SECRET_FILE}.yaml
+	sops system/secrets.yaml
 
 unlock-usr:
 	sops user/${USER}/${SECRET_FILE}.yaml
