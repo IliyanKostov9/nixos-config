@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   programs.virt-manager.enable = true;
   virtualisation = {
+    docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
     spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;

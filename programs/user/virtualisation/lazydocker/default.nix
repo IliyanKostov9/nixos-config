@@ -10,8 +10,6 @@ in {
   options.modules.virtualisation.lazydocker = {enable = mkEnableOption "lazydocker";};
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.lazydocker
-    ];
+    programs.lazydocker.enable = true;
   };
 }
