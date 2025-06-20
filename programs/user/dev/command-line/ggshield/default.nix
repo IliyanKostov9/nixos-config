@@ -1,5 +1,5 @@
 {
-  pkgs-unstable,
+  pkgs,
   lib,
   config,
   ...
@@ -11,7 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs-unstable.ggshield
+      pkgs.ggshield
       # (pkgs-unstable.ggshield.overrideAttrs {
       #   version = "1.33.0";
       #   src = pkgs-unstable.fetchFromGitHub {
