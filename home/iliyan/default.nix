@@ -84,10 +84,7 @@ in {
         eza.enable = true;
         ggshield.enable = true;
       };
-      container = {
-        docker.enable = true;
-        k8s.enable = true;
-      };
+      container.docker.enable = true;
       dbms.dbeaver.enable = true;
       editor.neovim.enable = true;
 
