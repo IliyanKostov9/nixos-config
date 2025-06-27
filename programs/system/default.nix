@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./vpn
     ./gnome-disable-apps
     ./desktop-settings
     ./downloader

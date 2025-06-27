@@ -8,7 +8,7 @@ in {
   networking = {
     # proxy.default = "http://192.168.1.12:8080";
     hostName = host-name;
-    # nameservers = ["192.168.1.99"];
+    # nameservers = ["192.168.1.99:8080"];
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
   };

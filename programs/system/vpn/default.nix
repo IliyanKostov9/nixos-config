@@ -1,0 +1,5 @@
+_: {
+  imports = [
+    ./tailscale
+  ];
+}
