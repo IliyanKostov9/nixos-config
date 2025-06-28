@@ -9,6 +9,7 @@ _: {
     defaultSopsFormat = "yaml";
 
     secrets = {
+      networking_search = {};
       ovpn_username = {
         mode = "0640";
         restartUnits = ["openvpn-personalVPN.service"];
