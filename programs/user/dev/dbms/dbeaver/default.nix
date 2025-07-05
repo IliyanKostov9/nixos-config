@@ -1,5 +1,5 @@
 {
-  pkgs-unstable,
+  pkgs,
   lib,
   config,
   ...
@@ -11,7 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs-unstable.dbeaver-bin
+      pkgs.dbeaver-bin
     ];
   };
 }
