@@ -89,7 +89,7 @@ in {
             "${mod}+${alt}+n" = "exec --no-startup-id pcmanfm ~/";
             "${alt}+f" = "exec flameshot gui";
             "${alt}+n" = "exec normcap";
-            "${alt}+v" = "exec --no-startup-id copyq menu";
+            "${alt}+v" = "exec --no-startup-id copyq toggle";
 
             # Keyboard layout
             "${mod}+space" = "exec swaymsg input '*' xkb_layout us";
