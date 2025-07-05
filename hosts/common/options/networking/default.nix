@@ -5,7 +5,6 @@
   ...
 }: let
   host-name = "baks";
-  inherit (config.sops) secrets;
 in {
   networking = {
     # proxy.default = "http://192.168.1.12:8080";
