@@ -87,11 +87,11 @@ in {
             ];
           };
 
-          signal = {
-            executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
-            profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
-            extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
-          };
+          # signal = {
+          #   executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
+          #   profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
+          #   extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
+          # };
 
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
