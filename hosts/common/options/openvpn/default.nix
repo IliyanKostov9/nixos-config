@@ -18,7 +18,8 @@ in {
         password = builtins.readFile secrets.ovpn_password.path;
       };
       updateResolvConf = false; # NOTE set to false for pi-hole DNS use
-      autoStart = is-ovpn-present;
+      # autoStart = is-ovpn-present;
+       autoStart = false;
     };
   };
 }

@@ -25,6 +25,18 @@ with lib.types; let
           };
         };
       };
+
+      Brave = {
+        urls = lib.singleton {
+          template = "https://search.brave.com/";
+
+          params = lib.singleton {
+            name = "q";
+            value = "{searchTerms}";
+          };
+        };
+      };
+
       Mullvad-Leta = {
         urls = lib.singleton {
           template = "https://leta.mullvad.net/";
