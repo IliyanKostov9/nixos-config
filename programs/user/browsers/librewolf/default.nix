@@ -11,14 +11,13 @@ with lib.types; let
   settings = import ./about-config/settings;
   search = {
     force = true;
-    default = "ddg";
-    privateDefault = "ddg";
+    default = "google";
+    privateDefault = "google";
 
     engines = {
       ddg = {
         urls = lib.singleton {
           template = "https://duckduckgo.com";
-
           params = lib.singleton {
             name = "q";
             value = "{searchTerms}";
@@ -29,7 +28,6 @@ with lib.types; let
       Brave = {
         urls = lib.singleton {
           template = "https://search.brave.com/";
-
           params = lib.singleton {
             name = "q";
             value = "{searchTerms}";
@@ -40,7 +38,16 @@ with lib.types; let
       Mullvad-Leta = {
         urls = lib.singleton {
           template = "https://leta.mullvad.net/";
+          params = lib.singleton {
+            name = "q";
+            value = "{searchTerms}";
+          };
+        };
+      };
 
+      google= {
+        urls = lib.singleton {
+          template = "https://www.google.com/search";
           params = lib.singleton {
             name = "q";
             value = "{searchTerms}";
