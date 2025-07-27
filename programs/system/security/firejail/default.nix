@@ -20,6 +20,14 @@ in {
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
+    # NOTE: Use up to date package for Viber
+    services.flatpak.enable = true;
+    # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    # flatpak install flathub com.viber.Viber
+    # flatpak override --user com.viber.Viber --device=all
+    # flatpak run com.viber.Viber
+    # flatpak run  com.github.tchx84.Flatseal
+
     programs = {
       chromium = {
         enable = true;
@@ -56,23 +64,23 @@ in {
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };
-          viber = {
-            executable = "${pkgs.viber}/bin/viber";
-            desktop = "${pkgs.viber}/share/applications/viber.desktop";
-            extraArgs = [
-              "--noprofile"
-              "--env=GTK_THEME=Adwaita:dark"
-              "--dbus-user.talk=org.freedesktop.Notifications"
-              "--dbus-user.talk=org.freedesktop.ScreenSaver"
-              "--dbus-user.talk=org.freedesktop.portal.Desktop"
-              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-              "--nonewprivs"
-              "--noblacklist=/dev/video0"
-              "--noblacklist=/dev/video1"
-              "--private-dev"
-              "--private-cache"
-            ];
-          };
+          # viber = {
+          #   executable = "${pkgs.viber}/bin/viber";
+          #   desktop = "${pkgs.viber}/share/applications/viber.desktop";
+          #   extraArgs = [
+          #     "--noprofile"
+          #     "--env=GTK_THEME=Adwaita:dark"
+          #     "--dbus-user.talk=org.freedesktop.Notifications"
+          #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
+          #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
+          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+          #     "--nonewprivs"
+          #     "--noblacklist=/dev/video0"
+          #     "--noblacklist=/dev/video1"
+          #     "--private-dev"
+          #     "--private-cache"
+          #   ];
+          # };
 
           whatsapp = {
             executable = "${pkgs.whatsie}/bin/whatsie";

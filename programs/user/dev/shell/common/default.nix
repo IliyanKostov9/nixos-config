@@ -22,6 +22,8 @@ in {
     pdm-sync = "pdm install && pdm sync --clean";
     pdm-export = "pdm export -o requirements.txt";
     uv-export = "uv pip compile pyproject.toml -o requirements.txt";
+    uv-import = "uv add -r requirements.txt";
+    uv-bump = "uv lock --upgrade";
 
     # Maven
     mvn-jar = "mvn -f pom.xml clean package";

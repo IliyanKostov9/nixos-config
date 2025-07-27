@@ -92,7 +92,7 @@ in {
         default = "ghostty";
         ghostty.enable = true;
         alacritty = {
-          enable = false;
+          enable = true;
           theme = "kanagawa_dragon";
           scheduled = false;
           start-hour = 7;

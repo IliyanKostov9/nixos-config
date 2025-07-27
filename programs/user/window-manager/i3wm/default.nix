@@ -220,7 +220,8 @@ in {
         exec --no-startup-id nm-applet
         exec --no-startup-id copyq
         exec --no-startup-id copyq
-        exec --no-startup-id viber
+        exec --no-startup-id flatpak run com.viber.Viber
+        # exec --no-startup-id viber
         exec --no-startup-id whatsapp
         exec --no-startup-id librewolf
 
