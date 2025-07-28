@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   lib,
   config,
   ...
@@ -54,7 +55,7 @@ in {
         enable = true;
         wrappedBinaries = {
           grayjay = {
-            executable = "${pkgs.grayjay}/bin/Grayjay";
+            executable = "${pkgs-unstable.grayjay}/bin/Grayjay";
             extraArgs = [
               "--noprofile"
               "--env=GTK_THEME=Adwaita:dark"

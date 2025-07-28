@@ -12,7 +12,7 @@ in {
     py = "python3";
     uy = "uv run";
     pip = "uv pip";
-    venv = "source .venv/bin/activate";
+    venv = "source .venv/bin/activate 2> /dev/null && echo 'Activated venv in .venv/bin/activate' || source .devenv/state/venv/bin/activate && echo 'Activated venv in .devenv/state/venv/bin/activate'";
 
     pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
     pip-sync = "uv pip sync requirements.txt";
