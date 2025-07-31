@@ -11,8 +11,8 @@ with lib.types; let
   settings = import ./about-config/settings;
   search = {
     force = true;
-    default = "google";
-    privateDefault = "google";
+    default = "ddg";
+    privateDefault = "ddg";
 
     engines = {
       ddg = {
@@ -45,7 +45,7 @@ with lib.types; let
         };
       };
 
-      google= {
+      google = {
         urls = lib.singleton {
           template = "https://www.google.com/search";
           params = lib.singleton {

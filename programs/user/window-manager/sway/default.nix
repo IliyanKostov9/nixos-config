@@ -228,7 +228,7 @@ in {
         # Autostart
         exec nm-applet
         exec copyq
-        exec viber
+        exec flatpak run com.viber.Viber
         exec whatsapp
         exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
@@ -271,5 +271,4 @@ in {
       };
     };
   };
-  }
-
+}

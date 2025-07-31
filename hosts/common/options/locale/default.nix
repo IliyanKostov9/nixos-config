@@ -1,5 +1,5 @@
 _: let
-  defaultLocale = "fr_FR.UTF-8";
+  defaultLocale = "en_US.UTF-8";
   # den_US.UTF-8e_DE.UTF-8
   # en_US.UTF-8
   # bg_BG.UTF-8
