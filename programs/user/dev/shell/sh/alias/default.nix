@@ -31,10 +31,10 @@ with config.modules.dev.shell; let
 
       if [ -z "$link" ]; then
         echo "You need to add a youtube link!"
-      else if [[ "$link" =~ ^https://youtu.be/.* ]]; then
+      elif [[ ! "$link" =~ ^https://youtu.be/.* ]]; then
         echo "Youtube link needs to start with https://youtu.be/"
       else
-        yt-dlp -x --audio-format mp3 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36" -o "~/Downloads/%(title)s.%(ext)s" "$link"
+        yt-dlp -x --audio-format mp3 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36" -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
       fi
     '';
   };
