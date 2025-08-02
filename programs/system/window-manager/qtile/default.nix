@@ -30,17 +30,22 @@ in {
       ];
     };
     programs.xwayland.enable = true;
-    services.xserver.displayManager.sessionPackages = [pkgs.qtile-unwrapped];
-    services.displayManager.defaultSession = "qtile";
-    services.xserver.windowManager.qtile = {
-      enable = true;
-      package = pkgs.qtile-unwrapped;
-      extraPackages = _python3Packages:
-        with pkgs.python3Packages;
-          [
-            qtile-extras
-          ]
-          ++ [pkgs.kbdd];
+
+    services = {
+      xserver = {
+        displayManager.sessionPackages = [pkgs.qtile-unwrapped];
+        windowManager.qtile = {
+          enable = true;
+          package = pkgs.qtile-unwrapped;
+          extraPackages = _python3Packages:
+            with pkgs.python3Packages;
+              [
+                qtile-extras
+              ]
+              ++ [pkgs.kbdd];
+        };
+        displayManager.defaultSession = "qtile";
+      };
     };
   };
 }

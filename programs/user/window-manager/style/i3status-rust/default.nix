@@ -1,7 +1,7 @@
 {config, ...}: let
   cfg = config.modules.window-manager;
   keyboard-driver =
-    if cfg.sway.enable == true
+    if cfg.sway.enable
     then "sway"
     else "setxkbmap";
 in {

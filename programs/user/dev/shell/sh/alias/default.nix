@@ -22,6 +22,22 @@ with config.modules.dev.shell; let
       fi
     '';
   };
+
+  youtube-download = pkgs.writeShellApplication {
+    name = "youtube-download";
+    runtimeInputs = with pkgs; [yt-dlp];
+    text = ''
+      link=$1
+
+      if [ -z "$link" ]; then
+        echo "You need to add a youtube link!"
+      elif [[ ! "$link" =~ ^https://youtu.be/.* ]]; then
+        echo "Youtube link needs to start with https://youtu.be/"
+      else
+        yt-dlp -x --audio-format mp3 --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/119.0.0.0 Safari/537.36" -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
+      fi
+    '';
+  };
   # passbolt-get-password = pkgs.writeShellApplication {
   #   name = "passbolt-get-password";
   #   runtimeInputs = with pkgs-unstable; [ go-passbolt-cli ];
@@ -42,6 +58,7 @@ with config.modules.dev.shell; let
 in {
   home.packages = lib.optionals (zsh.enable || bash.enable) [
     fzf-search
+    youtube-download
     # passbolt-get-password
   ];
 }

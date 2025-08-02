@@ -54,17 +54,17 @@ in {
       firejail = {
         enable = true;
         wrappedBinaries = {
-          grayjay = {
-            executable = "${pkgs-unstable.grayjay}/bin/Grayjay";
-            extraArgs = [
-              "--noprofile"
-              "--env=GTK_THEME=Adwaita:dark"
-              "--dbus-user.talk=org.freedesktop.Notifications"
-              "--dbus-user.talk=org.freedesktop.ScreenSaver"
-              "--dbus-user.talk=org.freedesktop.portal.Desktop"
-              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-            ];
-          };
+          # grayjay = {
+          #   executable = "${pkgs-unstable.grayjay}/bin/Grayjay";
+          #   extraArgs = [
+          #     "--noprofile"
+          #     "--env=GTK_THEME=Adwaita:dark"
+          #     "--dbus-user.talk=org.freedesktop.Notifications"
+          #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
+          #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
+          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+          #   ];
+          # };
           # viber = {
           #   executable = "${pkgs.viber}/bin/viber";
           #   desktop = "${pkgs.viber}/share/applications/viber.desktop";
