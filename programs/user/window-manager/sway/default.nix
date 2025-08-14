@@ -238,6 +238,11 @@ in {
         exec_always swaymsg input "Elan Touchpad" events disabled
         ## Legion
         exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
+
+
+        # Make external display the primary monitor
+        exec swaymsg output HDMI-A-1 pos 0 0 res 2560x1440
+        exec swaymsg output eDP-1 disable
       '';
     };
 
