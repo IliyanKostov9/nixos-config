@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkg-wayland,
   lib,
   config,
   ...
@@ -53,6 +54,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
+      package = pkg-wayland.sway-unwrapped;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];

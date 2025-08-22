@@ -16,6 +16,7 @@ in {
         inherit (shared) pkgs;
         extraSpecialArgs = {
           inherit self user;
+          pkg-wayland = inputs.nixpkgs-wayland.packages.${shared.system};
           inherit (shared) system stateVersion pkgs-unstable;
         };
         modules =

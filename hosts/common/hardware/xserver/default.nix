@@ -15,6 +15,8 @@
     libinput.enable = true;
     xserver = {
       enable = true;
+      videoDrivers = ["nvidia"];
+      displayManager.gdm.wayland = true;
       # Enable for using GNOME
       displayManager.gdm.enable = false;
 
