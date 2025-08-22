@@ -60,7 +60,6 @@ in {
       librewolf-mappings = {
         "m" = "Main";
         "l" = "Social";
-        "y" = "Youtube";
         "t" = "Test";
       };
     };

@@ -61,4 +61,11 @@
     color = "toolbar";
     icon = "fingerprint";
   };
+
+  Shopping = {
+    id = 9;
+    name = "Shopping";
+    color = "yellow";
+    icon = "cart";
+  };
 }

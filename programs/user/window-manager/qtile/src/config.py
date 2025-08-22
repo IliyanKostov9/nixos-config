@@ -1,6 +1,7 @@
-import subprocess
 import os
-from libqtile import bar, layout, qtile, widget, hook
+import subprocess
+
+from libqtile import bar, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -92,7 +93,6 @@ keys = [
     # NOTE: Browser settings
     Key([mod, ctrl], "m", lazy.spawn("librewolf -P Main"), desc="Open librewolf"),
     Key([mod, ctrl], "l", lazy.spawn("librewolf -P Social"), desc="Open librewolf"),
-    Key([mod, ctrl], "y", lazy.spawn("librewolf -P Youtube"), desc="Open librewolf"),
     Key([mod, ctrl], "t", lazy.spawn("librewolf -P Test"), desc="Open librewolf"),
     Key([mod, ctrl], "c", lazy.spawn("chromium"), desc="Open chromium"),
     # NOTE: Sound

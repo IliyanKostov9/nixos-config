@@ -12,7 +12,7 @@ in rec {
   options.modules.utils.gtk = {
     themeName = mkOption {
       type = str;
-      default = "Adwaita";
+      default = "Adwaita:dark";
       description = mkDoc ''
         Theme name for gtk
       '';

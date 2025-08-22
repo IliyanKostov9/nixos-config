@@ -11,8 +11,8 @@ with lib.types; let
   settings = import ./about-config/settings;
   search = {
     force = true;
-    default = "ddg";
-    privateDefault = "ddg";
+    default = "google";
+    privateDefault = "google";
 
     engines = {
       ddg = {
