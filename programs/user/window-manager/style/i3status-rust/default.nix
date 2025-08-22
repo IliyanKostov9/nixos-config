@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.modules.window-manager;
   keyboard-driver =
     if cfg.sway.enable
@@ -7,6 +11,7 @@
 in {
   programs.i3status-rust = {
     enable = true;
+    package = pkgs.wayland-unwrapped.i3status-rust;
     bars = {
       top = {
         blocks = let

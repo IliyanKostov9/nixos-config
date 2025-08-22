@@ -12,6 +12,7 @@ with inputs; rec {
         nur.overlays.default
         alacritty-theme.overlays.default
         (_self: super: {
+          wayland-unwrapped = inputs.nixpkgs-wayland.packages.${system};
           qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (_: rec {
             postInstall = let
               qtileSession = ''
