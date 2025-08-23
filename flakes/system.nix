@@ -19,6 +19,7 @@ in {
                 nixpkgs.pkgs = shared.pkgs;
               }
             ]);
+
           specialArgs = {
             inherit host_name host_attr;
             inherit (shared) pkgs-unstable system stateVersion users;

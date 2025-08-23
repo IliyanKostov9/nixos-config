@@ -13,7 +13,7 @@ with lib; let
         git_message="$*"
 
         git add .
-        git-magic -m "''${git_message}" -p
+        git-magic -m "''$(printf '%s' "''$git_message")" -p
       '';
     };
 

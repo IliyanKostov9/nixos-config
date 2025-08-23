@@ -241,7 +241,11 @@ in {
 
 
         # Make external display the primary monitor
-        exec swaymsg output HDMI-A-1 pos 0 0 res 2560x1440
+        # exec swaymsg output HDMI-A-1 pos 0 0 res 2560x1440
+        exec swaymsg output HDMI-A-1 {
+            mode 2560x1440@Hz
+            pos 0 0
+        }
         exec swaymsg output eDP-1 disable
       '';
     };
