@@ -11,7 +11,6 @@
     on-the-go.configuration = {
       system.nixos.tags = ["on-the-go"];
       hardware.nvidia = {
-        open = true;
         prime = {
           sync.enable = lib.mkDefault true;
           offload = {
