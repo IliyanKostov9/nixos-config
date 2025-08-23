@@ -53,7 +53,6 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
-      package = pkgs.wayland-unwrapped.sway-unwrapped;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];
@@ -242,14 +241,17 @@ in {
 
 
         # Make external display the primary monitor
-        exec swaymsg output HDMI-A-1 pos 0 0 res 2560x1440
+        # exec swaymsg output HDMI-A-1 pos 0 0 res 2560x1440
+        exec swaymsg output HDMI-A-1 {
+            mode 2560x1440@Hz
+            pos 0 0
+        }
         exec swaymsg output eDP-1 disable
       '';
     };
 
     programs.wofi = {
       enable = true;
-      package = pkgs.wayland-unwrapped.wofi;
       settings = {
         allow_markup = true;
         width = 650;

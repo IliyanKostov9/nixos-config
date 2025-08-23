@@ -25,9 +25,9 @@ in {
       enable = true;
       wrapperFeatures.gtk = true;
       extraPackages = with pkgs; [
-        wayland-unwrapped.swaybg
+        swaybg
         qt5.qtwayland
-        wayland-unwrapped.wl-clipboard
+        wl-clipboard
       ];
     };
   };
