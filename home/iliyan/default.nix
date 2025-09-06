@@ -59,7 +59,6 @@ in {
       enable = true;
       librewolf-mappings = {
         "m" = "Main";
-        "l" = "Social";
         "t" = "Test";
       };
     };

@@ -1,7 +1,7 @@
 _: {
   config.modules = {
     window-manager.sway.enable = true;
-    vpn.tailscale.enable = true;
+    vpn.tailscale.enable = false;
 
     downloader = {
       curl.enable = true;

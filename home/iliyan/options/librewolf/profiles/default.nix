@@ -15,18 +15,4 @@ with pkgs.nur.repos.rycee.firefox-addons; {
       user-agent-string-switcher
     ];
   };
-
-  Social = {
-    id = 1;
-    name = "Social";
-    containersForce = false;
-    isDefault = false;
-    extensions.packages = [
-      ublock-origin
-      privacy-badger
-      darkreader
-      i-dont-care-about-cookies
-      user-agent-string-switcher
-    ];
-  };
 }

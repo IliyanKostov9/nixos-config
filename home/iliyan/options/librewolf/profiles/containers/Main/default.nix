@@ -68,4 +68,11 @@
     color = "yellow";
     icon = "cart";
   };
+
+  Languages = {
+    id = 10;
+    name = "Languages";
+    color = "red";
+    icon = "vacation";
+  };
 }

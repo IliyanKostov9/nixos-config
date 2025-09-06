@@ -93,7 +93,7 @@ in {
 
             # Keyboard layout
             "${mod}+space" = "exec swaymsg input '*' xkb_layout us";
-            "${mod}+q" = "exec swaymsg input type:keyboard xkb_variant ' '";
+            "${mod}+q" = "exec swaymsg input type:keyboard xkb_variant us";
             "${mod}+b" = "exec swaymsg input '*' xkb_layout bgd";
             "${mod}+g" = "exec swaymsg input '*' xkb_layout de";
             "${mod}+c" = "exec swaymsg input '*' xkb_layout fr";
@@ -216,6 +216,10 @@ in {
         input * {
           xkb_layout us
           xkb_variant dvorak
+        }
+
+        input querty {
+          xkb_layout us
         }
 
         # Enable border color

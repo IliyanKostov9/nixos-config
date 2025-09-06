@@ -41,7 +41,7 @@ in {
           # Ublock origin
           "ddkjiahejlhfcafbddmgiahcphecmpfh"
           # Privacy Badger
-          "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
+          # "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # User agent switcher
           "bhchdcejhohfmigjafbampogmaanbfkg"
           # I don't care about cookies
