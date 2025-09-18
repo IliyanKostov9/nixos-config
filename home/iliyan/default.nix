@@ -65,6 +65,7 @@ in {
 
     preferences = {
       fonts.name = "0xProto";
+      fonts.size = 14;
       red-light.enable = true;
     };
     api.postman.enable = true;

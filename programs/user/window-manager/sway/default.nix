@@ -103,6 +103,7 @@ in {
             "${mod}+${alt}+Page_Up" = "exec reboot";
             "${mod}+${alt}+End" = "exec swaymsg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
+            "${mod}+${alt}+s" = "exec swaymsg output eDP-1 enable && exec swaymsg output HDMI-A-1 disable";
 
             ## Audio
             ### Pipewire
