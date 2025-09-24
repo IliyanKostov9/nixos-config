@@ -16,7 +16,7 @@ with lib.types; let
     builtins.listToAttrs (lib.attrsets.mapAttrsToList
       (key: value: {
         name = "${key-name-prefix}+${key}";
-        value = "${value-name-prefix} ${value}";
+        value = "${value-name-prefix}'${value}'";
       })
       attr-mappings);
 in {
@@ -33,11 +33,19 @@ in {
       '';
     };
 
-    librewolf-mappings = mkOption {
+    browser-mappings = mkOption {
       type = attrsOf str;
       default = {"m" = "default";};
       description = mkDoc ''
-        Additional sway mappings for librewolf profiles
+        Additional sway mappings for browser profiles
+      '';
+    };
+
+    browser-exec = mkOption {
+      type = str;
+      default = "librewolf -P ";
+      description = mkDoc ''
+        Executable for profile switching
       '';
     };
 
@@ -179,12 +187,12 @@ in {
             "${mod}+${alt}+k" = "resize shrink height 10 px or 10 ppt";
             "${mod}+${alt}+l" = "resize grow width 10 px or 10 ppt";
           }
-          # Librewolf
+          # Browser
           // key-mappings {
             key-name-prefix = "${mod}+${ctrl}";
             # BUG: can't use --apparmor, due to bug described at apparmor module
-            value-name-prefix = "exec librewolf -P";
-            attr-mappings = cfg.librewolf-mappings;
+            value-name-prefix = "exec ${cfg.browser-exec}";
+            attr-mappings = cfg.browser-mappings;
           }
           # Firejail
           // key-mappings {

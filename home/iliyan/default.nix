@@ -57,9 +57,13 @@ in {
   config.modules = {
     window-manager.sway = {
       enable = true;
-      librewolf-mappings = {
-        "m" = "Main";
-        "t" = "Test";
+      browser-exec = "chromium --profile-directory=";
+      browser-mappings = {
+        "t" = "Profile 1";
+        "y" = "Profile 2";
+        "w" = "Profile 4";
+        "g" = "Profile 6"; # Music
+        "m" = "Profile 7"; # Main
       };
     };
 
@@ -73,7 +77,7 @@ in {
 
     browsers.librewolf = {
       package = null; # NOTE: For firejail
-      enable = true;
+      enable = false;
       profiles = import ./options/librewolf/profiles {inherit pkgs;};
     };
 
