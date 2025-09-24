@@ -26,24 +26,23 @@ in {
   };
 
   config = mkIf cfg.enable {
-      programs.chromium = {
-        enable = true;
+    programs.chromium = {
+      enable = true;
       inherit (cfg) package;
-        extensions = [
-          # Dark reader
-          "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-          # Ublock origin
-          "ddkjiahejlhfcafbddmgiahcphecmpfh"
-          # Privacy Badger
-          # "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
-          # User agent switcher
-          "bhchdcejhohfmigjafbampogmaanbfkg"
-          # I don't care about cookies
-          "fihnjjcciajhdojfnbdddfaoknhalnja"
-          # Canvas blocker
-          # "nomnklagbgmgghhjidfhnoelnjfndfpd"
-        ];
-      };
+      extensions = [
+        # Dark reader
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh"
+        # Ublock origin
+        "ddkjiahejlhfcafbddmgiahcphecmpfh"
+        # Privacy Badger
+        # "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
+        # User agent switcher
+        "bhchdcejhohfmigjafbampogmaanbfkg"
+        # I don't care about cookies
+        "fihnjjcciajhdojfnbdddfaoknhalnja"
+        # Canvas blocker
+        # "nomnklagbgmgghhjidfhnoelnjfndfpd"
+      ];
     };
   };
 }
