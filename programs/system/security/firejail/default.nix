@@ -30,27 +30,6 @@ in {
     # flatpak run  com.github.tchx84.Flatseal
 
     programs = {
-      chromium = {
-        enable = true;
-        homepageLocation = "https://duckduckgo.com";
-        defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
-        defaultSearchProviderSuggestURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
-        extensions = [
-          # Dark reader
-          "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-          # Ublock origin
-          "ddkjiahejlhfcafbddmgiahcphecmpfh"
-          # Privacy Badger
-          # "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
-          # User agent switcher
-          "bhchdcejhohfmigjafbampogmaanbfkg"
-          # I don't care about cookies
-          "fihnjjcciajhdojfnbdddfaoknhalnja"
-          # Canvas blocker
-          # "nomnklagbgmgghhjidfhnoelnjfndfpd"
-        ];
-      };
-
       firejail = {
         enable = true;
         wrappedBinaries = {
@@ -104,7 +83,7 @@ in {
 
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
-            executable = "${pkgs.chromium}/bin/chromium";
+            executable = "${pkgs.ungoogled-chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"
@@ -116,8 +95,8 @@ in {
           };
 
           librewolf = {
-            executable = "${pkgs.librewolf}/bin/librewolf";
-            desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+            executable = "${pkgs-unstable.librewolf}/bin/librewolf";
+            desktop = "${pkgs-unstable.librewolf}/share/applications/librewolf.desktop";
           };
         };
       };

@@ -9,7 +9,7 @@ with pkgs.nur.repos.rycee.firefox-addons; {
     extensions.packages = [
       passbolt
       ublock-origin
-      privacy-badger
+      # privacy-badger
       darkreader
       i-dont-care-about-cookies
       user-agent-string-switcher

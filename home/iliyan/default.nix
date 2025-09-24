@@ -76,6 +76,10 @@ in {
       enable = true;
       profiles = import ./options/librewolf/profiles {inherit pkgs;};
     };
+    browsers.ungoogled-chromium = {
+      package = null; # NOTE: For firejail
+      enable = true;
+    };
 
     dev = {
       command-line = {
