@@ -75,10 +75,13 @@ in {
     api.postman.enable = true;
     #rdp.citrix.enable = true;
 
-    browsers.librewolf = {
-      package = null; # NOTE: For firejail
-      enable = false;
-      profiles = import ./options/librewolf/profiles {inherit pkgs;};
+    browsers = {
+      librewolf = {
+        package = null; # NOTE: For firejail
+        enable = false;
+        profiles = import ./options/librewolf/profiles {inherit pkgs;};
+      };
+      chromium.enable = true;
     };
 
     dev = {
