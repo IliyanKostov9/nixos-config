@@ -8,6 +8,36 @@ with inputs; rec {
     {
       inherit system;
       overlays = [
+        (
+          # NOTE: Thanks to https://github.com/Fractal-Tess/nixos/blob/83fc507c503ccb3bb34933c3e1ade454a777cb47/overlays/viber.nix#L4
+          self: super: {
+            viber-appimage = super.stdenv.mkDerivation {
+              pname = "viber-appimage";
+              version = "latest";
+              src = super.fetchurl {
+                url = "https://download.cdn.viber.com/desktop/Linux/viber.AppImage";
+                sha256 = "sha256-jwsePK1l/WI+stDNpAD1t2Obr1BwpNDP0nzkIDfGGoA="; # Verified hash
+              };
+              buildInputs = [super.appimage-run super.makeWrapper];
+              dontUnpack = true;
+
+              installPhase = ''
+                mkdir -p $out/bin
+                cp $src $out/viber.AppImage
+                makeWrapper ${super.appimage-run}/bin/appimage-run $out/bin/viber \
+                  --add-flags "$out/viber.AppImage"
+              '';
+
+              meta = {
+                description = "Viber official AppImage (wrapped for NixOS)";
+                homepage = "https://www.viber.com/";
+                license = super.lib.licenses.unfree;
+                maintainers = with super.lib.maintainers; [];
+                platforms = ["x86_64-linux"];
+              };
+            };
+          }
+        )
         # nixgl.overlay
         nur.overlays.default
         alacritty-theme.overlays.default
