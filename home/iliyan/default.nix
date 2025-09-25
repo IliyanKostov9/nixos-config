@@ -70,10 +70,8 @@ in {
     preferences = {
       fonts.name = "0xProto";
       fonts.size = 14;
-      red-light.enable = true;
     };
     api.postman.enable = true;
-    #rdp.citrix.enable = true;
 
     browsers.librewolf = {
       package = null; # NOTE: For firejail
@@ -136,33 +134,23 @@ in {
         };
       };
     };
-
-    file-compression.p7zip.enable = true;
     iot.qFlipper.enable = true;
 
     media = {
       gimp.enable = true;
       obs-studio.enable = true;
-      vlc.enable = true;
     };
 
     office-suite = {
       nomacs.enable = true;
       syncthing.enable = true;
-      drawio.enable = true;
       libreoffice.enable = true;
-      master-pdf.enable = true;
       okular.enable = true;
     };
-    password-manager.keepass.enable = true;
 
     virtualisation.lazydocker.enable = true;
     vpn.openvpn.enable = true;
 
-    utils = {
-      copyq.enable = true;
-      flameshot.enable = true;
-      normcap.enable = true;
-    };
+    utils.flameshot.enable = true;
   };
 }

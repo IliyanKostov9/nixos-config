@@ -135,6 +135,66 @@ in {
           #   executable = "${pkgs.librewolf}/bin/librewolf";
           #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
           # };
+
+          vlc = {
+            executable = "${pkgs.vlc}/bin/vlc";
+            extraArgs = [
+              "--noprofile"
+              "--env=GTK_THEME=Adwaita:dark"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+            ];
+          };
+
+          p7zip = {
+            executable = "${pkgs.p7zip}/bin/7z";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          drawio = {
+            executable = "${pkgs.drawio}/bin/drawio";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          # master-pdf = {
+          #   executable = "${pkgs.masterpdfeditor4}/bin/masterpdfeditor4";
+          #   extraArgs = [
+          #     "--noprofile"
+          #   ];
+          # };
+
+          keepass = {
+            executable = "${pkgs.keepassxc}/bin/keepassxc";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          normcap = {
+            executable = "${pkgs.normcap}/bin/normcap";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          copyq = {
+            executable = "${pkgs.copyq}/bin/copyq";
+            extraArgs = [
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+              "--noprofile"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=WAYLAND_DISPLAY=wayland-0"
+              "--env=DISPLAY=:0"
+            ];
+          };
         };
       };
     };
