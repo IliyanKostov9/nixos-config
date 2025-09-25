@@ -32,9 +32,12 @@ in {
     programs = {
       chromium = {
         enable = true;
-        homepageLocation = "https://duckduckgo.com";
-        defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
-        defaultSearchProviderSuggestURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
+        # homepageLocation = "https://duckduckgo.com";
+        # defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
+        # defaultSearchProviderSuggestURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
+        homepageLocation = "https://www.google.com";
+        defaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
+        defaultSearchProviderSuggestURL = "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}";
         extensions = [
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh"
@@ -49,6 +52,19 @@ in {
           # Canvas blocker
           # "nomnklagbgmgghhjidfhnoelnjfndfpd"
         ];
+        extraOpts = {
+          "ShowHomeButton" = true;
+          "RestoreOnStartup" = 1;
+          "DefaultBrowserTheme" = 1;
+          "HttpsOnlyMode" = "FORCE_ENABLED";
+          "AutofillCreditCardEnabled" = false;
+          "AutofillCreditCardEnabledForPaymentsIntegration" = false;
+          "AutofillProfileEnabled" = false;
+          "AutofillAddressEnabled" = false;
+          "BlockThirdPartyCookies" = true;
+          "HighEfficiencyModeEnabled" = true;
+          "MemorySaverModeSavings" = 1;
+        };
       };
 
       firejail = {
@@ -115,10 +131,10 @@ in {
             ];
           };
 
-          librewolf = {
-            executable = "${pkgs.librewolf}/bin/librewolf";
-            desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
-          };
+          # librewolf = {
+          #   executable = "${pkgs.librewolf}/bin/librewolf";
+          #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+          # };
         };
       };
     };
