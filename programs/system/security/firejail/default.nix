@@ -120,9 +120,7 @@ in {
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"
-              "--dbus-user.talk=org.freedesktop.Notifications"
-              "--dbus-user.talk=org.freedesktop.ScreenSaver"
-              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--ignore=nogroups"
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };
