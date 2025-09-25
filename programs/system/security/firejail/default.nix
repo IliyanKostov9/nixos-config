@@ -192,6 +192,13 @@ in {
               "--noprofile"
             ];
           };
+          nomacs = {
+            executable = "${pkgs.nomacs}/bin/nomacs";
+            desktop = "${pkgs.nomacs}/share/applications/org.nomacs.ImageLounge.desktop";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
         };
       };
     };
