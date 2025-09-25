@@ -181,6 +181,15 @@ in {
 
           libreoffice = {
             executable = "${pkgs.libreoffice}/bin/libreoffice";
+            desktop = "${pkgs.libreoffice}/share/applications/base.desktop";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          okular = {
+            executable = "${pkgs.kdePackages.okular}/bin/okular";
+            desktop = "${pkgs.kdePackages.okular}/share/applications/org.kde.okular.desktop";
             extraArgs = [
               "--noprofile"
             ];

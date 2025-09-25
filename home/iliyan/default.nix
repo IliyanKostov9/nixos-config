@@ -141,11 +141,7 @@ in {
       obs-studio.enable = true;
     };
 
-    office-suite = {
-      syncthing.enable = true;
-      okular.enable = true;
-    };
-
+    office-suite.syncthing.enable = true;
     virtualisation.lazydocker.enable = true;
     vpn.openvpn.enable = true;
     utils.flameshot.enable = true;
