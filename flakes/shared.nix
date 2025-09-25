@@ -10,7 +10,7 @@ with inputs; rec {
       overlays = [
         (
           # NOTE: Thanks to https://github.com/Fractal-Tess/nixos/blob/83fc507c503ccb3bb34933c3e1ade454a777cb47/overlays/viber.nix#L4
-          self: super: {
+          _self: super: {
             viber-appimage = super.stdenv.mkDerivation {
               pname = "viber-appimage";
               version = "latest";
