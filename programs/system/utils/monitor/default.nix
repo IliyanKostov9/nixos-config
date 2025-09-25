@@ -13,6 +13,8 @@ in {
     environment.systemPackages = with pkgs; [
       htop
       neofetch
+      # TODO: Move this elsewhere
+      copyq
     ];
   };
 }

@@ -4,7 +4,6 @@ _: {
     ./okular
     ./syncthing
     ./calibre
-    ./libreoffice
     ./mail
   ];
 }

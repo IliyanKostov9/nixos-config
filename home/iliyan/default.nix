@@ -142,15 +142,12 @@ in {
     };
 
     office-suite = {
-      nomacs.enable = true;
       syncthing.enable = true;
-      libreoffice.enable = true;
       okular.enable = true;
     };
 
     virtualisation.lazydocker.enable = true;
     vpn.openvpn.enable = true;
-
     utils.flameshot.enable = true;
   };
 }

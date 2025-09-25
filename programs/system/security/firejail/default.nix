@@ -183,16 +183,10 @@ in {
             ];
           };
 
-          copyq = {
-            executable = "${pkgs.copyq}/bin/copyq";
+          libreoffice = {
+            executable = "${pkgs.libreoffice}/bin/libreoffice";
             extraArgs = [
-              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
               "--noprofile"
-              "--dbus-user.talk=org.freedesktop.Notifications"
-              "--dbus-user.talk=org.freedesktop.ScreenSaver"
-              "--dbus-user.talk=org.freedesktop.portal.Desktop"
-              "--env=WAYLAND_DISPLAY=wayland-0"
-              "--env=DISPLAY=:0"
             ];
           };
         };
