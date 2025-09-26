@@ -8,12 +8,10 @@ _: {
     ./cloud
     ./entertainment
     ./dev
-    ./file-compression
     ./gpu
     ./iot
     ./media
     ./office-suite
-    ./password-manager
     ./translate
     ./virtualisation
     ./vpn

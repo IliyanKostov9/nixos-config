@@ -8,6 +8,9 @@
 with lib;
 with lib.types; let
   cfg = config.modules.security.firejail;
+  search-engine = "https://www.google.com"; # https://duckduckgo.com
+  search-provider = "https://www.google.com/search?q={searchTerms}" # https://duckduckgo.com/?t=h_&q={searchTerms}
+  search-provider-suggest = "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}" # https://duckduckgo.com/?t=h_&q={searchTerms}
 in {
   options.modules.security.firejail = {
     enable = mkOption {
@@ -21,23 +24,12 @@ in {
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
-    # NOTE: Use up to date package for Viber
-    services.flatpak.enable = true;
-    # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    # flatpak install flathub com.viber.Viber
-    # flatpak override --user com.viber.Viber --device=all
-    # flatpak run com.viber.Viber
-    # flatpak run  com.github.tchx84.Flatseal
-
     programs = {
       chromium = {
         enable = true;
-        # homepageLocation = "https://duckduckgo.com";
-        # defaultSearchProviderSearchURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
-        # defaultSearchProviderSuggestURL = "https://duckduckgo.com/?t=h_&q={searchTerms}";
-        homepageLocation = "https://www.google.com";
-        defaultSearchProviderSearchURL = "https://www.google.com/search?q={searchTerms}";
-        defaultSearchProviderSuggestURL = "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}";
+        homepageLocation = search-engine;
+        defaultSearchProviderSearchURL = search-provider;
+        defaultSearchProviderSuggestURL = search-provider-suggest;
         extensions = [
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh"
@@ -70,34 +62,19 @@ in {
       firejail = {
         enable = true;
         wrappedBinaries = {
-          # grayjay = {
-          #   executable = "${pkgs-unstable.grayjay}/bin/Grayjay";
-          #   extraArgs = [
-          #     "--noprofile"
-          #     "--env=GTK_THEME=Adwaita:dark"
-          #     "--dbus-user.talk=org.freedesktop.Notifications"
-          #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
-          #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
-          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-          #   ];
-          # };
-          # viber = {
-          #   executable = "${pkgs.viber}/bin/viber";
-          #   desktop = "${pkgs.viber}/share/applications/viber.desktop";
-          #   extraArgs = [
-          #     "--noprofile"
-          #     "--env=GTK_THEME=Adwaita:dark"
-          #     "--dbus-user.talk=org.freedesktop.Notifications"
-          #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
-          #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
-          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-          #     "--nonewprivs"
-          #     "--noblacklist=/dev/video0"
-          #     "--noblacklist=/dev/video1"
-          #     "--private-dev"
-          #     "--private-cache"
-          #   ];
-          # };
+          viber = {
+            executable = "${pkgs.viber-appimage}/bin/viber";
+            extraArgs = [
+              "--noprofile"
+              "--env=GTK_THEME=Adwaita:dark"
+              "--dbus-user.talk=org.freedesktop.Notifications"
+              "--dbus-user.talk=org.freedesktop.ScreenSaver"
+              "--dbus-user.talk=org.freedesktop.portal.Desktop"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+              "--nonewprivs"
+              "--private-cache"
+            ];
+          };
 
           whatsapp = {
             executable = "${pkgs.whatsie}/bin/whatsie";
@@ -112,17 +89,21 @@ in {
             ];
           };
 
-          # signal = {
-          #   executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
-          #   profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
-          #   extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
-          # };
-
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
             executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
+              "--env=GTK_THEME=Adwaita:dark"
+              "--ignore=nogroups"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+            ];
+          };
+
+          vlc = {
+            executable = "${pkgs.vlc}/bin/vlc";
+            extraArgs = [
+              "--noprofile"
               "--env=GTK_THEME=Adwaita:dark"
               "--dbus-user.talk=org.freedesktop.Notifications"
               "--dbus-user.talk=org.freedesktop.ScreenSaver"
@@ -131,9 +112,82 @@ in {
             ];
           };
 
+          p7zip = {
+            executable = "${pkgs.p7zip}/bin/7z";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          drawio = {
+            executable = "${pkgs.drawio}/bin/drawio";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          keepass = {
+            executable = "${pkgs.keepassxc}/bin/keepassxc";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          normcap = {
+            executable = "${pkgs.normcap}/bin/normcap";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          libreoffice = {
+            executable = "${pkgs.libreoffice}/bin/libreoffice";
+            desktop = "${pkgs.libreoffice}/share/applications/base.desktop";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
+          okular = {
+            executable = "${pkgs.kdePackages.okular}/bin/okular";
+            desktop = "${pkgs.kdePackages.okular}/share/applications/org.kde.okular.desktop";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+          nomacs = {
+            executable = "${pkgs.nomacs}/bin/nomacs";
+            desktop = "${pkgs.nomacs}/share/applications/org.nomacs.ImageLounge.desktop";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
           # librewolf = {
           #   executable = "${pkgs.librewolf}/bin/librewolf";
           #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
+          # };
+          # signal = {
+          #   executable = "${pkgs.signal-desktop}/bin/signal-desktop --enable-features=UseOzonePlatform";
+          #   profile = "${pkgs.firejail}/etc/firejail/signal-desktop.profile";
+          #   extraArgs = ["--env=GTK_THEME=Adwaita:dark"];
+          # };
+          # grayjay = {
+          #   executable = "${pkgs-unstable.grayjay}/bin/Grayjay";
+          #   extraArgs = [
+          #     "--noprofile"
+          #     "--env=GTK_THEME=Adwaita:dark"
+          #     "--dbus-user.talk=org.freedesktop.Notifications"
+          #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
+          #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
+          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+          #   ];
+          # };
+          # master-pdf = {
+          #   executable = "${pkgs.masterpdfeditor4}/bin/masterpdfeditor4";
+          #   extraArgs = [
+          #     "--noprofile"
+          #   ];
           # };
         };
       };
