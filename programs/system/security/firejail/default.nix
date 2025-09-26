@@ -9,8 +9,8 @@ with lib;
 with lib.types; let
   cfg = config.modules.security.firejail;
   search-engine = "https://www.google.com"; # https://duckduckgo.com
-  search-provider = "https://www.google.com/search?q={searchTerms}" # https://duckduckgo.com/?t=h_&q={searchTerms}
-  search-provider-suggest = "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}" # https://duckduckgo.com/?t=h_&q={searchTerms}
+  search-provider = "https://www.google.com/search?q={searchTerms}"; # https://duckduckgo.com/?t=h_&q={searchTerms}
+  search-provider-suggest = "https://suggestqueries.google.com/complete/search?client=firefox&q={searchTerms}"; # https://duckduckgo.com/?t=h_&q={searchTerms}
 in {
   options.modules.security.firejail = {
     enable = mkOption {
