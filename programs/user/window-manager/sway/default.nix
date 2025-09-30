@@ -217,10 +217,10 @@ in {
           mode 2560x1600@165Hz
         }
 
-        output HDMI-A-1 {
-          scale 1.0
-          mode 2560x1440@60Hz
-        }
+         output HDMI-A-1 {
+           scale 1.0
+           mode 2560x1440@60Hz
+         }
 
         input * {
           xkb_layout us
@@ -257,7 +257,6 @@ in {
         exec_always swaymsg input "Elan Touchpad" events disabled
         ## Legion
         exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
-
 
         # Make external display the primary monitor
         exec swaymsg output HDMI-A-1

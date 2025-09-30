@@ -38,14 +38,6 @@ _: {
     dev.keyd = {
       enable = true;
       mappings = {
-        # "f1" = "left";
-        # "f2" = "down";
-        # "f3" = "up";
-        # "f4" = "right";
-        # "left" = "f1";
-        # "down" = "f2";
-        # "up" = "f3";
-        # "right" = "f4";
         "rightshift" = "down";
         #"rightcontrol" = "overload(right_control_layer, rightcontrol)";
         "rightcontrol" = "right";

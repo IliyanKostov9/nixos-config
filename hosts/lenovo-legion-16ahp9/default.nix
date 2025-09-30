@@ -1,6 +1,4 @@
-{lib, ...}: {
-  # NOTE: Disabled because of external monitor flickering
-  hardware.nvidia.prime.sync.enable = lib.mkForce false;
+_: {
   imports = [
     ./modules
     ../common

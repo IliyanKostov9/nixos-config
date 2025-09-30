@@ -21,6 +21,7 @@
       open = false;
       modesetting.enable = true;
       nvidiaSettings = true;
+      forceFullCompositionPipeline = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
       #   version = "565.57.01";

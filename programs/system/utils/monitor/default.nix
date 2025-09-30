@@ -15,6 +15,8 @@ in {
       neofetch
       # TODO: Move this elsewhere
       copyq
+      libreoffice
+      kdePackages.okular
     ];
   };
 }

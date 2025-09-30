@@ -100,18 +100,6 @@ in {
             ];
           };
 
-          vlc = {
-            executable = "${pkgs.vlc}/bin/vlc";
-            extraArgs = [
-              "--noprofile"
-              "--env=GTK_THEME=Adwaita:dark"
-              "--dbus-user.talk=org.freedesktop.Notifications"
-              "--dbus-user.talk=org.freedesktop.ScreenSaver"
-              "--dbus-user.talk=org.freedesktop.portal.Desktop"
-              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-            ];
-          };
-
           p7zip = {
             executable = "${pkgs.p7zip}/bin/7z";
             extraArgs = [
@@ -140,21 +128,6 @@ in {
             ];
           };
 
-          libreoffice = {
-            executable = "${pkgs.libreoffice}/bin/libreoffice";
-            desktop = "${pkgs.libreoffice}/share/applications/base.desktop";
-            extraArgs = [
-              "--noprofile"
-            ];
-          };
-
-          okular = {
-            executable = "${pkgs.kdePackages.okular}/bin/okular";
-            desktop = "${pkgs.kdePackages.okular}/share/applications/org.kde.okular.desktop";
-            extraArgs = [
-              "--noprofile"
-            ];
-          };
           nomacs = {
             executable = "${pkgs.nomacs}/bin/nomacs";
             desktop = "${pkgs.nomacs}/share/applications/org.nomacs.ImageLounge.desktop";
