@@ -91,7 +91,9 @@ in {
 
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
-            executable = "${pkgs.chromium}/bin/chromium";
+            executable = "${(pkgs.chromium.override {
+              commandLineArgs = "--ozone-platform-hint=x11";
+            })}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"

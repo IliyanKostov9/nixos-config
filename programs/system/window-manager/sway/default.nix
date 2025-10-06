@@ -1,5 +1,5 @@
 {
-  pkgs,
+  pkgs-unstable,
   lib,
   config,
   ...
@@ -21,10 +21,13 @@ in {
   config = mkIf cfg.enable {
     services.displayManager.defaultSession = "sway";
     security.polkit.enable = true;
+    programs.xwayland.enable = true;
+
     programs.sway = {
       enable = true;
+      package = pkgs-unstable.sway;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs; [
+      extraPackages = with pkgs-unstable; [
         swaybg
         qt5.qtwayland
         wl-clipboard

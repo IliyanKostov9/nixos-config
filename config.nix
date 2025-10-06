@@ -110,6 +110,8 @@
           "acpi_enforce_resources=lax"
           "transparent_hugepage=never"
           "nvidia-drm.fbdev=1"
+          # NOTE: to fix the external monitor glitching
+          "amdgpu.sg_display=0"
           # "nvidia-drm.modeset=1"
         ];
         initrd = {
