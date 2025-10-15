@@ -91,13 +91,10 @@ in {
 
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
-            executable = "${(pkgs.chromium.override {
-              commandLineArgs = "--ozone-platform-hint=x11";
-            })}/bin/chromium";
+            executable = "${pkgs.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"
-              "--ignore=nogroups"
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };

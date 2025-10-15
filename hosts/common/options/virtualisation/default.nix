@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.virt-manager.enable = true;
   virtualisation = {
+    waydroid.enable = true;
     docker.rootless = {
       enable = true;
       setSocketVariable = true;
