@@ -19,7 +19,7 @@
     };
 
     nvidia = {
-      open = false;
+      open = true;
       modesetting.enable = true;
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
