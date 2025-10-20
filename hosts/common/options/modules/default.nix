@@ -1,5 +1,7 @@
 _: {
   config.modules = {
+    hardware.power-saver.enable = false;
+
     window-manager.sway.enable = true;
     vpn.tailscale.enable = true;
 
