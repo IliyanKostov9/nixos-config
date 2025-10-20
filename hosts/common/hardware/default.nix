@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./power-saver
     ./boot
     ./mount
     ./bluetooth

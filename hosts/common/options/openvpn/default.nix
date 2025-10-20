@@ -17,7 +17,7 @@ in {
         username = builtins.readFile secrets.ovpn_username.path;
         password = builtins.readFile secrets.ovpn_password.path;
       };
-      updateResolvConf = false; # NOTE set to false for pi-hole DNS use
+      updateResolvConf = false; # NOTE: set to false for pi-hole DNS use
       autoStart = is-ovpn-present;
     };
   };
