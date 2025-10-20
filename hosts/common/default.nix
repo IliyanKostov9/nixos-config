@@ -1,7 +1,7 @@
 _: {
   imports = [
-    ./options
     ./hardware
+    ./options
     ../../programs/system
     ../../secrets/system
   ];

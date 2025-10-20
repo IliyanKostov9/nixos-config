@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.hardware.power-manager;
+  cfg = config.modules.hardware.power-saver;
 in {
-  options.modules.hardware.power-manager = {enable = mkEnableOption "power-manager ";};
+  options.modules.hardware.power-saver = {enable = mkEnableOption "power-saver ";};
 
   config = mkIf cfg.enable {
     services.power-profiles-daemon.enable = false;
