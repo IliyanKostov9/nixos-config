@@ -64,19 +64,6 @@ in {
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];
-      # extraSessionCommands = ''
-      #   export XDG_CACHE_HOME="${config.home.homeDirectory}/.cache"
-      #   export WLR_NO_HARDWARE_CURSORS=1
-      #   export WLR_RENDERER_ALLOW_SOFTWARE=1
-      #   export WLR_BACKEND="drm"
-      #   export XDG_SESSION_DESKTOP=sway
-      #   export SDL_VIDEODRIVER=wayland
-      #   export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-      #   export CLUTTER_BACKEND=wayland
-      #   export ELM_ENGINE=wayland_egl
-      #   export NO_AT_BRIDGE=1
-      #   export _JAVA_AWT_WM_NONREPARENTING=1
-      # '';
       config = {
         inherit terminal;
         modifier = "Mod4";

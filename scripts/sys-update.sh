@@ -3,7 +3,7 @@
 if ! [ -z $MODEL ]; then
     echo "Building $MODEL system...";
 
-    sudo -v && sudo nixos-rebuild switch --flake .#$MODEL --show-trace --impure |& nom;
+    sudo -v && sudo nixos-rebuild switch --flake .#$MODEL --impure |& nom;
 else
     echo -e """
     MODEL env variable is not set!
