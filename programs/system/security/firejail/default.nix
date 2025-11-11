@@ -91,7 +91,7 @@ in {
 
           chromium = {
             # NOTE: Ungoogled chromium doesn't use the plugins
-            executable = "${pkgs.chromium}/bin/chromium";
+            executable = "${pkgs-unstable.chromium}/bin/chromium";
             profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"

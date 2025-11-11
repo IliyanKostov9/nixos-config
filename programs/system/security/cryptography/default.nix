@@ -17,6 +17,7 @@ in {
         age
         pinentry-qt
         gnupg
+        nvidia-container-toolkit
       ];
     };
   };

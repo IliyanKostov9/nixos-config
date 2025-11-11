@@ -48,6 +48,7 @@ in {
     ls = "eza";
     cat = "bat";
     base = "basename $(pwd)";
+    swayb = "swaymsg reload";
   };
 
   sessionVariables =

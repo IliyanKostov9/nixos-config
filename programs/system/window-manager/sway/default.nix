@@ -21,7 +21,7 @@ in {
   config = mkIf cfg.enable {
     services.displayManager.defaultSession = "sway";
     security.polkit.enable = true;
-    programs.xwayland.enable = true;
+    programs.xwayland.enable = false;
 
     programs.sway = {
       enable = true;

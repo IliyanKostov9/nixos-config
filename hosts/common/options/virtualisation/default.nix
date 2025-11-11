@@ -1,10 +1,16 @@
 {pkgs, ...}: {
   programs.virt-manager.enable = true;
   virtualisation = {
+    # NOTE: doesn't work
     waydroid.enable = false;
     docker.rootless = {
       enable = true;
       setSocketVariable = true;
+      daemon.settings = {
+        features.cdi = true;
+        # TODO: Do not hardcode this
+        cdi-spec-dirs = ["/home/iliyan/.cdi"];
+      };
     };
     spiceUSBRedirection.enable = true;
     libvirtd = {

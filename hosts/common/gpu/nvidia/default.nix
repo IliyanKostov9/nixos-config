@@ -22,7 +22,6 @@
       open = true;
       modesetting.enable = true;
       nvidiaSettings = true;
-      forceFullCompositionPipeline = true;
       # package = config.boot.kernelPackages.nvidiaPackages.beta;
       package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
         version = "580.95.05";
@@ -32,5 +31,6 @@
         usePersistenced = false;
       };
     };
+    nvidia-container-toolkit.enable = true;
   };
 }

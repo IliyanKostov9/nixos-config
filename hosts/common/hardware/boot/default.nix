@@ -22,7 +22,7 @@ in {
   boot =
     boot
     // {
-      kernelPackages = pkgs.linuxPackages_6_16;
+      kernelPackages = pkgs.linuxPackages_6_17;
       # pkgs.linuxPackages_latest;
       tmp.useTmpfs = true;
       loader = {
