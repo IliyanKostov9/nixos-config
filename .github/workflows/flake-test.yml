@@ -10,10 +10,10 @@ jobs:
     name: Flake ❄️ Checker ✅
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: DeterminateSystems/nix-installer-action@v21
       - uses: cachix/cachix-action@v16
         with:
           name: iliyankostov9-nixos-config
@@ -28,10 +28,10 @@ jobs:
     name: Flake ❄️ Lock 🔒️ Updater ✨
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: DeterminateSystems/nix-installer-action@v21
       - uses: cachix/cachix-action@v16
         with:
           name: iliyankostov9-nixos-config
