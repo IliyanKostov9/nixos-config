@@ -36,9 +36,7 @@ in {
           # Ublock origin
           "ddkjiahejlhfcafbddmgiahcphecmpfh"
           # Privacy Badger
-          # "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
-          # User agent switcher
-          "bhchdcejhohfmigjafbampogmaanbfkg"
+          "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
           # I don't care about cookies
           "fihnjjcciajhdojfnbdddfaoknhalnja"
           # Canvas blocker
@@ -108,13 +106,6 @@ in {
 
           drawio = {
             executable = "${pkgs.drawio}/bin/drawio";
-            extraArgs = [
-              "--noprofile"
-            ];
-          };
-
-          keepass = {
-            executable = "${pkgs.keepassxc}/bin/keepassxc";
             extraArgs = [
               "--noprofile"
             ];
