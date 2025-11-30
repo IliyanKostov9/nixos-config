@@ -71,7 +71,6 @@ in {
       fonts.name = "0xProto";
       fonts.size = 14;
     };
-    api.postman.enable = true;
 
     browsers.librewolf = {
       package = null; # NOTE: For firejail
@@ -86,14 +85,13 @@ in {
         ggshield.enable = true;
       };
       container.docker.enable = true;
-      dbms.dbeaver.enable = true;
       editor.neovim.enable = true;
 
       emulator = {
         default = "ghostty";
         ghostty.enable = true;
         alacritty = {
-          enable = true;
+          enable = false;
           theme = "kanagawa_dragon";
           scheduled = false;
           start-hour = 7;
@@ -134,7 +132,7 @@ in {
         };
       };
     };
-    iot.qFlipper.enable = true;
+    iot.qFlipper.enable = false;
 
     media = {
       gimp.enable = true;
