@@ -7,11 +7,6 @@ with inputs; rec {
     nixpkgs
     {
       inherit system;
-      config = {
-        permittedInsecurePackages = [
-          "qtwebengine-5.15.19"
-        ];
-      };
       overlays = [
         (
           # NOTE: Thanks to https://github.com/Fractal-Tess/nixos/blob/83fc507c503ccb3bb34933c3e1ade454a777cb47/overlays/viber.nix#L4
@@ -64,7 +59,12 @@ with inputs; rec {
           });
         })
       ];
-      config = {allowUnfree = true;};
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "qtwebengine-5.15.19"
+        ];
+      };
     };
   pkgs-unstable =
     import
