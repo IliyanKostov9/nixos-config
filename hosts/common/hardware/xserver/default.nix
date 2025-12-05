@@ -5,21 +5,25 @@
 }: {
   console.keyMap = "dvorak";
   services = {
-    # Enable for using I3
-    displayManager.sddm = {
-      wayland.enable = true;
-      enable = true;
-      theme = lib.mkDefault "catppuccin-macchiato";
-      package = pkgs.kdePackages.sddm;
-    };
     libinput.enable = true;
+    desktopManager.gnome.enable = true;
+    # Enable for using I3
+    displayManager = {
+      # Enable for using GNOME
+      gdm = {
+        enable = false;
+        wayland = true;
+      };
+      sddm = {
+        wayland.enable = true;
+        enable = true;
+        theme = lib.mkDefault "catppuccin-macchiato";
+        package = pkgs.kdePackages.sddm;
+      };
+    };
     xserver = {
       enable = true;
       videoDrivers = ["nvidia"];
-      displayManager.gdm.wayland = true;
-      # Enable for using GNOME
-      displayManager.gdm.enable = false;
-
       # Disable screen turning off after 10 mins
       deviceSection = ''
         Option "BlankTime" "0"
@@ -28,12 +32,6 @@
         Option "OffTime" "0"
         Option "DPMS" "false"
       '';
-      desktopManager = {
-        xterm.enable = false;
-        gnome.enable = true;
-      };
-
-      # Configure keymap in X11
       xkb = {
         layout = "us";
         # variant = "dvorak,";

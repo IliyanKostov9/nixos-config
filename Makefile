@@ -1,4 +1,5 @@
 HDD_PART := /dev/sdb1
+NIXOS_VERSION ?= 25.11
 
 ##########################
 # TARGET
@@ -88,3 +89,10 @@ flake-meta: ## Check flake deps
 .PHONY: gen
 gen: ## Show NixOS generations
 	nix-env --list-generations |& nom
+
+.PHONY: channel channel-upgrade
+channel: channel-upgrade
+
+channel-upgrade:  ## Upgrade nix channel
+	sudo nix-channel --add https://channels.nixos.org/nixos-$(NIXOS_VERSION) nixos
+	sudo nix-channel --update

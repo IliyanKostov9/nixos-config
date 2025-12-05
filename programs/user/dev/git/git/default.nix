@@ -45,17 +45,11 @@ in {
   config = mkIf cfg.enable {
     programs.git = {
       enable = true;
-      inherit (cfg) userName userEmail;
-      ignores = [
-        "*~"
-        "*.swp"
-      ];
-      signing = {
-        signByDefault = cfg.shouldGPGSign;
-        key = cfg.gpgKey;
-      };
-
-      extraConfig = {
+      settings = {
+        user = {
+          name = cfg.userName;
+          email = cfg.userEmail;
+        };
         diff.colorMoved = true;
         pull.rebase = false;
         push.autoSetupRemote = true;
@@ -65,6 +59,14 @@ in {
           hooksPath = "/home/${user}/.git/hooks";
           editor = "nvim";
         };
+      };
+      ignores = [
+        "*~"
+        "*.swp"
+      ];
+      signing = {
+        signByDefault = cfg.shouldGPGSign;
+        key = cfg.gpgKey;
       };
     };
   };
