@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Download repo artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: nixos-config
           path: .
