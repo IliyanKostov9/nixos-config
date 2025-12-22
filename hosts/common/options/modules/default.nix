@@ -10,6 +10,7 @@ _: {
       home-manager.enable = true;
       wget.enable = true;
       nix.nix-output-monitor.enable = true;
+      flatpak.enable = true;
     };
 
     lib.nix-ld.enable = true;
