@@ -57,7 +57,8 @@ in {
   config.modules = {
     window-manager.sway = {
       enable = true;
-      browser-exec = "chromium --profile-directory=";
+      # NOTE: change to chromium when the qwebengine get's fixed
+      browser-exec = "nix run nixpkgs#chromium -- --profile-directory=";
       browser-mappings = {
         "t" = "Profile 1";
         "y" = "Profile 2";

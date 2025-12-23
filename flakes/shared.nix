@@ -61,9 +61,9 @@ with inputs; rec {
       ];
       config = {
         allowUnfree = true;
-        permittedInsecurePackages = [
-          "qtwebengine-5.15.19"
-        ];
+        # permittedInsecurePackages = [
+        #   "qtwebengine-5.15.19"
+        # ];
       };
     };
   pkgs-unstable =
