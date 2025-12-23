@@ -37,7 +37,6 @@
 
   outputs = {
     flake-parts,
-    devenv,
     nixpkgs,
     ...
   } @ inputs:
