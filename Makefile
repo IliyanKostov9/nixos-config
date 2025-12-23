@@ -1,4 +1,5 @@
 HDD_PART := /dev/sdb1
+NIXOS_VERSION ?= 25.11
 
 ##########################
 # TARGET
@@ -72,11 +73,11 @@ optimise: ## Optimize nix store by making each package unique. Warning: The oper
 
 ################### UTILS ########################
 
-.PHONY: flake flake-check flake-upgrade flake-meta
+.PHONY: flake test flake-upgrade flake-meta
 flake: 
 	$(MAKE) --no-print-directory help
 
-flake-check: ## Evaluate flake and build its checks
+test: ## Evaluate flake and build its checks
 	nix flake check -L |& nom
 
 flake-upgrade:  ## Upgrade flake related dependencies
@@ -88,3 +89,10 @@ flake-meta: ## Check flake deps
 .PHONY: gen
 gen: ## Show NixOS generations
 	nix-env --list-generations |& nom
+
+.PHONY: channel channel-upgrade
+channel: channel-upgrade
+
+channel-upgrade:  ## Upgrade nix channel
+	sudo nix-channel --add https://channels.nixos.org/nixos-$(NIXOS_VERSION) nixos
+	sudo nix-channel --update

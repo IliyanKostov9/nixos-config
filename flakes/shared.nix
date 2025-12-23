@@ -1,7 +1,7 @@
 {inputs}:
 with inputs; rec {
   system = "x86_64-linux";
-  stateVersion = "25.05";
+  stateVersion = "25.11";
   pkgs =
     import
     nixpkgs
@@ -33,7 +33,7 @@ with inputs; rec {
                 homepage = "https://www.viber.com/";
                 license = super.lib.licenses.unfree;
                 maintainers = with super.lib.maintainers; [];
-                platforms = ["x86_64-linux"];
+                platforms = [system];
               };
             };
           }
@@ -59,7 +59,12 @@ with inputs; rec {
           });
         })
       ];
-      config = {allowUnfree = true;};
+      config = {
+        allowUnfree = true;
+        # permittedInsecurePackages = [
+        #   "qtwebengine-5.15.19"
+        # ];
+      };
     };
   pkgs-unstable =
     import

@@ -1,6 +1,7 @@
 name: Nix ❄️ Static Analysis 🔍️
 
-on: [push]
+on:
+  [push]
   # pull_request:
   #   branches:
   #     - master
@@ -31,7 +32,7 @@ jobs:
 
       - uses: DeterminateSystems/nix-installer-action@v21
       - uses: DeterminateSystems/magic-nix-cache-action@v13
-      - uses: astro/deadnix-action@v1
+      - uses: astro/deadnix-action@main
 
   statix:
     name: Run statix

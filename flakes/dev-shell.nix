@@ -1,11 +1,6 @@
-{inputs, ...}: {
+{ ...}: {
   perSystem = {
-    config,
-    self',
-    inputs',
     pkgs,
-    system,
-    lib,
     ...
   }: {
     devenv.shells.default = {

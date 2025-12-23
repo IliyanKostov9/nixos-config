@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-unstable,
   lib,
   config,
   ...
@@ -75,8 +74,8 @@ in {
           };
 
           whatsapp = {
-            executable = "${pkgs.whatsie}/bin/whatsie";
-            desktop = "${pkgs.whatsie}/share/applications/whatsie.desktop";
+            executable = "${pkgs.whatsapp-electron}/bin/whatsapp-electron";
+            desktop = "${pkgs.whatsapp-electron}/share/applications/com.github.dagmoller.whatsapp-electron.desktop";
             extraArgs = [
               "--noprofile"
               "--env=GTK_THEME=Adwaita:dark"
@@ -87,15 +86,16 @@ in {
             ];
           };
 
-          chromium = {
-            # NOTE: Ungoogled chromium doesn't use the plugins
-            executable = "${pkgs-unstable.chromium}/bin/chromium";
-            profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
-            extraArgs = [
-              "--env=GTK_THEME=Adwaita:dark"
-              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-            ];
-          };
+          # NOTE: Because of qtwebengine being insecure
+          # chromium = {
+          #   # NOTE: Ungoogled chromium doesn't use the plugins
+          #   executable = "${pkgs.chromium}/bin/chromium";
+          #   profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
+          #   extraArgs = [
+          #     "--env=GTK_THEME=Adwaita:dark"
+          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+          #   ];
+          # };
 
           p7zip = {
             executable = "${pkgs.p7zip}/bin/7z";

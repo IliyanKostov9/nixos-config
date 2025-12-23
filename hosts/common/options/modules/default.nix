@@ -1,6 +1,10 @@
 _: {
   config.modules = {
     hardware.power-saver.enable = false;
+    options.locale = {
+      timeZone = "Europe/Sofia";
+      defaultLocale = "en_US.UTF-8";
+    };
 
     window-manager.sway.enable = true;
     vpn.tailscale.enable = true;

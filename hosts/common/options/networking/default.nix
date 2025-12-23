@@ -1,7 +1,5 @@
 {
   lib,
-  host_attr,
-  config,
   ...
 }: let
   host-name = "baks";

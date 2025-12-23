@@ -37,7 +37,6 @@ in {
     "Xft.dpi" = "144";
   };
 
-  nixpkgs.config.allowUnfree = true;
   news.display = "silent";
   # NOTE: Let home Manager install and manage itself.
   programs.home-manager.enable = true;

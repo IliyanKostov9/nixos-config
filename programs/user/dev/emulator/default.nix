@@ -1,6 +1,5 @@
 {
   lib,
-  config,
   ...
 }: {
   options.modules.dev.emulator = {

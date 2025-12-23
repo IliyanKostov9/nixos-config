@@ -4,5 +4,6 @@ _: {
     ./nix
     ./home-manager
     ./wget
+    ./flatpak
   ];
 }
