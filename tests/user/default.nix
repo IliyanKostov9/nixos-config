@@ -3,7 +3,7 @@
   shared,
 }:
 with shared;
-  pkgs.nixosTest {
+  pkgs.testers.nixosTest {
     name = "User tests";
     # extraPythonPackages = p: [ p.numpy ];
     nodes.user1 = {pkgs, ...}: {

@@ -73,11 +73,11 @@ optimise: ## Optimize nix store by making each package unique. Warning: The oper
 
 ################### UTILS ########################
 
-.PHONY: flake flake-check flake-upgrade flake-meta
+.PHONY: flake test flake-upgrade flake-meta
 flake: 
 	$(MAKE) --no-print-directory help
 
-flake-check: ## Evaluate flake and build its checks
+test: ## Evaluate flake and build its checks
 	nix flake check -L |& nom
 
 flake-upgrade:  ## Upgrade flake related dependencies
