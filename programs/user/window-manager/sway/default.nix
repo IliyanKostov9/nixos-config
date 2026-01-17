@@ -246,8 +246,8 @@ in {
         exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
 
         # Make external display the primary monitor
-        # exec swaymsg output HDMI-A-1
-        # exec swaymsg output eDP-1 disable
+        exec swaymsg output HDMI-A-1
+        exec swaymsg output eDP-1 disable
       '';
     };
 

@@ -2,7 +2,7 @@ _: {
   config.modules = {
     hardware.power-saver.enable = false;
     options.locale = {
-      timeZone = "Europe/Sofia";
+      timeZone = "Europe/Paris";
       defaultLocale = "en_US.UTF-8";
     };
 

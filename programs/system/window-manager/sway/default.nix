@@ -21,6 +21,8 @@ in {
   config = mkIf cfg.enable {
     services.displayManager.defaultSession = "sway";
     security.polkit.enable = true;
+    # NOTE: Used for external SSD card
+    services.udisks2.enable = true;
     programs.xwayland.enable = false;
 
     programs.sway = {
