@@ -126,6 +126,13 @@ in {
             ];
           };
 
+          master-pdf = {
+            executable = "${pkgs.masterpdfeditor4}/bin/masterpdfeditor4";
+            extraArgs = [
+              "--noprofile"
+            ];
+          };
+
           # librewolf = {
           #   executable = "${pkgs.librewolf}/bin/librewolf";
           #   desktop = "${pkgs.librewolf}/share/applications/librewolf.desktop";
@@ -144,12 +151,6 @@ in {
           #     "--dbus-user.talk=org.freedesktop.ScreenSaver"
           #     "--dbus-user.talk=org.freedesktop.portal.Desktop"
           #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-          #   ];
-          # };
-          # master-pdf = {
-          #   executable = "${pkgs.masterpdfeditor4}/bin/masterpdfeditor4";
-          #   extraArgs = [
-          #     "--noprofile"
           #   ];
           # };
         };

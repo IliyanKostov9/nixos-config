@@ -69,8 +69,10 @@ in {
     };
 
     preferences = {
-      fonts.name = "0xProto";
-      fonts.size = 14;
+      fonts = {
+        name = "0xProto";
+        size = 17;
+      };
     };
 
     browsers.librewolf = {
