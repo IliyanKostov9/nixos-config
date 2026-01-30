@@ -5,15 +5,17 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.dir-content-ls;
+  cfg = config.modules.utils.files;
 in {
-  options.modules.utils.dir-content-ls = {enable = mkEnableOption "dir-content-ls";};
+  options.modules.utils.files = {enable = mkEnableOption "files";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       tree
       fd
       tldr
+      zip
+      unzip
     ];
   };
 }

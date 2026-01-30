@@ -33,7 +33,8 @@ with config.modules.dev.shell; let
       elif [[ ! "$link" =~ ^https://youtu.be/.* ]]; then
         echo "Youtube link needs to start with https://youtu.be/"
       else
-        yt-dlp -x --audio-format mp3 --cookies-from-browser chromium --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0.7339.185 Safari/537.36" -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
+        # NOTE: Needed android player client to fix sabr issue
+        yt-dlp -x --audio-format mp3 --cookies-from-browser chromium --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0.7339.185 Safari/537.36" -o "$HOME/Downloads/%(title)s.%(ext)s" "$link" --extractor-args "youtube:player_client=android"
       fi
     '';
   };

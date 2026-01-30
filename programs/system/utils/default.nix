@@ -1,7 +1,7 @@
 _: {
   imports = [
     ./fzf
-    ./dir-content-ls
+    ./files
     ./monitor
     ./make
   ];

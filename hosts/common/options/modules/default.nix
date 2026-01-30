@@ -26,7 +26,7 @@ _: {
     };
 
     utils = {
-      dir-content-ls.enable = true;
+      files.enable = true;
       fzf.enable = true;
       monitor.enable = true;
       make.enable = true;
