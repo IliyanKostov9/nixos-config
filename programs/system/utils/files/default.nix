@@ -16,6 +16,7 @@ in {
       tldr
       zip
       unzip
+      p7zip
     ];
   };
 }

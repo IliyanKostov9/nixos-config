@@ -86,21 +86,13 @@ in {
             ];
           };
 
-          # NOTE: Because of qtwebengine being insecure
-          # chromium = {
-          #   # NOTE: Ungoogled chromium doesn't use the plugins
-          #   executable = "${pkgs.chromium}/bin/chromium";
-          #   profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
-          #   extraArgs = [
-          #     "--env=GTK_THEME=Adwaita:dark"
-          #     "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
-          #   ];
-          # };
-
-          p7zip = {
-            executable = "${pkgs.p7zip}/bin/7z";
+          chromium = {
+            # NOTE: Ungoogled chromium doesn't use the plugins
+            executable = "${pkgs.chromium}/bin/chromium";
+            profile = "${pkgs.firejail}/etc/firejail/chromium.profile";
             extraArgs = [
-              "--noprofile"
+              "--env=GTK_THEME=Adwaita:dark"
+              "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
             ];
           };
 
