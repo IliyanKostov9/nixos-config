@@ -1,0 +1,34 @@
+name: Flake ❄️
+
+on:
+  schedule:
+    - cron: "0 0 */14 * *"
+  workflow_dispatch:
+
+jobs:
+  flake:
+    name: Flake ❄️
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: DeterminateSystems/nix-installer-action@v21
+      - uses: cachix/cachix-action@v16
+        with:
+          name: iliyankostov9-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Lock 🔒️
+        uses: DeterminateSystems/flake-checker-action@v12
+
+      - name: Updater ✨
+        uses: DeterminateSystems/update-flake-lock@v28
+        if: ${{ github.event_name != 'pull_request' }}
+        with:
+          pr-title: "chore: update flake.lock"
+          pr-assignees: IliyanKostov9
+          pr-labels: |
+            dependencies
+            automated
+          token: ${{ secrets.GIT_PR_PUSH_UPDATES_CI }}
