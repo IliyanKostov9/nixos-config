@@ -55,10 +55,7 @@ in {
         push.autoSetupRemote = true;
         safe.directory = "/etc/nixos";
         init.defaultBranch = "master";
-        core = {
-          hooksPath = "/home/${user}/.git/hooks";
-          editor = "nvim";
-        };
+        core.editor = "nvim";
       };
       ignores = [
         "*~"
