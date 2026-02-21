@@ -20,14 +20,14 @@ in {
 
     defaultLocale = mkOption {
       type = types.str;
-      default = "fr_FR.UTF-8";
+      default = "en_US.UTF-8";
       description = mkDoc ''
         Choose the default locale.
         Choices:
-        - en_US.UTF-8
-        - den_US.UTF-8e_DE.UTF-8
-        - en_US.UTF-8
         - bg_BG.UTF-8
+        - en_US.UTF-8
+        - fr_FR.UTF-8
+        - den_US.UTF-8e_DE.UTF-8
       '';
     };
   };
