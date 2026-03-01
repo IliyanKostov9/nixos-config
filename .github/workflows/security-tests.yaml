@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
 
       - name: Save repo to artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: nixos-config
           path: .
