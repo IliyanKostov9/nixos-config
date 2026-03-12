@@ -1,7 +1,4 @@
-{
-  lib,
-  ...
-}: let
+{lib, ...}: let
   host-name = "baks";
 in {
   networking = {
@@ -17,8 +14,6 @@ in {
         }
       ];
     };
-    # nameservers = ["100.100.100.100" "8.8.8.8" "1.1.1.1"];
-    # search = ["persian-tortoise.ts.net"];
     networkmanager.enable = true;
     useDHCP = lib.mkDefault true;
   };
