@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 
+if [[ "$LANG" == "en_"* ]]; then
+    headBranchName="HEAD branch";
+elif [[ "$LANG" == "fr_"* ]]; then
+    headBranchName="Branche HEAD";
+else
+    echo "Cannot determine the system language $LANG";
+    exit 1;
+fi
+
 ## VARS
-MAIN_BRANCH_NAME="$(git symbolic-ref HEAD | cut -d "/" -f 3)"
+MAIN_BRANCH_NAME="$(git remote show origin | grep "$headBranchName" | awk '{print $NF}')"
 FEAT_BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
 
 
