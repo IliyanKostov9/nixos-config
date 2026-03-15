@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 ## VARS
-MAIN_BRANCH_NAME="master"
-FEAT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+MAIN_BRANCH_NAME="$(git symbolic-ref HEAD | cut -d "/" -f 3)"
+FEAT_BRANCH_NAME="$(git rev-parse --abbrev-ref HEAD)"
 
 
 ## FUNCS
