@@ -48,3 +48,8 @@ jobs:
         with:
           name: statix
       - uses: jocelynthode/statix-action@master
+
+      - name: Run Vulnix for finding package CVEs
+        run: |
+          nix profile add nixpgks#vulnix
+          vulnix -- --system
