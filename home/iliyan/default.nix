@@ -57,7 +57,7 @@ in {
   config.modules = {
     window-manager.sway = {
       enable = true;
-      enable-laptop-display = true;
+      enable-laptop-display = false;
       browser-exec = "chromium --profile-directory=";
       browser-mappings = {
         "m" = "Profile 7"; # Main

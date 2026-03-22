@@ -1,6 +1,9 @@
 name: Nix ❄️ Static Analysis 🔍️
 
-on: [push]
+on:
+  push:
+    branches:
+      - "!master"
 
 concurrency:
   group: build-${{ github.ref }}
@@ -49,7 +52,25 @@ jobs:
           name: statix
       - uses: jocelynthode/statix-action@master
 
+  vulnix:
+    name: Run Vulnix for finding package CVEs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+
+      - name: Install nix action
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: iliyankostov9-nixos-config
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
       - name: Run Vulnix for finding package CVEs
         run: |
-          nix profile add nixpgks#vulnix
-          vulnix -- --system
+          DRV=$(nix eval --raw .#nixosConfigurations.Lenovo-Legion-16ahp9.config.system.build.toplevel.drvPath)
+          nix run nixpkgs#vulnix -- "$DRV"
