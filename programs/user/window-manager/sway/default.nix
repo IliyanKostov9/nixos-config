@@ -56,6 +56,14 @@ in {
         Additional sway mappings for firejail contained pkgs
       '';
     };
+
+    enable-laptop-display = mkOption {
+      type = bool;
+      default = true;
+      description = mkDoc ''
+        Should I turn on the internal display of a laptop or keep it disabled, in case an external monitor is plugged in or not
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -190,65 +198,69 @@ in {
 
         bars = [];
       };
-      extraConfig = ''
-        default_border pixel 1
+      extraConfig =
+        ''
+          default_border pixel 1
 
-        # NOTE: Hide tabs if it's only 1
-        gaps outer 0
-        gaps inner 0
-        hide_edge_borders --i3 smart
-        workspace_layout tabbed
+          # NOTE: Hide tabs if it's only 1
+          gaps outer 0
+          gaps inner 0
+          hide_edge_borders --i3 smart
+          workspace_layout tabbed
 
-        output eDP-1 {
-          scale 1.5
-          mode 2560x1600@165Hz
-        }
+          output eDP-1 {
+            scale 1.5
+            mode 2560x1600@165Hz
+          }
 
-         output HDMI-A-1 {
-           scale 1.0
-           mode 2560x1440@60Hz
-         }
+           output HDMI-A-1 {
+             scale 1.0
+             mode 2560x1440@60Hz
+           }
 
-        input * {
-          xkb_layout us
-          xkb_variant dvorak
-        }
+          input * {
+            xkb_layout us
+            xkb_variant dvorak
+          }
 
-        input querty {
-          xkb_layout us
-        }
+          input querty {
+            xkb_layout us
+          }
 
-        # Enable border color
-        # for_window [class="^.*"] border pixel 2
-        for_window [class="blueman-manager"] floating enable
-        for_window [class="copyq"] focus
+          # Enable border color
+          # for_window [class="^.*"] border pixel 2
+          for_window [class="blueman-manager"] floating enable
+          for_window [class="copyq"] focus
 
-        # Wallpaper
-        exec swaybg -i /etc/nixos/.background-image.jpg -m fill
+          # Wallpaper
+          exec swaybg -i /etc/nixos/.background-image.jpg -m fill
 
-        exec_always dex --autostart --environment sway
-        exec_always swaymsg workspace 1
-        exec_always xss-lock --transfer-sleep-lock -- i3lock --nofork
+          exec_always dex --autostart --environment sway
+          exec_always swaymsg workspace 1
+          exec_always xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-        # Autostart
-        exec nm-applet
-        exec copyq
-        exec viber
-        #exec flatpak run com.viber.Viber
-        exec whatsapp
-        exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
+          # Autostart
+          exec nm-applet
+          exec copyq
+          exec viber
+          #exec flatpak run com.viber.Viber
+          exec whatsapp
+          exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
-        # Disable touchpad
-        #
-        ## Thinkpad
-        exec_always swaymsg input "Elan Touchpad" events disabled
-        ## Legion
-        exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
+          # Disable touchpad
+          #
+          ## Thinkpad
+          exec_always swaymsg input "Elan Touchpad" events disabled
+          ## Legion
+          exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
 
-        # Make external display the primary monitor
-        exec swaymsg output HDMI-A-1
-        exec swaymsg output eDP-1 disable
-      '';
+          exec swaymsg output HDMI-A-1
+        ''
+        + (
+          if !cfg.enable-laptop-display
+          then "exec swaymsg output eDP-1 disable"
+          else ""
+        );
     };
 
     programs.wofi = {

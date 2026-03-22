@@ -57,22 +57,19 @@ in {
   config.modules = {
     window-manager.sway = {
       enable = true;
-      # NOTE: change to chromium when the qwebengine get's fixed
+      enable-laptop-display = true;
       browser-exec = "chromium --profile-directory=";
       browser-mappings = {
-        "t" = "Profile 1";
-        "y" = "Profile 2";
-        "w" = "Profile 4";
-        "g" = "Profile 6"; # Music
         "m" = "Profile 7"; # Main
+        "g" = "Profile 6"; # Music
+        "y" = "Profile 2"; # Youtube
+        "w" = "Profile 3"; # Work
       };
     };
 
-    preferences = {
-      fonts = {
-        name = "0xProto";
-        size = 17;
-      };
+    preferences.fonts = {
+      name = "0xProto";
+      size = 17;
     };
 
     browsers.librewolf = {
