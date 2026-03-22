@@ -6,7 +6,7 @@
 [![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
 <!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
-[![NixOS Unstable](https://img.shields.io/badge/NixOS-24.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+[![NixOS Unstable](https://img.shields.io/badge/NixOS-25.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![GitHub release](https://img.shields.io/github/v/release/iliyan-kostov9/nixos-config)](#)
 [![GitHub release date](https://img.shields.io/github/release-date/iliyan-kostov9/nixos-config)](#)
 [![GitHub last commit](https://img.shields.io/github/last-commit/iliyan-kostov9/nixos-config)](#)
