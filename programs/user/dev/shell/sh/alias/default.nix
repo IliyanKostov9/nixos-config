@@ -34,7 +34,7 @@ with config.modules.dev.shell; let
         echo "Youtube link needs to start with https://youtu.be/"
       else
         # NOTE: Needed android player client to fix sabr issue
-        yt-dlp -x --audio-format mp3 --cookies-from-browser chromium --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/140.0.7339.185 Safari/537.36" -o "$HOME/Downloads/%(title)s.%(ext)s" "$link" --extractor-args "youtube:player_client=android"
+        yt-dlp -x --audio-format mp3 --cookies /home/iliyan/Documents/Syncthing/Music/www.youtube.com_cookies.txt -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
       fi
     '';
   };
