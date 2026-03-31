@@ -106,21 +106,22 @@
           "k10temp"
         ];
         kernelParams = [
-          "acpi_enforce_resources=lax"
           "transparent_hugepage=never"
           "nvidia-drm.fbdev=1"
           "nvidia-drm.modeset=1"
         ];
+        kernelPatches = [
+          {
+            name = "webcam-fix";
+            patch = ./hosts/patches/kernel/webcam-fix.patch;
+          }
+        ];
         initrd = {
           availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
           systemd.enable = true;
-          luks = {
-            devices = {
-              root = {
-                device = "/dev/nvme0n1p2";
-                bypassWorkqueues = true;
-              };
-            };
+          luks.devices.root = {
+            device = "/dev/nvme0n1p2";
+            bypassWorkqueues = true;
           };
         };
       };
