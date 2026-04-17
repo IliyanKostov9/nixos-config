@@ -41,7 +41,7 @@ jobs:
           path: .
 
       - name: GitGuardian scan
-        uses: GitGuardian/ggshield-action@v1.48.0
+        uses: GitGuardian/ggshield-action@v1.49.0
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
@@ -51,7 +51,7 @@ jobs:
 
       - name: Sonar scan
         id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-scan-action@a31c9398be7ace6bbfaf30c0bd5d415f843d45e9
+        uses: sonarsource/sonarqube-scan-action@299e4b793aaa83bf2aba7c9c14bedbb485688ec4
 
       - name: "SonarQube Quality result"
         run: |
