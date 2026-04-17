@@ -3,7 +3,7 @@ _: {
     hardware.power-saver.enable = false;
     options.locale = {
       timeZone = "Europe/Paris";
-      defaultLocale = "fr_FR.UTF-8";
+      defaultLocale = "en_US.UTF-8";
     };
 
     window-manager.sway.enable = true;
