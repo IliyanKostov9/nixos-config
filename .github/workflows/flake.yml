@@ -2,7 +2,7 @@ name: Flake ❄️
 
 on:
   schedule:
-    - cron: "0 0 */14 * *"
+    - cron: 0 7 * * 1
   workflow_dispatch:
 
 jobs:
