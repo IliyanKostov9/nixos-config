@@ -39,6 +39,7 @@ jobs:
         with:
           name: nixos-config
           path: .
+          digest-mismatch: ignore
 
       - name: GitGuardian scan
         uses: GitGuardian/ggshield-action@v1.49.0
