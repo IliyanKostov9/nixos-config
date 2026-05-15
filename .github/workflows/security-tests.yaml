@@ -42,7 +42,7 @@ jobs:
           digest-mismatch: ignore
 
       - name: GitGuardian scan
-        uses: GitGuardian/ggshield-action@v1.49.0
+        uses: GitGuardian/ggshield-action@v1.50.3
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
@@ -52,7 +52,7 @@ jobs:
 
       - name: Sonar scan
         id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-scan-action@299e4b793aaa83bf2aba7c9c14bedbb485688ec4
+        uses: sonarsource/sonarqube-scan-action@59db25f34e16620e48ab4bb9e4a5dce155cb5432
 
       - name: "SonarQube Quality result"
         run: |
