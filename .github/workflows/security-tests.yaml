@@ -42,7 +42,7 @@ jobs:
           digest-mismatch: ignore
 
       - name: GitGuardian scan
-        uses: GitGuardian/ggshield-action@v1.50.3
+        uses: GitGuardian/ggshield-action@v1.51.0
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
