@@ -113,7 +113,7 @@ Follow the prompts when asked in the process.
 ##  🧑‍💻 Commands
 
 > [!WARNING]
-> Before starting to execute `make` commands, make sure to change the value of `DEFAULT_USER` to your preffered username, located in `Makefile`.
+> Before starting to execute `make` commands, make sure to change the value of `DEFAULT_USER` to your preferred username, located in `Makefile`.
 
 |Command|Description|
 |:-|:-|
@@ -130,7 +130,7 @@ Follow the prompts when asked in the process.
 ### 🌱 Setup 
 
 > [!CAUTION]
-> The hardware specific configuration is most likely not going to properly work on your system, so please make sure after you install my configuration and immediately change the bootloader and file system values (located at `config.nix`) with your appropriate values!
+> The hardware specific configuration is most likely not going to properly work on your system, so please make sure after you install my configuration to immediately change the bootloader and file system (located at `config.nix`) with your appropriate values!
 
 <details><summary><b>Show instructions</b></summary>
    Install for work laptop (Thinkpad p53) or desktop PC (AMD).
@@ -155,8 +155,8 @@ This configuration structure was inspired by contributions from the Nix communit
 - [wimpysworld](https://github.com/wimpysworld/nix-config)
 - [ryan4yin](https://github.com/ryan4yin/nix-config)
 - [simple-homemanager](https://github.com/evertras/simple-homemanager)
-- [chayward1] (https://github.com/chayward1/dotfiles)
-- [notusknot] (https://github.com/notusknot/dotfiles-nix/tree/main)
+- [chayward1](https://github.com/chayward1/dotfiles)
+- [notusknot](https://github.com/notusknot/dotfiles-nix/tree/main)
 
 ### 🔍️ References 
 
