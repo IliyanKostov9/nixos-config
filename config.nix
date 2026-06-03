@@ -8,13 +8,13 @@
       initialHashedPassword = "$6$5GT0G5I0F1wAfwuu$Nt6BgjM45KYxrKJKzuMcgwgl/sE5eoem7q3tT386BVZMkUu/0iuqT.4vfj6o/TaTEOQEs.QbjEhSEgKyBNhYN0";
     };
 
-    #   garming = {
-    #     createHome = true;
-    #     isNormalUser = true;
-    #     description = "Garming profile";
-    #     extraGroups = ["libvirtd" "users" "networkmanager" "wheel" "tss"];
-    #     initialHashedPassword = "$6$cXDCwAyOy2iqBKiW$ZtrH9HI7063o2DMLTc3jm8/Ecrv5wPWUszFUEBg15AtwBIQvuE.Eg5Vo/Qlrg7kwXaBLRIPPGX7EOV8raJWrV.";
-    #   };
+    garming = {
+      createHome = true;
+      isNormalUser = true;
+      description = "Garming profile";
+      extraGroups = ["libvirtd" "users" "networkmanager" "wheel" "tss"];
+      initialHashedPassword = "$6$t0fNikLC8anFDc3D$t.ASwjSxP0K6hgqsk6OwhH0WoUAiQtu9ouw8l4W6ViA2axUAchD5Q4s2WmJBrOPzc7F2.GKO0BRqv1jInUssK1";
+    };
   };
   hosts = {
     MSI-A320M-PRO = {
