@@ -4,10 +4,9 @@ _: {
   ];
 
   config.modules = {
-    browsers.librewolf.enable = true;
-
     dev = {
-      emulator.alacritty.enable = true;
+      default = "ghostty";
+      ghostty.enable = true;
       git = {
         git = {
           enable = true;
@@ -16,18 +15,23 @@ _: {
         };
         git-extras.enable = true;
       };
-
       shell = {
         bash.enable = true;
         zsh.enable = true;
       };
     };
 
-    entertainment.gaming.enable = true;
-    cloud.awscli2.enable = true;
+    window-manager.sway = {
+      enable = true;
+      enable-laptop-display = false;
+    };
+    preferences.fonts = {
+      name = "0xProto";
+      size = 17;
+    };
 
+    entertainment.gaming.enable = true;
     vpn.openvpn.enable = false;
-    window-manager.i3wm.enable = true;
     utils.flameshot.enable = true;
   };
 }
