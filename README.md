@@ -1,15 +1,15 @@
 # ❄️ NixOS configuration ❄️
 
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
-[![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/iliyan-kostov9/nixos-config/flake-test.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
-[![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
+[![License](https://img.shields.io/github/license/IliyanKostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
+[![Static analysis](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/nix-static-analysis.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
+[![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
-<!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-25.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
-[![GitHub release](https://img.shields.io/github/v/release/iliyan-kostov9/nixos-config)](#)
-[![GitHub release date](https://img.shields.io/github/release-date/iliyan-kostov9/nixos-config)](#)
-[![GitHub last commit](https://img.shields.io/github/last-commit/iliyan-kostov9/nixos-config)](#)
+[![GitHub release](https://img.shields.io/github/v/release/IliyanKostov9/nixos-config)](#)
+[![GitHub release date](https://img.shields.io/github/release-date/IliyanKostov9/nixos-config)](#)
+[![GitHub last commit](https://img.shields.io/github/last-commit/IliyanKostov9/nixos-config)](#)
 [![Free](https://img.shields.io/badge/free_for_non_commercial_use-brightgreen)](#-license)
 
 :star: Star us on GitHub — it motivates us a lot!
@@ -149,11 +149,11 @@ Follow the prompts when asked in the process.
 
   1. Work laptop
 
-    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-work-laptop
+    nixos-rebuild switch --flake github:IliyanKostov9/nixos-config#hosts-work-laptop
 
   2. Desktop PC
 
-    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-personal-desktop
+    nixos-rebuild switch --flake github:IliyanKostov9/nixos-config#hosts-personal-desktop
 
   Afterwards enter `config.nix` and change the values of the file system and bootloader to the ones you currently have.
   You can also change the default username to your preferred one.
