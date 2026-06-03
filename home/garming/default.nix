@@ -5,8 +5,10 @@ _: {
 
   config.modules = {
     dev = {
-      default = "ghostty";
-      ghostty.enable = true;
+      emulator = {
+        default = "ghostty";
+        ghostty.enable = true;
+      };
       git = {
         git = {
           enable = true;
