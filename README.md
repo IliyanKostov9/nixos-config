@@ -1,15 +1,14 @@
 # ❄️ NixOS configuration ❄️
 
 [![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
-[![License](https://img.shields.io/github/license/iliyan-kostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
-[![Build Status: Flake](https://img.shields.io/github/actions/workflow/status/iliyan-kostov9/nixos-config/flake-test.yml?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions?query=branch%3Amaster)
-[![GitGuardian scan](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/iliyan-kostov9/nixos-config/actions/workflows/security-tests.yaml)
+[![License](https://img.shields.io/github/license/IliyanKostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/flake.yml)
+[![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
-<!-- [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) -->
 [![NixOS Unstable](https://img.shields.io/badge/NixOS-25.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
-[![GitHub release](https://img.shields.io/github/v/release/iliyan-kostov9/nixos-config)](#)
-[![GitHub release date](https://img.shields.io/github/release-date/iliyan-kostov9/nixos-config)](#)
-[![GitHub last commit](https://img.shields.io/github/last-commit/iliyan-kostov9/nixos-config)](#)
+[![GitHub release](https://img.shields.io/github/v/release/IliyanKostov9/nixos-config)](#)
+[![GitHub release date](https://img.shields.io/github/release-date/IliyanKostov9/nixos-config)](#)
+[![GitHub last commit](https://img.shields.io/github/last-commit/IliyanKostov9/nixos-config)](#)
 [![Free](https://img.shields.io/badge/free_for_non_commercial_use-brightgreen)](#-license)
 
 :star: Star us on GitHub — it motivates us a lot!
@@ -57,12 +56,11 @@ Follow the prompts when asked in the process.
 | Editor         | [NeoVim](https://neovim.io/) |
 | Launcher       | [Rofi](https://github.com/davatorium/rofi) |
 | Shell          | [Zsh](https://ohmyz.sh/) |
-| Status Bar     | [i3status-rust](https://github.com/greshake/i3status-rust) |
-| Terminal       | [Alacritty](https://alacritty.org/) |
-| Window Manager | [I3WM](https://i3wm.org/) |
+| Status Bar     | [Waybar](https://github.com/alexays/waybar) |
+| Terminal       | [Ghostty](https://ghostty.org/) |
+| Window Manager | [Sway](https://swaywm.org/) |
 | File Manager   | [PcmanFM](https://en.wikipedia.org/wiki/PCMan_File_Manager) |
 | GTK Theme      | [Adwaita](https://en.wikipedia.org/wiki/Adwaita_(design_language)) |
-| GTK Icon Theme | [Rose-pine](https://github.com/rose-pine/gtk) |
 | Terminal Font  | [OxProto Nerd Font](https://www.nerdfonts.com/font-downloads) |
 
 </details>
@@ -78,11 +76,11 @@ Follow the prompts when asked in the process.
 
 ```markdown
 .
-.
-├── _config.yml
+├── Allium58.vil
 ├── archive
 ├── assets
 ├── config.nix
+├── _config.yml
 ├── flake.lock
 ├── flake.nix
 ├── flakes
@@ -95,20 +93,29 @@ Follow the prompts when asked in the process.
 ├── README.md
 ├── scripts
 ├── secrets
-└── wallpaper.jpg
+├── sonar-project.properties
+├── tests
+├── THEMES.md
+└── utils
 ```
 
-- **archive**: not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
-- **assets**: used for storing media files, related to markdown documentation 
+- **Allium58.vil**: Layout file for the [split keyboard Allium58](https://github.com/beekeeb/allium58)
+- **archive**: Not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
+- **assets**: Used for storing media files, related to markdown documentation 
 - **config.nix**: An attribute set, containing all of the user and host specific configuration, that is consumed by the home and hosts module
-- **flake.lock**: auto generated file, when building the system along with an argument of `--flake`. Used for pinning down the specific versions of the Nix dependencies, that are listed under *flake.nix*
-- **flake.nix**: file for declaring all of the Nix specific dependencies/features (flake-parts, home-manager, nixpkgs, etc.). It is also the entry point for importing the user/system flakes
-- **flakes**: used for storing all of the modularized flakes, that is consumed by flake-parts
-- **home**: used for storing all the user environments (Joe's PC, Jane's PC, etc.)
-- **hosts**: used for storing the hardware specifications of the hosts machines
-- **Makefile**: automation script for aliasing Nix CLI commands in a more user-friendly way
-- **programs**: contains the user/system type of packages
-- **wallpaper.jpg**: background photo for i3wm
+- **_config.yml**: Configuration file for [Garnix CI](https://garnix.io/)
+- **flake.lock**: Auto generated file, when building the system along with an argument of `--flake`. Used for pinning down the specific versions of the Nix dependencies, that are listed under *flake.nix*
+- **flake.nix**: File for declaring all of the Nix specific dependencies/features (flake-parts, home-manager, nixpkgs, etc.). It is also the entry point for importing the user/system flakes
+- **flakes**: Used for storing all of the modularized flakes, that is consumed by flake-parts
+- **garnix.yml**: File for declaring the job steps for [Garnix CI](https://garnix.io/)
+- **home**: Used for storing all the user environments (Joe's PC, Jane's PC, etc.)
+- **hosts**: Used for storing the hardware specifications of the hosts machines
+- **Makefile**: Automation script for aliasing Nix CLI commands in a more user-friendly way
+- **programs**: Contains the user/system type of packages
+- **scripts**: A dedicated scripts folder to better modularize the long shell scripts
+- **secrets**: [SOPS](https://github.com/mic92/sops-nix) folder for defining the OS/user specific secrets (used purely as environment variables as well as injecting them directly to packages - like openvpn, tmux)
+- **tests**: Definition of unit & integration tests
+- **utils**: Folder for storing nix functions, so that they can be reused across different nix functions
 
 ##  🧑‍💻 Commands
 
@@ -118,14 +125,18 @@ Follow the prompts when asked in the process.
 |Command|Description|
 |:-|:-|
 |make help|Show available commands with their description|
+|make label|Setup your nixos system|
+|make secure-boot|Enable secure boot|
 |make home-update|Build your home configuration|
-|make sys-update-|Build your system configuration|
-|make flake-upgrade|Upgrade flake dependencies
-|make flake-check|Validate flake.nix|
-|make flake-meta|Output the flake input dependencies in a tree format|
+|make sys-update|Build your system configuration|
 |make clean|Remove system and user generations|
+|make clean-sys|Remove old system generations|
+|make optimise|Optimize nix store by making each package unique. Warning: The operation is resource intensive|
+|make test|Evaluate flake and build its checks|
+|make flake-upgrade|Upgrade flake dependencies
+|make flake-meta|Output the flake input dependencies in a tree format|
 |make gen|Show all user generations|
-|make setup|Setup your system|
+|channel-upgrade|Upgrade nix channel|
 
 ### 🌱 Setup 
 
@@ -137,11 +148,11 @@ Follow the prompts when asked in the process.
 
   1. Work laptop
 
-    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-work-laptop
+    nixos-rebuild switch --flake github:IliyanKostov9/nixos-config#hosts-work-laptop
 
   2. Desktop PC
 
-    nixos-rebuild switch --flake github:iliyan-kostov9/nixos-config#hosts-personal-desktop
+    nixos-rebuild switch --flake github:IliyanKostov9/nixos-config#hosts-personal-desktop
 
   Afterwards enter `config.nix` and change the values of the file system and bootloader to the ones you currently have.
   You can also change the default username to your preferred one.
