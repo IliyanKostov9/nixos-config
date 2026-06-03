@@ -59,8 +59,8 @@ sys-update: ## Build system configuration for all hosts
 	@./scripts/sys-update.sh
 
 
-.PHONY: clean clean-sys clean-usr optimise
-clean: clean-sys clean-usr optimise
+.PHONY: clean clean-sys clean-usr optimise 
+clean: clean-sys clean-usr optimise ## Remove system and user generations
 
 clean-usr : ## Remove old user generations
 	nix-collect-garbage -d |& nom
