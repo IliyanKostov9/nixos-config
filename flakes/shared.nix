@@ -1,7 +1,7 @@
 {inputs}:
 with inputs; rec {
   system = "x86_64-linux";
-  stateVersion = "25.11";
+  stateVersion = "26.05";
   pkgs =
     import
     nixpkgs
@@ -40,7 +40,8 @@ with inputs; rec {
         )
         # nixgl.overlay
         nur.overlays.default
-        alacritty-theme.overlays.default
+        # TODO: Check if it's imported or not
+        # alacritty-theme.overlays.default
         (_self: super: {
           qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (_: rec {
             postInstall = let

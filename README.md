@@ -5,7 +5,7 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/flake.yml)
 [![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml)
 [![Written in Nix](https://img.shields.io/badge/code-nix-blue)](https://nixos.org/)
-[![NixOS Unstable](https://img.shields.io/badge/NixOS-25.11-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
+[![NixOS Unstable](https://img.shields.io/badge/NixOS-26.05-blue.svg?style=flat-square&logo=NixOS&logoColor=white)](https://nixos.org)
 [![GitHub release](https://img.shields.io/github/v/release/IliyanKostov9/nixos-config)](#)
 [![GitHub release date](https://img.shields.io/github/release-date/IliyanKostov9/nixos-config)](#)
 [![GitHub last commit](https://img.shields.io/github/last-commit/IliyanKostov9/nixos-config)](#)
