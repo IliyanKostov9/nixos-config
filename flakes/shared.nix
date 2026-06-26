@@ -40,8 +40,12 @@ with inputs; rec {
         )
         # nixgl.overlay
         nur.overlays.default
-        # TODO: Check if it's imported or not
-        # alacritty-theme.overlays.default
+        # # TODO: Check if it's imported or not
+        # (
+        #   if builtins.hasAttr "alacritty-theme" inputs
+        #   then alacritty-theme.overlays.default
+        #   else {}
+        # )
         (_self: super: {
           qtile-unwrapped = super.qtile-unwrapped.overrideAttrs (_: rec {
             postInstall = let
@@ -59,13 +63,14 @@ with inputs; rec {
             passthru.providedSessions = ["qtile"];
           });
         })
+        # TODO: Remove it once openblas is available in hydra
+        (final: prev: {
+          openblas = prev.openblas.overrideAttrs (oldAttrs: {
+            doCheck = false;
+          });
+        })
       ];
-      config = {
-        allowUnfree = true;
-        # permittedInsecurePackages = [
-        #   "qtwebengine-5.15.19"
-        # ];
-      };
+      config.allowUnfree = true;
     };
   pkgs-unstable =
     import
