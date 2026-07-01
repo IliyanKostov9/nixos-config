@@ -1,5 +1,5 @@
 HDD_PART := /dev/sdb1
-NIXOS_VERSION ?= 25.11
+NIXOS_VERSION ?= 26.05
 
 ##########################
 # TARGET

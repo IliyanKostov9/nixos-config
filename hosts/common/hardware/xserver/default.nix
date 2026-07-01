@@ -9,11 +9,7 @@
     desktopManager.gnome.enable = true;
     # Enable for using I3
     displayManager = {
-      # Enable for using GNOME
-      gdm = {
-        enable = false;
-        wayland = true;
-      };
+      gdm.enable = false;
       sddm = {
         wayland.enable = true;
         enable = true;
