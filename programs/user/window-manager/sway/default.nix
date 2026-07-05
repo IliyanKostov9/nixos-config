@@ -213,10 +213,14 @@ in {
             mode 2560x1600@165Hz
           }
 
-           output HDMI-A-1 {
-             scale 1.0
-             mode 2560x1440@60Hz
-           }
+           # output HDMI-A-1 {
+           #   scale 1.0
+           #   mode 2560x1440@60Hz
+           # }
+          output HDMI-A-1 {
+              scale 1.0
+              mode 1920x1080@165.003006Hz
+          }
 
           input * {
             xkb_layout us
