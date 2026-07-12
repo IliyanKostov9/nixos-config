@@ -17,7 +17,7 @@
       IdentityFile ~/.ssh/id_gitlab_personal
 
       Host pi
-      HostName 192.168.1.99
+      HostName 192.168.88.99
       User pi
       IdentityFile ~/.ssh/id_pi_rsa
     '';
