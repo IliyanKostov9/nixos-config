@@ -25,7 +25,7 @@ _: {
 
     window-manager.sway = {
       enable = true;
-      enable-laptop-display = true;
+      enable-laptop-display = false;
     };
     preferences.fonts = {
       name = "0xProto";
