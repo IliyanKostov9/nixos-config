@@ -3,7 +3,7 @@
 in {
   networking = {
     hostName = host-name;
-    nameservers = ["192.168.88.99"];
+    # nameservers = ["192.168.88.99"]; # NOTE: Router is handling that now
     firewall = {
       enable = true;
       allowedTCPPorts = [3003];
