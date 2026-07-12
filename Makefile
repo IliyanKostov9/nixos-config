@@ -58,6 +58,10 @@ home-update:  ## Build home configuration for default user
 sys-update: ## Build system configuration for all hosts
 	@./scripts/sys-update.sh
 
+.PHONY: dry
+dry: ## Perform dry run before building
+	sudo -v && sudo nixos-rebuild dry-build --flake .#$$MODEL --impure;
+
 
 .PHONY: clean clean-sys clean-usr optimise 
 clean: clean-sys clean-usr optimise ## Remove system and user generations
