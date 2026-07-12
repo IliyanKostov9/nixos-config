@@ -63,12 +63,6 @@ with inputs; rec {
             passthru.providedSessions = ["qtile"];
           });
         })
-        # TODO: Remove it once openblas is available in hydra
-        (final: prev: {
-          openblas = prev.openblas.overrideAttrs (oldAttrs: {
-            doCheck = false;
-          });
-        })
       ];
       config.allowUnfree = true;
     };
