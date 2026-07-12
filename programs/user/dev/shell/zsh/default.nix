@@ -80,10 +80,8 @@ in {
           theme = "af-purple-magic";
           custom = "${zsh-themes}";
           plugins = [
-            ''
-              direnv
-              vi-mode
-            ''
+            "direnv"
+            "vi-mode"
           ];
         };
         inherit (common) shellAliases;

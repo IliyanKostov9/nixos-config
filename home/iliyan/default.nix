@@ -82,7 +82,7 @@ in {
       command-line = {
         bat.enable = true;
         eza.enable = true;
-        ggshield.enable = true;
+        ggshield.enable = false; #NOTE: Cannot install
       };
       container.docker.enable = true;
       editor.neovim.enable = true;

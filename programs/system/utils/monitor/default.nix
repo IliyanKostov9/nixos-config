@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       htop
-      neofetch
+      hyfetch
       # TODO: Move this elsewhere
       copyq
       libreoffice

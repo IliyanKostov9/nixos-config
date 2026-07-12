@@ -1,5 +1,5 @@
 HDD_PART := /dev/sdb1
-NIXOS_VERSION ?= 25.11
+NIXOS_VERSION ?= 26.05
 
 ##########################
 # TARGET
@@ -51,12 +51,16 @@ secure-boot-sign:
 build: sys-update home-update 
 
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#$(shell whoami)  --impure |& nom
+	home-manager switch --flake .#$(shell whoami) --impure
 #	tmux source-file ~/.config/tmux/tmux.conf 
 	
 .PHONY: sys-update
 sys-update: ## Build system configuration for all hosts
 	@./scripts/sys-update.sh
+
+.PHONY: dry
+dry: ## Perform dry run before building
+	sudo -v && sudo nixos-rebuild dry-build --flake .#$$MODEL --impure;
 
 
 .PHONY: clean clean-sys clean-usr optimise 

@@ -44,11 +44,11 @@ in {
     gitunstage = "git restore --staged";
     gitig = "git-ignore";
     inherit clip;
-    lo = "libreoffice";
     ls = "eza";
     cat = "bat";
     base = "basename $(pwd)";
     swayb = "swaymsg reload";
+    vim = "nvim";
   };
 
   sessionVariables =
