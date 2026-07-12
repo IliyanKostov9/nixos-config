@@ -19,11 +19,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.neovim = {
-      enable = true;
-      vimAlias = true;
-      defaultEditor = lib.mkForce true;
-      extraPackages = with pkgs; [yamllint nodejs_22 unzip ktlint];
-    };
+    home.packages = with pkgs; [
+      neovim
+      yamllint
+      nodejs_22
+      unzip
+      ktlint
+    ];
   };
 }

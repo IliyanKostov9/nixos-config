@@ -48,6 +48,7 @@ in {
     cat = "bat";
     base = "basename $(pwd)";
     swayb = "swaymsg reload";
+    vim = "nvim";
   };
 
   sessionVariables =
