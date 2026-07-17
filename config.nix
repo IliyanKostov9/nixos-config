@@ -1,4 +1,4 @@
-{nixos-hardware}: {
+_: {
   users = {
     iliyan = {
       isNormalUser = true;
@@ -24,7 +24,7 @@
       };
       modules = [
         ./hosts/msi-a320m-pro
-        nixos-hardware.nixosModules.msi-b350-tomahawk
+        # nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 
       boot = {
@@ -48,7 +48,7 @@
       };
       modules = [
         ./hosts/lenovo-thinkpad-p53
-        nixos-hardware.nixosModules.lenovo-thinkpad-p53
+        # nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 
       boot = {
@@ -71,10 +71,10 @@
       };
       modules = [
         ./hosts/lenovo-ideapad-pro5
-        nixos-hardware.nixosModules.common-cpu-intel
-        nixos-hardware.nixosModules.common-gpu-intel
-        nixos-hardware.nixosModules.common-pc-laptop-ssd
-        nixos-hardware.nixosModules.common-pc-laptop
+        # nixos-hardware.nixosModules.common-cpu-intel
+        # nixos-hardware.nixosModules.common-gpu-intel
+        # nixos-hardware.nixosModules.common-pc-laptop-ssd
+        # nixos-hardware.nixosModules.common-pc-laptop
       ];
 
       boot = {
@@ -97,7 +97,7 @@
       };
       modules = [
         ./hosts/lenovo-legion-16ahp9
-        nixos-hardware.nixosModules.lenovo-legion-16aph8
+        # nixos-hardware.nixosModules.lenovo-legion-16aph8
       ];
 
       boot = {

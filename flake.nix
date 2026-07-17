@@ -6,7 +6,6 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     devenv.url = "github:cachix/devenv";
     nur.url = "github:nix-community/NUR";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -24,10 +23,6 @@
     sops-nix.url = "github:Mic92/sops-nix";
     stylix.url = "github:nix-community/stylix/release-26.05";
     # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-    # nixgl = {
-    #   url = "github:guibou/nixGL";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # nix-alien.url = "github:thiagokokada/nix-alien";
     # nixos-generators = {
     #   url = "github:nix-community/nixos-generators";

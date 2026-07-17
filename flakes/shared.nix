@@ -78,7 +78,6 @@ with inputs; rec {
     import
     ../config.nix
     {
-      inherit nixos-hardware;
     };
   inherit (config_system) users;
 }
