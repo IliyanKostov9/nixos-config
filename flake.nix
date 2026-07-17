@@ -21,7 +21,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     sops-nix.url = "github:Mic92/sops-nix";
-    stylix.url = "github:nix-community/stylix/release-26.05";
     # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
     # nix-alien.url = "github:thiagokokada/nix-alien";
     # nixos-generators = {
