@@ -2,7 +2,7 @@ _: {
   imports = [
     ./modules
     ./desktopManager
-    # ./garbage-collect
+    ./garbage-collect
     ./nixpkgs
     ./blueman
     ./env-vars
