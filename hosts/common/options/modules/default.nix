@@ -50,11 +50,5 @@ _: {
         "rightalt" = "up";
       };
     };
-
-    style = {
-      enable = true;
-      theme = "kanagawa";
-      polarity = "dark";
-    };
   };
 }
