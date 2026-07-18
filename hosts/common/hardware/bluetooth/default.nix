@@ -1,9 +1,10 @@
-_: {
+{pkgs-2511, ...}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings.Policy.AutoEnable = "true";
+    package = pkgs-2511.bluez;
     settings = {
+      Policy.AutoEnable = "true";
       General = {
         Name = "Computer";
         ControllerMode = "dual";
