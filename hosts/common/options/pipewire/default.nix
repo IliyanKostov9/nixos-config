@@ -1,6 +1,7 @@
-_: {
+{pkgs-2511, ...}: {
   services.pipewire = {
     enable = true;
+    package = pkgs-2511.pipewire;
     alsa = {
       enable = true;
       support32Bit = true;
@@ -10,6 +11,7 @@ _: {
     pulse.enable = true;
     wireplumber = {
       enable = true;
+      package = pkgs-2511.wireplumber;
       extraConfig.bluetoothEnhancements = {
         "monitor.bluez.properties" = {
           "bluez5.enable-sbc-xq" = true;
