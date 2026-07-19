@@ -65,6 +65,19 @@ with lib; let
 
       text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
     };
+
+  git-follow-remote =
+    pkgs.writeShellApplication
+    {
+      name = "git-follow-remote";
+      runtimeInputs = with pkgs; [git];
+      text = ''
+        current_branch=''$(git branch --show-current)
+
+        git merge --abort
+        git reset --hard origin/''$current_branch
+      '';
+    };
 in {
   home.packages = [
     git-rm-local-brv
@@ -72,5 +85,6 @@ in {
     git-rob
     gitlab-rob
     git-history-rebase
+    git-follow-remote
   ];
 }
