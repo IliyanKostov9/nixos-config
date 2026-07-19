@@ -73,8 +73,12 @@ with lib; let
       runtimeInputs = with pkgs; [git];
       text = ''
         current_branch="''$(git branch --show-current)"
+        is_there_merge_conflict="''$(git status --porcelain | grep -q '^UU\|^AA\|^DD' && echo "true" || echo "false")"
 
-        git merge --abort
+        if [[ ''$is_there_merge_conflict == "true" ]]; then
+          git merge --abort
+        fi
+
         git reset --hard "origin/''$current_branch"
       '';
     };
