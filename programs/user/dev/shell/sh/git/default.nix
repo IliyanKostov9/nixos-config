@@ -72,10 +72,10 @@ with lib; let
       name = "git-follow-remote";
       runtimeInputs = with pkgs; [git];
       text = ''
-        current_branch=''$(git branch --show-current)
+        current_branch="''$(git branch --show-current)"
 
         git merge --abort
-        git reset --hard origin/''$current_branch
+        git reset --hard "origin/''$current_branch"
       '';
     };
 in {
