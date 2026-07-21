@@ -19,7 +19,6 @@
     };
     xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
       # Disable screen turning off after 10 mins
       deviceSection = ''
         Option "BlankTime" "0"
