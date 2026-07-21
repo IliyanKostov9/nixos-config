@@ -25,6 +25,7 @@ in {
       nodejs_22
       unzip
       ktlint
+      tree-sitter
     ];
   };
 }
