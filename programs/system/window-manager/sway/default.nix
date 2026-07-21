@@ -34,21 +34,6 @@ in {
         qt5.qtwayland
         wl-clipboard
       ];
-      extraSessionCommands = ''
-        # Tell toolkits to use wayland
-        export CLUTTER_BACKEND=wayland
-        #export QT_QPA_PLATFORM=wayland-egl
-        export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-        export SDL_VIDEODRIVER=wayland
-
-        # Fix krita and other Egl-using apps
-        export LD_LIBRARY_PATH=/run/opengl-driver/lib
-
-        # Disable HiDPI scaling for X apps
-        # https://wiki.archlinux.org/index.php/HiDPI#GUI_toolkits
-        export GDK_SCALE=1
-        export QT_AUTO_SCREEN_SCALE_FACTOR=0
-      '';
     };
   };
 }
