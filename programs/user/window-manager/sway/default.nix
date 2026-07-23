@@ -262,7 +262,7 @@ in {
         ''
         + (
           if !cfg.enable-laptop-display
-          then "exec swaymsg output eDP-2 disable"
+          then "exec swaymsg output eDP-1 disable"
           else ""
         );
     };
