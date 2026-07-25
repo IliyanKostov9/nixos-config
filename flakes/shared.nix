@@ -39,6 +39,7 @@ with inputs; rec {
           }
         )
         # nixgl.overlay
+        nixpkgs-wayland.overlay
         nur.overlays.default
         # # TODO: Check if it's imported or not
         # (
