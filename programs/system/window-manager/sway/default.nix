@@ -1,5 +1,5 @@
 {
-  pkgs-unstable,
+  pkgs,
   lib,
   config,
   ...
@@ -27,9 +27,9 @@ in {
 
     programs.sway = {
       enable = true;
-      package = pkgs-unstable.sway;
+      package = pkgs.sway;
       wrapperFeatures.gtk = true;
-      extraPackages = with pkgs-unstable; [
+      extraPackages = with pkgs; [
         swaybg
         qt5.qtwayland
         wl-clipboard
