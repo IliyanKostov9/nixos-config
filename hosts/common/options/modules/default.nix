@@ -7,7 +7,13 @@ _: {
     };
 
     window-manager.sway.enable = true;
-    vpn.tailscale.enable = true;
+    vpn = {
+      tailscale.enable = true;
+      openvpn = {
+        enable = true;
+        autoStart = false;
+      };
+    };
 
     downloader = {
       curl.enable = true;

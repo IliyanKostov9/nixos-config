@@ -1,5 +1,4 @@
 {
-  pkgs-unstable,
   lib,
   config,
   ...
@@ -10,9 +9,6 @@ in {
   options.modules.vpn.tailscale = {enable = mkEnableOption "tailscale";};
 
   config = mkIf cfg.enable {
-    services.tailscale = {
-      enable = true;
-      package = pkgs-unstable.tailscale;
-    };
+    services.tailscale.enable = true;
   };
 }
