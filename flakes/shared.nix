@@ -39,7 +39,7 @@ with inputs; rec {
           }
         )
         # nixgl.overlay
-        nixpkgs-wayland.overlay
+        # nixpkgs-wayland.overlay
         nur.overlays.default
         # # TODO: Check if it's imported or not
         # (
@@ -75,13 +75,13 @@ with inputs; rec {
       config = {allowUnfree = true;};
     };
 
-  # pkgs-2511 =
-  #   import
-  #   nixpkgs-2511
-  #   {
-  #     inherit system;
-  #     config = {allowUnfree = true;};
-  #   };
+  pkgs-2511 =
+    import
+    nixpkgs-2511
+    {
+      inherit system;
+      config = {allowUnfree = true;};
+    };
 
   config_system =
     import

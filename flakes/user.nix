@@ -13,10 +13,11 @@ in {
     builtins.mapAttrs
     (user: _user-attr:
       inputs.home-manager.lib.homeManagerConfiguration {
+        # pkgs = shared.pkgs-2511;
         inherit (shared) pkgs;
         extraSpecialArgs = {
           inherit self user;
-          inherit (shared) system stateVersion pkgs-unstable;
+          inherit (shared) system stateVersion pkgs-2511 pkgs-unstable;
         };
         modules =
           [

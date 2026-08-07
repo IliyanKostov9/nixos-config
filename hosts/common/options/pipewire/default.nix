@@ -1,7 +1,7 @@
-{...}: {
+{pkgs-2511, ...}: {
   services.pipewire = {
     enable = true;
-    # package = pkgs-2511.pipewire;
+    package = pkgs-2511.pipewire;
     alsa = {
       enable = true;
       support32Bit = true;

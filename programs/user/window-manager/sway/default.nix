@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-2511,
   lib,
   config,
   ...
@@ -69,6 +70,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
+      systemd.enable = false;
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];
@@ -247,7 +249,7 @@ in {
           exec nm-applet
           exec copyq
           exec viber
-          #exec flatpak run com.viber.Viber
+          exec waybar
           exec whatsapp
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
