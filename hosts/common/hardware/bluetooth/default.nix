@@ -1,8 +1,8 @@
-{pkgs-2511, ...}: {
+{...}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    package = pkgs-2511.bluez;
+    # package = pkgs-2511.bluez;
     settings = {
       Policy.AutoEnable = "true";
       General = {
