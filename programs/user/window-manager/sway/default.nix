@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-2511,
   lib,
   config,
   ...
@@ -70,7 +69,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
-      systemd.enable = false;
+      systemd.enable = false; # NOTE: Disable to prevent flickering issues (showing a small black rectangle in the middle of screen)
       swaynag.enable = true;
       wrapperFeatures.gtk = true;
       extraOptions = ["--unsupported-gpu"];
@@ -249,6 +248,8 @@ in {
           exec nm-applet
           exec copyq
           exec viber
+
+          # NOTE: Needed because systemd.enable = false causes waybar not to autostart
           exec waybar
           exec whatsapp
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'

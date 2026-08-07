@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-2511,
   config,
   ...
 }: let
@@ -15,7 +14,6 @@ in {
   # Select theme:  "rofi-theme-selector";
   programs.rofi = {
     enable = true;
-    package = pkgs-2511.rofi;
     theme = "dmenu";
     # android_notification
     font = "${config.modules.preferences.fonts.name}NerdFontMono-Regular";

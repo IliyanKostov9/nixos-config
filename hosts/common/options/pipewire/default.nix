@@ -1,6 +1,7 @@
 {pkgs-2511, ...}: {
   services.pipewire = {
     enable = true;
+    # NOTE: It's not able to connect to Google Nest Hub 2 on 26.05
     package = pkgs-2511.pipewire;
     alsa = {
       enable = true;
@@ -11,7 +12,9 @@
     pulse.enable = true;
     wireplumber = {
       enable = true;
-      # package = pkgs-2511.wireplumber;
+
+      # NOTE: It's not able to connect to Google Nest Hub 2 on 26.05
+      package = pkgs-2511.wireplumber;
       extraConfig.bluetoothEnhancements = {
         "monitor.bluez.properties" = {
           "bluez5.enable-sbc-xq" = true;
