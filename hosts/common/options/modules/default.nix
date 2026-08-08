@@ -1,6 +1,10 @@
 _: {
   config.modules = {
     hardware.power-saver.enable = false;
+    nvidia.prime = {
+      enableSync = true;
+      enableOffload = true;
+    };
     options.locale = {
       timeZone = "Europe/Sofia";
       defaultLocale = "en_US.UTF-8";
@@ -11,7 +15,7 @@ _: {
       tailscale.enable = true;
       openvpn = {
         enable = true;
-        autoStart = true;
+        autoStart = false;
       };
     };
 
