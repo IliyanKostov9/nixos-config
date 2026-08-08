@@ -7,7 +7,6 @@ _: {
     ./blueman
     ./env-vars
     ./ssh
-    ./openvpn
     ./users
     ./virtualisation
     ./programs
