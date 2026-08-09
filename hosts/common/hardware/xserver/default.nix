@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+_: {
   services.xserver = {
     enable = true;
     # Disable screen turning off after 10 mins
