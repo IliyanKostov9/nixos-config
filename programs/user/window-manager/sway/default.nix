@@ -209,6 +209,11 @@ in {
           hide_edge_borders --i3 smart
           workspace_layout tabbed
 
+          output eDP-1 {
+            scale 1.5
+            mode 2560x1600@165Hz
+          }
+
           output eDP-2 {
             scale 1.5
             mode 2560x1600@165Hz
@@ -267,7 +272,7 @@ in {
         ''
         + (
           if !cfg.enable-laptop-display
-          then "exec swaymsg output eDP-2 disable"
+          then "exec swaymsg output eDP-1 disable\nexec swaymsg output eDP-2 disable"
           else ""
         );
     };
