@@ -1,3 +1,3 @@
-_: {
-  hardware.nvidia.prime.amdgpuBusId = "PCI:54:0:0";
+{host_attr, ...}: {
+  hardware.nvidia.prime.amdgpuBusId = host_attr.busIds.amd;
 }
