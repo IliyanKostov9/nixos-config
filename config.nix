@@ -91,6 +91,7 @@ _: {
     };
 
     Lenovo-Legion-16ahp9 = {
+      host-name = "nce";
       autoLoginUser = "iliyan";
 
       variables = {
