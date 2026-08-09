@@ -111,6 +111,7 @@ in {
       nvidia-container-toolkit.enable = true;
       nvidia = {
         open = cfg.openSource;
+        powerManagement.enable = true;
         modesetting.enable = true;
         nvidiaSettings = true;
         package =

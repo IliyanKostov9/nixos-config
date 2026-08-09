@@ -3,6 +3,8 @@ _: {
     hardware = {
       boot.kernel = "7_1";
       power-saver.enable = false;
+      firmware.disableTouchpad = true;
+      keyboard.console = "dvorak";
     };
 
     nvidia = {
