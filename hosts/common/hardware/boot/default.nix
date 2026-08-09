@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   modulesPath,
   host_attr,
   ...
@@ -16,6 +17,10 @@ with lib.trivial; let
     else warn "> Secure boot is NOT enabled" false;
   cfg = config.modules.hardware.boot;
 in {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
+
   options.modules.hardware.boot = {
     kernel = mkOption {
       type = types.str;
@@ -27,14 +32,10 @@ in {
   };
 
   config = {
-    imports = [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
-
     boot =
       boot
       // {
-        kernelPackages = pkgs.linuxPackages_${cfg.kernel};
+        kernelPackages = pkgs."linuxPackages_${cfg.kernel}";
         tmp.useTmpfs = true;
         loader = {
           # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
