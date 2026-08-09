@@ -107,7 +107,7 @@ in {
             "${mod}+${alt}+Page_Up" = "exec reboot";
             "${mod}+${alt}+End" = "exec swaymsg exit";
             "${mod}+${alt}+Home" = "exec systemctl suspend";
-            "${mod}+${alt}+s" = "exec swaymsg output eDP-1 enable && exec swaymsg output HDMI-A-1 disable";
+            "${mod}+${alt}+s" = "exec swaymsg output eDP-2 enable && exec swaymsg output HDMI-A-1 disable";
 
             ## Audio
             ### Pipewire
@@ -209,7 +209,7 @@ in {
           hide_edge_borders --i3 smart
           workspace_layout tabbed
 
-          output eDP-1 {
+          output eDP-2 {
             scale 1.5
             mode 2560x1600@165Hz
           }
@@ -251,6 +251,8 @@ in {
 
           # NOTE: Needed because systemd.enable = false causes waybar not to autostart
           exec waybar
+          exec blueman-applet
+
           exec whatsapp
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
@@ -265,7 +267,7 @@ in {
         ''
         + (
           if !cfg.enable-laptop-display
-          then "exec swaymsg output eDP-1 disable"
+          then "exec swaymsg output eDP-2 disable"
           else ""
         );
     };
