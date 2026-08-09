@@ -8,5 +8,6 @@ _: {
     ./systemd
     ./xserver
     ./displayManager
+    ./keyboard
   ];
 }

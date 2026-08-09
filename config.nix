@@ -91,6 +91,8 @@ _: {
     };
 
     Lenovo-Legion-16ahp9 = {
+      autoLoginUser = "iliyan";
+
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-Legion-16ahp9";

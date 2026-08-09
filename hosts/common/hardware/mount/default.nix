@@ -11,18 +11,7 @@ _: {
     };
   };
 
-  swapDevices = [
-  ];
-
-  # swapDevices = [
-  #   {
-  #     device = "/dev/disk/by-label/swap";
-  #     priority = 3;
-  #     randomEncryption.enable = false;
-  # size = 12288;
-  # }
-  # ];
-
+  swapDevices = [];
   zramSwap = {
     priority = 4;
     enable = true;

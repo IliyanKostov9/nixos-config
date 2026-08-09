@@ -32,6 +32,13 @@ in {
   };
 
   config = {
+    assertions = [
+      {
+        assertion = cfg.kernel == "latest" || builtins.match "[0-9]_[0-9]" cfg.kernel != null;
+        message = "Linux kernel is incorrect! The available values are either latest or with kernel version X_X";
+      }
+    ];
+
     boot =
       boot
       // {
