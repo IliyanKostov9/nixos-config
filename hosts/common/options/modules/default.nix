@@ -4,7 +4,15 @@ _: {
       boot.kernel = "7_1";
       power-saver.enable = false;
       firmware.disableTouchpad = true;
-      keyboard.console = "dvorak";
+      keyboard = {
+        console = "dvorak";
+        # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
+        extraLayouts.bgd = {
+          description = "Bulgarian Dvorak";
+          languages = ["bul"];
+          symbolsFile = ../../options/xkb/dvorak/bgd;
+        };
+      };
     };
 
     nvidia = {

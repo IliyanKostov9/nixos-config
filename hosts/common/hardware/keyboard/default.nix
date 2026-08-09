@@ -15,6 +15,13 @@ in {
         Keyboard for the console
       '';
     };
+
+    extraLayouts = mkOption {
+      default = {};
+      description = mkDoc ''
+        Extra keyboard layouts
+      '';
+    };
   };
 
   config = {
@@ -24,12 +31,7 @@ in {
       xserver.xkb = {
         layout = "us";
         options = "grp:shifts_toggle";
-        # NOTE: Props to: https://github.com/ivangeorgiew for providing the missing Dvorak for bg
-        extraLayouts.bgd = {
-          description = "Bulgarian Dvorak";
-          languages = ["bul"];
-          symbolsFile = ../../options/xkb/dvorak/bgd;
-        };
+        inherit (cfg) extraLayouts;
       };
     };
   };
