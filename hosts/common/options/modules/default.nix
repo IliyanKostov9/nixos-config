@@ -30,9 +30,16 @@ _: {
       };
     };
 
-    options.locale = {
-      timeZone = "Europe/Sofia";
-      defaultLocale = "en_US.UTF-8";
+    options = {
+      garbage-collect = {
+        enable = true;
+        schedule = "weekly";
+      };
+      locale = {
+        timeZone = "Europe/Sofia";
+        defaultLocale = "en_US.UTF-8";
+      };
+      networking.nameservers = [];
     };
 
     window-manager.sway.enable = true;

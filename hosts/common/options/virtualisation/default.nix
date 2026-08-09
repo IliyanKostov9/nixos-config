@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  users,
+  ...
+}: {
   programs.virt-manager.enable = true;
   virtualisation = {
     # NOTE: doesn't work
@@ -8,8 +12,11 @@
       setSocketVariable = true;
       daemon.settings = {
         features.cdi = true;
-        # TODO: Do not hardcode this
-        cdi-spec-dirs = ["/home/iliyan/.cdi"];
+        cdi-spec-dirs =
+          builtins.mapAttrs (
+            username: _: ["/home/${username}/.cdi"]
+          )
+          users;
       };
     };
     spiceUSBRedirection.enable = true;

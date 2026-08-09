@@ -9,7 +9,7 @@ in {
   options.modules.options.locale = {
     timeZone = mkOption {
       type = types.str;
-      default = "Europe/Paris";
+      default = "Europe/Sofia";
       description = mkDoc ''
         Define the timezone of the region
         Examples:
