@@ -1,5 +1,10 @@
 _: {
   config.modules = {
+    hardware = {
+      boot.kernel = "7_1";
+      power-saver.enable = false;
+    };
+
     nvidia = {
       openSource = true;
       channel = "";
@@ -14,8 +19,6 @@ _: {
         enableOffload = false;
       };
     };
-
-    hardware.power-saver.enable = false;
 
     options.locale = {
       timeZone = "Europe/Sofia";
