@@ -7,19 +7,15 @@
   virtualisation = {
     # NOTE: doesn't work
     waydroid.enable = false;
+    spiceUSBRedirection.enable = true;
     docker.rootless = {
       enable = true;
       setSocketVariable = true;
       daemon.settings = {
         features.cdi = true;
-        cdi-spec-dirs =
-          builtins.mapAttrs (
-            username: _: ["/home/${username}/.cdi"]
-          )
-          users;
+        cdi-spec-dirs = map (username: "/home/${username}/.cdi") (builtins.attrNames users);
       };
     };
-    spiceUSBRedirection.enable = true;
     libvirtd = {
       enable = true;
       qemu = {
