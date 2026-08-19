@@ -199,6 +199,11 @@ in {
 
         bars = [];
       };
+
+      # FIX: file picker issue in browsers
+      extraSessionCommands = ''
+        systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP
+      '';
       extraConfig =
         ''
           default_border pixel 1
@@ -236,6 +241,9 @@ in {
           input querty {
             xkb_layout us
           }
+
+          # FIX: file picker issue in browsers
+          exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP
 
           # Enable border color
           # for_window [class="^.*"] border pixel 2
