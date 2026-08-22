@@ -237,6 +237,9 @@ in {
             xkb_layout us
           }
 
+          # FIX: file picker issue in browsers
+          exec ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XAUTHORITY XDG_CURRENT_DESKTOP
+
           # Enable border color
           # for_window [class="^.*"] border pixel 2
           for_window [class="blueman-manager"] floating enable
