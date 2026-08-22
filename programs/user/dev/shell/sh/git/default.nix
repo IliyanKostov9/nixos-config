@@ -57,13 +57,13 @@ with lib; let
       text = builtins.readFile ../bin/bash/git/gitlab-rob.sh;
     };
 
-  git-history-rebase =
+  git-rebase-v2 =
     pkgs.writeShellApplication
     {
-      name = "git-history-rebase";
+      name = "git-rebase-v2";
       runtimeInputs = [pkgs.git];
 
-      text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
+      text = builtins.readFile ../bin/bash/git/git-rebase-v2.sh;
     };
 
   git-follow-remote =
@@ -88,7 +88,7 @@ in {
     git-all
     git-rob
     gitlab-rob
-    git-history-rebase
+    git-rebase-v2
     git-follow-remote
   ];
 }
