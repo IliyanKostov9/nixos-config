@@ -37,7 +37,7 @@ _: {
       };
       locale = {
         timeZone = "Europe/Sofia";
-        defaultLocale = "en_US.UTF-8";
+        defaultLocale = "fr_FR.UTF-8";
       };
       networking.nameservers = [];
     };
