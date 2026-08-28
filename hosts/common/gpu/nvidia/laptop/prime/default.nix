@@ -38,12 +38,15 @@ in {
       }
     ];
 
-    hardware.nvidia.prime = {
-      nvidiaBusId = "PCI:1:0:0";
-      sync.enable = cfg.enableSync;
-      offload = {
-        enable = cfg.enableOffload;
-        enableOffloadCmd = cfg.enableOffload;
+    hardware.nvidia = {
+      powerManagement.finegrained = cfg.enableOffload;
+      prime = {
+        nvidiaBusId = "PCI:1:0:0";
+        sync.enable = cfg.enableSync;
+        offload = {
+          enable = cfg.enableOffload;
+          enableOffloadCmd = cfg.enableOffload;
+        };
       };
     };
     specialisation = {

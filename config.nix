@@ -113,6 +113,7 @@ _: {
           "transparent_hugepage=never"
           "nvidia-drm.fbdev=1"
           "nvidia-drm.modeset=1"
+          "amd_pstate=active"
         ];
         initrd = {
           availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
