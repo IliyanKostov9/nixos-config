@@ -47,7 +47,7 @@ _: {
       tailscale.enable = true;
       openvpn = {
         enable = true;
-        autoStart = false;
+        autoStart = true;
       };
     };
 

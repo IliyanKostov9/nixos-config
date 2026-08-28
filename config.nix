@@ -100,7 +100,6 @@ _: {
       };
       modules = [
         ./hosts/lenovo-legion-16ahp9
-        # nixos-hardware.nixosModules.lenovo-legion-16aph8
       ];
 
       boot = {
@@ -111,7 +110,6 @@ _: {
         kernelParams = [
           "acpi_enforce_resources=lax"
           "transparent_hugepage=never"
-          "nvidia-drm.fbdev=1"
           "nvidia-drm.modeset=1"
           "amd_pstate=active"
         ];
