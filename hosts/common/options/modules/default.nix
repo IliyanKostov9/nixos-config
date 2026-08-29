@@ -1,8 +1,8 @@
 _: {
   config.modules = {
     hardware = {
-      boot.kernel = "7_1";
-      power-saver.enable = false;
+      boot.kernel = "7_2";
+      power-saver.enable = true;
       firmware.disableTouchpad = true;
       keyboard = {
         console = "dvorak";
@@ -16,7 +16,7 @@ _: {
     };
 
     nvidia = {
-      openSource = false;
+      openSource = true;
       channel = "";
       version = "610.57.04";
       sha256_64bit = "sha256-suk1xmuDuwDAyFe8jg7g/VLekoa0DJzB7sKafOfrEW0=";
@@ -25,8 +25,8 @@ _: {
       settingsSha256 = "sha256-ZEMo8I8Zc2Tq6RVDNYpAH+f094dUaZiBqO+5f6lIjRI=";
       persistencedSha256 = "sha256-aXmD2VY1RLlgAnlHhOUMWzvMyhI6JTClcFLm4imF/mA=";
       prime = {
-        enableSync = true;
-        enableOffload = false;
+        enableSync = false;
+        enableOffload = true;
       };
     };
 
