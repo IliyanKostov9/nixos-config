@@ -12,8 +12,6 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       tree
-      fd
-      tldr
       zip
       unzip
       p7zip

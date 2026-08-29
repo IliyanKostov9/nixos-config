@@ -13,10 +13,6 @@ in {
     environment.systemPackages = with pkgs; [
       htop
       hyfetch
-      # TODO: Move this elsewhere
-      copyq
-      libreoffice
-      kdePackages.okular
     ];
   };
 }

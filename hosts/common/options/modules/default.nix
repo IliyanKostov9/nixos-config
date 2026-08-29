@@ -71,7 +71,6 @@ _: {
       files.enable = true;
       fzf.enable = true;
       monitor.enable = true;
-      make.enable = true;
     };
 
     desktop-settings = {
@@ -81,15 +80,20 @@ _: {
       display-manager.catppuccin-sddm.enable = true;
     };
 
-    editor.vim.enable = true;
     scm.git.enable = true;
-    dev.keyd = {
-      enable = true;
-      mappings = {
-        "rightshift" = "down";
-        #"rightcontrol" = "overload(right_control_layer, rightcontrol)";
-        "rightcontrol" = "right";
-        "rightalt" = "up";
+    office-suite = true;
+
+    dev = {
+      editor.vim.enable = true;
+      make.enable = true;
+      keyd = {
+        enable = true;
+        mappings = {
+          "rightshift" = "down";
+          #"rightcontrol" = "overload(right_control_layer, rightcontrol)";
+          "rightcontrol" = "right";
+          "rightalt" = "up";
+        };
       };
     };
   };

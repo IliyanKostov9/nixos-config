@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.make;
+  cfg = config.modules.dev.make;
 in {
-  options.modules.utils.make = {enable = mkEnableOption "make";};
+  options.modules.dev.make = {enable = mkEnableOption "make";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
