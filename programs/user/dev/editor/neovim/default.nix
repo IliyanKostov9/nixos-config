@@ -26,6 +26,8 @@ in {
       unzip
       ktlint
       tree-sitter
+      fzf
+      ripgrep
     ];
   };
 }

@@ -5,14 +5,14 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.make;
+  cfg = config.modules.monitor;
 in {
-  options.modules.utils.make = {enable = mkEnableOption "make";};
+  options.modules.monitor = {enable = mkEnableOption "monitor";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      gnumake
-      # cmake
+      htop
+      hyfetch
     ];
   };
 }

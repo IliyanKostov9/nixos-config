@@ -5,14 +5,14 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.fzf;
+  cfg = config.modules.dev.make;
 in {
-  options.modules.utils.fzf = {enable = mkEnableOption "fzf";};
+  options.modules.dev.make = {enable = mkEnableOption "make";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      fzf
-      ripgrep
+      gnumake
+      # cmake
     ];
   };
 }

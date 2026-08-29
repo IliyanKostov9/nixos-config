@@ -5,15 +5,13 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.files;
+  cfg = config.modules.files;
 in {
-  options.modules.utils.files = {enable = mkEnableOption "files";};
+  options.modules.files = {enable = mkEnableOption "files";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       tree
-      fd
-      tldr
       zip
       unzip
       p7zip

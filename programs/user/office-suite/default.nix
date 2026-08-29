@@ -3,5 +3,7 @@ _: {
     ./syncthing
     ./calibre
     ./mail
+    ./drawio
+    ./flameshot
   ];
 }

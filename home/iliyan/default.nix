@@ -140,9 +140,13 @@ in {
       obs-studio.enable = true;
     };
 
-    office-suite.syncthing.enable = true;
+    office-suite = {
+      syncthing.enable = true;
+      drawio.enable = true;
+      flameshot.enable = true;
+    };
+
     virtualisation.lazydocker.enable = true;
     vpn.openvpn.enable = true;
-    utils.flameshot.enable = true;
   };
 }

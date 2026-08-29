@@ -4,12 +4,13 @@ _: {
     ./gnome-disable-apps
     ./desktop-settings
     ./downloader
-    ./editor
     ./lib
     ./scm
     ./security
-    ./utils
     ./dev
     ./window-manager
+    ./office-suite
+    ./monitor
+    ./files
   ];
 }

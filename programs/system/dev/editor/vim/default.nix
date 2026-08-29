@@ -4,9 +4,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.editor.vim;
+  cfg = config.modules.dev.editor.vim;
 in {
-  options.modules.editor.vim = {enable = mkEnableOption "vim";};
+  options.modules.dev.editor.vim = {enable = mkEnableOption "vim";};
 
   config = mkIf cfg.enable {
     programs.vim = {
