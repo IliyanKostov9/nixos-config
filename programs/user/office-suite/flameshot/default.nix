@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.flameshot;
+  cfg = config.modules.office-suite.flameshot;
 in {
-  options.modules.utils.flameshot = {enable = mkEnableOption "flameshot";};
+  options.modules.office-suite.flameshot = {enable = mkEnableOption "flameshot";};
 
   config = mkIf cfg.enable {
     services.flameshot = {

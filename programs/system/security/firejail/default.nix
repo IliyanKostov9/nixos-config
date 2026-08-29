@@ -96,13 +96,6 @@ in {
             ];
           };
 
-          drawio = {
-            executable = "${pkgs.drawio}/bin/drawio";
-            extraArgs = [
-              "--noprofile"
-            ];
-          };
-
           normcap = {
             executable = "${pkgs.normcap}/bin/normcap";
             extraArgs = [
