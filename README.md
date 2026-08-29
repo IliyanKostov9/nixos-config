@@ -75,7 +75,6 @@ Follow the prompts when asked in the process.
 
 ```markdown
 .
-├── Allium58.vil
 ├── archive
 ├── assets
 ├── config.nix
@@ -97,7 +96,6 @@ Follow the prompts when asked in the process.
 └── utils
 ```
 
-- **Allium58.vil**: Layout file for the [split keyboard Allium58](https://github.com/beekeeb/allium58)
 - **archive**: Not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
 - **assets**: Used for storing media files, related to markdown documentation 
 - **config.nix**: An attribute set, containing all of the user and host specific configuration, that is consumed by the home and hosts module
