@@ -5,9 +5,9 @@
   ...
 }:
 with lib; let
-  cfg = config.modules.utils.monitor;
+  cfg = config.modules.monitor;
 in {
-  options.modules.utils.monitor = {enable = mkEnableOption "monitor";};
+  options.modules.monitor = {enable = mkEnableOption "monitor";};
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

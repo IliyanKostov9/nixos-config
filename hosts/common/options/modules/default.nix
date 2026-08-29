@@ -67,11 +67,8 @@ _: {
       login.enable = true;
     };
 
-    utils = {
-      files.enable = true;
-      fzf.enable = true;
-      monitor.enable = true;
-    };
+    files.enable = true;
+    monitor.enable = true;
 
     desktop-settings = {
       audio.pipewire.enable = true;
@@ -81,7 +78,7 @@ _: {
     };
 
     scm.git.enable = true;
-    office-suite = true;
+    office-suite.enable = true;
 
     dev = {
       editor.vim.enable = true;

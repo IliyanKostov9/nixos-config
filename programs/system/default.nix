@@ -11,5 +11,7 @@ _: {
     ./dev
     ./window-manager
     ./office-suite
+    ./monitor
+    ./files
   ];
 }
