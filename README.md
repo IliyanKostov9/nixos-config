@@ -1,6 +1,5 @@
 # ❄️ NixOS configuration ❄️
 
-[![built with garnix](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fgarnix.io%2Fapi%2Fbadges%2FIliyanKostov9%2Fnixos-config%3Fbranch%3Dmaster)](https://garnix.io/repo/IliyanKostov9/nixos-config)
 [![License](https://img.shields.io/github/license/IliyanKostov9/nixos-config)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/IliyanKostov9/nixos-config/flake.yml?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/flake.yml)
 [![GitGuardian scan](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml/badge.svg?branch=master)](https://github.com/IliyanKostov9/nixos-config/actions/workflows/security-tests.yaml)
@@ -84,7 +83,6 @@ Follow the prompts when asked in the process.
 ├── flake.lock
 ├── flake.nix
 ├── flakes
-├── garnix.yml
 ├── home
 ├── hosts
 ├── LICENSE
@@ -103,11 +101,9 @@ Follow the prompts when asked in the process.
 - **archive**: Not used in building the system. It stores the initial configuration of NixOS when first installed. (you can ignore this part)
 - **assets**: Used for storing media files, related to markdown documentation 
 - **config.nix**: An attribute set, containing all of the user and host specific configuration, that is consumed by the home and hosts module
-- **_config.yml**: Configuration file for [Garnix CI](https://garnix.io/)
 - **flake.lock**: Auto generated file, when building the system along with an argument of `--flake`. Used for pinning down the specific versions of the Nix dependencies, that are listed under *flake.nix*
 - **flake.nix**: File for declaring all of the Nix specific dependencies/features (flake-parts, home-manager, nixpkgs, etc.). It is also the entry point for importing the user/system flakes
 - **flakes**: Used for storing all of the modularized flakes, that is consumed by flake-parts
-- **garnix.yml**: File for declaring the job steps for [Garnix CI](https://garnix.io/)
 - **home**: Used for storing all the user environments (Joe's PC, Jane's PC, etc.)
 - **hosts**: Used for storing the hardware specifications of the hosts machines
 - **Makefile**: Automation script for aliasing Nix CLI commands in a more user-friendly way
