@@ -7,7 +7,6 @@ _: {
     ./lib
     ./scm
     ./security
-    ./utils
     ./dev
     ./window-manager
     ./office-suite
