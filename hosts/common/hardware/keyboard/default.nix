@@ -30,6 +30,7 @@ in {
       libinput.enable = true;
       xserver.xkb = {
         layout = "us";
+        variant = cfg.console;
         options = "grp:shifts_toggle";
         inherit (cfg) extraLayouts;
       };
