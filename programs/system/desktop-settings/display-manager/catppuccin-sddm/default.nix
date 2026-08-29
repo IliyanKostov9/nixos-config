@@ -17,7 +17,7 @@ in {
         pkgs.catppuccin-sddm.override {
           inherit flavor accent;
           font = "Noto Sans";
-          fontSize = "14";
+          fontSize = "16";
           background = "${./login-wallpaper.jpg}";
           loginBackground = true;
         }
