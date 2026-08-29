@@ -1,7 +1,6 @@
 {
   host_attr,
   pkgs,
-  lib,
   ...
 }: {
   services.displayManager = {
@@ -11,9 +10,8 @@
       user = host_attr.autoLoginUser;
     };
     sddm = {
-      wayland.enable = true;
       enable = true;
-      theme = lib.mkDefault "catppuccin-macchiato";
+      wayland.enable = true;
       package = pkgs.kdePackages.sddm;
     };
   };
