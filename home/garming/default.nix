@@ -34,6 +34,6 @@ _: {
 
     entertainment.gaming.enable = true;
     vpn.openvpn.enable = false;
-    utils.flameshot.enable = true;
+    office-suite.flameshot.enable = true;
   };
 }
