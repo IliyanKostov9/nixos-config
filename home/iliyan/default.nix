@@ -86,7 +86,7 @@ in {
       };
       container.docker.enable = true;
       editor.neovim.enable = true;
-      dbms.dbeaver.enable = true;
+      dbms.dbeaver.enable = false;
 
       emulator = {
         default = "ghostty";
