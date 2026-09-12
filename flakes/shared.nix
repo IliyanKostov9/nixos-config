@@ -73,14 +73,6 @@ with inputs; rec {
       config = {allowUnfree = true;};
     };
 
-  pkgs-2511 =
-    import
-    nixpkgs-2511
-    {
-      inherit system;
-      config = {allowUnfree = true;};
-    };
-
   config_system =
     import
     ../config.nix
