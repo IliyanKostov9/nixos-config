@@ -27,14 +27,17 @@ with config.modules.dev.shell; let
     runtimeInputs = with pkgs; [yt-dlp];
     text = ''
       link=$1
+      cookies="/home/iliyan/Documents/Syncthing/Music/www.youtube.com_cookies.txt"
 
       if [ -z "$link" ]; then
         echo "You need to add a youtube link!"
       elif [[ ! "$link" =~ ^https://youtu.be/.* ]]; then
         echo "Youtube link needs to start with https://youtu.be/"
       else
-        # NOTE: Needed android player client to fix sabr issue
-        yt-dlp -x --audio-format mp3 --cookies /home/iliyan/Documents/Syncthing/Music/www.youtube.com_cookies.txt -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
+        yt-dlp -x --audio-format mp3 \
+          --cookies "$cookies" \
+          --extractor-args "youtube:player_client=default,web_embedded" \
+          -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
       fi
     '';
   };
