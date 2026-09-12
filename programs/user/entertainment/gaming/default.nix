@@ -12,7 +12,13 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       steam
-      lutris
     ];
+
+    programs.lutris = {
+      enable = true;
+      defaultWinePackage = pkgs.wineWow64Packages.stagingFull;
+      winePackages = with pkgs; [wineWow64Packages.stagingFull];
+      protonPackages = with pkgs; [proton-ge-bin];
+    };
   };
 }
