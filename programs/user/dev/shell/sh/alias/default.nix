@@ -27,7 +27,7 @@ with config.modules.dev.shell; let
     runtimeInputs = with pkgs; [yt-dlp];
     text = ''
       link=$1
-      cookies="/home/iliyan/Documents/Syncthing/Music/www.youtube.com_cookies.txt"
+      cookies="$HOME/Documents/Syncthing/Music/www.youtube.com_cookies.txt"
 
       if [ -z "$link" ]; then
         echo "You need to add a youtube link!"
