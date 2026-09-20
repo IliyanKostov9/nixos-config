@@ -27,7 +27,7 @@ with config.modules.dev.shell; let
     runtimeInputs = with pkgs; [yt-dlp];
     text = ''
       link=$1
-      cookies="/home/iliyan/Documents/Syncthing/Music/www.youtube.com_cookies.txt"
+      profile="$HOME/.config/chromium/Profile 2"
 
       if [ -z "$link" ]; then
         echo "You need to add a youtube link!"
@@ -35,8 +35,8 @@ with config.modules.dev.shell; let
         echo "Youtube link needs to start with https://youtu.be/"
       else
         yt-dlp -x --audio-format mp3 \
-          --cookies "$cookies" \
-          --extractor-args "youtube:player_client=default,web_embedded" \
+          --no-playlist \
+          --cookies-from-browser "chromium+gnomekeyring:$profile" \
           -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
       fi
     '';
