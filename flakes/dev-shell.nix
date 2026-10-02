@@ -2,7 +2,6 @@ _: {
   perSystem = {pkgs, ...}: {
     devenv.shells.default = {
       name = "NixOS devenv";
-      cachix.pull = ["iliyankostov9-nixos-config"];
 
       git-hooks.hooks = {
         actionlint.enable = true;
