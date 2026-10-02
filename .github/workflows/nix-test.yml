@@ -1,4 +1,3 @@
-# NOTE: Disabled, because Garnix already does that
 name: ❄️ Nix test ❄️
 
 on:
@@ -25,16 +24,9 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
-      - name: Cachix
-        uses: cachix/cachix-action@v17
-        with:
-          name: iliyankostov9-nixos-config
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-
-      # NOTE: Commented out due to garnix usage
-      # - name: Run tests
-      #   run: |
-      #     nix flake check -L
+      - name: Run tests
+        run: |
+          nix flake check -L
 
       - name: Run tests
         uses: cachix/install-nix-action@v31
