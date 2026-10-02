@@ -1,34 +1,49 @@
-name: Flake ❄️
+name: Flake ❄️ Tests
 
 on:
   schedule:
-    - cron: 0 0 */14 * *
+    - cron: "0 0 1 * *"
   workflow_dispatch:
 
 jobs:
-  flake:
-    name: Flake ❄️
+  flake-checker:
+    name: Flake ❄️ Checker ✅
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - uses: DeterminateSystems/nix-installer-action@v23
-      - uses: cachix/cachix-action@v17
+          sparse-checkout: |
+            flake.nix
+            flake.lock
+          sparse-checkout-cone-mode: false
+
+      - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25
+
+      - uses: DeterminateSystems/flake-checker-action@de924abd783455e8429c858962b9e43062d19da1
+
+  lock-updater:
+    needs: flake-checker
+    permissions:
+      contents: write
+      pull-requests: write
+
+    name: Flake ❄️ Lock 🔒️ Updater ✨
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
         with:
-          name: iliyankostov9-nixos-config
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+          fetch-depth: 0
+          sparse-checkout: |
+            flake.nix
+            flake.lock
+          sparse-checkout-cone-mode: false
 
-      - name: Lock 🔒️
-        uses: DeterminateSystems/flake-checker-action@v14
+      - uses: DeterminateSystems/nix-installer-action@ef8a148080ab6020fd15196c2084a2eea5ff2d25
 
-      - name: Updater ✨
-        uses: DeterminateSystems/update-flake-lock@v29
-        if: ${{ github.event_name != 'pull_request' }}
+      - uses: DeterminateSystems/update-flake-lock@834c491b2ece4de0bbd00d85214bb5e83b4da5c6
         with:
           pr-title: "chore: update flake.lock"
-          pr-assignees: IliyanKostov9
           pr-labels: |
             dependencies
             automated
-          token: ${{ secrets.GIT_PR_PUSH_UPDATES_CI }}
