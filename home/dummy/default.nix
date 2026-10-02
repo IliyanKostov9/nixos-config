@@ -47,6 +47,6 @@
 
     vpn.openvpn.enable = true;
     window-manager.i3wm.enable = true;
-    utils.flameshot.enable = true;
+    office-suite.flameshot.enable = true;
   };
 }
