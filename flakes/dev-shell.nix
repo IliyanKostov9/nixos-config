@@ -2,7 +2,6 @@ _: {
   perSystem = {pkgs, ...}: {
     devenv.shells.default = {
       name = "NixOS devenv";
-
       git-hooks.hooks = {
         actionlint.enable = true;
         beautysh.enable = true;
