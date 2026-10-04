@@ -9,7 +9,7 @@ with lib; let
   availableChannels = ["stable" "beta"];
 in {
   imports = [
-    ./laptop/prime
+    ./prime
   ];
 
   options.modules.nvidia = {
