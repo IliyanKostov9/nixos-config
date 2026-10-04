@@ -54,7 +54,7 @@ with shared;
       imports = [
         (import "${home-manager}/nixos")
       ];
-      services.xserver.desktopManager.gnome.enable = true;
+      services.desktopManager.gnome.enable = true;
       system = {
         inherit stateVersion;
       };
