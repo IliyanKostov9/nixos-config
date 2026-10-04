@@ -93,7 +93,7 @@ in {
         '';
       }
       {
-        assertion = cfg.version != "" && cfg.sha256_64bit != "" && cfg.sha256_aarch64 != "" && cfg.openSha256 != "" && cfg.settingsSha256 != "" && cfg.persistencedSha256 != "";
+        assertion = cfg.channel != "" || cfg.version != "" && cfg.sha256_64bit != "" && cfg.sha256_aarch64 != "" && cfg.openSha256 != "" && cfg.settingsSha256 != "" && cfg.persistencedSha256 != "";
         message = ''
           The Version ${cfg.version} should include sha256 hashes to pin it!
         '';

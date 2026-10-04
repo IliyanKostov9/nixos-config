@@ -74,7 +74,7 @@ _: {
       audio.pipewire.enable = true;
       file-manager.pcmanfm.enable = true;
       network.enable = true;
-      display-manager.catppuccin-sddm.enable = true;
+      display-manager.catppuccin-sddm.enable = false; # NOTE: Mouse is invisible when switching to another user
     };
 
     scm.git.enable = true;

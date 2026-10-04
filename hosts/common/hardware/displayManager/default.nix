@@ -12,7 +12,7 @@ in {
     };
     sddm = {
       enable = true;
-      wayland.enable = false; # NOTE: Keep it false to make the mouse work
+      wayland.enable = true;
       package = pkgs.kdePackages.sddm;
     };
   };
