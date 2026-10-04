@@ -18,9 +18,9 @@ with shared;
 
       services = {
         displayManager.sddm.enable = true;
+        desktopManager.gnome.enable = true;
         xserver = {
           enable = true;
-          desktopManager.gnome.enable = true;
           windowManager.i3.enable = true;
         };
       };
