@@ -5,5 +5,6 @@ _: {
     ./systemd
     ../common
     ../common/gpu/nvidia
+    ../common/gpu/nvidia/laptop/prime
   ];
 }
