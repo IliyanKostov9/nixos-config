@@ -20,7 +20,7 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Lock 🔒️
-        uses: DeterminateSystems/flake-checker-action@v13
+        uses: DeterminateSystems/flake-checker-action@v14
 
       - name: Updater ✨
         uses: DeterminateSystems/update-flake-lock@v28
