@@ -18,6 +18,7 @@ in {
       settings = {
         git_protocol = "ssh";
         prompt = "enabled";
+        rerere.enabled = true;
       };
     };
   };
