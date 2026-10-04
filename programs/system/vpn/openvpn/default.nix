@@ -29,7 +29,7 @@ in {
   config = mkIf cfg.enable {
     assertions = [
       {
-        assertion = !cfg.autoStart || builtins.pathExists ovpn-path;
+        assertion = !cfg.autoStart || builtins.pathExists ovpn-path || (lib.trivial.inPureEvalMode);
         message = "Autostart is enabled, but OVPN file ${ovpn-path} seems to be missing!";
       }
     ];

@@ -112,6 +112,7 @@ in {
       };
 
       git = {
+        gh.enable = true;
         git = {
           enable = true;
           userName = "iliyan-kostov";

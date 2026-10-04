@@ -18,9 +18,9 @@ with shared;
 
       services = {
         displayManager.sddm.enable = true;
+        desktopManager.gnome.enable = true;
         xserver = {
           enable = true;
-          desktopManager.gnome.enable = true;
           windowManager.i3.enable = true;
         };
       };
@@ -54,7 +54,7 @@ with shared;
       imports = [
         (import "${home-manager}/nixos")
       ];
-      services.xserver.desktopManager.gnome.enable = true;
+      services.desktopManager.gnome.enable = true;
       system = {
         inherit stateVersion;
       };

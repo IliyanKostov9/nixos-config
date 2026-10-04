@@ -2,7 +2,6 @@
   imports = [
     ../../programs/user
   ];
-
   config.modules = {
     preferences.fonts.name = "0xProto";
     api.postman.enable = true;
@@ -23,15 +22,7 @@
 
       emulator = {
         tmux.enable = true;
-        alacritty = {
-          enable = true;
-          theme = "nordfox";
-          scheduled = true;
-          start-hour = 7;
-          end-hour = 16;
-          light-theme = "dayfox";
-          dark-theme = "nordfox";
-        };
+        ghostty.enable = true;
       };
       git.git = {
         enable = true;
@@ -47,6 +38,6 @@
 
     vpn.openvpn.enable = true;
     window-manager.i3wm.enable = true;
-    utils.flameshot.enable = true;
+    office-suite.flameshot.enable = true;
   };
 }

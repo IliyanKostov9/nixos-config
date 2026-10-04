@@ -1,5 +1,5 @@
 {
-  pkgs-unstable,
+  pkgs,
   lib,
   config,
   ...
@@ -10,8 +10,16 @@ in {
   options.modules.dev.git.gh = {enable = mkEnableOption "gh";};
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs-unstable.gh
-    ];
+    programs.gh = {
+      enable = true;
+      extensions = with pkgs; [
+        gh-stack
+      ];
+      settings = {
+        git_protocol = "ssh";
+        prompt = "enabled";
+        rerere.enabled = true;
+      };
+    };
   };
 }

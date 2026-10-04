@@ -23,7 +23,8 @@ in {
       enableAllFirmware = true;
       cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
       # NOTE: needed for Allium58.
-      # Modify the firmware by using nix-shell -p vial && Vial
+      # Modify the firmware by using
+      # cd ~ && nix-shell -p vial --run Vial
       keyboard.qmk.enable = true;
     };
     services.udev.extraRules = ''

@@ -1,5 +1,5 @@
 _: {
-  systemd.sleep.extraConfig = ''
+  systemd.sleep.settings.Sleep = ''
     AllowSuspend=yes
     AllowHibernation=yes
     AllowHybridSleep=yes

@@ -18,6 +18,7 @@ _: {
   };
   hosts = {
     MSI-A320M-PRO = {
+      busIds.amd = "PCI:5:0:0";
       variables = {
         DEVICE = "desktop";
         MODEL = "MSI-A320M-PRO";
@@ -42,6 +43,7 @@ _: {
     };
 
     Lenovo-Thinkpad-p53 = {
+      busIds.intel = "PCI:5:0:0";
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-Thinkpad-p53";
@@ -65,6 +67,7 @@ _: {
     };
 
     Lenovo-IdeaPad-Pro5 = {
+      busIds.intel = "PCI:5:0:0";
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-IdeaPad-Pro5";
@@ -93,6 +96,7 @@ _: {
     Lenovo-Legion-16ahp9 = {
       host-name = "nce";
       autoLoginUser = "iliyan";
+      busIds.amd = "PCI:5:0:0";
 
       variables = {
         DEVICE = "laptop";
@@ -121,7 +125,6 @@ _: {
           };
         };
       };
-      busIds.amd = "PCI:5:0:0";
     };
   };
 }
