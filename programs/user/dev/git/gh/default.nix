@@ -15,6 +15,10 @@ in {
       extensions = with pkgs; [
         gh-stack
       ];
+      settings = {
+        git_protocol = "ssh";
+        prompt = "enabled";
+      };
     };
   };
 }
