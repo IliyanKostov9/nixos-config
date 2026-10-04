@@ -23,15 +23,7 @@
 
       emulator = {
         tmux.enable = true;
-        alacritty = {
-          enable = true;
-          theme = "nordfox";
-          scheduled = true;
-          start-hour = 7;
-          end-hour = 16;
-          light-theme = "dayfox";
-          dark-theme = "nordfox";
-        };
+        ghostty.enable = true;
       };
       git.git = {
         enable = true;
