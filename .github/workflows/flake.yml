@@ -23,7 +23,7 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v14
 
       - name: Updater ✨
-        uses: DeterminateSystems/update-flake-lock@v28
+        uses: DeterminateSystems/update-flake-lock@v29
         if: ${{ github.event_name != 'pull_request' }}
         with:
           pr-title: "chore: update flake.lock"
