@@ -8,6 +8,10 @@ with lib; let
   cfg = config.modules.nvidia;
   availableChannels = ["stable" "beta"];
 in {
+  imports = [
+    ./laptop/prime
+  ];
+
   options.modules.nvidia = {
     openSource = mkOption {
       type = types.bool;

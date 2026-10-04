@@ -1,19 +1,16 @@
 {
   lib,
   config,
+  host_attr,
   ...
 }:
 with lib; let
   cfg = config.modules.nvidia.prime;
 in {
-  imports = [
-    ../../default.nix
-  ];
-
   options.modules.nvidia.prime = {
     enableSync = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
       description = mkDoc ''
         Enable sync mode to offload to Nvidia's GPU
       '';
@@ -21,7 +18,7 @@ in {
 
     enableOffload = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
       description = mkDoc ''
         Enable sync mode to offload to AMD's GPU
       '';
@@ -42,6 +39,8 @@ in {
       powerManagement.finegrained = cfg.enableOffload;
       prime = {
         nvidiaBusId = "PCI:1:0:0";
+        amdgpuBusId = host_attr.busIds.intel or "";
+        intelBusId = host_attr.busIds.amd or "";
         sync.enable = cfg.enableSync;
         offload = {
           enable = cfg.enableOffload;

@@ -43,6 +43,7 @@ _: {
     };
 
     Lenovo-Thinkpad-p53 = {
+      busIds.intel = "PCI:5:0:0";
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-Thinkpad-p53";
@@ -66,6 +67,7 @@ _: {
     };
 
     Lenovo-IdeaPad-Pro5 = {
+      busIds.intel = "PCI:5:0:0";
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-IdeaPad-Pro5";
