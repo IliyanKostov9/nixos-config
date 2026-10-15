@@ -114,10 +114,18 @@ _: {
         kernelParams = [
           "acpi_enforce_resources=lax"
           "transparent_hugepage=never"
-          "nvidia-drm.modeset=1"
           "amd_pstate=active"
+          "rd.systemd.show_status=auto"
+          "nvidia-drm.fbdev=1"
         ];
         initrd = {
+          systemd.enable = true;
+          kernelModules = [
+            "amdgpu"
+            "nvidia"
+            "nvidia_modeset"
+            "nvidia_drm"
+          ];
           availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
           luks.devices.root = {
             device = "/dev/nvme0n1p2";

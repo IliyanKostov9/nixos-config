@@ -44,6 +44,7 @@ in {
       // {
         kernelPackages = pkgs."linuxPackages_${cfg.kernel}";
         tmp.useTmpfs = true;
+        plymouth.enable = true;
         loader = {
           # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
           systemd-boot.enable = !is-secure-boot-enabled;
