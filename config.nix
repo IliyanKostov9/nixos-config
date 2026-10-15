@@ -16,9 +16,13 @@ _: {
       initialHashedPassword = "$6$t0fNikLC8anFDc3D$t.ASwjSxP0K6hgqsk6OwhH0WoUAiQtu9ouw8l4W6ViA2axUAchD5Q4s2WmJBrOPzc7F2.GKO0BRqv1jInUssK1";
     };
   };
+
   hosts = {
     MSI-A320M-PRO = {
-      busIds.amd = "PCI:5:0:0";
+      cpu = "amd";
+      dgpu = "nvidia";
+      gpuBusId = "PCI:5:0:0";
+
       variables = {
         DEVICE = "desktop";
         MODEL = "MSI-A320M-PRO";
@@ -28,22 +32,17 @@ _: {
         # nixos-hardware.nixosModules.msi-b350-tomahawk
       ];
 
-      boot = {
-        kernelModules = ["kvm-amd" "k10temp"];
-        kernelParams = ["acpi_enforce_resources=lax" "transparent_hugepage=never" "nvidia-drm.fbdev=1"];
-        initrd = {
-          # NOTE: For some reason it's unable to boot when moved to boot nix module as common attr set
-          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-          luks = {
-            devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
-            devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
-          };
-        };
+      boot.initrd.luks = {
+        devices."luks-401c9fe6-6316-449a-8a50-2e46ac3a5401".device = "/dev/disk/by-uuid/401c9fe6-6316-449a-8a50-2e46ac3a5401";
+        devices."luks-2d79801c-f1b7-4300-b4db-b9eff4b0f110".device = "/dev/disk/by-uuid/2d79801c-f1b7-4300-b4db-b9eff4b0f110";
       };
     };
 
     Lenovo-Thinkpad-p53 = {
-      busIds.intel = "PCI:5:0:0";
+      cpu = "intel";
+      gpu = "intel";
+      gpuBusId = "PCI:5:0:0";
+
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-Thinkpad-p53";
@@ -53,21 +52,17 @@ _: {
         # nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 
-      boot = {
-        kernelModules = ["kvm-intel"];
-        kernelParams = ["i915.force_probe=3e9b" "nvidia-drm.fbdev=1"];
-        initrd = {
-          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-          luks = {
-            devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
-            devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
-          };
-        };
+      boot.initrd.luks = {
+        devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
+        devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
       };
     };
 
     Lenovo-IdeaPad-Pro5 = {
-      busIds.intel = "PCI:5:0:0";
+      cpu = "intel";
+      gpu = "intel";
+      gpuBusId = "PCI:5:0:0";
+
       variables = {
         DEVICE = "laptop";
         MODEL = "Lenovo-IdeaPad-Pro5";
@@ -80,23 +75,19 @@ _: {
         # nixos-hardware.nixosModules.common-pc-laptop
       ];
 
-      boot = {
-        kernelModules = ["kvm-intel"];
-        kernelParams = ["i915.force_probe=3e9b"];
-        initrd = {
-          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-          luks = {
-            devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
-            devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
-          };
-        };
+      boot.initrd.luks = {
+        devices."luks-98c6023d-534b-436b-b8c6-151500769ae9".device = "/dev/disk/by-uuid/98c6023d-534b-436b-b8c6-151500769ae9";
+        devices."luks-af43f1f4-e396-4104-af8d-ab8ee1721612".device = "/dev/disk/by-uuid/af43f1f4-e396-4104-af8d-ab8ee1721612";
       };
     };
 
     Lenovo-Legion-16ahp9 = {
       host-name = "nce";
+      cpu = "amd";
+      gpu = "amd";
+      dgpu = "nvidia";
       autoLoginUser = "iliyan";
-      busIds.amd = "PCI:5:0:0";
+      gpuBusId = "PCI:5:0:0";
 
       variables = {
         DEVICE = "laptop";
@@ -105,33 +96,9 @@ _: {
       modules = [
         ./hosts/lenovo-legion-16ahp9
       ];
-
-      boot = {
-        kernelModules = [
-          "kvm-amd"
-          "k10temp"
-        ];
-        kernelParams = [
-          "acpi_enforce_resources=lax"
-          "transparent_hugepage=never"
-          "amd_pstate=active"
-          "rd.systemd.show_status=auto"
-          "nvidia-drm.fbdev=1"
-        ];
-        initrd = {
-          systemd.enable = true;
-          kernelModules = [
-            "amdgpu"
-            "nvidia"
-            "nvidia_modeset"
-            "nvidia_drm"
-          ];
-          availableKernelModules = ["xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod"];
-          luks.devices.root = {
-            device = "/dev/nvme0n1p2";
-            bypassWorkqueues = true;
-          };
-        };
+      boot.initrd.luks.devices.root = {
+        device = "/dev/nvme0n1p2";
+        bypassWorkqueues = true;
       };
     };
   };
