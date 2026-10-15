@@ -6,6 +6,9 @@
 }:
 with lib; let
   cfg = config.modules.nvidia.prime;
+
+  isGpuAmdOrIntel = builtins.hasAttr "gpu" host_attr && elem host_attr.gpu ["amd" "intel"];
+  hasThisGpu = gpu: builtins.hasAttr "gpu" host_attr && host_attr.gpu == gpu;
 in {
   options.modules.nvidia.prime = {
     enableSync = mkOption {
@@ -36,17 +39,22 @@ in {
     ];
 
     hardware.nvidia = {
-      powerManagement.finegrained = cfg.enableOffload;
-      prime = {
-        nvidiaBusId = "PCI:1:0:0";
-        amdgpuBusId = host_attr.busIds.intel or "";
-        intelBusId = host_attr.busIds.amd or "";
-        sync.enable = cfg.enableSync;
-        offload = {
-          enable = cfg.enableOffload;
-          enableOffloadCmd = cfg.enableOffload;
+      powerManagement.finegrained = isGpuAmdOrIntel && cfg.enableOffload;
+      prime =
+        {
+          nvidiaBusId = "PCI:1:0:0";
+          sync.enable = isGpuAmdOrIntel && cfg.enableSync;
+          offload = {
+            enable = isGpuAmdOrIntel && cfg.enableOffload;
+            enableOffloadCmd = isGpuAmdOrIntel && cfg.enableOffload;
+          };
+        }
+        // optionalAttrs (hasThisGpu "amd") {
+          amdgpuBusId = host_attr.gpuBusId;
+        }
+        // optionalAttrs (hasThisGpu "intel") {
+          intelBusId = host_attr.gpuBusId;
         };
-      };
     };
     specialisation = {
       on-the-go.configuration = {
