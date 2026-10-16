@@ -1,8 +1,3 @@
 _: {
-  imports = [
-    ./modules
-    ../common
-    ../common/gpu/amd
-    ../common/gpu/nvidia
-  ];
+  config.modules.desktop-settings.lenovo-legion.enable = true;
 }

@@ -9,7 +9,8 @@ in {
       host_name: host_attr:
         inputs.nixpkgs.lib.nixosSystem {
           modules =
-            host_attr.modules
+            [../hosts]
+            ++ host_attr.modules
             ++ (with inputs; [
               nix-index-database.nixosModules.nix-index
               sops-nix.nixosModules.sops
