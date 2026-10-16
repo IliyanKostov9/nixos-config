@@ -20,7 +20,7 @@ _: {
   hosts = {
     MSI-A320M-PRO = {
       cpu = "amd";
-      dgpu = "nvidia";
+      gpu = "nvidia";
       gpuBusId = "PCI:5:0:0";
 
       variables = {
@@ -48,7 +48,6 @@ _: {
         MODEL = "Lenovo-Thinkpad-p53";
       };
       modules = [
-        ./hosts/lenovo-thinkpad-p53
         # nixos-hardware.nixosModules.lenovo-thinkpad-p53
       ];
 
@@ -68,7 +67,6 @@ _: {
         MODEL = "Lenovo-IdeaPad-Pro5";
       };
       modules = [
-        ./hosts/lenovo-ideapad-pro5
         # nixos-hardware.nixosModules.common-cpu-intel
         # nixos-hardware.nixosModules.common-gpu-intel
         # nixos-hardware.nixosModules.common-pc-laptop-ssd

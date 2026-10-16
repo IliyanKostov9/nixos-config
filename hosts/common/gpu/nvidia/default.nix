@@ -2,11 +2,17 @@
   lib,
   config,
   pkgs,
+  host_attr,
   ...
 }:
 with lib; let
   cfg = config.modules.nvidia;
   availableChannels = ["stable" "beta"];
+  isNvidiaEnabled =
+    host_attr.gpu
+    == "nvidia"
+    || (host_attr.dgpu or null)
+    == "nvidia";
 in {
   imports = [
     ./prime
@@ -99,8 +105,8 @@ in {
         '';
       }
     ];
-    services.xserver.videoDrivers = [
-      "amdgpu"
+
+    services.xserver.videoDrivers = mkIf isNvidiaEnabled [
       "nvidia"
     ];
 
@@ -113,7 +119,7 @@ in {
         ];
       };
 
-      nvidia-container-toolkit.enable = true;
+      nvidia-container-toolkit.enable = isNvidiaEnabled;
       nvidia = {
         open = cfg.openSource;
         powerManagement.enable = true;
