@@ -9,7 +9,7 @@ with lib; let
 in {
   options.modules.iot.qFlipper = {enable = mkEnableOption "qFlipper";};
   # NOTE: To enable it use the following commands:
-  # nix-shell -p xorg.xhost
+  # nix-shell -p xhost
   # xhost +SI:localuser:root
   # sudo qFlipper
 

@@ -23,6 +23,11 @@ in {
 
   # NOTE: Add shady apps to even more sandbox env
   config = mkIf cfg.enable {
+    services.udev.packages = [
+      (pkgs.writeTextDir "lib/udev/rules.d/70-flipper-u2f.rules" ''
+        KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5741", TAG+="uaccess"
+      '')
+    ];
     programs = {
       chromium = {
         enable = true;
@@ -93,6 +98,8 @@ in {
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+              "--ignore=nou2f"
+              "--ignore=private-dev"
             ];
           };
 

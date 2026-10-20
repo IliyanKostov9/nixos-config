@@ -61,6 +61,7 @@ in {
         resize-overlay-duration = "0s";
         # background-opacity = 0.9;
         # background-blur = true;
+        clipboard-write = "allow";
 
         app-notifications = [
           ''
