@@ -134,7 +134,7 @@ in {
         };
       };
     };
-    iot.qFlipper.enable = false;
+    iot.qFlipper.enable = true;
 
     media = {
       gimp.enable = true;

@@ -93,6 +93,8 @@ in {
             extraArgs = [
               "--env=GTK_THEME=Adwaita:dark"
               "--env=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus"
+              "--ignore=nou2f"
+              "--ignore=private-dev"
             ];
           };
 
