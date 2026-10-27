@@ -1,0 +1,60 @@
+# Edit by hand or with `mousetouch-settings`. The daemon reloads on save.
+
+[general]
+device_match = "Magic Mouse"
+suppress_scroll_from_fingers = 2
+
+[workspace_swipe]
+enabled = false
+fingers = 2
+direction = "natural"
+sensitivity = 0.4
+synthetic_fingers = 4
+activation_mm = 2.0
+axis = "horizontal"
+
+[pinch]
+enabled = true
+fingers = 2
+sensitivity = 1.5
+activation_mm = 3.0
+
+[scroll]
+direction_debounce = true
+debounce_units = 120
+mode = "notches"
+speed = 1.0
+
+[taps]
+tap_max_ms = 400
+tap_max_mm = 15.0
+tap_max_lift_speed = 80.0
+double_tap_ms = 500
+
+[[gesture]]
+kind = "tap"
+fingers = 3
+enabled = true
+
+[gesture.action]
+type = "key"
+combo = "super+a"
+
+# 1-finger tap = left click
+[[gesture]]
+kind = "tap"
+fingers = 1
+enabled = true
+
+[gesture.action]
+type = "button"
+button = "left"
+
+[[gesture]]
+kind = "tap"
+fingers = 2
+enabled = true
+
+[gesture.action]
+type = "button"
+button = "right"

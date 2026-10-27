@@ -15,6 +15,7 @@ in {
               nix-index-database.nixosModules.nix-index
               sops-nix.nixosModules.sops
               lanzaboote.nixosModules.lanzaboote
+              mousetouch.nixosModules.default
               {
                 nixpkgs.pkgs = shared.pkgs;
               }
