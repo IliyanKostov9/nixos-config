@@ -6,5 +6,6 @@ _: {
     ./app-search
     ./network
     ./file-manager
+    ./magic-mouse
   ];
 }

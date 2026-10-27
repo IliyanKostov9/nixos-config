@@ -28,6 +28,7 @@
     #   url = "github:nix-community/nixos-generators";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    mousetouch.url = "github:Devace-93/mousetouch";
   };
 
   outputs = {

@@ -75,6 +75,7 @@ _: {
       file-manager.pcmanfm.enable = true;
       network.enable = true;
       display-manager.catppuccin-sddm.enable = false; # NOTE: Mouse is invisible when switching to another user
+      magic-mouse.enable = true;
     };
 
     scm.git.enable = true;
