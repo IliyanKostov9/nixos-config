@@ -33,16 +33,6 @@ double_tap_ms = 500
 
 [[gesture]]
 kind = "tap"
-fingers = 3
-enabled = true
-
-[gesture.action]
-type = "key"
-combo = "super+a"
-
-# 1-finger tap = left click
-[[gesture]]
-kind = "tap"
 fingers = 1
 enabled = true
 
@@ -58,3 +48,32 @@ enabled = true
 [gesture.action]
 type = "button"
 button = "right"
+
+[[gesture]]
+kind = "swipe"
+fingers = 2
+direction = "left"
+enabled = true
+
+[gesture.action]
+type = "key"
+combo = "alt+Left"
+
+[[gesture]]
+kind = "swipe"
+fingers = 2
+direction = "right"
+enabled = true
+
+[gesture.action]
+type = "key"
+combo = "alt+Right"
+
+[[gesture]]
+kind = "tap"
+fingers = 3
+enabled = true
+
+[gesture.action]
+type = "button"
+button = "middle"

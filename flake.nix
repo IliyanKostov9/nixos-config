@@ -22,12 +22,6 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     sops-nix.url = "github:Mic92/sops-nix";
-    # alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-    # nix-alien.url = "github:thiagokokada/nix-alien";
-    # nixos-generators = {
-    #   url = "github:nix-community/nixos-generators";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     mousetouch.url = "github:Devace-93/mousetouch";
   };
 
