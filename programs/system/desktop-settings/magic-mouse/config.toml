@@ -68,3 +68,12 @@ enabled = true
 [gesture.action]
 type = "key"
 combo = "alt+Right"
+
+[[gesture]]
+kind = "tap"
+fingers = 3
+enabled = true
+
+[gesture.action]
+type = "button"
+button = "middle"
