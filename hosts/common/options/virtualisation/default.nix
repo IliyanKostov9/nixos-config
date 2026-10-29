@@ -1,8 +1,4 @@
-{
-  pkgs,
-  users,
-  ...
-}: {
+{pkgs, ...}: {
   programs.virt-manager.enable = true;
   virtualisation = {
     # NOTE: doesn't work
@@ -13,7 +9,7 @@
       setSocketVariable = true;
       daemon.settings = {
         features.cdi = true;
-        cdi-spec-dirs = map (username: "/home/${username}/.cdi") (builtins.attrNames users);
+        cdi-spec-dirs = ["/run/cdi"];
       };
     };
     libvirtd = {
