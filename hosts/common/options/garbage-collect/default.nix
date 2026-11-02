@@ -35,7 +35,18 @@ in {
       }
     ];
     nix = {
-      settings.auto-optimise-store = true;
+      # NOTE: Make PC more responsive
+      daemonCPUSchedPolicy = "batch";
+      daemonIOSchedClass = "idle";
+      settings = {
+        fallback = true;
+        connect-timeout = 5;
+        max-jobs = "auto";
+        cores = 0;
+        http-connections = 50;
+        max-substitution-jobs = 32;
+        download-buffer-size = 524288000;
+      };
       gc = {
         automatic = true;
         dates = cfg.schedule;
