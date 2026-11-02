@@ -28,6 +28,7 @@ in {
       tree-sitter
       fzf
       ripgrep
+      python3Minimal # NOTE: wakatime-cli needs it
     ];
   };
 }
