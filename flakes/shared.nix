@@ -1,10 +1,12 @@
 {inputs}:
 with inputs; rec {
+  system = "x86_64-linux";
   stateVersion = "26.05";
   pkgs =
     import
     nixpkgs
     {
+      inherit system;
       overlays = [
         (
           # NOTE: Thanks to https://github.com/Fractal-Tess/nixos/blob/83fc507c503ccb3bb34933c3e1ade454a777cb47/overlays/viber.nix#L4
@@ -31,7 +33,7 @@ with inputs; rec {
                 homepage = "https://www.viber.com/";
                 license = super.lib.licenses.unfree;
                 maintainers = with super.lib.maintainers; [];
-                platforms = ["x86_64-linux"];
+                platforms = [system];
               };
             };
           }
@@ -72,6 +74,7 @@ with inputs; rec {
     import
     nixpkgs-unstable
     {
+      inherit system;
       config = {allowUnfree = true;};
     };
 
