@@ -15,8 +15,8 @@ in {
       inputs.home-manager.lib.homeManagerConfiguration {
         inherit (shared) pkgs;
         extraSpecialArgs = {
-          inherit self user;
-          inherit (shared) system stateVersion pkgs-unstable;
+          inherit user;
+          inherit (shared) stateVersion pkgs-unstable;
         };
         modules =
           [

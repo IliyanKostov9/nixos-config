@@ -10,6 +10,7 @@ with shared;
       imports = [
         (import "${home-manager}/nixos")
       ];
+      system.stateVersion = stateVersion;
 
       boot.loader = {
         systemd-boot.enable = true;
@@ -23,10 +24,6 @@ with shared;
           enable = true;
           windowManager.i3.enable = true;
         };
-      };
-
-      system = {
-        inherit stateVersion;
       };
 
       nix.settings.system-features = ["kvm"];
@@ -45,7 +42,7 @@ with shared;
         };
         extraSpecialArgs = {
           user = "dummy";
-          inherit system stateVersion pkgs pkgs-unstable;
+          inherit stateVersion pkgs pkgs-unstable;
         };
       };
     };
@@ -54,11 +51,9 @@ with shared;
       imports = [
         (import "${home-manager}/nixos")
       ];
-      services.desktopManager.gnome.enable = true;
-      system = {
-        inherit stateVersion;
-      };
+      system.stateVersion = stateVersion;
 
+      services.desktopManager.gnome.enable = true;
       nix.settings.system-features = ["kvm"];
       users.users = {
         fakeuser = {
@@ -73,7 +68,7 @@ with shared;
         };
         extraSpecialArgs = {
           user = "fakeuser";
-          inherit system stateVersion pkgs pkgs-unstable;
+          inherit stateVersion pkgs pkgs-unstable;
         };
       };
     };
@@ -81,7 +76,6 @@ with shared;
     testScript = ''
       user1.wait_for_unit("default.target")
       user1.succeed("su -- dummy -c 'which librewolf'")
-      # user1.succeed("su -- dummy -c 'librewolf -P Dummy'")
 
       user2.wait_for_unit("default.target")
       user2.fail("su -- fakeuser -c 'which vim'")

@@ -137,7 +137,7 @@ in {
     iot.qFlipper.enable = true;
 
     media = {
-      gimp.enable = true;
+      gimp.enable = false;
       obs-studio.enable = true;
     };
 

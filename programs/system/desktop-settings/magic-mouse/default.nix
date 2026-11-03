@@ -11,6 +11,9 @@ in {
 
   config = mkIf cfg.enable {
     hardware.uinput.enable = true;
-    services.mousetouch.enable = true;
+    services.mousetouch = {
+      enable = true;
+      package = pkgs.mousetouch;
+    };
   };
 }

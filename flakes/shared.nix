@@ -39,6 +39,11 @@ with inputs; rec {
           }
         )
         nur.overlays.default
+        # NOTE: Fix the evaluation warning: 'system' has been renamed to/replaced by 'stdenv.hostPlatform.system'
+        (final: prev: {
+          mousetouch =
+            inputs.mousetouch.packages.${final.stdenv.hostPlatform.system}.mousetouch;
+        })
         # # TODO: Check if it's imported or not
         # (
         #   if builtins.hasAttr "alacritty-theme" inputs
