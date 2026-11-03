@@ -1,12 +1,10 @@
 {inputs}:
 with inputs; rec {
-  system = "x86_64-linux";
   stateVersion = "26.05";
   pkgs =
     import
     nixpkgs
     {
-      inherit system;
       overlays = [
         (
           # NOTE: Thanks to https://github.com/Fractal-Tess/nixos/blob/83fc507c503ccb3bb34933c3e1ade454a777cb47/overlays/viber.nix#L4
@@ -33,12 +31,17 @@ with inputs; rec {
                 homepage = "https://www.viber.com/";
                 license = super.lib.licenses.unfree;
                 maintainers = with super.lib.maintainers; [];
-                platforms = [system];
+                platforms = ["x86_64-linux"];
               };
             };
           }
         )
         nur.overlays.default
+        # NOTE: Fix the evaluation warning: 'system' has been renamed to/replaced by 'stdenv.hostPlatform.system'
+        (final: prev: {
+          mousetouch =
+            inputs.mousetouch.packages.${final.stdenv.hostPlatform.system}.mousetouch;
+        })
         # # TODO: Check if it's imported or not
         # (
         #   if builtins.hasAttr "alacritty-theme" inputs
@@ -69,7 +72,6 @@ with inputs; rec {
     import
     nixpkgs-unstable
     {
-      inherit system;
       config = {allowUnfree = true;};
     };
 

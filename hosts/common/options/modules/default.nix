@@ -85,7 +85,7 @@ _: {
       editor.vim.enable = true;
       make.enable = true;
       keyd = {
-        enable = true;
+        enable = false;
         mappings = {
           "rightshift" = "down";
           #"rightcontrol" = "overload(right_control_layer, rightcontrol)";

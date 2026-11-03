@@ -18,12 +18,13 @@ in {
               mousetouch.nixosModules.default
               {
                 nixpkgs.pkgs = shared.pkgs;
+                system.stateVersion = shared.stateVersion;
               }
             ]);
 
           specialArgs = {
             inherit host_name host_attr;
-            inherit (shared) pkgs-unstable system stateVersion users;
+            inherit (shared) pkgs-unstable users;
           };
         }
     )
