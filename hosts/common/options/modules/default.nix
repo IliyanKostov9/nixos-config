@@ -1,7 +1,10 @@
 _: {
   config.modules = {
     hardware = {
-      boot.kernel = "7_3";
+      boot = {
+        kernel = "7_3";
+        enableSecureBoot = true;
+      };
       power-saver.enable = true;
       firmware.disableTouchpad = true;
       keyboard = {

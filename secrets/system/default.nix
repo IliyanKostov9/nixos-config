@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   sops = {
     age.keyFile = "/var/lib/sops-nix/key.txt";
     age.generateKey = true;
@@ -10,14 +10,15 @@ _: {
 
     secrets = {
       networking_search = {};
-      ovpn_username = {
-        mode = "0640";
-        restartUnits = ["openvpn-personalVPN.service"];
-      };
-      ovpn_password = {
-        mode = "0640";
-        restartUnits = ["openvpn-personalVPN.service"];
-      };
+      ovpn_username = {};
+      ovpn_password = {};
+    };
+    templates."ovpn-auth" = {
+      content = ''
+        ${config.sops.placeholder.ovpn_username}
+        ${config.sops.placeholder.ovpn_password}
+      '';
+      restartUnits = ["openvpn-personalVPN.service"];
     };
   };
 }

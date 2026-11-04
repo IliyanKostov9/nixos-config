@@ -17,7 +17,7 @@ in {
         []
     )
     ++ (
-      if !lib.trivial.inPureEvalMode && builtins.pathExists ../secrets/user/${username}
+      if builtins.pathExists ../secrets/user/${username}
       then [../secrets/user/${username}]
       else []
     );

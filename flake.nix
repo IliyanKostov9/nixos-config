@@ -31,23 +31,14 @@
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = ["x86_64-linux"];
-
-      imports =
-        [
-          inputs.flake-parts.flakeModules.easyOverlay
-          inputs.devenv.flakeModule
-          ./flakes/system.nix
-          ./flakes/user.nix
-          ./tests
-          # ./flakes/export-image.nix
-        ]
-        ++ (
-          if !nixpkgs.lib.trivial.inPureEvalMode
-          then [
-            ./flakes/dev-shell.nix
-          ]
-          else nixpkgs.lib.trivial.warn "> Cannot activate devShells while in pure eval mode!" []
-        );
+      imports = [
+        inputs.flake-parts.flakeModules.easyOverlay
+        inputs.devenv.flakeModule
+        ./flakes/system.nix
+        ./flakes/user.nix
+        ./tests
+        # ./flakes/export-image.nix
+        ./flakes/dev-shell.nix
+      ];
     };
 }

@@ -4,49 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (config.sops) secrets;
-  get-secret = {
-    secret-name,
-    fallback-secret-name,
-  }:
-    if (!lib.trivial.inPureEvalMode)
-    then let
-      does-secret-exist =
-        builtins.hasAttr secret-name secrets && builtins.pathExists secrets."${secret-name}".path;
-    in
-      if does-secret-exist
-      then builtins.readFile secrets."${secret-name}".path
-      else lib.warn "> Cannot set Work_Name_New as env varibale, because it's not found in the secret keystore! Falling back to ${fallback-secret-name}" fallback-secret-name
-    else lib.warn "> Cannot assign secret in pure eval mode! Falling back to ${fallback-secret-name}" fallback-secret-name;
-
-  work_name = get-secret {
-    secret-name = "work_name";
-    fallback-secret-name = "Work";
+  env-vars = {
+    ZVM_CURSOR_STYLE_ENABLED = "false";
+    ZVM_INIT_MODE = "sourcing";
+    AUTOPAIR_INIT_INHIBIT = "1";
   };
-  work_project1_name = get-secret {
-    secret-name = "work_project1_name";
-    fallback-secret-name = "Work_Project1";
-  };
-  work_name_new = get-secret {
-    secret-name = "work_name_new";
-    fallback-secret-name = "Work_Name_New";
-  };
-
-  env-vars =
-    if (!lib.trivial.inPureEvalMode)
-    then {
-      AZURE_DEVOPS_EXT_PAT = "$(command cat ${secrets.azure_devops_ext_pat.path})";
-      GITGUARDIAN_API_KEY = "$(command cat ${secrets.gitguardian_api_key.path})";
-      GH_TOKEN = "$(command cat ${secrets.gh_token.path})";
-
-      TF_TOKEN_app_terraform_io = "$(command cat ${secrets.tf_token_app_terraform_io.path})";
-      TF_ORG = "$(command cat ${secrets.tf_org.path})";
-
-      ZVM_CURSOR_STYLE_ENABLED = "false";
-      ZVM_INIT_MODE = "sourcing";
-      AUTOPAIR_INIT_INHIBIT = "1";
-    }
-    else lib.warn "> Cannot set user env variables, because the build is in pure eval mode!" {};
 in {
   imports = [
     # ./options/overlays
@@ -102,13 +64,7 @@ in {
           light-theme-hex = "#faf4ed";
           dark-theme-hex = "#181616";
         };
-
-        tmux = {
-          enable = true;
-          enable-dynamic-conf = true;
-          static-vals = ["$Work*" "$Work_Project1*" "$Work_New*"];
-          dynamic-vals = [work_name work_project1_name work_name_new];
-        };
+        tmux.enable = true;
       };
 
       git = {
