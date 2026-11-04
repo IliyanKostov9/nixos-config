@@ -256,6 +256,7 @@ in {
           exec nm-applet
           exec copyq
           exec viber
+          exec mousetouch run
 
           # NOTE: Needed because systemd.enable = false causes waybar not to autostart
           exec waybar

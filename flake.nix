@@ -22,7 +22,7 @@
     };
     flake-parts.url = "github:hercules-ci/flake-parts";
     sops-nix.url = "github:Mic92/sops-nix";
-    mousetouch.url = "github:Devace-93/mousetouch";
+    mousetouch.url = "github:Devace-93/mousetouch/v0.1.10";
   };
 
   outputs = {
