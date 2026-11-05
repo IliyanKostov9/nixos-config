@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     devenv.url = "github:cachix/devenv";
     nur.url = "github:nix-community/NUR";
@@ -36,9 +40,8 @@
         inputs.devenv.flakeModule
         ./flakes/system.nix
         ./flakes/user.nix
-        ./tests
-        # ./flakes/export-image.nix
         ./flakes/dev-shell.nix
+        ./tests
       ];
     };
 }

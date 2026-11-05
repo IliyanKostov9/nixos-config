@@ -1,0 +1,31 @@
+name: Create ISO Image
+
+on:
+  push:
+    branches: ["release/*"]
+  workflow_dispatch:
+
+jobs:
+  build-and-publish-iso-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          sparse-checkout: |
+            flakes
+            home
+            hosts
+            programs
+            utils
+            flake.nix
+            flake.lock
+            config.nix
+            .background-image.jpg
+          sparse-checkout-cone-mode: false
+
+      - name: Install nix action
+        uses: cachix/install-nix-action@v31
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
