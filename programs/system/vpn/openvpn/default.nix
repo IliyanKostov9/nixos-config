@@ -27,20 +27,19 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = !cfg.autoStart || builtins.pathExists ovpn-path || (lib.trivial.inPureEvalMode);
-        message = "Autostart is enabled, but OVPN file ${ovpn-path} seems to be missing!";
-      }
-    ];
+    system.preSwitchChecks.ovpnFile = lib.mkIf cfg.autoStart ''
+      if [ ! -f ${ovpn-path} ]; then
+        echo "Autostart is enabled, but OVPN file ${ovpn-path} is missing!" >&2
+        exit 1
+      fi
+    '';
 
     services.openvpn.servers = {
       personalVPN = {
-        config = "config ${ovpn-path}";
-        authUserPass = lib.mkIf (!lib.trivial.inPureEvalMode) {
-          username = builtins.readFile secrets.ovpn_username.path;
-          password = builtins.readFile secrets.ovpn_password.path;
-        };
+        config = ''
+          config ${ovpn-path}
+          auth-user-pass ${config.sops.templates."ovpn-auth".path}
+        '';
         updateResolvConf = false; # NOTE: set to false for pi-hole DNS use
         autoStart = cfg.autoStart;
       };

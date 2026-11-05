@@ -6,12 +6,8 @@
 }:
 with lib;
 with lib.types; let
+  inherit (config.sops) secrets;
   cfg = config.modules.dev.shell.zsh;
-
-  # ikostov-zsh-themes = builtins.fetchGit {
-  #   url = "https://codeberg.org/iliyan-kostov/zsh-themes.git";
-  #   rev = "939914434ce2aeb66a544840026beb0b5edbe2fb";
-  # };
 
   ikostov-zsh-themes = pkgs.fetchFromGitHub {
     owner = "IliyanKostov9";
@@ -68,13 +64,6 @@ in {
           size = 10000;
           path = "${config.xdg.dataHome}/zsh/history";
         };
-        # plugins = [
-        #   {
-        #     name = "vi-mode";
-        #     src = pkgs.zsh-vi-mode;
-        #     file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        #   }
-        # ];
         oh-my-zsh = {
           enable = true;
           theme = "af-purple-magic";
@@ -88,13 +77,25 @@ in {
         inherit (common) sessionVariables;
         initContent = ''
           bindkey -M vicmd 'V' edit-command-line
+
+          load_secret() {
+            local name="$1"
+            local path="$2"
+
+            if [[ -r "$path" ]]; then
+              export "$name=$(<"$path")"
+            fi
+          }
+
+          load_secret AZURE_DEVOPS_EXT_PAT ${lib.escapeShellArg secrets.azure_devops_ext_pat.path}
+          load_secret GITGUARDIAN_API_KEY ${lib.escapeShellArg secrets.gitguardian_api_key.path}
+          load_secret GH_TOKEN ${lib.escapeShellArg secrets.gh_token.path}
+          load_secret TF_TOKEN_app_terraform_io ${lib.escapeShellArg secrets.tf_token_app_terraform_io.path}
+          load_secret TF_ORG ${lib.escapeShellArg secrets.tf_org.path}
+
+          load_secret WORK_NAME ${lib.escapeShellArg secrets.work_name.path}
+          export WORK_NAME="''${WORK_NAME:l}"
         '';
-        # initExtra = lib.mkOrder 1000 ''
-        #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-        #   bindkey -v
-        #   bindkey '^f' autosuggest-accept;
-        #   bindkey -M viins '^Q' vi-cmd-modebindkey -M viins '^Q' vi-cmd-mode
-        # '';
       };
 
       programs.direnv = {

@@ -51,7 +51,7 @@ secure-boot-sign:
 build: sys-update home-update 
 
 home-update:  ## Build home configuration for default user
-	home-manager switch --flake .#$(shell whoami) --impure
+	home-manager switch --flake .#$(shell whoami)
 #	tmux source-file ~/.config/tmux/tmux.conf 
 	
 .PHONY: sys-update
@@ -60,7 +60,7 @@ sys-update: ## Build system configuration for all hosts
 
 .PHONY: dry
 dry: ## Perform dry run before building
-	sudo -v && sudo nixos-rebuild dry-build --flake .#$$MODEL --impure;
+	sudo -v && sudo nixos-rebuild dry-build --flake .#$$MODEL;
 
 
 .PHONY: clean clean-sys clean-usr optimise 

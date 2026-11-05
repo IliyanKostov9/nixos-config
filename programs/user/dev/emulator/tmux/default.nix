@@ -19,8 +19,6 @@ with lib.types; let
         else cfg-alacritty.dark-theme-hex
       )
     else trace "> Scheduled is not enabled. Defaulting to dark theme status bar for tmux..." cfg-alacritty.dark-theme-hex;
-
-  convert-list-to-lowercase = list: (builtins.map (name: lib.strings.toLower name) list);
 in {
   options.modules.dev.emulator.tmux = {
     enable = mkOption {
@@ -30,44 +28,10 @@ in {
         Enable tmux terminal multiplexer
       '';
     };
-
-    enable-dynamic-conf = mkOption {
-      type = bool;
-      default = false;
-      description = mkDoc ''
-        Should it dynamically replace string values in tmux.conf
-      '';
-    };
-
-    static-vals = mkOption {
-      type = listOf str;
-      description = mkDoc ''
-        The static values to be replaced in tmux.conf
-      '';
-    };
-
-    dynamic-vals = mkOption {
-      type = listOf str;
-      description = mkDoc ''
-        The dynamic values to be placed in tmux.conf
-      '';
-    };
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.tmux
-    ];
-
-    programs.tmux = let
-      dynamic-vals = cfg.dynamic-vals ++ [status-bar-color];
-      static-vals = cfg.static-vals ++ ["$STATUS_BAR_BG_THEME*"];
-
-      tmux-conf =
-        if cfg.enable-dynamic-conf
-        then builtins.replaceStrings static-vals (convert-list-to-lowercase dynamic-vals) (lib.fileContents ./tmux.conf)
-        else lib.fileContents ./tmux.conf;
-    in {
+    programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
         resurrect
@@ -75,7 +39,7 @@ in {
         yank
         open
       ];
-      extraConfig = tmux-conf;
+      extraConfig = lib.fileContents ./tmux.conf;
       clock24 = true;
       baseIndex = 1;
       mouse = true;

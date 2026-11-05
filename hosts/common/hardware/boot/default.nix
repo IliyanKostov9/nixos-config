@@ -8,12 +8,6 @@
 }:
 with lib;
 with lib.trivial; let
-  is-secure-boot-enabled =
-    if builtins.pathExists "/etc/secureboot" && !inPureEvalMode
-    then trace "> Secure boot IS enabled!" true
-    else if inPureEvalMode
-    then warn "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enable secure boot!" false
-    else warn "> Secure boot is NOT enabled" false;
   cfg = config.modules.hardware.boot;
   gpu = host_attr.gpu or "";
 in {
@@ -25,6 +19,19 @@ in {
     kernel = mkOption {
       type = types.str;
       default = "latest";
+      description = mkDoc ''
+        Version of linux kernel
+      '';
+    };
+
+    enableSecureBoot = mkOption {
+      type = types.bool;
+      default =
+        if builtins.pathExists "/etc/secureboot"
+        then trace "> Secure boot IS enabled!" true
+        else if inPureEvalMode
+        then warn "> Secure boot CANNOT be enabled. You are currently running in pure eval mode. Try using --impure to enable secure boot!" false
+        else warn "> Secure boot is NOT enabled" false;
       description = mkDoc ''
         Version of linux kernel
       '';
@@ -81,22 +88,18 @@ in {
               "nvidia_drm"
             ];
         };
+        lanzaboote = {
+          enable = cfg.enableSecureBoot;
+          pkiBundle = "/etc/secureboot";
+          configurationLimit = 5;
+        };
         loader = {
-          # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
-          systemd-boot.enable = !is-secure-boot-enabled;
+          systemd-boot.enable = lib.mkForce (!cfg.enableSecureBoot); # NOTE: is-secure-boot-enabled value is reverted, since system boot expects to be true when secure boot is disabled and vice versa
           efi.canTouchEfiVariables = true;
           timeout = 10;
           grub.timeoutStyle = "countdown";
         };
       }
-      (optionalAttrs is-secure-boot-enabled
-        {
-          lanzaboote = {
-            enable = true;
-            pkiBundle = "/etc/secureboot";
-            configurationLimit = 5;
-          };
-        })
     ];
   };
 }
