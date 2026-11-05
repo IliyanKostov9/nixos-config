@@ -27,12 +27,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = !cfg.autoStart || builtins.pathExists ovpn-path;
-        message = "Autostart is enabled, but OVPN file ${ovpn-path} seems to be missing!";
-      }
-    ];
+    system.preSwitchChecks.ovpnFile = lib.mkIf cfg.autoStart ''
+      if [ ! -f ${ovpn-path} ]; then
+        echo "Autostart is enabled, but OVPN file ${ovpn-path} is missing!" >&2
+        exit 1
+      fi
+    '';
 
     services.openvpn.servers = {
       personalVPN = {
