@@ -26,19 +26,21 @@ with config.modules.dev.shell; let
     name = "youtube-download";
     runtimeInputs = with pkgs; [yt-dlp];
     text = ''
-      link=$1
+      link=''${1:-}
       profile="$HOME/.config/chromium/Profile 2"
 
       if [ -z "$link" ]; then
         echo "You need to add a youtube link!"
-      elif [[ ! "$link" =~ ^https://youtu.be/.* ]]; then
+        exit 1
+      elif [[ ! "$link" =~ ^https://youtu\.be/ ]]; then
         echo "Youtube link needs to start with https://youtu.be/"
-      else
-        yt-dlp -x --audio-format mp3 \
-          --no-playlist \
-          --cookies-from-browser "chromium+gnomekeyring:$profile" \
-          -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
+        exit 1
       fi
+
+      yt-dlp -x --audio-format mp3 \
+        --no-playlist \
+        --cookies-from-browser "chromium+gnomekeyring:$profile" \
+        -o "$HOME/Downloads/%(title)s.%(ext)s" "$link"
     '';
   };
   # passbolt-get-password = pkgs.writeShellApplication {

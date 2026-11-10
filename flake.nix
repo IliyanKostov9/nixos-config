@@ -39,6 +39,7 @@
         ./flakes/system.nix
         ./flakes/user.nix
         ./tests
+
         # ./flakes/export-image.nix
         ./flakes/dev-shell.nix
       ];
