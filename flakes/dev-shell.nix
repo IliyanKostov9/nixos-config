@@ -1,8 +1,9 @@
-_: {
+{lib, ...}: {
   perSystem = {pkgs, ...}: {
     devenv.shells.default = {
       name = "NixOS devenv";
       devenv.root = "/etc/nixos";
+      containers = lib.mkForce {};
 
       git-hooks.hooks = {
         actionlint.enable = true;
