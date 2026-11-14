@@ -46,6 +46,9 @@ in {
         http-connections = 50;
         max-substitution-jobs = 32;
         download-buffer-size = 524288000;
+        # NOTE: Keep the devenv project deps when garbage collecting
+        keep-outputs = true;
+        keep-derivations = true;
       };
       gc = {
         automatic = true;
