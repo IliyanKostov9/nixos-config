@@ -268,8 +268,8 @@ in {
           # NOTE: Needed because systemd.enable = false causes waybar not to autostart
           exec waybar
           exec blueman-applet
-
           exec whatsapp
+
           # GoogleNest 2
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 

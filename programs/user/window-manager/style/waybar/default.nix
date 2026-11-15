@@ -73,20 +73,12 @@ _: {
         border-radius: 0;
       }
 
-      #custom-music,
       #tray,
       #keyboard-state,
       #backlight,
       #clock,
       #battery,
       #wireplumber,
-      #custom-lock,
-      #custom-power {
-        background-color: @surface0;
-        padding: 0.5rem 1rem;
-        margin: 5px 0;
-      }
-
       #clock {
         color: @white;
         border-radius: 0px 1rem 1rem 0px;
@@ -123,22 +115,6 @@ _: {
         margin-left: 1rem;
       }
 
-      #custom-music {
-        color: @mauve;
-        border-radius: 1rem;
-      }
-
-      #custom-lock {
-          border-radius: 1rem 0px 0px 1rem;
-          color: @lavender;
-      }
-
-      #custom-power {
-          margin-right: 1rem;
-          border-radius: 0px 1rem 1rem 0px;
-          color: @red;
-      }
-
       #tray {
         margin-right: 1rem;
         border-radius: 1rem;
@@ -151,86 +127,81 @@ _: {
         color: @blue;
       }
     '';
-    settings = {
-      mainBar = {
-        layer = "bottom";
-        position = "bottom";
-        height = 12;
-        modules-left = [
-          "sway/workspaces"
-        ];
-        # modules-center = [
-        # "sway/window"
-        # "custom/scroll-workspace"
-        # ];
-        modules-right = [
-          "network"
-          "wireplumber"
-          "backlight"
-          "battery"
-          "tray"
-          "clock"
-        ];
-        "custom/scroll-workspace" = {
-          "format" = "                                                                                                          ";
-          "on-scroll-up" = "swaymsg workspace prev";
-          "on-scroll-down" = "swaymsg workspace next";
-          "tooltip" = false;
+    settings.mainBar = {
+      layer = "bottom";
+      position = "bottom";
+      height = 12;
+      modules-left = [
+        "sway/workspaces"
+      ];
+      modules-right = [
+        "network"
+        "wireplumber"
+        "backlight"
+        "battery"
+        "tray"
+        "keyboard-state"
+        "clock"
+      ];
+      "custom/scroll-workspace" = {
+        "format" = "                                                                                                          ";
+        "on-scroll-up" = "swaymsg workspace prev";
+        "on-scroll-down" = "swaymsg workspace next";
+        "tooltip" = false;
+      };
+      clock = {
+        format = "{:%d/%m/%Y %H:%M  }";
+        on-click = "gnome-calendar";
+      };
+      network = {
+        format = "{ifname}";
+        format-wifi = " Connected ";
+        format-ethernet = "{ipaddr}/{cidr} 󰈀";
+        format-disconnected = "Disconnected 󱛅";
+        tooltip-format = "{ifname} via {gwaddr} 󰛳";
+        tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+        tooltip-format-ethernet = "{ifname} ";
+        tooltip-format-disconnected = "Disconnected";
+        max-length = 50;
+      };
+      "custom/space" = {
+        format = " ┃ {}";
+      };
+      tray = {
+        icon-size = 15;
+        spacing = 12;
+      };
+      wireplumber = {
+        format = "{icon}   {volume}%";
+        format-muted = "";
+        on-click = "pwvucontrol";
+        scroll-step = 5;
+        format-icons = {
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = ["" "" ""];
         };
-        clock = {
-          format = "{:%d/%m/%Y %H:%M  }";
-          on-click = "gnome-calendar";
+      };
+      backlight = {
+        format = "{icon} {percent}%";
+        format-icons = [" " " " " " " " " " " " " " " " " "];
+      };
+      battery = {
+        interval = 5;
+        states = {
+          good = 100;
+          warning = 50;
+          critical = 25;
         };
-        network = {
-          format = "{ifname}";
-          format-wifi = " Connected ";
-          format-ethernet = "{ipaddr}/{cidr} 󰈀";
-          format-disconnected = "Disconnected 󱛅";
-          tooltip-format = "{ifname} via {gwaddr} 󰛳";
-          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-          tooltip-format-ethernet = "{ifname} ";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-        };
-        "custom/space" = {
-          format = " ┃ {}";
-        };
-        tray = {
-          icon-size = 15;
-          spacing = 12;
-        };
-        wireplumber = {
-          format = "{icon}   {volume}%";
-          format-muted = "";
-          on-click = "pwvucontrol";
-          scroll-step = 5;
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
-          };
-        };
-        backlight = {
-          format = "{icon} {percent}%";
-          format-icons = [" " " " " " " " " " " " " " " " " "];
-        };
-        battery = {
-          interval = 5;
-          states = {
-            good = 100;
-            warning = 50;
-            critical = 25;
-          };
-          format = "{icon} {capacity}% {power:2.1f}W";
-          format-charging = "⚡ {capacity}% {power:2.1f}W";
-          format-plugged = " {capacity}% {power:2.1f}W";
-          format-alt = "{icon} {time}";
-          format-icons = [" " " " " " " " " "];
-        };
+        format = "{icon} {capacity}% {power:2.1f}W";
+        format-charging = "⚡ {capacity}% {power:2.1f}W";
+        format-plugged = " {capacity}% {power:2.1f}W";
+        format-alt = "{icon} {time}";
+        format-icons = [" " " " " " " " " "];
       };
     };
   };
