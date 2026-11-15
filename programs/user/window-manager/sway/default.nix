@@ -64,6 +64,13 @@ in {
         Should I turn on the internal display of a laptop or keep it disabled, in case an external monitor is plugged in or not
       '';
     };
+    enable-trackpad = mkOption {
+      type = bool;
+      default = true;
+      description = mkDoc ''
+        Should I enable the laptop trackpad?
+      '';
+    };
   };
 
   config = mkIf cfg.enable {
@@ -266,19 +273,17 @@ in {
           # GoogleNest 2
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
-          # Disable touchpad
-          #
-          ## Thinkpad
-          exec_always swaymsg input "Elan Touchpad" events disabled
-          ## Legion
-          exec_always swaymsg input "1267:12926:ELAN06FA:00_04F3:327E_Touchpad" events disabled
-
           exec swaymsg output HDMI-A-1
         ''
         + (
           if !cfg.enable-laptop-display
           then "exec swaymsg output eDP-1 disable\nexec swaymsg output eDP-2 disable"
           else ""
+        )
+        + (
+          if cfg.enable-trackpad
+          then ""
+          else "exec_always swaymsg input '1267:12926:ELAN06FA:00_04F3:327E_Touchpad' events disabled"
         );
     };
 
