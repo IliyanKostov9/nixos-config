@@ -48,11 +48,11 @@ in {
       };
       container.docker.enable = true;
       editor.neovim.enable = true;
-      dbms.dbeaver.enable = true;
 
       emulator = {
         default = "ghostty";
         ghostty.enable = true;
+        tmux.enable = true;
         alacritty = {
           enable = false;
           theme = "kanagawa_dragon";
@@ -64,11 +64,11 @@ in {
           light-theme-hex = "#faf4ed";
           dark-theme-hex = "#181616";
         };
-        tmux.enable = true;
       };
 
       git = {
         gh.enable = true;
+        git-extras.enable = true;
         git = {
           enable = true;
           userName = "iliyan-kostov";
@@ -76,7 +76,6 @@ in {
           shouldGPGSign = true;
           gpgKey = "6105AB13B9DCDD1B";
         };
-        git-extras.enable = true;
       };
 
       shell = {
@@ -90,7 +89,6 @@ in {
         };
       };
     };
-    iot.qFlipper.enable = true;
 
     media = {
       gimp.enable = false;

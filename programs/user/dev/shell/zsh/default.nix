@@ -98,7 +98,7 @@ in {
           load_secret TF_TOKEN_app_terraform_io ${get-secret {secret = "tf_token_app_terraform_io";}}
           load_secret TF_ORG ${get-secret {secret = "tf_org";}}
 
-          load_secret WORK_NAME ${get-secret {secret = "work_name";}}}
+          load_secret WORK_NAME ${get-secret {secret = "work_name";}}
           export WORK_NAME="''${WORK_NAME:l}"
         '';
       };

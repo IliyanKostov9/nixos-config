@@ -1,4 +1,19 @@
-_: {
+{pkgs, ...}: let
+  countryFlag = pkgs.writeShellScript "country-flag" ''
+    code=$(${pkgs.curl}/bin/curl -s --max-time 3 https://ipinfo.io/country | tr -d '[:space:]' | tr 'a-z' 'A-Z')
+    case "$code" in
+      [A-Z][A-Z]) ;;
+      *) echo "🌐"; exit 0 ;;
+    esac
+    out=""
+    for i in 1 2; do
+      c=$(printf %s "$code" | cut -c$i)
+      n=$(( 127462 + $(printf '%d' "'$c") - 65 ))
+      out="$out$(printf "\\U$(printf '%08x' "$n")")"
+    done
+    echo "$out"
+  '';
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -73,15 +88,14 @@ _: {
         border-radius: 0;
       }
 
-      #custom-music,
       #tray,
-      #keyboard-state,
+      #custom-flag,
+      #network,
       #backlight,
       #clock,
       #battery,
       #wireplumber,
-      #custom-lock,
-      #custom-power {
+      #custom-style {
         background-color: @surface0;
         padding: 0.5rem 1rem;
         margin: 5px 0;
@@ -109,128 +123,121 @@ _: {
         color: @yellow;
       }
 
-      #keyboard-state {
-        color: @yellow;
-      }
-
       #backlight, #battery {
           border-radius: 0;
       }
 
       #wireplumber {
         color: @maroon;
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
+        border-radius: 0;
       }
 
-      #custom-music {
-        color: @mauve;
-        border-radius: 1rem;
-      }
-
-      #custom-lock {
-          border-radius: 1rem 0px 0px 1rem;
-          color: @lavender;
-      }
-
-      #custom-power {
+      #custom-style {
           margin-right: 1rem;
           border-radius: 0px 1rem 1rem 0px;
           color: @red;
       }
 
       #tray {
-        margin-right: 1rem;
         border-radius: 1rem;
       }
 
       #network {
         padding: 0.5rem 1rem;
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
         color: @blue;
+        border-radius: 1rem 0px 0px 1rem;
+      }
+
+      #custom-flag {
+        padding: 0.5rem 0.5rem;
+        color: @blue;
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
       }
     '';
-    settings = {
-      mainBar = {
-        layer = "bottom";
-        position = "bottom";
-        height = 12;
-        modules-left = [
-          "sway/workspaces"
-        ];
-        # modules-center = [
-        # "sway/window"
-        # "custom/scroll-workspace"
-        # ];
-        modules-right = [
-          "network"
-          "wireplumber"
-          "backlight"
-          "battery"
-          "tray"
-          "clock"
-        ];
-        "custom/scroll-workspace" = {
-          "format" = "                                                                                                          ";
-          "on-scroll-up" = "swaymsg workspace prev";
-          "on-scroll-down" = "swaymsg workspace next";
-          "tooltip" = false;
+    settings.mainBar = {
+      layer = "bottom";
+      position = "bottom";
+      height = 12;
+      modules-left = [
+        "sway/workspaces"
+      ];
+      modules-right = [
+        "tray"
+        "custom/flag"
+        "network"
+        "wireplumber"
+        "backlight"
+        "battery"
+        "clock"
+      ];
+      "custom/scroll-workspace" = {
+        "on-scroll-up" = "swaymsg workspace prev";
+        "on-scroll-down" = "swaymsg workspace next";
+        "tooltip" = false;
+      };
+      clock = {
+        format = "{:%d/%m/%Y %H:%M  }";
+        on-click = "gnome-calendar";
+      };
+      network = {
+        format = "{ifname}";
+        format-wifi = " Connected ";
+        format-ethernet = "{ipaddr}/{cidr} 󰈀";
+        format-disconnected = "Disconnected 󱛅";
+        tooltip-format = "{ifname} via {gwaddr} 󰛳";
+        tooltip-format-wifi = "{essid} ({signalStrength}%) ";
+        tooltip-format-ethernet = "{ifname} ";
+        tooltip-format-disconnected = "Disconnected";
+        max-length = 50;
+        on-click = "ghostty --class=com.user.nmtui --window-width=60 --window-height=18 -e nmtui";
+      };
+      "custom/space" = {
+        format = "  ┃ {}";
+      };
+
+      "custom/flag" = {
+        exec = "${countryFlag}";
+        signal = 8;
+        tooltip = false;
+      };
+
+      tray = {
+        icon-size = 15;
+        spacing = 12;
+      };
+      wireplumber = {
+        format = "{icon}   {volume}%";
+        format-muted = "";
+        on-click = "pwvucontrol";
+        scroll-step = 5;
+        format-icons = {
+          headphone = "";
+          hands-free = "";
+          headset = "";
+          phone = "";
+          portable = "";
+          car = "";
+          default = ["" "" ""];
         };
-        clock = {
-          format = "{:%d/%m/%Y %H:%M  }";
-          on-click = "gnome-calendar";
+      };
+      backlight = {
+        format = "{icon} {percent}%";
+        format-icons = [" " " " " " " " " " " " " " " " " "];
+      };
+      battery = {
+        interval = 5;
+        states = {
+          good = 100;
+          warning = 50;
+          critical = 25;
         };
-        network = {
-          format = "{ifname}";
-          format-wifi = " Connected ";
-          format-ethernet = "{ipaddr}/{cidr} 󰈀";
-          format-disconnected = "Disconnected 󱛅";
-          tooltip-format = "{ifname} via {gwaddr} 󰛳";
-          tooltip-format-wifi = "{essid} ({signalStrength}%) ";
-          tooltip-format-ethernet = "{ifname} ";
-          tooltip-format-disconnected = "Disconnected";
-          max-length = 50;
-        };
-        "custom/space" = {
-          format = " ┃ {}";
-        };
-        tray = {
-          icon-size = 15;
-          spacing = 12;
-        };
-        wireplumber = {
-          format = "{icon}   {volume}%";
-          format-muted = "";
-          on-click = "pwvucontrol";
-          scroll-step = 5;
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
-          };
-        };
-        backlight = {
-          format = "{icon} {percent}%";
-          format-icons = [" " " " " " " " " " " " " " " " " "];
-        };
-        battery = {
-          interval = 5;
-          states = {
-            good = 100;
-            warning = 50;
-            critical = 25;
-          };
-          format = "{icon} {capacity}% {power:2.1f}W";
-          format-charging = "⚡ {capacity}% {power:2.1f}W";
-          format-plugged = " {capacity}% {power:2.1f}W";
-          format-alt = "{icon} {time}";
-          format-icons = [" " " " " " " " " "];
-        };
+        format = "{icon} {capacity}% {power:2.1f}W";
+        format-charging = "⚡ {capacity}% {power:2.1f}W";
+        format-plugged = " {capacity}% {power:2.1f}W";
+        format-alt = "{icon} {time}";
+        format-icons = [" " " " " " " " " "];
       };
     };
   };

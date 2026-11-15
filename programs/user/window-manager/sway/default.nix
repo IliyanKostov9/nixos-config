@@ -260,16 +260,18 @@ in {
           exec_always xss-lock --transfer-sleep-lock -- i3lock --nofork
 
           # Autostart
-          exec nm-applet
           exec copyq
           exec viber
           exec mousetouch run
 
+          # NOTE: Run it only once
+          # copyq config disable_tray true
+
           # NOTE: Needed because systemd.enable = false causes waybar not to autostart
           exec waybar
           exec blueman-applet
-
           exec whatsapp
+
           # GoogleNest 2
           exec sh -c 'sleep 2 && echo "connect AC:67:84:2B:40:00" | bluetoothctl'
 
