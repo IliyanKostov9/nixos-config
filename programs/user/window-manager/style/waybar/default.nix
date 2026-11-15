@@ -74,11 +74,17 @@ _: {
       }
 
       #tray,
-      #keyboard-state,
+      #network,
       #backlight,
       #clock,
       #battery,
       #wireplumber,
+      #custom-style {
+        background-color: @surface0;
+        padding: 0.5rem 1rem;
+        margin: 5px 0;
+      }
+
       #clock {
         color: @white;
         border-radius: 0px 1rem 1rem 0px;
@@ -101,30 +107,31 @@ _: {
         color: @yellow;
       }
 
-      #keyboard-state {
-        color: @yellow;
-      }
-
       #backlight, #battery {
           border-radius: 0;
       }
 
       #wireplumber {
         color: @maroon;
-        border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
+        border-radius: 0;
+      }
+
+      #custom-style {
+          margin-right: 1rem;
+          border-radius: 0px 1rem 1rem 0px;
+          color: @red;
       }
 
       #tray {
-        margin-right: 1rem;
         border-radius: 1rem;
       }
 
       #network {
         padding: 0.5rem 1rem;
-        border-radius: 1rem 0px 0px 1rem;
         margin-left: 1rem;
         color: @blue;
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 1rem;
       }
     '';
     settings.mainBar = {
@@ -135,16 +142,14 @@ _: {
         "sway/workspaces"
       ];
       modules-right = [
+        "tray"
         "network"
         "wireplumber"
         "backlight"
         "battery"
-        "tray"
-        "keyboard-state"
         "clock"
       ];
       "custom/scroll-workspace" = {
-        "format" = "                                                                                                          ";
         "on-scroll-up" = "swaymsg workspace prev";
         "on-scroll-down" = "swaymsg workspace next";
         "tooltip" = false;
@@ -165,7 +170,7 @@ _: {
         max-length = 50;
       };
       "custom/space" = {
-        format = " ┃ {}";
+        format = "  ┃ {}";
       };
       tray = {
         icon-size = 15;
