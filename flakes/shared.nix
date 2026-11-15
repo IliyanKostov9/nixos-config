@@ -16,7 +16,7 @@ with inputs; rec {
               version = "latest";
               src = super.fetchurl {
                 url = "https://download.cdn.viber.com/desktop/Linux/viber.AppImage";
-                sha256 = "sha256-cgBf5Di0WQLGSEXNv86aqa5omgfyIO1Mlwawa64Nrs8=";
+                sha256 = "sha256-0qCSQI1QL/skfO0LjJk2VcVFhLnQrryEEPUvOlgKgUg=";
               };
               buildInputs = [super.appimage-run super.makeWrapper];
               dontUnpack = true;
