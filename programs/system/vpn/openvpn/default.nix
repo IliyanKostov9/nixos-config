@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 with lib;
@@ -42,6 +43,13 @@ in {
         '';
         updateResolvConf = false; # NOTE: set to false for pi-hole DNS use
         autoStart = cfg.autoStart;
+        up = ''
+          (sleep 3; ${pkgs.procps}/bin/pkill -RTMIN+8 waybar;
+           sleep 7; ${pkgs.procps}/bin/pkill -RTMIN+8 waybar) >/dev/null 2>&1 &
+        '';
+        down = ''
+          (sleep 2; ${pkgs.procps}/bin/pkill -RTMIN+8 waybar) >/dev/null 2>&1 &
+        '';
       };
     };
   };

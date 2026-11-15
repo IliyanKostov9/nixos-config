@@ -1,4 +1,19 @@
-_: {
+{pkgs, ...}: let
+  countryFlag = pkgs.writeShellScript "country-flag" ''
+    code=$(${pkgs.curl}/bin/curl -s --max-time 3 https://ipinfo.io/country | tr -d '[:space:]' | tr 'a-z' 'A-Z')
+    case "$code" in
+      [A-Z][A-Z]) ;;
+      *) echo "🌐"; exit 0 ;;
+    esac
+    out=""
+    for i in 1 2; do
+      c=$(printf %s "$code" | cut -c$i)
+      n=$(( 127462 + $(printf '%d' "'$c") - 65 ))
+      out="$out$(printf "\\U$(printf '%08x' "$n")")"
+    done
+    echo "$out"
+  '';
+in {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -74,6 +89,7 @@ _: {
       }
 
       #tray,
+      #custom-flag,
       #network,
       #backlight,
       #clock,
@@ -128,10 +144,16 @@ _: {
 
       #network {
         padding: 0.5rem 1rem;
-        margin-left: 1rem;
         color: @blue;
         border-radius: 1rem 0px 0px 1rem;
-        margin-left: 1rem;
+      }
+
+      #custom-flag {
+        padding: 0.5rem 0.5rem;
+        color: @blue;
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
       }
     '';
     settings.mainBar = {
@@ -143,6 +165,7 @@ _: {
       ];
       modules-right = [
         "tray"
+        "custom/flag"
         "network"
         "wireplumber"
         "backlight"
@@ -173,6 +196,13 @@ _: {
       "custom/space" = {
         format = "  ┃ {}";
       };
+
+      "custom/flag" = {
+        exec = "${countryFlag}";
+        signal = 8;
+        tooltip = false;
+      };
+
       tray = {
         icon-size = 15;
         spacing = 12;
