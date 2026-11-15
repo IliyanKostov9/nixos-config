@@ -168,6 +168,7 @@ _: {
         tooltip-format-ethernet = "{ifname} ";
         tooltip-format-disconnected = "Disconnected";
         max-length = 50;
+        on-click = "ghostty --class=com.user.nmtui --window-width=60 --window-height=18 -e nmtui";
       };
       "custom/space" = {
         format = "  ┃ {}";

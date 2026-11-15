@@ -42,6 +42,7 @@ in {
           # "nomnklagbgmgghhjidfhnoelnjfndfpd"
         ];
         extraOpts = {
+          "BackgroundModeEnabled" = false; # NOTE: Disable the system tray icon
           "ShowHomeButton" = true;
           "RestoreOnStartup" = 1;
           "DefaultBrowserTheme" = 1;
