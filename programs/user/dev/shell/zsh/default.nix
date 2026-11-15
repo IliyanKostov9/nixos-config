@@ -9,6 +9,11 @@ with lib.types; let
   inherit (config.sops) secrets;
   cfg = config.modules.dev.shell.zsh;
 
+  get-secret = {secret}:
+    if secrets ? ${secret}
+    then escapeShellArg secrets."${secret}".path
+    else warn "> Secret ${secret} is missing. Moving on..." "";
+
   ikostov-zsh-themes = pkgs.fetchFromGitHub {
     owner = "IliyanKostov9";
     repo = "zsh-themes";
@@ -87,13 +92,13 @@ in {
             fi
           }
 
-          load_secret AZURE_DEVOPS_EXT_PAT ${lib.escapeShellArg secrets.azure_devops_ext_pat.path}
-          load_secret GITGUARDIAN_API_KEY ${lib.escapeShellArg secrets.gitguardian_api_key.path}
-          load_secret GH_TOKEN ${lib.escapeShellArg secrets.gh_token.path}
-          load_secret TF_TOKEN_app_terraform_io ${lib.escapeShellArg secrets.tf_token_app_terraform_io.path}
-          load_secret TF_ORG ${lib.escapeShellArg secrets.tf_org.path}
+          load_secret AZURE_DEVOPS_EXT_PAT ${get-secret {secret = "azure_devops_ext_pat";}}
+          load_secret GITGUARDIAN_API_KEY ${get-secret {secret = "gitguardian_api_key";}}
+          load_secret GH_TOKEN ${get-secret {secret = "gh_token";}}
+          load_secret TF_TOKEN_app_terraform_io ${get-secret {secret = "tf_token_app_terraform_io";}}
+          load_secret TF_ORG ${get-secret {secret = "tf_org";}}
 
-          load_secret WORK_NAME ${lib.escapeShellArg secrets.work_name.path}
+          load_secret WORK_NAME ${get-secret {secret = "work_name";}}}
           export WORK_NAME="''${WORK_NAME:l}"
         '';
       };
