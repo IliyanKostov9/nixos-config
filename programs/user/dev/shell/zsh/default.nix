@@ -14,11 +14,12 @@ with lib.types; let
     then escapeShellArg secrets."${secret}".path
     else warn "> Secret ${secret} is missing. Moving on..." "";
 
+  theme = "blue-bureau";
   ikostov-zsh-themes = pkgs.fetchFromGitHub {
     owner = "IliyanKostov9";
     repo = "zsh-themes";
     rev = "master";
-    hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
+    hash = "sha256-d1SCz/mi3HPJI8wi0RXrwjy8U1nt/Le1une7bPCSFCY=";
   };
 
   zsh-themes = pkgs.stdenv.mkDerivation {
@@ -71,7 +72,7 @@ in {
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-purple-magic";
+          inherit theme;
           custom = "${zsh-themes}";
           plugins = [
             "direnv"
