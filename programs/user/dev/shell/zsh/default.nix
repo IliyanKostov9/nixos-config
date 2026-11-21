@@ -18,7 +18,7 @@ with lib.types; let
     owner = "IliyanKostov9";
     repo = "zsh-themes";
     rev = "master";
-    hash = "sha256-77w+8eEQOaXYCN/SZYaSH928bHox4DJS1Z00aD5xvHQ=";
+    hash = "sha256-d1SCz/mi3HPJI8wi0RXrwjy8U1nt/Le1une7bPCSFCY=";
   };
 
   zsh-themes = pkgs.stdenv.mkDerivation {
@@ -36,6 +36,14 @@ in {
       default = false;
       description = mkDoc ''
         Enable zsh shell
+      '';
+    };
+
+    theme = mkOption {
+      type = str;
+      default = "af-purple-magic";
+      description = mkDoc ''
+        Theme of Ohmyzsh
       '';
     };
 
@@ -71,7 +79,7 @@ in {
         };
         oh-my-zsh = {
           enable = true;
-          theme = "af-purple-magic";
+          inherit (cfg) theme;
           custom = "${zsh-themes}";
           plugins = [
             "direnv"
