@@ -85,6 +85,7 @@ in {
         };
         zsh = {
           enable = true;
+          theme = "blue-bureau";
           inherit env-vars;
         };
       };
