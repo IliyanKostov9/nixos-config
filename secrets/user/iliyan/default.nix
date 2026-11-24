@@ -21,19 +21,6 @@ _: {
           name = "sops-usr-secrets-iliyan-work_name";
         };
       };
-      work_project1_name = {
-        sopsFile = builtins.path {
-          path = ./work.yaml;
-          name = "sops-usr-secrets-iliyan-work_project1_name";
-        };
-      };
-
-      work_name_new = {
-        sopsFile = builtins.path {
-          path = ./work.yaml;
-          name = "sops-usr-secrets-iliyan-work_name_new";
-        };
-      };
     };
   };
 }
