@@ -89,6 +89,7 @@ in {
               "pixel7"
             ];
           };
+
           PicturesPersonalReceivePixels = {
             enable = true;
             label = "(Pictures Personal) <= Pixel";
@@ -105,6 +106,16 @@ in {
             path = "${syncthingRootDir}/Pictures/Work/Experian";
             versioning = versioningTrashNoCleanup;
             type = "receiveonly";
+            devices = [
+              "pixel7"
+            ];
+          };
+          NatureReceivePixels = {
+            enable = true;
+            label = "Nature <= Pixel";
+            path = "${syncthingRootDir}/Pictures/Personal/Nature";
+            type = "receiveonly";
+            versioning = versioningTrashNoCleanup;
             devices = [
               "pixel7"
             ];
