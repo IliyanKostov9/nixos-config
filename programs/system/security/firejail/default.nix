@@ -32,7 +32,7 @@ in {
         extensions = [
           # Dark reader
           "eimadpbcbfnmbkopoojfekhnkhdbieeh"
-          # Ublock origin
+          # Ublock origin Lite
           "ddkjiahejlhfcafbddmgiahcphecmpfh"
           # Privacy Badger
           "pkehgijcmpdhfbdbbnkijodmdjhbjlgp"
@@ -52,8 +52,10 @@ in {
           "AutofillProfileEnabled" = false;
           "AutofillAddressEnabled" = false;
           "BlockThirdPartyCookies" = true;
+
           "HighEfficiencyModeEnabled" = true;
-          "MemorySaverModeSavings" = 1;
+          "MemorySaverModeSavings" = 2;
+          "HardwareAccelerationModeEnabled" = true;
         };
       };
 

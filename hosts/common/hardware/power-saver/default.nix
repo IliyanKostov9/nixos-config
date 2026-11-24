@@ -18,7 +18,8 @@ in {
         settings = {
           PLATFORM_PROFILE_ON_BAT = "low-power";
           PLATFORM_PROFILE_ON_AC = "balanced";
-          CPU_ENERGY_PERF_POLICY_ON_AC = mkForce "performance";
+          CPU_ENERGY_PERF_POLICY_ON_AC = mkForce "balance_performance";
+          CPU_BOOST_ON_AC = 0;
           CPU_MAX_PERF_ON_AC = mkForce 100;
         };
       };
